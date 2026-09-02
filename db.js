@@ -75,7 +75,16 @@ async function cmdList() {
     const count =
       d.kind === "page" ? d.claim_count + " claim(s)" : d.entry_count + " entr(y/ies)";
     process.stdout.write(
-      d.id.padEnd(36) + "  " + d.kind.padEnd(14) + "  " + count.padEnd(16) + "  " + d.title + "\n"
+      d.id.padEnd(34) +
+        "  " +
+        (d.generator_mode || "-").padEnd(9) +
+        "  " +
+        d.kind.padEnd(13) +
+        "  " +
+        count.padEnd(16) +
+        "  " +
+        d.title +
+        "\n"
     );
   }
 }

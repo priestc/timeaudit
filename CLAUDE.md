@@ -28,15 +28,22 @@ node json-to-html.js indus-valley-civilisation.json
 `timeaudit.js` turns a Wikipedia URL into a SPEC-conforming chronology report.
 Full design notes in **`PIPELINE.md`**. Key points:
 
-- **Local-first by design.** Page fetch (MediaWiki API), dated-claim detection,
-  the 1450 CE cutoff, citation-metadata parsing (from embedded COinS), source
-  downloading, dating-method heuristics and multi-hop DOI-chasing all run with
-  no AI. `lib/wiki.js` + `lib/scholar.js` + `lib/assemble.js`.
-- **AI is one optional call per claim** (`lib/ai.js`, raw HTTPS, no SDK dep),
-  active only when `ANTHROPIC_API_KEY` is set and `--no-ai` wasn't passed. It
-  confirms scope, picks the terminal hop, and selects ≤3 verbatim quotes —
-  each verified to be a substring of the text we sent, so no fabrication.
-  Without a key, judgement-dependent chains are left `status: "pending"`.
+- **Three modes, recorded in `generator.mode`** in every report (for tracking
+  which approach works best over a corpus). `--mode` / aliases `--no-ai`,
+  `--ai`, `--ai-only`. Default: `hybrid` if `ANTHROPIC_API_KEY` is set, else
+  `local`.
+  - `local` — only the local software (`lib/wiki.js` + `lib/scholar.js` +
+    `lib/assemble.js`): MediaWiki fetch, claim detection, 1450 CE cutoff,
+    COinS citation parsing, source download + cache, dating-method heuristics,
+    multi-hop DOI chasing. No AI. Judgement-dependent chains → `status:"pending"`.
+  - `hybrid` — local pipeline + one AI call per claim (`lib/ai.js`, raw HTTPS,
+    no SDK dep) to confirm scope, pick the terminal hop, and select ≤3 quotes,
+    each verified to be a substring of the text sent (no fabrication).
+  - `ai-only` — no local analysis; `lib/ai.js` hands the model just the wiki
+    URL + `SPEC.md` link with `web_search`/`web_fetch` and takes back the whole
+    report JSON. No `source-cache/`, no `technical-log.json` update.
+- Firestore records carry `generator_mode` / `generator_model`; `db.js list`
+  and the web viewer show the mode.
 - **Academic material is cached** under `source-cache/<slug>/` (PDF/HTML/XML +
   extracted `.txt`), and the Wikipedia API response under
   `source-cache/_wikipedia/`.

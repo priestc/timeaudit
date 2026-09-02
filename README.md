@@ -15,8 +15,13 @@ database; the viewer and converters work without it.
 [`PIPELINE.md`](./PIPELINE.md):
 
 ```
-node timeaudit.js https://en.wikipedia.org/wiki/Ancient_Egypt
+node timeaudit.js https://en.wikipedia.org/wiki/Ancient_Egypt --mode local
+node timeaudit.js https://en.wikipedia.org/wiki/Ancient_Egypt --mode hybrid   # + AI gap-filler
+node timeaudit.js https://en.wikipedia.org/wiki/Ancient_Egypt --mode ai-only  # model does it all
 ```
+
+The mode is recorded in the report's `generator.mode` field so runs can be
+compared over time.
 
 ## 1. Web UI — browse every JSON in the project
 

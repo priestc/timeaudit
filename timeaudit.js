@@ -49,20 +49,28 @@ const HELP = `timeaudit — generate a Wikipedia chronology extraction report (s
   timeaudit <wikipedia-url> [options]
   timeaudit https://en.wikipedia.org/wiki/Ancient_Egypt
 
-Local-first: the page fetch, claim detection, 1450 CE cutoff, citation parsing,
-source downloads, dating-method heuristics and multi-hop chasing all run with no
-AI. If ANTHROPIC_API_KEY is set, one AI call per claim confirms scope and picks
-load-bearing quotes; without it, chains needing judgement are left "pending".
+Modes (recorded in the report's "generator.mode" field, for tracking which
+approach works best over time):
+
+  --mode local     only the local software: page fetch, claim detection, 1450 CE
+                   cutoff, citation parsing, source download + caching,
+                   dating-method heuristics, multi-hop DOI chasing. No AI.
+  --mode hybrid    local pipeline + one AI call per claim to confirm scope and
+                   pick load-bearing quotes (default when ANTHROPIC_API_KEY set)
+  --mode ai-only   no local analysis — hand the model just the Wikipedia URL and
+                   a link to SPEC.md and let it build the whole report itself
+                   (using web search / fetch). Needs ANTHROPIC_API_KEY.
+
+  aliases: --no-ai = --mode local,  --ai = --mode hybrid,  --ai-only = --mode ai-only
 
 Options:
   --out <dir>        where to write <slug>.json          (default: cwd)
   --cache <dir>      source-cache root      (default: <out>/source-cache)
-  --max-claims <n>   cap claims processed                (default: 60)
-  --depth <n>        max citation-chain hops             (default: 3)
-  --downloads <n>    max source downloads this run       (default: 40)
+  --max-claims <n>   cap claims processed  (local/hybrid)  (default: 60)
+  --depth <n>        max citation-chain hops (local/hybrid) (default: 3)
+  --downloads <n>    max source downloads this run          (default: 40)
   --email <addr>     contact email for Unpaywall OA lookup
                      (default: $TIMEAUDIT_CONTACT_EMAIL; omitted => skip Unpaywall)
-  --ai / --no-ai     force the AI gap-filler on / off
   --no-sync          do not copy anything to the tank2 folder
   --push             also run \`node db.js push\` afterwards
   --quiet
@@ -77,11 +85,12 @@ function parseArgs(argv) {
     depth: 3,
     downloads: 40,
     email: process.env.TIMEAUDIT_CONTACT_EMAIL || null,
-    ai: null,
+    mode: null, // resolved after parsing
     sync: true,
     push: false,
     quiet: false,
   };
+  const MODES = ["local", "hybrid", "ai-only"];
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--out") o.out = path.resolve(argv[++i]);
@@ -90,8 +99,12 @@ function parseArgs(argv) {
     else if (a === "--depth") o.depth = parseInt(argv[++i], 10);
     else if (a === "--downloads") o.downloads = parseInt(argv[++i], 10);
     else if (a === "--email") o.email = argv[++i];
-    else if (a === "--ai") o.ai = true;
-    else if (a === "--no-ai") o.ai = false;
+    else if (a === "--mode") {
+      o.mode = argv[++i];
+      if (!MODES.includes(o.mode)) throw new Error("--mode must be one of: " + MODES.join(", "));
+    } else if (a === "--no-ai" || a === "--local") o.mode = "local";
+    else if (a === "--ai" || a === "--hybrid") o.mode = "hybrid";
+    else if (a === "--ai-only") o.mode = "ai-only";
     else if (a === "--no-sync") o.sync = false;
     else if (a === "--push") o.push = true;
     else if (a === "--quiet") o.quiet = true;
@@ -117,20 +130,50 @@ async function main() {
     process.stdout.write(HELP);
     process.exit(opt.help ? 0 : 1);
   }
-  const useAI = opt.ai === true || (opt.ai === null && ai.available());
-  if (opt.ai === true && !ai.available()) {
-    throw new Error("--ai given but ANTHROPIC_API_KEY is not set");
+  const mode = opt.mode || (ai.available() ? "hybrid" : "local");
+  if ((mode === "hybrid" || mode === "ai-only") && !ai.available()) {
+    throw new Error("--mode " + mode + " needs ANTHROPIC_API_KEY (set it in .env, or use --mode local)");
   }
+  const useAI = mode === "hybrid";
   const log = (...a) => !opt.quiet && process.stderr.write(a.join(" ") + "\n");
+  log("• mode: " + mode + (mode === "local" ? " (no AI)" : " (" + ai.MODEL + ")"));
 
   log("• fetching", opt.url);
   const page = await wiki.fetchPage(opt.url, { cacheDir: opt.cache });
   log("  " + page.title + "  (rev " + page.revid + ")");
 
+  /* ---------------- ai-only: model builds the whole report ---------------- */
+  if (mode === "ai-only") {
+    log("• handing the URL + SPEC.md to " + ai.MODEL + " (web search/fetch enabled) — this can take several minutes");
+    const r = await ai.generateReport({ wikiUrl: page.url, specUrl: assemble.SPEC_URL });
+    log("  model made " + r.searches + " web tool call(s); stop_reason=" + r.stop_reason);
+    if (!r.json) {
+      const rawPath = path.join(opt.out, page.slug + ".ai-only.raw.txt");
+      fs.mkdirSync(opt.out, { recursive: true });
+      fs.writeFileSync(rawPath, r.raw || "(empty response)");
+      throw new Error("model did not return parseable JSON — raw response saved to " + rawPath);
+    }
+    const gen = assemble.generatorBlock("ai-only", {
+      ai_model: r.model,
+      ai_usage: r.usage,
+      web_tool_calls: r.searches,
+      stop_reason: r.stop_reason,
+    });
+    const doc = assemble.wrapAiOnly(page, r.json, gen);
+    fs.mkdirSync(opt.out, { recursive: true });
+    const jsonPath = path.join(opt.out, page.slug + ".json");
+    fs.writeFileSync(jsonPath, JSON.stringify(doc, null, 2) + "\n");
+    const byStatus = (doc.claims || []).reduce((m, c) => ((m[c.status] = (m[c.status] || 0) + 1), m), {});
+    log("• wrote " + path.relative(process.cwd(), jsonPath) + "  (" + (doc.claims || []).length + " claims: " + JSON.stringify(byStatus) + ")");
+    log("  note: ai-only mode does not populate the local source-cache or the shared technical-log.json");
+    await finish(opt, jsonPath, null, log);
+    return;
+  }
+
   const refIdx = wiki.buildReferenceIndex(page.html);
   const rawClaims = wiki.extractClaims(page, { maxClaims: opt.maxClaims });
   log("• " + rawClaims.length + " candidate dated claim(s) in scope" + (rawClaims.length >= opt.maxClaims ? " (capped)" : ""));
-  log("• AI gap-filler: " + (useAI ? "on (" + ai.MODEL + ")" : "off — chains needing judgement stay 'pending'"));
+  if (mode === "local") log("  chains needing judgement will stay 'pending' (no AI in this mode)");
   if (!scholar.havePdftotext()) log("  ! pdftotext not found — PDF sources will not be text-mined");
 
   const budget = { left: opt.downloads };
@@ -289,7 +332,8 @@ async function main() {
     fs.writeFileSync(techLogPath, JSON.stringify(tlog, null, 2) + "\n");
   }
 
-  const doc = assemble.buildDocument(page, claims);
+  const gen = assemble.generatorBlock(mode, { ai_model: useAI ? ai.MODEL : null });
+  const doc = assemble.buildDocument(page, claims, gen);
   fs.mkdirSync(opt.out, { recursive: true });
   const jsonPath = path.join(opt.out, page.slug + ".json");
   fs.writeFileSync(jsonPath, JSON.stringify(doc, null, 2) + "\n");
@@ -298,17 +342,22 @@ async function main() {
   log("\n• wrote " + path.relative(process.cwd(), jsonPath) + "  (" + doc.claims.length + " claims: " + JSON.stringify(byStatus) + ")");
   if (techAdded.length) log("• technical-log.json += " + techAdded.join(", "));
 
-  // ---- sync to tank2 ----
+  await finish(opt, jsonPath, techDrafts.length ? techLogPath : null, log);
+  log("\nDone [" + mode + "]. Review " + path.relative(process.cwd(), jsonPath) +
+    (mode === "local" ? " — heuristic output; 'pending' chains need --mode hybrid or a human." : "."));
+}
+
+// sync the report (+ technical log + source cache) to tank2, then optional db push
+async function finish(opt, jsonPath, techLogPath, log) {
   if (opt.sync) {
     try {
-      const done = sync.syncToTank2({ jsonPath, techLogPath: techDrafts.length ? techLogPath : null, cacheDir: opt.cache });
+      const done = sync.syncToTank2({ jsonPath, techLogPath, cacheDir: opt.cache });
       log("• synced to " + sync.HOST + ":");
       done.forEach((d) => log("    " + d));
     } catch (e) {
       log("! sync to tank2 failed: " + (e.stderr ? e.stderr.toString() : e.message));
     }
   }
-
   if (opt.push) {
     try {
       execFileSync("node", [path.join(__dirname, "db.js"), "push", opt.out], { stdio: "inherit" });
@@ -316,8 +365,6 @@ async function main() {
       log("! db.js push failed: " + e.message);
     }
   }
-
-  log("\nDone. Review " + path.relative(process.cwd(), jsonPath) + " — heuristic output; 'pending' chains need a human or an --ai run.");
 }
 
 function sameSource(a, b) {
@@ -330,6 +377,7 @@ function shortCite(s) {
 }
 
 main().catch((e) => {
-  process.stderr.write("\ntimeaudit: " + (e && e.stack ? e.stack : e) + "\n");
+  const msg = process.env.TIMEAUDIT_DEBUG && e && e.stack ? e.stack : e && e.message ? e.message : String(e);
+  process.stderr.write("\ntimeaudit: " + msg + "\n");
   process.exit(1);
 });

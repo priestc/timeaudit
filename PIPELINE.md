@@ -15,7 +15,34 @@ Writes `./<slug>.json`, updates `./technical-log.json`, saves sources under
 tank2 folder (`/home/chris/timeaudit/`), where the web service and `db.js push`
 pick it up.
 
-## Design goal: maximum local computation, minimum external AI
+## Three modes
+
+The mode is written into the report as `generator.mode`, so a corpus of reports
+can be compared over time to see which approach produces the best extractions.
+
+| `--mode` | What it does | Needs a key |
+| -------- | ------------ | ----------- |
+| `local` | **Only the local software.** The whole pipeline below runs; no AI is contacted. Chains that need a judgement call are left `status: "pending"` with all the evidence attached. Alias: `--no-ai`. | no |
+| `hybrid` | The local pipeline **plus** one AI call per claim to confirm scope, pick the terminal hop, and choose ≤3 load-bearing quotes (each verified as a substring of the text sent, so it can't fabricate). The default when `ANTHROPIC_API_KEY` is set. Alias: `--ai`. | yes |
+| `ai-only` | **No local analysis.** The model is handed just the Wikipedia URL and a link to `SPEC.md` and builds the entire report itself, using web search / web fetch to read the page and chase citations. The local `source-cache/` and shared `technical-log.json` are not populated. Alias: `--ai-only`. | yes |
+
+`generator` block in every report:
+
+```json
+"generator": {
+  "tool": "timeaudit",
+  "mode": "local",
+  "generated_at": "2026-09-02T18:42:21.693Z",
+  "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
+  "ai_model": null
+}
+```
+
+(`ai-only` and `hybrid` also record `ai_model`; `ai-only` adds `ai_usage`,
+`web_tool_calls`, `stop_reason`.) `db.js list` shows the mode column, and the
+Firestore record carries `generator_mode` / `generator_model` for querying.
+
+## `local` / `hybrid` pipeline: maximum local computation, minimum external AI
 
 Everything except one optional step runs locally with no API calls to any AI:
 
@@ -32,32 +59,40 @@ Everything except one optional step runs locally with no API calls to any AI:
 | **Assemble** | Build the SPEC JSON; append `T<n>` entries to `technical-log.json` for terminal physical-method hops (deduped). |
 | **Sync** | `rsync` the report, technical log and whole `source-cache/` tree to the tank2 folder. |
 
-### The one optional AI step
+### The one optional AI step (`hybrid` mode)
 
-If `ANTHROPIC_API_KEY` is set (and `--no-ai` wasn't passed), **one** request per
-claim — no agent loop — is made to `claude-opus-5` (override with
-`TIMEAUDIT_AI_MODEL`). It only does what local heuristics can't:
+**One** request per claim — no agent loop — is made to `claude-opus-5` (override
+with `TIMEAUDIT_AI_MODEL`). It only does what local heuristics can't:
 
 - confirm the sentence is genuinely a pre-1450 numerical age claim (drops it if not)
 - say which hop, if any, actually reaches a dating method, and its type
 - pick ≤3 load-bearing verbatim quotes per hop
 
 Every quote it returns is verified to be a substring of the text we sent it, so
-it cannot fabricate one (SPEC rule 5). Without a key the tool still produces a
-complete report — the judgement-dependent chains are just marked `pending` with
-all the local evidence attached for a later `--ai` run or a human.
+it cannot fabricate one (SPEC rule 5).
+
+## `ai-only` mode
+
+The local pipeline is skipped entirely. `lib/ai.js` sends the model one prompt
+containing the Wikipedia URL and `https://github.com/priestc/timeaudit/blob/main/SPEC.md`,
+with the `web_search` / `web_fetch` server tools enabled, and asks it to return
+the whole report JSON. `pause_turn` responses are resumed until the model
+finishes (cap 16 round-trips). The returned JSON is re-wrapped so `page` and
+`generator` come from us, not the model. Nothing is written to `source-cache/`
+and the shared `technical-log.json` is not touched.
 
 ## Options
 
 ```
+--mode <local|hybrid|ai-only>   default: hybrid if ANTHROPIC_API_KEY set, else local
+                                aliases: --no-ai, --ai, --ai-only
 --out <dir>        where to write <slug>.json          (default: cwd)
 --cache <dir>      source-cache root      (default: <out>/source-cache)
---max-claims <n>   cap claims processed                (default: 60)
---depth <n>        max citation-chain hops             (default: 3)
---downloads <n>    max source downloads this run       (default: 40)
+--max-claims <n>   cap claims processed  (local/hybrid)  (default: 60)
+--depth <n>        max citation-chain hops (local/hybrid) (default: 3)
+--downloads <n>    max source downloads this run          (default: 40)
 --email <addr>     contact email for the Unpaywall OA lookup
                    (default: $TIMEAUDIT_CONTACT_EMAIL; omitted => Unpaywall skipped)
---ai / --no-ai     force the AI gap-filler on / off
 --no-sync          do not copy anything to the tank2 folder
 --push             also run `node db.js push` afterwards (into Firestore)
 --quiet
@@ -70,7 +105,7 @@ the download hit rate. OpenAlex and Europe PMC need no key.
 
 `status` per claim is `resolved` (a hop reached a dating method), `dead_end`
 (hop 1 unreachable, no leads) or `pending` (chain followed but no confident
-terminus — the common case without `--ai`). Heuristic runs are a strong
+terminus — the common case in `local` mode). A `local` run is a strong
 scaffold, not a finished extraction: expect to finish `pending` chains and
 sanity-check `resolved` ones. Re-running is cheap — cached sources are reused.
 

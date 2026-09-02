@@ -1,5 +1,12 @@
 {
   "schema_version": "1.0",
+  "generator": {
+    "tool": "timeaudit",
+    "mode": "local",
+    "generated_at": "2026-09-02T18:42:21.693Z",
+    "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
+    "ai_model": null
+  },
   "page": {
     "title": "Göbekli Tepe",
     "url": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
@@ -105,9 +112,7 @@
         }
       ],
       "status": "resolved",
-      "technical_log_refs": [
-        "T1"
-      ]
+      "technical_log_refs": []
     },
     {
       "claim_id": "GT-003",
@@ -255,9 +260,7 @@
         }
       ],
       "status": "resolved",
-      "technical_log_refs": [
-        "T2"
-      ]
+      "technical_log_refs": []
     },
     {
       "claim_id": "GT-005",
@@ -405,9 +408,7 @@
         }
       ],
       "status": "resolved",
-      "technical_log_refs": [
-        "T3"
-      ]
+      "technical_log_refs": []
     },
     {
       "claim_id": "GT-009",
@@ -462,9 +463,7 @@
         }
       ],
       "status": "resolved",
-      "technical_log_refs": [
-        "T4"
-      ]
+      "technical_log_refs": []
     },
     {
       "claim_id": "GT-011",
