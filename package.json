@@ -1,0 +1,18 @@
+{
+  "name": "timeaudit-viewer",
+  "version": "1.0.0",
+  "description": "Browse and render HTML views of Wikipedia Chronology Extraction JSON files (see SPEC.md).",
+  "bin": {
+    "json-to-html": "./json-to-html.js"
+  },
+  "scripts": {
+    "serve": "node serve.js",
+    "build": "node build.js",
+    "db:push": "node db.js push",
+    "db:list": "node db.js list"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^11.10.0"
+  }
+}
