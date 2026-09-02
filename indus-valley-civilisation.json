@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "page": {
+    "title": "Indus Valley Civilisation",
+    "url": "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation",
+    "retrieved_at": "2026-09-01",
+    "wikipedia_revision_id": null
+  },
+  "claims": [
+    {
+      "claim_id": "IVC-001",
+      "wikipedia_text_verbatim": "The Indus Valley Civilisation (IVC), also known as the Indus Civilisation, was a Bronze Age civilisation in the northwestern regions of South Asia, lasting from 3300 BCE to 1300 BCE, and in its mature form from 2600 BCE to 1900 BCE.",
+      "location_on_page": "Lead section, opening paragraph",
+      "citation_markers": ["2", "a"],
+      "citation_footnotes_verbatim": {
+        "a": "Wright: 'Mesopotamia and Egypt ... co-existed with the Indus civilization during its florescence between 2600 and 1900 BC.'",
+        "2": null
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [2] (tag FOOTNOTEWright20091) and footnote [a]",
+          "source": {
+            "author": "Rita P. Wright",
+            "title": "The Ancient Indus: Urbanism, Economy, and Society",
+            "container_work": null,
+            "publisher_or_journal": "Cambridge University Press",
+            "year": 2009,
+            "pages": null,
+            "identifier": null,
+            "document_type": "book",
+            "retrieval_url": null,
+            "retrieval_status": "not_independently_verified",
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "structured_facts": {},
+          "verbatim_quotes": [
+            "Mesopotamia and Egypt ... co-existed with the Indus civilization during its florescence between 2600 and 1900 BC."
+          ],
+          "is_terminal": false,
+          "terminal_type": null
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Kenoyer (1991) identified independently as the source of the HARP radiocarbon chronology underlying Wright (2009)",
+          "source": {
+            "author": "Jonathan Mark Kenoyer",
+            "title": "Urban Process in the Indus Tradition: A Preliminary Model from Harappa",
+            "container_work": "Harappa Excavations 1986-1990: A Multidisciplinary Approach to Third Millennium Urbanism, ed. Richard H. Meadow",
+            "publisher_or_journal": "Prehistory Press, Madison, Wisconsin",
+            "year": 1991,
+            "pages": "29-60 (chronology: 38-40, table: 43)",
+            "identifier": "ISBN 0-9629110-1-1",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": "https://www.harappa.com/sites/default/files/pdf/Harappa1986-90_04_Kenoyer-UrbanProcess_1.pdf",
+            "retrieval_status": "verified_verbatim",
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/indus-valley-civilisation/kenoyer-1991-urban-process.pdf"
+          },
+          "structured_facts": {
+            "sample_count": 33,
+            "sample_material": "charcoal",
+            "earliest_calibrated_date": "3338/3213/3203 BC",
+            "latest_sampled_calibrated_date": "c. 1930 BC"
+          },
+          "verbatim_quotes": [
+            "At the present time, a total of 33 carbon samples from the recent excavations at Harappa have been dated ... This sample date is calibrated to 3338, 3213, or 3203 BC (CALIB program, Stuiver and Reimer 1986; Possehl 1990b).",
+            "The date 2600 BC is now considered to mark the approximate beginning of the major integration of urban polities, the use of writing, weights, Harappan type ceramic designs, etc.",
+            "However, at Harappa there are between one and two meters of Period 3 occupation levels above the uppermost dated levels, which would suggest that Period 3 continues to 1900 BC, if not later."
+          ],
+          "is_terminal": true,
+          "terminal_type": "radiocarbon"
+        }
+      ],
+      "status": "resolved",
+      "technical_log_refs": ["T1"]
+    },
+    {
+      "claim_id": "IVC-002",
+      "wikipedia_text_verbatim": "In 2019, a study was published by Shinde et al. on a reconstructed genome obtained from a female skeleton found in an IVC-related cemetery in Rakhigarhi, Haryana, India, dating to around 2,800-2,300 BCE.",
+      "location_on_page": "Genetics subsection",
+      "citation_markers": ["236"],
+      "citation_footnotes_verbatim": {
+        "236": null
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [236] (tag Shinde_2019)",
+          "source": {
+            "author": ["Vasant Shinde", "Vagheesh M. Narasimhan", "et al."],
+            "title": "An Ancient Harappan Genome Lacks Ancestry from Steppe Pastoralists or Iranian Farmers",
+            "container_work": "Cell, vol. 179, issue 3",
+            "publisher_or_journal": "Cell Press",
+            "year": 2019,
+            "pages": "729-735.e10",
+            "identifier": "doi:10.1016/j.cell.2019.08.048",
+            "document_type": "journal_article",
+            "retrieval_url": "https://www.cell.com/cell/fulltext/s0092-8674(19)30967-5",
+            "retrieval_status": "verified_verbatim",
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/indus-valley-civilisation/shinde-et-al-2019-rakhigarhi-genome.pdf"
+          },
+          "structured_facts": {
+            "skeleton_sample_id": "I6113",
+            "direct_dating_attempted": "AMS radiocarbon on skeletal collagen",
+            "direct_dating_result": "failed - carbon-to-nitrogen ratio outside usable range, 5 attempts",
+            "actual_dating_basis": "7 radiocarbon dates on charcoal from site depths 9-23m, cited to Shinde et al. 2018 and Vahia et al. 2016"
+          },
+          "verbatim_quotes": [
+            "The collagen preservation for the human bones at Rakhigarhi cemetery is so poor that Accelerator Mass Spectrometry radiocarbon dating on skeletal remains is very difficult.",
+            "Seven dates from charcoal at depths of 9-23 m have point estimates of 2800-2300 BCE, which largely fall within the mature phase of the IVC (Shinde et al., 2018; Vahia et al., 2016)."
+          ],
+          "is_terminal": false,
+          "terminal_type": null
+        }
+      ],
+      "status": "pending",
+      "technical_log_refs": []
+    }
+  ]
+}

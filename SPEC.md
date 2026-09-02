@@ -1,0 +1,180 @@
+# Wikipedia Chronology Extraction Protocol (v1.0)
+
+## Purpose
+
+This document specifies a process and JSON output format for extracting and cataloguing the evidentiary basis behind numerical age claims (dates, date ranges, "X years ago" statements) made on Wikipedia pages, particularly pages relating to pre-modern history and archaeology.
+
+For each dated claim, the process traces the citation chain from the Wikipedia sentence, through each successive source it cites, until it reaches either (a) an actual physical dating technique (radiocarbon, dendrochronology, optically stimulated luminescence, uranium-thorium, argon-argon, etc.) or a comparative/relative method (artifact-style seriation, textual cross-reference, etc.), or (b) a dead end (source inaccessible, chain unresolved).
+
+**Scope cutoff: only claims dating to before 1450 CE are processed.** Claims about events, dates, or date ranges at or after 1450 CE are out of scope and must be skipped without extraction. This keeps the process focused on periods where dating evidence is genuinely non-trivial to trace (radiocarbon, stratigraphy, artifact seriation, etc., rather than dated documents, mints, or inscriptions naming a specific regnal year) and caps processing cost across a page and across a full Wikipedia crawl.
+
+This process does **not** evaluate whether any date is correct. It records what evidence and methodology stand behind a claim, as stated in the sources themselves.
+
+## Intended use
+
+This spec is designed to be followed by an AI system processing many Wikipedia pages at scale, producing one JSON file per page plus entries in a shared cross-page technical log. The output is intended for later pattern analysis across large numbers of pages (which methods recur, which labs, which calibration approaches, how often chains terminate vs. dead-end, etc.).
+
+---
+
+## Core rules
+
+0. **Apply the 1450 CE cutoff before doing any other work on a claim.** All dates BCE are always in scope. For dates CE, only process claims dated before 1450 CE. For "X years ago" / "X YBP" (years before present) phrasing, convert to an approximate calendar year before checking the cutoff (YBP is generally measured from 1950 CE, so "600 YBP" ≈ 1350 CE and is in scope; "400 YBP" ≈ 1550 CE and is out of scope). For a claim spanning a range that straddles the cutoff (e.g., "1200–1600 CE"), process the claim but note in `structured_facts` that only the portion before 1450 CE was the reason for inclusion. For eras or date ranges too vague to place relative to the cutoff, use the midpoint or best-available estimate and err on the side of processing if genuinely ambiguous.
+1. **Structured facts go in structured fields, not prose.** Lab codes, sample counts, site names, institutions, years, calibrated date ranges, and similar facts must be extracted into the typed JSON fields provided. Facts are not copyrightable and do not need to be quoted — restate them as data.
+2. **Verbatim quotation is reserved for load-bearing wording**, not full reproduction of sources. Use exact quotation only for the specific sentence(s) that state the claim, the method, or a meaningful qualifier/hedge (e.g., "currently thought to," "if not later," "no longer valid") where paraphrase would risk distorting the meaning.
+3. **Never paraphrase a technical or hedged claim into false precision.** If a source says a date is "currently thought to begin between 2700 and 2500 BC," do not restate this in a structured field as a single hard number. Preserve the hedge, either as an exact quote or as an explicitly-flagged approximate/range field.
+4. **Copyright discipline is mandatory, not optional:**
+   - For sources still under copyright, limit verbatim quotation to a **maximum of 3 short quoted sentences per source**, each under ~40 words. Do not reproduce full paragraphs, full data tables, or multiple quotes stitched together to reconstruct a source's structure.
+   - For sources confirmed to be in the public domain (commonly: published before 1930, or otherwise verified as PD in the relevant jurisdiction), longer excerpts are permitted, but reproducing an entire chapter or document is still out of scope — extract the relevant passage, not the whole work.
+   - Never quote song lyrics, poetry, or similarly protected creative material (not expected to arise in this dataset, but the rule stands if encountered).
+   - If in doubt about a source's copyright status, treat it as copyrighted and apply the stricter limit.
+5. **Never fabricate a quote, a citation, a lab code, or a date.** If a source cannot be accessed, mark it as `"retrieval_status": "unreachable"` and stop that branch of the chain. Do not reconstruct plausible-sounding content to fill a gap.
+6. **Every hop between sources must be explicit.** A citation chain is a sequence of discrete hops; each hop must record which document cited it and full source metadata before any quotation appears.
+7. **Only record a hop if the source is used as evidence for the claim.** A hop represents a source the previous document actually relies on to support the dated claim — not every source that document happens to mention. If a source discusses, cites, or quotes another work for background, historical context, contrast, or incidental scholarly conversation, and the claim's evidentiary basis does not depend on that other work, it is **not** a hop and must not be added to `citation_chain`. This applies even after a terminal node is reached: once a hop is marked `is_terminal: true`, the chain for that claim stops there — do not continue extracting further sources that terminal document happens to reference, unless the terminal document's own dating conclusion is itself shown to depend on that further source. When uncertain whether a mentioned source counts as evidentiary or contextual, ask: "if this citation were deleted from the document, would the document's stated date or method still stand on its own?" If yes, it's context, not a hop.
+8. **Every downloaded source file must be saved to a local cache folder, not fetched and discarded.** Any PDF, HTML page, or other document retrieved while tracing a chain must be written to `/source-cache/<page-slug>/` (see Local Source Cache section below), and its local path recorded in `source.local_cache_path`. This allows a future rescan of the same claim to re-read the cached file instead of re-downloading it, saving bandwidth and avoiding redundant requests to the same external hosts across a large-scale crawl.
+9. **Stop conditions for a chain:** a chain is considered resolved (`"status": "resolved"`) once it reaches a node classified as `"is_terminal": true`. A chain may also be marked `"status": "dead_end"` (source unreachable) or `"status": "pending"` (not yet fully traced, e.g., time/resource constraints on this pass).
+
+---
+
+## Process, step by step
+
+1. Fetch the Wikipedia page. Identify every sentence making a numerical age claim (a specific year, era, "X years ago," a date range, etc.).
+2. **Apply the 1450 CE cutoff (Rule 0) immediately.** Discard any claim dated at or after 1450 CE before doing any further work on it — do not record it, do not create a claim object for it, and do not spend any citation-tracing effort on it. This filtering step should happen before step 3, not after.
+3. For each remaining claim, record the exact Wikipedia sentence verbatim, its location on the page (section heading), and every citation marker attached to it.
+4. Record the exact text Wikipedia itself displays for each citation marker (footnote text, including any lettered explanatory notes, exactly as shown) before following the citation further.
+5. Follow the citation to its source. Record full source metadata (author, title, container work, publisher/journal, year, pages, identifier such as ISBN/DOI, document type, and the URL or method used to retrieve it).
+6. Within that source, locate the passage that supports the Wikipedia claim. Extract:
+   - Structured facts (see field list below) into structured fields.
+   - Up to 3 short verbatim quotes (per Rule 4) capturing load-bearing wording.
+7. Determine whether this source is terminal:
+   - **Terminal — physical method:** the source directly describes a physical dating technique applied to a sample (radiocarbon, OSL, U-Th, dendrochronology, argon-argon, thermoluminescence, etc.). Classify by `terminal_type`. **Stop here per Rule 7** — do not add further hops for sources this document merely mentions in passing, contrasts with, or cites as background, even if those sources are themselves about dating methods.
+   - **Terminal — comparative method:** the source's dating rests on non-physical comparison (artifact style, textual cross-reference, king-list correlation, etc.) with no further physical technique behind it. Classify as `terminal_type: "comparative"` and briefly describe the comparison in a structured field, not a fabricated technical entry.
+   - **Not terminal:** the source's own stated date or method genuinely depends on a further source for its evidentiary basis (not merely mentions one). Continue to the next hop only in this case, per Rule 7.
+8. If a physical method is found, create (or append to) an entry in the shared `technical_log` using the schema below, and reference its ID from the claim's chain.
+9. Repeat until every remaining claim on the page is resolved, dead-ended, or explicitly marked pending.
+10. Output one JSON file per Wikipedia page, named `<page-slug>.json`, conforming to the schema below.
+
+---
+
+## JSON Schema
+
+A formal JSON Schema (draft 2020-12) is provided alongside this document as `schema.json` for automated validation. The structure is summarized here.
+
+### Top-level page file
+
+```
+{
+  "schema_version": "1.0",
+  "page": {
+    "title": string,
+    "url": string,
+    "retrieved_at": string (ISO 8601 date),
+    "wikipedia_revision_id": string | null
+  },
+  "claims": [ <Claim>, ... ]
+}
+```
+
+### Claim object
+
+```
+{
+  "claim_id": string,                     // unique within the page, e.g. "IVC-001"
+  "wikipedia_text_verbatim": string,       // exact sentence, no paraphrase
+  "location_on_page": string,              // section heading
+  "citation_markers": [string, ...],       // e.g. ["2", "a"]
+  "citation_footnotes_verbatim": {         // exact text Wikipedia shows per marker, if any
+    "<marker>": string | null
+  },
+  "citation_chain": [ <Hop>, ... ],
+  "status": "resolved" | "dead_end" | "pending",
+  "technical_log_refs": [string, ...]      // IDs into technical_log, if any hop was terminal-physical
+}
+```
+
+### Hop object
+
+```
+{
+  "hop_index": integer,                    // 1-based position in the chain
+  "cited_by": string,                      // which prior document/footnote pointed here
+  "source": {
+    "author": string | [string, ...] | null,
+    "title": string,
+    "container_work": string | null,       // e.g. edited volume, journal
+    "publisher_or_journal": string | null,
+    "year": integer | null,
+    "pages": string | null,
+    "identifier": string | null,           // ISBN, DOI, etc.
+    "document_type": string,               // "book" | "journal_article" | "excavation_report_chapter" | "web_page" | "thesis" | "other"
+    "retrieval_url": string | null,
+    "retrieval_status": "verified_verbatim" | "not_independently_verified" | "unreachable",
+    "is_public_domain": boolean | null,
+    "local_cache_path": string | null      // path under /source-cache/ where the downloaded file was saved; see Local Source Cache section
+  },
+  "structured_facts": { ... },             // free-form key/value for any extractable facts specific to this hop
+  "verbatim_quotes": [string, ...],        // max 3 for copyrighted sources; see Rule 4
+  "is_terminal": boolean,
+  "terminal_type": "radiocarbon" | "OSL" | "uranium_thorium" | "argon_argon" | "dendrochronology" | "thermoluminescence" | "comparative" | "genetic_context_dating" | "other_physical" | null
+}
+```
+
+### Local Source Cache
+
+Every file actually downloaded while tracing a chain (PDF, HTML, etc.) must be saved to disk under:
+
+```
+/source-cache/<page-slug>/<hop_source_slug>.<ext>
+```
+
+- `<page-slug>` is the Wikipedia page's slug (e.g., `indus-valley-civilisation`).
+- `<hop_source_slug>` should be derived from the source's author/year/title so it's recognizable without opening the file (e.g., `kenoyer-1991-urban-process`, `marshall-1931-mohenjo-daro-vol1`).
+- The original file extension is preserved (`.pdf`, `.html`, etc.).
+- `source.local_cache_path` in the JSON must record this path exactly, so a rescan can check for the file's existence before making any network request.
+- Sources that are already-cached from a prior page's run should be reused (same file, same path) rather than re-downloaded — citation chains frequently converge on the same underlying source from different pages (e.g., the same excavation report cited by multiple site articles).
+- Web pages fetched only for their text (not downloaded as a file, e.g., a live HTML page read directly) should still have their raw HTML saved to the cache under the same convention, so a rescan doesn't need to re-fetch the network resource at all.
+
+### Shared technical_log file (separate from per-page files, appended across all pages processed)
+
+```
+{
+  "schema_version": "1.0",
+  "entries": [ <TechnicalLogEntry>, ... ]
+}
+```
+
+### TechnicalLogEntry object
+
+```
+{
+  "id": string,                            // globally unique, e.g. "T1", "T2", ...
+  "source_page": string,                   // originating Wikipedia page title
+  "claim_ref": string,                     // claim_id this entry supports
+  "site": string | null,
+  "project_or_excavation": string | null,
+  "years_active": string | null,
+  "director_or_lead": [string, ...] | null,
+  "publishing_source": string,             // short citation of the paper this was extracted from
+  "sample_count": integer | null,
+  "sample_material": string | null,
+  "method": string,                        // e.g. "radiocarbon (AMS)", "radiocarbon (conventional)", "OSL"
+  "calibration_method": string | null,
+  "laboratory": string | null,
+  "lab_code_prefixes": [string, ...] | null,
+  "funding": string | null,
+  "earliest_date_reported": string | null,
+  "latest_date_reported": string | null,
+  "notes": string | null                   // brief, factual, non-evaluative
+}
+```
+
+---
+
+## Worked example
+
+A complete worked example (Wikipedia's "Indus Valley Civilisation" page, two resolved claims) is provided alongside this spec as `example-indus-valley-civilisation.json`, with its technical log entries in `example-technical-log.json`. New implementers should validate their output against the same schema and compare structurally against this example before running at scale.
+
+## Explicit non-goals
+
+- This process does not judge whether a dating claim is correct, contested, or reliable. Fields like `terminal_type` and `structured_facts` are descriptive only.
+- This process does not attempt to reproduce entire source documents. It is a citation-tracing and fact-extraction protocol, not an archival mirror.
+- This process should not be used to circumvent paywalls or access-restricted sources through unauthorized means. Mark such sources `"retrieval_status": "unreachable"`.
