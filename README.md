@@ -33,6 +33,10 @@ Open <http://localhost:8080/>. The server scans the given directory (default:
 current dir) for chronology JSON files and lists them in a sidebar. Pick one to
 see it rendered; toggle **Raw JSON**; **Download HTML** saves a standalone file.
 
+**Statistics** (top of the sidebar, or `/api/stats`) aggregates every page
+document: total claims, the resolved / pending / dead-end percentage
+breakdown, a split by `generator.mode`, and a per-document table.
+
 ## 2. `json-to-html.js` — convert one JSON file to a standalone HTML file
 
 ```

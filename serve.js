@@ -128,6 +128,74 @@ function send(res, code, type, body) {
   res.end(body);
 }
 
+const STATUS_ORDER = ["resolved", "pending", "dead_end"];
+
+// Aggregate every page document into corpus-wide statistics.
+async function computeStats() {
+  const list = await backend.list();
+  const byStatus = {};
+  const byMode = {};
+  const perDoc = [];
+  let totalClaims = 0;
+  let techEntries = 0;
+
+  for (const f of list) {
+    let raw;
+    try {
+      raw = await backend.read(f.id);
+    } catch {
+      continue;
+    }
+    if (raw == null) continue;
+    let data;
+    try {
+      data = JSON.parse(raw);
+    } catch {
+      continue;
+    }
+    if (Array.isArray(data.entries)) {
+      techEntries += data.entries.length;
+      continue;
+    }
+    const claims = data.claims || [];
+    const mode = (data.generator && data.generator.mode) || "unspecified";
+    const docStatus = {};
+    for (const c of claims) {
+      const s = c.status || "unknown";
+      byStatus[s] = (byStatus[s] || 0) + 1;
+      docStatus[s] = (docStatus[s] || 0) + 1;
+    }
+    totalClaims += claims.length;
+    byMode[mode] = byMode[mode] || { documents: 0, claims: 0 };
+    byMode[mode].documents += 1;
+    byMode[mode].claims += claims.length;
+    perDoc.push({ id: f.id, title: f.title, mode, claims: claims.length, by_status: docStatus });
+  }
+
+  const by_status = {};
+  const keys = Object.keys(byStatus).sort((a, b) => {
+    const ia = STATUS_ORDER.indexOf(a);
+    const ib = STATUS_ORDER.indexOf(b);
+    return (ia === -1 ? 99 : ia) - (ib === -1 ? 99 : ib) || a.localeCompare(b);
+  });
+  for (const k of keys) {
+    by_status[k] = {
+      count: byStatus[k],
+      pct: totalClaims ? Math.round((1000 * byStatus[k]) / totalClaims) / 10 : 0,
+    };
+  }
+  perDoc.sort((a, b) => b.claims - a.claims);
+
+  return {
+    documents: perDoc.length,
+    claims: totalClaims,
+    technical_log_entries: techEntries,
+    by_status,
+    by_mode: byMode,
+    per_document: perDoc,
+  };
+}
+
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, "http://localhost");
   const pathname = decodeURIComponent(url.pathname);
@@ -141,6 +209,9 @@ const server = http.createServer(async (req, res) => {
     }
     if (pathname === "/api/files") {
       return send(res, 200, "application/json", JSON.stringify(await backend.list()));
+    }
+    if (pathname === "/api/stats") {
+      return send(res, 200, "application/json", JSON.stringify(await computeStats()));
     }
     if (pathname === "/api/file") {
       const raw = await backend.read(url.searchParams.get("id") || "");
