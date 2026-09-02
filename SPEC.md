@@ -118,6 +118,24 @@ A formal JSON Schema (draft 2020-12) is provided alongside this document as `sch
 }
 ```
 
+### Hop role labels (presentation)
+
+`hop_index` is a raw position. When a chain is **displayed** (report viewer,
+generated HTML), each hop is shown with a role label derived from its position
+and `is_terminal`, not the bare number:
+
+| Condition | Label |
+| --------- | ----- |
+| `hop_index == 1` and this hop is **not** terminal | `Wikipedia citation` |
+| `hop_index == 1` and this hop **is** terminal (the Wikipedia-cited source itself carries the primary technical result) | `Wikipedia citation / Final technical source` |
+| the hop with `is_terminal: true`, when it is not hop 1 | `Final technical source` |
+| a hop between the Wikipedia citation and the final technical source | `Intermediate hop N` (N counts only the intermediate hops, from 1) |
+| the last hop of a chain that never reached a terminal (`status` `pending`/`dead_end`) | `Furthest source reached` |
+
+Consequence: the word "hop" only ever appears when a chain has **three or more**
+links. One- and two-link chains read as `Wikipedia citation` →
+`Final technical source` (or the combined label for a one-link chain).
+
 ### Local Source Cache
 
 Every file actually downloaded while tracing a chain (PDF, HTML, etc.) must be saved to disk under:
