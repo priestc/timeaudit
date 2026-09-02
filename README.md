@@ -9,7 +9,14 @@ Two shapes of document are recognised:
 - the shared technical log — `{ schema_version, entries: [...] }`
 
 Node 18+. The only dependency (`firebase`) is used just for the optional
-database; the viewer/CLI work without it.
+database; the viewer and converters work without it.
+
+**To generate a report from a Wikipedia URL**, see
+[`PIPELINE.md`](./PIPELINE.md):
+
+```
+node timeaudit.js https://en.wikipedia.org/wiki/Ancient_Egypt
+```
 
 ## 1. Web UI — browse every JSON in the project
 
@@ -58,6 +65,12 @@ node serve.js --source firestore   # serve the web UI from the DB instead of dis
 
 | File            | Role                                                        |
 | --------------- | ---------------------------------------------------------- |
+| `timeaudit.js`  | generate a report from a Wikipedia URL (see `PIPELINE.md`)  |
+| `lib/wiki.js`   | fetch page, extract dated claims, apply cutoff, parse citations |
+| `lib/scholar.js`| resolve/download/cache sources, classify dating method, multi-hop |
+| `lib/assemble.js` | shape the SPEC JSON + shared technical log                |
+| `lib/ai.js`     | optional one-call-per-claim AI gap-filler                   |
+| `lib/sync.js`   | copy report + source cache to the tank2 folder              |
 | `lib/render.js` | shared renderer (JSON → HTML); runs in Node and the browser |
 | `lib/firebase.js` / `lib/store.js` | Firestore handle + document read/write   |
 | `lib/env.js`    | minimal `.env` loader (Node 18 has no `--env-file`)         |

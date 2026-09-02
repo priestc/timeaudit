@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Browse and render HTML views of Wikipedia Chronology Extraction JSON files (see SPEC.md).",
   "bin": {
+    "timeaudit": "./timeaudit.js",
     "json-to-html": "./json-to-html.js"
   },
   "scripts": {

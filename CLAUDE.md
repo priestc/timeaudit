@@ -23,6 +23,33 @@ npm run build          # -> dist/
 node json-to-html.js indus-valley-civilisation.json
 ```
 
+## Report generator (`timeaudit <url>`)
+
+`timeaudit.js` turns a Wikipedia URL into a SPEC-conforming chronology report.
+Full design notes in **`PIPELINE.md`**. Key points:
+
+- **Local-first by design.** Page fetch (MediaWiki API), dated-claim detection,
+  the 1450 CE cutoff, citation-metadata parsing (from embedded COinS), source
+  downloading, dating-method heuristics and multi-hop DOI-chasing all run with
+  no AI. `lib/wiki.js` + `lib/scholar.js` + `lib/assemble.js`.
+- **AI is one optional call per claim** (`lib/ai.js`, raw HTTPS, no SDK dep),
+  active only when `ANTHROPIC_API_KEY` is set and `--no-ai` wasn't passed. It
+  confirms scope, picks the terminal hop, and selects ≤3 verbatim quotes —
+  each verified to be a substring of the text we sent, so no fabrication.
+  Without a key, judgement-dependent chains are left `status: "pending"`.
+- **Academic material is cached** under `source-cache/<slug>/` (PDF/HTML/XML +
+  extracted `.txt`), and the Wikipedia API response under
+  `source-cache/_wikipedia/`.
+- **Sync to tank2** (`lib/sync.js`, unless `--no-sync`): `rsync`s the report,
+  `technical-log.json`, and the whole `source-cache/` tree to
+  `tank2:/home/chris/timeaudit/` (host/dir overridable via
+  `TIMEAUDIT_TANK2_HOST` / `TIMEAUDIT_TANK2_DIR`). The web service and
+  `db.js push` then pick up the new report. `--push` runs `db.js push` too.
+- `source-cache/` is git-ignored; generated `<slug>.json` / `technical-log.json`
+  are left in the working tree for you to review and commit or discard.
+- Set `TIMEAUDIT_CONTACT_EMAIL` in `.env` — the Unpaywall OA lookup roughly
+  doubles source-download coverage (OpenAlex + Europe PMC need no key).
+
 ## Database (Google Cloud / Firestore)
 
 Mirrors the Roadtripapp approach (`~/Documents/GitHub/Roadtripapp`): Cloud
