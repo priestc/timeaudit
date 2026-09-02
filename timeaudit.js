@@ -13,7 +13,7 @@
  *   6. heuristically classify dating method, lab codes, ranges      [local]
  *   7. follow onward citations found inside sources (multi-hop)     [local]
  *   8. one AI call per claim to confirm scope + pick quotes         [AI, optional]
- *   9. write <slug>.json, update technical-log.json                 [local]
+ *   9. write <slug>.json                                          [local]
  *  10. copy the report + all cached material to the tank2 folder    [local]
  *
  * Options:
@@ -165,8 +165,8 @@ async function main() {
     fs.writeFileSync(jsonPath, JSON.stringify(doc, null, 2) + "\n");
     const byStatus = (doc.claims || []).reduce((m, c) => ((m[c.status] = (m[c.status] || 0) + 1), m), {});
     log("• wrote " + path.relative(process.cwd(), jsonPath) + "  (" + (doc.claims || []).length + " claims: " + JSON.stringify(byStatus) + ")");
-    log("  note: ai-only mode does not populate the local source-cache or the shared technical-log.json");
-    await finish(opt, jsonPath, null, log);
+    log("  note: ai-only mode does not populate the local source-cache");
+    await finish(opt, jsonPath, log);
     return;
   }
 
@@ -178,7 +178,6 @@ async function main() {
 
   const budget = { left: opt.downloads };
   const claims = [];
-  const techDrafts = [];
 
   for (let ci = 0; ci < rawClaims.length; ci++) {
     const c = rawClaims[ci];
@@ -296,42 +295,14 @@ async function main() {
       }
     }
 
-    // technical-log drafts for terminal physical-method hops
-    c.hops.forEach((h) => {
-      if (h.is_terminal && h.terminal_type && h.terminal_type !== "comparative") {
-        techDrafts.push({ source_page: page.title, claim_ref: "PENDING:" + claims.length, hop: h });
-      }
-    });
+    // NOTE: the shared technical-log is disabled for now (it will return later —
+    // assemble.mergeTechnicalLog is kept for when it does). claim.technical_log_refs
+    // stays [] and no technical-log.json is written.
 
     claims.push(c);
   }
 
   // ---- assemble ----
-  const prefix = assemble.claimIdPrefix(page.title);
-  claims.forEach((c, i) => (c._claimId = prefix + "-" + String(i + 1).padStart(3, "0")));
-  techDrafts.forEach((d) => {
-    const idx = parseInt(d.claim_ref.split(":")[1], 10);
-    d.claim_ref = claims[idx] ? claims[idx]._claimId : d.claim_ref;
-  });
-
-  const techLogPath = path.join(opt.out, "technical-log.json");
-  let techAdded = [];
-  if (techDrafts.length) {
-    const { log: tlog, added } = assemble.mergeTechnicalLog(techLogPath, techDrafts);
-    techAdded = added;
-    // map T-ids back onto claims (in order)
-    let k = 0;
-    for (const c of claims) {
-      const n = c.hops.filter((h) => h.is_terminal && h.terminal_type && h.terminal_type !== "comparative").length;
-      if (n) {
-        c.technical_log_refs = added.slice(k, k + n);
-        k += n;
-      }
-    }
-    fs.mkdirSync(opt.out, { recursive: true });
-    fs.writeFileSync(techLogPath, JSON.stringify(tlog, null, 2) + "\n");
-  }
-
   const gen = assemble.generatorBlock(mode, { ai_model: useAI ? ai.MODEL : null });
   const doc = assemble.buildDocument(page, claims, gen);
   fs.mkdirSync(opt.out, { recursive: true });
@@ -340,18 +311,17 @@ async function main() {
 
   const byStatus = doc.claims.reduce((m, c) => ((m[c.status] = (m[c.status] || 0) + 1), m), {});
   log("\n• wrote " + path.relative(process.cwd(), jsonPath) + "  (" + doc.claims.length + " claims: " + JSON.stringify(byStatus) + ")");
-  if (techAdded.length) log("• technical-log.json += " + techAdded.join(", "));
 
-  await finish(opt, jsonPath, techDrafts.length ? techLogPath : null, log);
+  await finish(opt, jsonPath, log);
   log("\nDone [" + mode + "]. Review " + path.relative(process.cwd(), jsonPath) +
     (mode === "local" ? " — heuristic output; 'pending' chains need --mode hybrid or a human." : "."));
 }
 
-// sync the report (+ technical log + source cache) to tank2, then optional db push
-async function finish(opt, jsonPath, techLogPath, log) {
+// sync the report + source cache to tank2, then optional db push
+async function finish(opt, jsonPath, log) {
   if (opt.sync) {
     try {
-      const done = sync.syncToTank2({ jsonPath, techLogPath, cacheDir: opt.cache });
+      const done = sync.syncToTank2({ jsonPath, cacheDir: opt.cache });
       log("• synced to " + sync.HOST + ":");
       done.forEach((d) => log("    " + d));
     } catch (e) {

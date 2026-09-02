@@ -10,10 +10,14 @@ timeaudit https://en.wikipedia.org/wiki/Ancient_Egypt
 node timeaudit.js https://en.wikipedia.org/wiki/Ancient_Egypt
 ```
 
-Writes `./<slug>.json`, updates `./technical-log.json`, saves sources under
-`./source-cache/<slug>/`, and (unless `--no-sync`) copies all of that to the
-tank2 folder (`/home/chris/timeaudit/`), where the web service and `db.js push`
-pick it up.
+Writes `./<slug>.json`, saves sources under `./source-cache/<slug>/`, and
+(unless `--no-sync`) copies both to the tank2 folder (`/home/chris/timeaudit/`),
+where the web service and `db.js push` pick them up.
+
+> **The shared technical log is disabled for now** and will return in a later
+> version. `claim.technical_log_refs` stays `[]`, no `technical-log.json` is
+> written, and `assemble.mergeTechnicalLog()` is dormant but kept for when it
+> comes back.
 
 ## Three modes
 
@@ -24,7 +28,7 @@ can be compared over time to see which approach produces the best extractions.
 | -------- | ------------ | ----------- |
 | `local` | **Only the local software.** The whole pipeline below runs; no AI is contacted. Chains that need a judgement call are left `status: "pending"` with all the evidence attached. Alias: `--no-ai`. | no |
 | `hybrid` | The local pipeline **plus** one AI call per claim to confirm scope, pick the terminal hop, and choose ≤3 load-bearing quotes (each verified as a substring of the text sent, so it can't fabricate). The default when `ANTHROPIC_API_KEY` is set. Alias: `--ai`. | yes |
-| `ai-only` | **No local analysis.** The model is handed just the Wikipedia URL and a link to `SPEC.md` and builds the entire report itself, using web search / web fetch to read the page and chase citations. The local `source-cache/` and shared `technical-log.json` are not populated. Alias: `--ai-only`. | yes |
+| `ai-only` | **No local analysis.** The model is handed just the Wikipedia URL and a link to `SPEC.md` and builds the entire report itself, using web search / web fetch to read the page and chase citations. The local `source-cache/` is not populated. Alias: `--ai-only`. | yes |
 
 `generator` block in every report:
 
@@ -56,8 +60,8 @@ Everything except one optional step runs locally with no API calls to any AI:
 | **Text extraction** | `pdftotext` (poppler) for PDFs, tag-strip for HTML/XML. Cached as a sibling `.txt`. |
 | **Terminal classification** | Regex signatures for radiocarbon / OSL / U-Th / Ar-Ar / dendro / TL / comparative, plus lab-code (`OxA-1234`, `KIA-…`), calibrated-range (`8617–8315 calBC`) and sample-count extraction. A hop is only called *terminal* on strong evidence (lab codes, ≥2 calibrated ranges, or explicit "N samples were dated" wording) — otherwise the method is recorded as a guess and the chain stays `pending`. |
 | **Multi-hop** | If a hop isn't terminal, DOIs inside its extracted text (preferring ones near dating-method language) become the next hop, up to `--depth` (default 3). Already-visited DOIs/URLs are skipped. |
-| **Assemble** | Build the SPEC JSON; append `T<n>` entries to `technical-log.json` for terminal physical-method hops (deduped). |
-| **Sync** | `rsync` the report, technical log and whole `source-cache/` tree to the tank2 folder. |
+| **Assemble** | Build the SPEC JSON. (The `T<n>` shared technical log is disabled for now.) |
+| **Sync** | `rsync` the report and the whole `source-cache/` tree to the tank2 folder. |
 
 ### The one optional AI step (`hybrid` mode)
 
@@ -78,8 +82,7 @@ containing the Wikipedia URL and `https://github.com/priestc/timeaudit/blob/main
 with the `web_search` / `web_fetch` server tools enabled, and asks it to return
 the whole report JSON. `pause_turn` responses are resumed until the model
 finishes (cap 16 round-trips). The returned JSON is re-wrapped so `page` and
-`generator` come from us, not the model. Nothing is written to `source-cache/`
-and the shared `technical-log.json` is not touched.
+`generator` come from us, not the model. Nothing is written to `source-cache/`.
 
 ## Options
 

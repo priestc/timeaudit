@@ -41,19 +41,24 @@ Full design notes in **`PIPELINE.md`**. Key points:
     each verified to be a substring of the text sent (no fabrication).
   - `ai-only` — no local analysis; `lib/ai.js` hands the model just the wiki
     URL + `SPEC.md` link with `web_search`/`web_fetch` and takes back the whole
-    report JSON. No `source-cache/`, no `technical-log.json` update.
+    report JSON. No `source-cache/`.
+- **Shared technical log: disabled for now** (returns later). No
+  `technical-log.json` is written, `claim.technical_log_refs` stays `[]`,
+  `assemble.mergeTechnicalLog()` is dormant, and the viewer's stats page has no
+  technical-log tally. `lib/render.js` / `lib/store.js` still know how to render
+  an `entries` document if one is dropped in.
 - Firestore records carry `generator_mode` / `generator_model`; `db.js list`
   and the web viewer show the mode.
 - **Academic material is cached** under `source-cache/<slug>/` (PDF/HTML/XML +
   extracted `.txt`), and the Wikipedia API response under
   `source-cache/_wikipedia/`.
-- **Sync to tank2** (`lib/sync.js`, unless `--no-sync`): `rsync`s the report,
-  `technical-log.json`, and the whole `source-cache/` tree to
-  `tank2:/home/chris/timeaudit/` (host/dir overridable via
-  `TIMEAUDIT_TANK2_HOST` / `TIMEAUDIT_TANK2_DIR`). The web service and
-  `db.js push` then pick up the new report. `--push` runs `db.js push` too.
-- `source-cache/` is git-ignored; generated `<slug>.json` / `technical-log.json`
-  are left in the working tree for you to review and commit or discard.
+- **Sync to tank2** (`lib/sync.js`, unless `--no-sync`): `rsync`s the report and
+  the whole `source-cache/` tree to `tank2:/home/chris/timeaudit/` (host/dir
+  overridable via `TIMEAUDIT_TANK2_HOST` / `TIMEAUDIT_TANK2_DIR`). The web
+  service and `db.js push` then pick up the new report. `--push` runs
+  `db.js push` too.
+- `source-cache/` is git-ignored; the generated `<slug>.json` is left in the
+  working tree for you to review and commit or discard.
 - Set `TIMEAUDIT_CONTACT_EMAIL` in `.env` — the Unpaywall OA lookup roughly
   doubles source-download coverage (OpenAlex + Europe PMC need no key).
 

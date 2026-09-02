@@ -7,6 +7,8 @@ Two shapes of document are recognised:
 
 - a per-page file — `{ schema_version, page, claims: [...] }`
 - the shared technical log — `{ schema_version, entries: [...] }`
+  (the viewer still renders one, but the report generator does not produce it
+  right now — see `PIPELINE.md`)
 
 Node 18+. The only dependency (`firebase`) is used just for the optional
 database; the viewer and converters work without it.
@@ -77,7 +79,7 @@ node serve.js --source firestore   # serve the web UI from the DB instead of dis
 | `timeaudit.js`  | generate a report from a Wikipedia URL (see `PIPELINE.md`)  |
 | `lib/wiki.js`   | fetch page, extract dated claims, apply cutoff, parse citations |
 | `lib/scholar.js`| resolve/download/cache sources, classify dating method, multi-hop |
-| `lib/assemble.js` | shape the SPEC JSON + shared technical log                |
+| `lib/assemble.js` | shape the SPEC JSON (technical-log builder dormant)        |
 | `lib/ai.js`     | optional one-call-per-claim AI gap-filler                   |
 | `lib/sync.js`   | copy report + source cache to the tank2 folder              |
 | `lib/render.js` | shared renderer (JSON → HTML); runs in Node and the browser |

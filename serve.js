@@ -137,7 +137,6 @@ async function computeStats() {
   const byMode = {};
   const perDoc = [];
   let totalClaims = 0;
-  let techEntries = 0;
 
   for (const f of list) {
     let raw;
@@ -153,11 +152,8 @@ async function computeStats() {
     } catch {
       continue;
     }
-    if (Array.isArray(data.entries)) {
-      techEntries += data.entries.length;
-      continue;
-    }
-    const claims = data.claims || [];
+    if (!Array.isArray(data.claims)) continue;
+    const claims = data.claims;
     const mode = (data.generator && data.generator.mode) || "unspecified";
     const docStatus = {};
     for (const c of claims) {
@@ -189,7 +185,6 @@ async function computeStats() {
   return {
     documents: perDoc.length,
     claims: totalClaims,
-    technical_log_entries: techEntries,
     by_status,
     by_mode: byMode,
     per_document: perDoc,
