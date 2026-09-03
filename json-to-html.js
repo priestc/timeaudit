@@ -16,6 +16,7 @@ const fs = require("fs");
 const path = require("path");
 const { renderDocument, slug } = require("./lib/render");
 const { inlineAssets } = require("./lib/inline-assets");
+const { ensureShots } = require("./lib/shots");
 
 function die(msg) {
   process.stderr.write("error: " + msg + "\n");
@@ -30,7 +31,7 @@ function looksLikeChronologyDoc(obj) {
   );
 }
 
-function convertFile(inPath, outPath) {
+async function convertFile(inPath, outPath) {
   let raw;
   try {
     raw = fs.readFileSync(inPath, "utf8");
@@ -49,9 +50,17 @@ function convertFile(inPath, outPath) {
         ' does not look like a chronology document (no "claims" or "entries" array).'
     );
   }
-  // quote screenshots etc. live under source-cache/ next to the input JSON;
-  // fold them into the standalone file as data: URIs
-  const html = inlineAssets(renderDocument(data), path.dirname(path.resolve(inPath)));
+  // Screenshots are derived here (post-analysis), then folded into the
+  // standalone file as data: URIs.
+  const baseDir = path.dirname(path.resolve(inPath));
+  const cacheRoot = path.join(baseDir, "source-cache");
+  try {
+    await ensureShots(data, cacheRoot);
+  } catch (e) {
+    process.stderr.write("  (screenshot step skipped: " + e.message + ")\n");
+  }
+  const hasShot = (rel) => fs.existsSync(path.join(cacheRoot, "_shots", rel));
+  const html = inlineAssets(renderDocument(data, { hasShot }), baseDir);
   if (outPath === "-") {
     process.stdout.write(html);
     return;
@@ -61,7 +70,7 @@ function convertFile(inPath, outPath) {
   process.stderr.write(inPath + "  ->  " + outPath + "\n");
 }
 
-function main(argv) {
+async function main(argv) {
   const args = argv.slice(2);
   if (!args.length || args[0] === "-h" || args[0] === "--help") {
     process.stdout.write(
@@ -102,7 +111,7 @@ function main(argv) {
       } catch {
         continue;
       }
-      convertFile(f, path.join(dest, slug(path.basename(f, ".json")) + ".html"));
+      await convertFile(f, path.join(dest, slug(path.basename(f, ".json")) + ".html"));
       n++;
     }
     process.stderr.write("converted " + n + " file(s) into " + dest + "\n");
@@ -112,7 +121,10 @@ function main(argv) {
   const out = stdout
     ? "-"
     : outArg || path.join(path.dirname(input), path.basename(input, path.extname(input)) + ".html");
-  convertFile(input, out);
+  await convertFile(input, out);
 }
 
-main(process.argv);
+main(process.argv).catch((e) => {
+  process.stderr.write("json-to-html: " + (e && e.message ? e.message : e) + "\n");
+  process.exit(1);
+});

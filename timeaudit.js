@@ -176,28 +176,6 @@ async function main() {
   if (mode === "local") log("  chains needing judgement will stay 'pending' (no AI in this mode)");
   if (!scholar.havePdftotext()) log("  ! pdftotext not found — PDF sources will not be text-mined");
 
-  // screenshot each claim's sentence on the rendered Wikipedia page (its own
-  // citation markers, infobox, layout — where the quote is actually taken from)
-  if (page.pdfPath) {
-    const wdir = path.join(opt.cache, "_wikipedia");
-    const wbase = path.join("source-cache", "_wikipedia", page.slug);
-    const fullByPage = {};
-    for (let ci = 0; ci < rawClaims.length; ci++) {
-      const c = rawClaims[ci];
-      const relCrop = wbase + ".claim" + (ci + 1) + ".png";
-      const shot = scholar.snapshotQuote(page.pdfPath, c.sentence, path.join(wdir, path.basename(relCrop)));
-      if (!shot) continue;
-      c.wikipedia_quote_image = "/" + relCrop.replace(/\\/g, "/");
-      if (!(shot.page in fullByPage)) {
-        const relFull = wbase + ".p" + shot.page + ".png";
-        const ok = scholar.snapshotPage(page.pdfPath, shot.page, path.join(wdir, path.basename(relFull)));
-        fullByPage[shot.page] = ok ? "/" + relFull.replace(/\\/g, "/") : null;
-      }
-      c.wikipedia_quote_page_image = fullByPage[shot.page];
-    }
-    log("• wikipedia page screenshots: " + rawClaims.filter((c) => c.wikipedia_quote_image).length + "/" + rawClaims.length);
-  }
-
   const budget = { left: opt.downloads };
   const claims = [];
 
@@ -258,7 +236,6 @@ async function main() {
         terminal_type: cls.terminal_type,
         _classify: cls,
         _excerpt: focusExcerpt(text),
-        _pdfPath: dl.file && (dl.contentType === "pdf" || /\.pdf$/i.test(dl.file)) ? dl.file : null,
       };
       c.hops.push(hopObj);
 
@@ -321,35 +298,6 @@ async function main() {
           h.verbatim_quotes = h._classify.candidate_quotes.slice(0, h.source.is_public_domain ? 8 : 3);
         }
       }
-    }
-
-    // screenshot each final quote as it appears in the source PDF (original
-    // font), plus the whole page it sits on (running heads, page numbers, other
-    // columns and all — authenticity), shared across quotes on the same page
-    for (const h of c.hops) {
-      h.quote_images = [];
-      h.quote_page_images = [];
-      if (!h._pdfPath || !h.verbatim_quotes.length) continue;
-      const base = path.basename(h._pdfPath, ".pdf");
-      const dir = path.join(opt.cache, page.slug);
-      const fullByPage = {};
-      h.verbatim_quotes.forEach((q, qi) => {
-        const relCrop = path.join("source-cache", page.slug, base + ".h" + h.hop_index + "q" + (qi + 1) + ".png");
-        const shot = scholar.snapshotQuote(h._pdfPath, q, path.join(dir, path.basename(relCrop)));
-        h.quote_images[qi] = shot ? "/" + relCrop.replace(/\\/g, "/") : null;
-        if (!shot) {
-          h.quote_page_images[qi] = null;
-          return;
-        }
-        log("      quote shot: " + relCrop + " (p." + shot.page + ")");
-        if (!(shot.page in fullByPage)) {
-          const relFull = path.join("source-cache", page.slug, base + ".p" + shot.page + ".png");
-          const ok = scholar.snapshotPage(h._pdfPath, shot.page, path.join(dir, path.basename(relFull)));
-          fullByPage[shot.page] = ok ? "/" + relFull.replace(/\\/g, "/") : null;
-          if (ok) log("      full page:  " + relFull);
-        }
-        h.quote_page_images[qi] = fullByPage[shot.page];
-      });
     }
 
     // NOTE: the shared technical-log is disabled for now (it will return later —

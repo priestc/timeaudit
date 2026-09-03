@@ -52,19 +52,17 @@ Full design notes in **`PIPELINE.md`**. Key points:
 - **Academic material is cached** under `source-cache/<slug>/` (PDF/HTML/XML +
   extracted `.txt`), and the Wikipedia API response under
   `source-cache/_wikipedia/`.
-- **Quote screenshots**: each verbatim quote from a cached PDF gets a cropped
-  PNG (`pdftotext -bbox-layout` to locate + `pdftoppm` to crop) in the source's
-  original typography — `quote_images[]` — plus the whole page it came from —
-  `quote_page_images[]` — both aligned to `verbatim_quotes[]`. In the viewer the
-  crop links to the full page (opens in a new tab). `serve.js` serves them at
-  `/source-cache/...`; the standalone-HTML tools inline both as data URIs
-  (`lib/inline-assets.js`), with a small click shim in `renderDocument` since a
-  `data:` URI can't be a top-level navigation.
-- **Wikipedia page screenshot**: `wikipedia_text_verbatim` keeps the inline
-  `[n]` markers. `lib/wiki.js` also fetches the article's Wikimedia PDF render
-  (`_wikipedia/<slug>.pdf`); `timeaudit.js` screenshots each claim sentence on
-  it — `wikipedia_quote_image` (crop) + `wikipedia_quote_page_image` (full page,
-  shared per page) on the Claim. Shown under the claim's quote in the viewer.
+- **Screenshots are NOT in the JSON or the SPEC** — the extractor makes none.
+  `lib/shots.js` derives them afterwards from the report + `source-cache/`:
+  `pdftotext -bbox-layout` locates each quoted passage (a hop's cached source
+  PDF, or the article's Wikimedia PDF render which it fetches on demand),
+  `pdftoppm` crops it and the full page. Fixed file names under
+  `source-cache/_shots/<slug>/` (`<claim>.wp.png`, `<claim>.h<hop>.q<n>.png`, …)
+  so `lib/render.js` builds the `<img>` paths with nothing stored in the JSON.
+  `serve.js` generates each shot lazily on first request;
+  `json-to-html.js` / `build.js` call `shots.ensureShots()` then inline them as
+  `data:` URIs (`lib/inline-assets.js`). `wikipedia_text_verbatim` keeps the
+  inline `[n]` markers (that IS an analysis output).
 - **Sync to tank2** (`lib/sync.js`, unless `--no-sync`): `rsync`s the report and
   the whole `source-cache/` tree to `tank2:/home/chris/timeaudit/` (host/dir
   overridable via `TIMEAUDIT_TANK2_HOST` / `TIMEAUDIT_TANK2_DIR`). The web

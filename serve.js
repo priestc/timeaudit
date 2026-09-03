@@ -22,6 +22,9 @@ const path = require("path");
 const { loadEnv } = require("./lib/env");
 loadEnv();
 
+const shots = require("./lib/shots");
+const { slugify } = require("./lib/wiki");
+
 let PORT = 8080;
 let DIR = process.cwd();
 let SOURCE = process.env.TIMEAUDIT_SOURCE || "filesystem";
@@ -128,6 +131,22 @@ function send(res, code, type, body) {
   res.end(body);
 }
 
+// parsed report whose page title slugifies to `slug` (for on-demand shot gen)
+async function reportForSlug(slug) {
+  for (const f of await backend.list()) {
+    const cand = String(f.id).replace(/\.json$/i, "");
+    if (cand !== slug && slugify(f.title) !== slug) continue;
+    try {
+      const raw = await backend.read(f.id);
+      const data = JSON.parse(raw);
+      if (Array.isArray(data.claims)) return data;
+    } catch {
+      /* skip */
+    }
+  }
+  return null;
+}
+
 const STATUS_ORDER = ["resolved", "pending", "dead_end"];
 
 // Aggregate every page document into corpus-wide statistics.
@@ -213,16 +232,28 @@ const server = http.createServer(async (req, res) => {
       if (raw == null) return send(res, 404, "text/plain", "not found");
       return send(res, 200, "application/json", raw);
     }
-    // quote screenshots and other cached assets (images only)
+    // cached assets (images only). Screenshots under _shots/ are a presentation
+    // artefact — generated here, on demand, from the report + cached sources.
     if (/^\/source-cache\/.+\.(png|jpe?g|webp|gif)$/i.test(pathname)) {
-      const full = path.resolve(DIR, "." + pathname);
       const root = path.resolve(DIR, "source-cache");
-      if (!full.startsWith(root + path.sep) || !fs.existsSync(full)) {
-        return send(res, 404, "text/plain", "not found");
+      let full = path.resolve(DIR, "." + pathname);
+      if (!full.startsWith(root + path.sep)) return send(res, 404, "text/plain", "not found");
+
+      const shotM = pathname.match(/^\/source-cache\/_shots\/([^/]+)\/(.+)\.png$/i);
+      if (!fs.existsSync(full) && shotM) {
+        try {
+          const report = await reportForSlug(shotM[1]);
+          if (report) {
+            const made = await shots.generateShot(report, root, shotM[2]);
+            if (made) full = made;
+          }
+        } catch (e) {
+          process.stderr.write("shot gen failed: " + e.message + "\n");
+        }
       }
+      if (!fs.existsSync(full)) return send(res, 404, "text/plain", "not found");
       const ext = pathname.split(".").pop().toLowerCase();
-      const type = ext === "jpg" ? "jpeg" : ext;
-      return send(res, 200, "image/" + type, fs.readFileSync(full));
+      return send(res, 200, "image/" + (ext === "jpg" ? "jpeg" : ext), fs.readFileSync(full));
     }
     send(res, 404, "text/plain", "not found");
   } catch (e) {

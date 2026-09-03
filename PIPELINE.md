@@ -54,16 +54,32 @@ Everything except one optional step runs locally with no API calls to any AI:
 | ----- | --------------------- |
 | **Fetch** | MediaWiki `action=parse` API — HTML + wikitext + sections in one request. Raw response cached under `source-cache/_wikipedia/`. |
 | **Find dated claims** | Sentence-split the article body; keep sentences matching date patterns (`N BCE`, `N CE`, `Nth millennium`, `N years ago`, `cal BP`, ranges, …). `wikipedia_text_verbatim` keeps the inline `[n]` citation markers exactly where Wikipedia shows them. |
-| **Wikipedia page screenshot** | The article's Wikimedia PDF render (`/api/rest_v1/page/pdf/<title>`, cached as `_wikipedia/<slug>.pdf`) is searched for each claim sentence; `pdftoppm` crops the sentence (`wikipedia_quote_image`) and the full page it's on (`wikipedia_quote_page_image`). Shown under the claim's quote; the crop links to the full page. |
 | **1450 CE cutoff** | Parse the years out of each sentence (BCE→negative, centuries→midpoint, YBP→`1950−N`), apply SPEC rule 0. All-BCE always in; modern-only sentences dropped; genuinely ambiguous ones kept and flagged. |
 | **Citation metadata** | Every Wikipedia citation embeds a COinS / OpenURL blob (`class="Z3988"`) — author, title, year, journal, DOI, ISBN, pages, all machine-readable. Shortened `{{sfn}}` footnotes are followed to their bibliography entry. No scraping guesswork. |
 | **Download sources** | For each cited source, candidate URLs are tried in order: direct PDF → **OpenAlex** OA location (by DOI, no key) → **Europe PMC** full-text XML (by DOI/PMCID, no key) → **Unpaywall** (needs `--email`) → the cited URL → `doi.org`. Polite: 1 request/second/host, one User-Agent, 40 MB cap, already-cached files reused (SPEC rule 8). Bot-walls / paywalls / Cloudflare challenges are detected and skipped. |
 | **Text extraction** | `pdftotext` (poppler) for PDFs, tag-strip for HTML/XML. Cached as a sibling `.txt`. |
-| **Quote screenshots** | For each final verbatim quote from a cached PDF, `pdftotext -bbox-layout` locates the passage and `pdftoppm` crops a PNG of exactly that region (`quote_images[]`) — the quote in the source's own typography — **plus** the whole page it sits on (`quote_page_images[]`, shared across quotes on a page). Both aligned to `verbatim_quotes[]`, null where the passage couldn't be located or the source isn't a PDF. In the viewer the crop is shown under "Verbatim quotes" and links to the full page (new tab, for authenticity). Inlined as `data:` URIs in standalone HTML. |
 | **Terminal classification** | Regex signatures for radiocarbon / OSL / U-Th / Ar-Ar / dendro / TL / comparative, plus lab-code (`OxA-1234`, `KIA-…`), calibrated-range (`8617–8315 calBC`) and sample-count extraction. A hop is only called *terminal* on strong evidence (lab codes, ≥2 calibrated ranges, or explicit "N samples were dated" wording) — otherwise the method is recorded as a guess and the chain stays `pending`. |
 | **Multi-hop** | If a hop isn't terminal, DOIs inside its extracted text (preferring ones near dating-method language) become the next hop, up to `--depth` (default 3). Already-visited DOIs/URLs are skipped. |
 | **Assemble** | Build the SPEC JSON. (The `T<n>` shared technical log is disabled for now.) |
 | **Sync** | `rsync` the report and the whole `source-cache/` tree to the tank2 folder. |
+
+### Screenshots are a separate, later step (`lib/shots.js`)
+
+Per SPEC.md, the extractor produces only the JSON and the cached source files —
+never screenshots. Everything derivable afterwards with local software is done
+after the analysis file exists:
+
+- **`lib/shots.js`** rebuilds screenshots from the report + `source-cache/` on
+  demand: `pdftotext -bbox-layout` locates each quoted passage (in a hop's
+  cached source PDF, or in the article's Wikimedia PDF render which it fetches
+  if missing), `pdftoppm` crops it and the whole page it sits on.
+- The **viewer** (`serve.js`) generates each shot lazily the first time its URL
+  is requested (`/source-cache/_shots/<slug>/<name>.png`), then caches it.
+- **`json-to-html.js` / `build.js`** call `shots.ensureShots()` up front, then
+  inline the PNGs as `data:` URIs.
+- File names are fixed (`<claim_id>.wp.png`, `<claim_id>.h<hop>.q<n>.png`, …) so
+  `lib/render.js` builds the `<img>` paths without anything being stored in the
+  JSON.
 
 ### The one optional AI step (`hybrid` mode)
 

@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-03T14:12:09.064Z",
+    "generated_at": "2026-09-03T14:29:28.975Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -30,8 +30,6 @@
         "3": "Wright 2009, p. 1.",
         "a": "Wright: \"Mesopotamia and Egypt ... co-existed with the Indus civilization during its florescence between 2600 and 1900 BC.\"[3]"
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim1.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p1.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -53,8 +51,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -76,8 +72,6 @@
         "8": "Wright 2009, p. 2.",
         "c": "Habib: \"Harappa, in Sahiwal district of west Punjab, Pakistan, had long been known to archaeologists as an extensive site on the Ravi river, but its true significance as a major city of an early great civilisation remained unrecognised until the discovery of Mohenjo-daro near the banks of the Indus, in the Larkana district of Sindh, by Rakhaldas Banerji in 1922. Sir John Marshall, then Director General of the Archaeological Survey of India, used the term 'Indus civilization' for the culture discovered at Harappa and Mohenjo-daro, a term doubly apt because of the geographical context implied in the name 'Indus' and the presence of cities implied in the word 'civilization'. Others, notably the Archaeological Survey of India after Independence, have preferred to call it 'Harappan', or 'Mature Harappan', taking Harappa to be its type-site.\"[7]"
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim2.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p1.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -99,8 +93,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -125,8 +117,6 @@
         "13": "McIntosh 2008, p. 387: \"The enormous potential of the greater Indus region offered scope for huge population increase; by the end of the Mature Harappan period, the Harappans are estimated to have numbered somewhere between 1 and 5 million, probably well below the region's carrying capacity.\"",
         "d": "These covered carnelian products, seal carving, work in copper, bronze, lead, and tin.[11]"
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim3.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p1.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -148,8 +138,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -169,8 +157,6 @@
         "6": "Giosan et al. 2012.",
         "k": "Giosan (2012): \"Numerous speculations have advanced the idea that the Ghaggar-Hakra fluvial system, at times identified with the lost mythical river of Sarasvati (e.g., 4, 5, 7, 19), was a large glacier fed Himalayan river. Potential sources for this river include the Yamuna River, the Sutlej River, or both rivers. However, the lack of large-scale incision on the interfluve demonstrates that large, glacier-fed rivers did not flow across the Ghaggar-Hakra region during the Holocene. ... The present Ghaggar-Hakra valley and its tributary rivers are currently dry or have seasonal flows. Yet rivers were undoubtedly active in this region during the Urban Harappan Phase. We recovered sandy fluvial deposits approximately 5,400 y old at Fort Abbas in Pakistan (SI Text), and recent work (33) on the upper Ghaggar-Hakra interfluve in India also documented Holocene channel sands that are approximately 4,300 y old. On the upper interfluve, fine-grained floodplain deposition continued until the end of the Late Harappan Phase, as recent as 2,900 y ago (33) (Fig. 2B). This widespread fluvial redistribution of sediment suggests that reliable monsoon rains were able to sustain perennial rivers earlier during the Holocene and explains why Harappan settlements flourished along the entire Ghaggar-Hakra system without access to a glacier-fed river.\"[6]"
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim4.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p2.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -208,8 +194,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -247,8 +231,6 @@
         "r": "Fisher: \"Such an \"agricultural revolution\" enabled food surpluses that supported growing populations. Their, largely cereal diet did not necessarily make people healthier, however, since conditions like caries and protein deficiencies can increase. Further, infectious diseases spread faster with denser living conditions of both humans and domesticated animals (which can spread measles, influenza, and other diseases to humans).\"[26]",
         "s": "McIntosh: \"Population Growth and Distribution: \"The prehistory of the Indo-Iranian borderlands shows a steady increase over time in the number and density of settlements based on farming and pastoralism. By contrast, the population of the Indus plains and adjacent regions lived mainly by hunting and gathering; the limited traces suggest their settlements were far fewer in number, and were small and widely scattered, though to some extent this apparent situation must reflect the difficulty of locating hunter-gatherer settlements. The presence of domestic animals in some hunter-gatherer settlements attests to contact with the people of the border-lands, probably in the context of pastoralists' seasonal movement from the hills into the plains. The potential for population expansion in the hills was severely limited, and so, from the fourth millennium into the third, settlers moved out from the borderlands into the plains and beyond into Gujarat, the first being pastoralists, followed later by farmers. The enormous potential of the greater Indus region offered scope for huge population increase; by the end of the Mature Harappan period, the Harappans are estimated to have numbered somewhere between 1 and 5 million, probably well below the region's carrying capacity.\"[28]"
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim5.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p3.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -270,8 +252,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -295,8 +275,6 @@
         "44": "Wright 2009, p. 7.",
         "45": null
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim6.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p4.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -318,8 +296,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -337,8 +313,6 @@
       "citation_footnotes_verbatim": {
         "62": "Chandler, Graham (September–October 1999). \"Traders of the Plain\". Saudi Aramco World: 34–42. Archived from the original on 18 February 2007. Retrieved 11 February 2007."
       },
-      "wikipedia_quote_image": null,
-      "wikipedia_quote_page_image": null,
       "citation_chain": [
         {
           "hop_index": 1,
@@ -360,8 +334,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -393,8 +365,6 @@
         "w": "According to Ahmad Hasan Dani, professor emeritus at Quaid-e-Azam University, Islamabad, the discovery of Mehrgarh \"changed the entire concept of the Indus civilisation ... There we have the whole sequence, right from the beginning of settled village life.\"[62]",
         "x": "According to Gangal et al. (2014), there is strong archeological and geographical evidence that neolithic farming spread from the Near East into north-west India.[77][78] Gangal et al. (2014):[77] \"There are several lines of evidence that support the idea of a connection between the Neolithic in the Near East and in the Indian subcontinent. The prehistoric site of Mehrgarh in Baluchistan (modern Pakistan) is the earliest Neolithic site in the north-west Indian subcontinent, dated as early as 8500 BCE.\"[80]"
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim8.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p7.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -416,8 +386,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -435,8 +403,6 @@
       "citation_footnotes_verbatim": {
         "94": "Mascarenhas et al. 2015, p. 9."
       },
-      "wikipedia_quote_image": null,
-      "wikipedia_quote_page_image": null,
       "citation_chain": [
         {
           "hop_index": 1,
@@ -474,14 +440,6 @@
             "At least 40 common STRs were used for each comparison listed in Figure 1 and the dendrogram was constructed using the TMRCA values as branch-points.",
             "A dendrogram of these TMRCA computations was shown in Figure 1 (left panel, with town locations shown on the map in the right-hand panel)."
           ],
-          "quote_images": [
-            null,
-            null
-          ],
-          "quote_page_images": [
-            null,
-            null
-          ],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -495,8 +453,6 @@
       "location_on_page": "Early Harappan",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim10.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p8.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -514,8 +470,6 @@
       "citation_footnotes_verbatim": {
         "97": "Possehl, G. L. (2000). \"The Early Harappan Phase\". Bulletin of the Deccan College Research Institute. 60/61: 227–241. JSTOR 42936617."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim11.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p8.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -537,8 +491,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -558,8 +510,6 @@
         "98": "Peter T. Daniels. The World's Writing Systems. Oxford University. p. 372.",
         "99": "Parpola, Asko (1994). Deciphering the Indus Script. Cambridge University Press. ISBN 978-0-521-43079-1."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim12.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p8.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -581,8 +531,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -596,8 +544,6 @@
       "location_on_page": "Early Harappan",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim13.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p9.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -611,8 +557,6 @@
       "location_on_page": "Mature Harappan",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim14.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p9.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -626,8 +570,6 @@
       "location_on_page": "Metallurgy",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim15.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p11.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -645,8 +587,6 @@
       "citation_footnotes_verbatim": {
         "124": "Sergent, Bernard (1997). Genèse de l'Inde (in French). Paris: Payot. p. 113. ISBN 978-2-228-89116-5."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim16.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p12.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -668,8 +608,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -689,8 +627,6 @@
         "116": "Kenoyer 1997.",
         "128": "Lal 2002, p. 82."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim17.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p12.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -712,8 +648,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -731,8 +665,6 @@
       "citation_footnotes_verbatim": {
         "129": "Greenberg, Henry J. (30 September 2015). The Anti-War Wargame: a Comprehensive Analysis of the Origins of the Game of Chess 1989-1990. iUniverse. ISBN 978-1-4917-7353-6. Retrieved 21 June 2021."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim18.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p12.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -754,8 +686,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -777,8 +707,6 @@
         "132": "Flora 2000, pp. 319–320.",
         "133": "Devale, Sue Carole; Lawergren, Bo; Rimmer, Joan; Evans, Robert; Taylor, William; Bordas, Cristina; Fulton, Cheryl Ann; Schechter, John M.; Thym-Hochrein, Nancy; Devaere, Hannelore; McMaster, Mary (2001). \"Harp\". Grove Music Online (8th ed.). Oxford University Press. doi:10.1093/gmo/9781561592630.article.45738. ISBN 978-1-56159-263-0. (subscription, Wikilibrary access, or UK public library membership required)"
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim19.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p13.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -800,8 +728,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -815,8 +741,6 @@
       "location_on_page": "Arts and crafts",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": null,
-      "wikipedia_quote_page_image": null,
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -830,8 +754,6 @@
       "location_on_page": "Arts and crafts",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": null,
-      "wikipedia_quote_page_image": null,
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -845,8 +767,6 @@
       "location_on_page": "Arts and crafts",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": null,
-      "wikipedia_quote_page_image": null,
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -860,8 +780,6 @@
       "location_on_page": "Arts and crafts",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim23.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p13.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -875,8 +793,6 @@
       "location_on_page": "Arts and crafts",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim24.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p13.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -890,8 +806,6 @@
       "location_on_page": "Human statuettes",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim25.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p15.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -905,8 +819,6 @@
       "location_on_page": "Human statuettes",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim26.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p15.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -920,8 +832,6 @@
       "location_on_page": "Human statuettes",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": null,
-      "wikipedia_quote_page_image": null,
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -935,8 +845,6 @@
       "location_on_page": "Human statuettes",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim28.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p15.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -950,8 +858,6 @@
       "location_on_page": "Seals",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim29.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p16.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -965,8 +871,6 @@
       "location_on_page": "Seals",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim30.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p16.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -980,8 +884,6 @@
       "location_on_page": "Seals",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim31.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p16.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -995,8 +897,6 @@
       "location_on_page": "Seals",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim32.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p16.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -1010,8 +910,6 @@
       "location_on_page": "Trade and transportation",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim33.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p16.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -1025,8 +923,6 @@
       "location_on_page": "Trade and transportation",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim34.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p16.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -1040,8 +936,6 @@
       "location_on_page": "Trade and transportation",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim35.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p18.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -1059,8 +953,6 @@
       "citation_footnotes_verbatim": {
         "164": "Bates, Jennifer (21 November 2016). \"Rice farming in India much older than thought, used as 'summer crop' by Indus civilisation\". Research. Archived from the original on 30 March 2019. Retrieved 21 November 2016."
       },
-      "wikipedia_quote_image": null,
-      "wikipedia_quote_page_image": null,
       "citation_chain": [
         {
           "hop_index": 1,
@@ -1088,8 +980,6 @@
             ]
           },
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -1109,8 +999,6 @@
         "168": "Agnihorti, Rajesh; Farooqui, Anjum; Khonde, Niteshkumar; Mathews, Runcie P.; Sharma, Shalini; Gahlaud, S.K.S; Manjul, Sanjay Kumar; Manjul, Arvin; Sawlani, Ravi (June 2021). \"Microscopic, biochemical and stable isotopic investigation of seven multi-nutritional food-balls from Indus archaeological site, Rajasthan (India)\". Journal of Archaeological Science: Reports. 37 102917. Bibcode:2021JArSR..3702917A. doi:10.1016/j.jasrep.2021.102917.",
         "169": "Tewari, Mohita (25 March 2021). \"Harappan people ate multigrain, high-protein 'laddoos': Study – Times of India\". The Times of India. Archived from the original on 19 February 2022. Retrieved 21 June 2021."
       },
-      "wikipedia_quote_image": null,
-      "wikipedia_quote_page_image": null,
       "citation_chain": [
         {
           "hop_index": 1,
@@ -1142,8 +1030,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -1157,8 +1043,6 @@
       "location_on_page": "Late Harappan",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim38.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p23.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -1172,8 +1056,6 @@
       "location_on_page": "Late Harappan",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim39.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p23.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -1187,8 +1069,6 @@
       "location_on_page": "Late Harappan",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim40.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p24.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -1214,8 +1094,6 @@
         "223": "Lawler, Andrew (6 June 2008). \"Indus Collapse: The End or the Beginning of an Asian Culture?\". Science. 320 (5881): 1281–1283. doi:10.1126/science.320.5881.1281. PMID 18535222.",
         "224": "\"Collapse of civilizations worldwide defines youngest unit of the Geologic Time Scale\". News and Meetings. International Commission on Stratigraphy. Archived from the original on 15 July 2018. Retrieved 15 July 2018."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim41.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p24.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -1237,8 +1115,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -1260,8 +1136,6 @@
         "227": "Rachel Nuwer (28 May 2012). \"An Ancient Civilization, Upended by Climate Change\". New York Times. LiveScience. Archived from the original on 7 October 2019. Retrieved 29 May 2012.",
         "228": "Charles Choi (29 May 2012). \"Huge Ancient Civilization's Collapse Explained\". New York Times. Archived from the original on 1 May 2020. Retrieved 18 May 2016."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim42.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p25.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -1299,8 +1173,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -1318,8 +1190,6 @@
       "citation_footnotes_verbatim": {
         "233": "Warrier, Shrikala. Kamandalu: The Seven Sacred Rivers of Hinduism. Mayur University. p. 125."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim43.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p25.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -1339,8 +1209,6 @@
         "223": "Lawler, Andrew (6 June 2008). \"Indus Collapse: The End or the Beginning of an Asian Culture?\". Science. 320 (5881): 1281–1283. doi:10.1126/science.320.5881.1281. PMID 18535222.",
         "ai": "Most sites of the Painted Grey Ware culture in the Ghaggar-Hakra and Upper Ganges Plain were small farming villages. However, \"several dozen\" PGW sites eventually emerged as relatively large settlements that can be characterised as towns, the largest of which were fortified by ditches or moats and embankments made of piled earth with wooden palisades, albeit smaller and simpler than the elaborately fortified large cities which grew after 600 BCE in the more fully urban Northern Black Polished Ware culture.[234]"
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim44.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p25.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -1362,8 +1230,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -1377,8 +1243,6 @@
       "location_on_page": "Continuity and coexistence",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim45.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p25.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -1396,8 +1260,6 @@
       "citation_footnotes_verbatim": {
         "236": "Possehl, Gregory L.; Raval, M.H. (1989). Harappan Civilisation and Rojdi. Oxford & IBH Publishing Company. p. 19. ISBN 81-204-0404-1."
       },
-      "wikipedia_quote_image": null,
-      "wikipedia_quote_page_image": null,
       "citation_chain": [
         {
           "hop_index": 1,
@@ -1422,8 +1284,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -1443,8 +1303,6 @@
         "223": "Lawler, Andrew (6 June 2008). \"Indus Collapse: The End or the Beginning of an Asian Culture?\". Science. 320 (5881): 1281–1283. doi:10.1126/science.320.5881.1281. PMID 18535222.",
         "235": "Shaffer, Jim (1993). \"Reurbanization: The eastern Punjab and beyond\". In Spodek, Howard; Srinivasan, Doris M. (eds.). Urban Form and Meaning in South Asia: The Shaping of Cities from Prehistoric to Precolonial Times."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim47.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p26.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -1466,8 +1324,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -1485,8 +1341,6 @@
       "citation_footnotes_verbatim": {
         "239": "Shinde, Vasant; Narasimhan, Vagheesh M.; Rohland, Nadin; Mallick, Swapan; Mah, Matthew; Lipson, Mark; Nakatsuka, Nathan; Adamski, Nicole; Broomandkhoshbacht, Nasreen; Ferry, Matthew; Lawson, Ann Marie; Michel, Megan; Oppenheimer, Jonas; Stewardson, Kristin; Jadhav, Nilesh (October 2019). \"An Ancient Harappan Genome Lacks Ancestry from Steppe Pastoralists or Iranian Farmers\". Cell. 179 (3): 729–735.e10. doi:10.1016/j.cell.2019.08.048. PMC 6800651. PMID 31495572."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/indus-valley-civilisation.claim48.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/indus-valley-civilisation.p26.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -1524,8 +1378,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }

@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-03T13:39:39.020Z",
+    "generated_at": "2026-09-03T14:29:24.920Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -24,8 +24,6 @@
       "citation_footnotes_verbatim": {
         "4": "Breuers & Kinzel 2022, p. 471."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim1.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p1.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -50,8 +48,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -77,8 +73,6 @@
         "32": "Özkaya & Coşkun 2010.",
         "33": "Richter & Darabi 2023, p. 168 \"Considering the prosperous sedentary life, building tradition and imagery-based symbolic trends and cultural influence since the Younger Dryas, it is apparent that Körtiktepe (and likely other unexcavated Late Epipalaeolithic sites in the region) was an important predecessor of the PPNA culture in the Upper Tigris Basin, which later flourished with Hallan Çemi, Çayönü, Demirköy Höyük, Hasankeyf Höyük, Çemka Höyük, Gusir Höyük and Boncuklu Tarla. It is also likely that, if not the predecessor, Körtiktepe at least had a great influence on the animal symbolism at the dawn of the Neolithic, with a lasting effect on subsequent PPN sites such as Göbeklitepe, Karahantepe, Jerf el Ahmar, Dja'de el Mughara and Nevalı Çori in the Middle Euphrates Basin, as well as Nemrik 9 and Qermez Dere in the Middle Tigris Basin.\""
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim2.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p3.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -115,16 +109,6 @@
             "32 Dietrich O. , Schmidt K. , A radiocarbon date from the wall plaster of enclosure D of Göbekli Tepe .",
             "33 Dietrich O. , Köksal-Schmidt Ç. , Notroff J. , Schmidt K. , Establishing a radiocarbon sequence for Göbekli Tepe."
           ],
-          "quote_images": [
-            null,
-            null,
-            null
-          ],
-          "quote_page_images": [
-            null,
-            null,
-            null
-          ],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -156,8 +140,6 @@
         "38": "Fuller, Willcox & Allaby 2012.",
         "39": "Arbuckle 2014."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim3.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p3.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -179,8 +161,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": "radiocarbon"
         },
@@ -213,12 +193,6 @@
           "verbatim_quotes": [
             "Hunting, harvesting and sedentism The early Epipalaeolithic site of Ohalo II (Figure 1) is remarkable for its early date (around 25 000 BP, in the heart of the Last Glacial Maximum) and the conditions of organic preservation (Nadel & Hershkovitz 1991; Weiss et al."
           ],
-          "quote_images": [
-            "/source-cache/g-bekli-tepe/doi-10-1017-s0003598x00100122.h2q1.png"
-          ],
-          "quote_page_images": [
-            "/source-cache/g-bekli-tepe/doi-10-1017-s0003598x00100122.p2.png"
-          ],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -238,8 +212,6 @@
         "8": "Kinzel & Clare 2020, pp. 32–33.",
         "48": "Dietrich et al. 2013."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim4.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p4.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -288,16 +260,6 @@
             "12 2 The sequence in Area B is confirmed through four radiocarbon dates from the Levels B 6 and B 4-2 giving a time range from ca.",
             "Neo-Lithics 1/13 35 Contribution Establishing a Radiocarbon Sequence for Göbekli Tepe."
           ],
-          "quote_images": [
-            "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.h1q1.png",
-            "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.h1q2.png",
-            null
-          ],
-          "quote_page_images": [
-            "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.p7.png",
-            "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.p32.png",
-            null
-          ],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -333,8 +295,6 @@
         "55": "Kinzel & Clare 2020, p. 38.",
         "56": "Kinzel & Clare 2020."
       },
-      "wikipedia_quote_image": null,
-      "wikipedia_quote_page_image": null,
       "citation_chain": [
         {
           "hop_index": 1,
@@ -356,8 +316,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         },
@@ -381,8 +339,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -399,8 +355,6 @@
       "location_on_page": "Building phases",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim6.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p4.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -414,8 +368,6 @@
       "location_on_page": "Building phases",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim7.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p4.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -433,8 +385,6 @@
       "citation_footnotes_verbatim": {
         "57": "Kinzel & Clare 2020, p. 32."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim8.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p5.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -461,8 +411,6 @@
             "sample_count_mentioned": 14
           },
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -476,8 +424,6 @@
       "location_on_page": "Building phases",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim9.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p5.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -495,8 +441,6 @@
       "citation_footnotes_verbatim": {
         "8": "Kinzel & Clare 2020, pp. 32–33."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim10.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p5.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -523,8 +467,6 @@
             "sample_count_mentioned": 14
           },
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -538,8 +480,6 @@
       "location_on_page": "Building phases",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim11.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p5.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -553,8 +493,6 @@
       "location_on_page": "Large enclosures",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim12.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p5.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -572,8 +510,6 @@
       "citation_footnotes_verbatim": {
         "63": "Schmidt 2010, p. 251."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim13.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p6.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -595,8 +531,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -614,8 +548,6 @@
       "citation_footnotes_verbatim": {
         "66": "Schmidt 2009, p. 291."
       },
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim14.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p6.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -637,8 +569,6 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "quote_images": [],
-          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -652,8 +582,6 @@
       "location_on_page": "Landslides and reconstruction",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
-      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim15.png",
-      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p9.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],

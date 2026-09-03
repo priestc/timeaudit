@@ -12,6 +12,7 @@ const fs = require("fs");
 const path = require("path");
 const { renderDocument, STYLES, esc, slug } = require("./lib/render");
 const { inlineAssets } = require("./lib/inline-assets");
+const { ensureShots } = require("./lib/shots");
 
 const SRC = path.resolve(process.argv[2] || __dirname);
 const OUT = path.resolve(process.argv[3] || path.join(__dirname, "dist"));
@@ -121,7 +122,7 @@ function galleryPage(cards) {
   );
 }
 
-function main() {
+async function main() {
   const docs = collect(SRC);
   if (!docs.length) {
     process.stderr.write("no chronology JSON documents found under " + SRC + "\n");
@@ -131,15 +132,25 @@ function main() {
   fs.mkdirSync(OUT, { recursive: true });
 
   const used = new Set();
-  const cards = docs.map(({ file, data }) => {
+  const cards = [];
+  for (const { file, data } of docs) {
     let base = slug(path.basename(file, ".json"));
     let name = base + ".html";
     let i = 2;
     while (used.has(name)) name = base + "-" + i++ + ".html";
     used.add(name);
-    fs.writeFileSync(path.join(OUT, name), inlineAssets(renderDocument(data), path.dirname(file)));
-    return { file, data, htmlName: name, summary: summarize(data) };
-  });
+
+    const baseDir = path.dirname(file);
+    const cacheRoot = path.join(baseDir, "source-cache");
+    try {
+      if (Array.isArray(data.claims)) await ensureShots(data, cacheRoot);
+    } catch (e) {
+      process.stderr.write("  (screenshot step skipped for " + name + ": " + e.message + ")\n");
+    }
+    const hasShot = (rel) => fs.existsSync(path.join(cacheRoot, "_shots", rel));
+    fs.writeFileSync(path.join(OUT, name), inlineAssets(renderDocument(data, { hasShot }), baseDir));
+    cards.push({ file, data, htmlName: name, summary: summarize(data) });
+  }
 
   fs.writeFileSync(path.join(OUT, "index.html"), galleryPage(cards));
   process.stderr.write(
@@ -147,4 +158,7 @@ function main() {
   );
 }
 
-main();
+main().catch((e) => {
+  process.stderr.write("build: " + (e && e.message ? e.message : e) + "\n");
+  process.exit(1);
+});
