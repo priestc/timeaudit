@@ -20,6 +20,8 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [2] (tag FOOTNOTEWright20091) and footnote [a]",
+          "explicitly_cited_by_previous": null,
+          "citation_in_previous_verbatim": null,
           "source": {
             "author": "Rita P. Wright",
             "title": "The Ancient Indus: Urbanism, Economy, and Society",
@@ -44,6 +46,8 @@
         {
           "hop_index": 2,
           "cited_by": "Kenoyer (1991) identified independently as the source of the HARP radiocarbon chronology underlying Wright (2009)",
+          "explicitly_cited_by_previous": false,
+          "citation_in_previous_verbatim": null,
           "source": {
             "author": "Jonathan Mark Kenoyer",
             "title": "Urban Process in the Indus Tradition: A Preliminary Model from Harappa",
@@ -88,6 +92,8 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [236] (tag Shinde_2019)",
+          "explicitly_cited_by_previous": null,
+          "citation_in_previous_verbatim": null,
           "source": {
             "author": ["Vasant Shinde", "Vagheesh M. Narasimhan", "et al."],
             "title": "An Ancient Harappan Genome Lacks Ancestry from Steppe Pastoralists or Iranian Farmers",

@@ -225,6 +225,10 @@ async function main() {
       const hopObj = {
         hop_index: hop,
         cited_by: frontier.cited_by,
+        // hop > 1 here is always reached by finding a DOI *in* the previous
+        // source's own text, so the previous document does explicitly cite it.
+        explicitly_cited_by_previous: hop === 1 ? null : true,
+        citation_in_previous_verbatim: hop === 1 ? null : frontier.citationVerbatim || null,
         source: src,
         structured_facts: cls.structured_facts,
         verbatim_quotes: [],
@@ -249,6 +253,7 @@ async function main() {
       } else {
         frontier = {
           cited_by: "onward citation found in " + (src.local_cache_path || shortCite(src)) + (lead.near_method ? " (near dating-method text)" : ""),
+          citationVerbatim: lead.context || null,
           source: {
             author: null, title: null, container_work: null, publisher_or_journal: null,
             year: null, pages: null, identifier: "doi:" + lead.value, document_type: "journal_article",
