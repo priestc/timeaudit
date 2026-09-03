@@ -3,14 +3,14 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-02T22:40:52.185Z",
+    "generated_at": "2026-09-03T03:06:45.272Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
   "page": {
     "title": "Göbekli Tepe",
     "url": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
-    "retrieved_at": "2026-09-02",
+    "retrieved_at": "2026-09-03",
     "wikipedia_revision_id": "1372090689"
   },
   "claims": [
@@ -28,6 +28,7 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [4]",
+          "citation_in_previous_verbatim": null,
           "source": {
             "author": [
               "Jonas Breuers",
@@ -47,6 +48,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "quote_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -76,6 +78,7 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [29][30][31][32][33]",
+          "citation_in_previous_verbatim": null,
           "source": {
             "author": [
               "Julia Gresky",
@@ -106,6 +109,11 @@
             "More recently, this conclusion could be verified by newly available (as yet largely unpublished) radiocarbon ages made on organic residues extracted from mud mortar and wall plaster samples ( 35 ).",
             "32 Dietrich O. , Schmidt K. , A radiocarbon date from the wall plaster of enclosure D of Göbekli Tepe .",
             "33 Dietrich O. , Köksal-Schmidt Ç. , Notroff J. , Schmidt K. , Establishing a radiocarbon sequence for Göbekli Tepe."
+          ],
+          "quote_images": [
+            null,
+            null,
+            null
           ],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
@@ -142,6 +150,7 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [34][35][36][37][38][39][31][8]",
+          "citation_in_previous_verbatim": null,
           "source": {
             "author": "Trevor Watkins",
             "title": "New light on Neolithic revolution in south-west Asia",
@@ -158,12 +167,14 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "quote_images": [],
           "is_terminal": false,
           "terminal_type": "radiocarbon"
         },
         {
           "hop_index": 2,
           "cited_by": "onward citation found in /source-cache/g-bekli-tepe/watkins-2010-new-light-on-neolithic.html",
+          "citation_in_previous_verbatim": "be fed by farming. Keywords south-west Asia Neolithic revolution Gordon Childe spirituality monumentality agriculture Information Type Research Information Antiquity , Volume 84 , Issue 325 , September 2010 , pp. 621 - 634 DOI: https://doi.org/10.1017/S0003598X00100122 [Opens in a new window] Copyright",
           "source": {
             "author": null,
             "title": null,
@@ -189,6 +200,9 @@
           "verbatim_quotes": [
             "Hunting, harvesting and sedentism The early Epipalaeolithic site of Ohalo II (Figure 1) is remarkable for its early date (around 25 000 BP, in the heart of the Last Glacial Maximum) and the conditions of organic preservation (Nadel & Hershkovitz 1991; Weiss et al."
           ],
+          "quote_images": [
+            "/source-cache/g-bekli-tepe/doi-10-1017-s0003598x00100122.h2q1.png"
+          ],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -212,6 +226,7 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [48][8]",
+          "citation_in_previous_verbatim": null,
           "source": {
             "author": [
               "Oliver Dietrich",
@@ -255,6 +270,11 @@
             "12 2 The sequence in Area B is confirmed through four radiocarbon dates from the Levels B 6 and B 4-2 giving a time range from ca.",
             "Neo-Lithics 1/13 35 Contribution Establishing a Radiocarbon Sequence for Göbekli Tepe."
           ],
+          "quote_images": [
+            "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.h1q1.png",
+            "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.h1q2.png",
+            null
+          ],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -294,6 +314,7 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [49][50][51][52][53][54][48][55][1][56]",
+          "citation_in_previous_verbatim": null,
           "source": {
             "author": "Klaus Schmidt",
             "title": "Göbekli Tepe, Southeastern Turkey. A preliminary Report on the 1995–1999 Excavations",
@@ -310,12 +331,14 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "quote_images": [],
           "is_terminal": false,
           "terminal_type": null
         },
         {
           "hop_index": 2,
           "cited_by": "onward citation found in /source-cache/g-bekli-tepe/schmidt-2000-g-bekli-tepe-southeastern-turkey.html",
+          "citation_in_previous_verbatim": ". Paléorient Année 2000 26-1 pp. 45-54 Résumés Documents liés Référence bibliographique Schmidt Katja. Göbekli Tepe, Southeastern Turkey. A Preliminary Report on the 1995-1999 Excavations.. In: Paléorient , 2000, vol. 26, n°1. pp. 45-54. DOI : https://doi.org/10.3406/paleo.2000.4697 www.persee.fr/doc/paleo_0153-9345_2000_",
           "source": {
             "author": null,
             "title": null,
@@ -332,6 +355,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "quote_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -382,6 +406,7 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [57]",
+          "citation_in_previous_verbatim": null,
           "source": {
             "author": [
               "Moritz Kinzel",
@@ -403,6 +428,7 @@
             "sample_count_mentioned": 14
           },
           "verbatim_quotes": [],
+          "quote_images": [],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -437,6 +463,7 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [8]",
+          "citation_in_previous_verbatim": null,
           "source": {
             "author": [
               "Moritz Kinzel",
@@ -458,6 +485,7 @@
             "sample_count_mentioned": 14
           },
           "verbatim_quotes": [],
+          "quote_images": [],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -505,6 +533,7 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [63]",
+          "citation_in_previous_verbatim": null,
           "source": {
             "author": "Klaus Schmidt",
             "title": "Göbekli Tepe – the Stone Age Sanctuaries: New results of ongoing excavations with a special focus on sculptures and high reliefs",
@@ -521,6 +550,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "quote_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -542,6 +572,7 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [66]",
+          "citation_in_previous_verbatim": null,
           "source": {
             "author": "Klaus Schmidt",
             "title": "Göbekli Tepe. Eine Beschreibung der wichtigsten Befunde erstellt nach den Arbeiten der Grabungsteams der Jahre 1995–2007",
@@ -558,6 +589,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "quote_images": [],
           "is_terminal": false,
           "terminal_type": null
         }

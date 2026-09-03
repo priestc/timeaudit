@@ -15,6 +15,7 @@
 const fs = require("fs");
 const path = require("path");
 const { renderDocument, slug } = require("./lib/render");
+const { inlineAssets } = require("./lib/inline-assets");
 
 function die(msg) {
   process.stderr.write("error: " + msg + "\n");
@@ -48,7 +49,9 @@ function convertFile(inPath, outPath) {
         ' does not look like a chronology document (no "claims" or "entries" array).'
     );
   }
-  const html = renderDocument(data);
+  // quote screenshots etc. live under source-cache/ next to the input JSON;
+  // fold them into the standalone file as data: URIs
+  const html = inlineAssets(renderDocument(data), path.dirname(path.resolve(inPath)));
   if (outPath === "-") {
     process.stdout.write(html);
     return;

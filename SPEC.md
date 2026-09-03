@@ -116,6 +116,7 @@ A formal JSON Schema (draft 2020-12) is provided alongside this document as `sch
   },
   "structured_facts": { ... },             // free-form key/value for any extractable facts specific to this hop
   "verbatim_quotes": [string, ...],        // max 3 for copyrighted sources; see Rule 4
+  "quote_images": [string | null, ...],    // aligned by index to verbatim_quotes: path under /source-cache/ to a cropped screenshot of that quote as it is printed in the source PDF (preserves the original typography); null where the quote could not be located, or the source is not a cached PDF
   "is_terminal": boolean,
   "terminal_type": "radiocarbon" | "OSL" | "uranium_thorium" | "argon_argon" | "dendrochronology" | "thermoluminescence" | "comparative" | "genetic_context_dating" | "other_physical" | null
 }

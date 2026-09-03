@@ -213,6 +213,17 @@ const server = http.createServer(async (req, res) => {
       if (raw == null) return send(res, 404, "text/plain", "not found");
       return send(res, 200, "application/json", raw);
     }
+    // quote screenshots and other cached assets (images only)
+    if (/^\/source-cache\/.+\.(png|jpe?g|webp|gif)$/i.test(pathname)) {
+      const full = path.resolve(DIR, "." + pathname);
+      const root = path.resolve(DIR, "source-cache");
+      if (!full.startsWith(root + path.sep) || !fs.existsSync(full)) {
+        return send(res, 404, "text/plain", "not found");
+      }
+      const ext = pathname.split(".").pop().toLowerCase();
+      const type = ext === "jpg" ? "jpeg" : ext;
+      return send(res, 200, "image/" + type, fs.readFileSync(full));
+    }
     send(res, 404, "text/plain", "not found");
   } catch (e) {
     process.stderr.write("request error: " + (e && e.message ? e.message : e) + "\n");

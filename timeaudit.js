@@ -236,6 +236,7 @@ async function main() {
         terminal_type: cls.terminal_type,
         _classify: cls,
         _excerpt: focusExcerpt(text),
+        _pdfPath: dl.file && (dl.contentType === "pdf" || /\.pdf$/i.test(dl.file)) ? dl.file : null,
       };
       c.hops.push(hopObj);
 
@@ -298,6 +299,19 @@ async function main() {
           h.verbatim_quotes = h._classify.candidate_quotes.slice(0, h.source.is_public_domain ? 8 : 3);
         }
       }
+    }
+
+    // screenshot each final quote as it appears in the source PDF (original font)
+    for (const h of c.hops) {
+      h.quote_images = [];
+      if (!h._pdfPath || !h.verbatim_quotes.length) continue;
+      h.verbatim_quotes.forEach((q, qi) => {
+        const rel = path.join("source-cache", page.slug, path.basename(h._pdfPath, ".pdf") + ".h" + h.hop_index + "q" + (qi + 1) + ".png");
+        const abs = path.join(opt.cache, page.slug, path.basename(rel));
+        const shot = scholar.snapshotQuote(h._pdfPath, q, abs);
+        h.quote_images[qi] = shot ? "/" + rel.replace(/\\/g, "/") : null;
+        if (shot) log("      quote shot: " + rel + " (p." + shot.page + ")");
+      });
     }
 
     // NOTE: the shared technical-log is disabled for now (it will return later —

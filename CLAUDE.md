@@ -52,6 +52,11 @@ Full design notes in **`PIPELINE.md`**. Key points:
 - **Academic material is cached** under `source-cache/<slug>/` (PDF/HTML/XML +
   extracted `.txt`), and the Wikipedia API response under
   `source-cache/_wikipedia/`.
+- **Quote screenshots**: each verbatim quote from a cached PDF gets a cropped
+  PNG (`pdftotext -bbox-layout` to locate + `pdftoppm` to crop) showing the
+  passage in the source's original typography — `quote_images[]` in the hop,
+  aligned to `verbatim_quotes[]`. `serve.js` serves them at `/source-cache/...`;
+  the standalone-HTML tools inline them as data URIs (`lib/inline-assets.js`).
 - **Sync to tank2** (`lib/sync.js`, unless `--no-sync`): `rsync`s the report and
   the whole `source-cache/` tree to `tank2:/home/chris/timeaudit/` (host/dir
   overridable via `TIMEAUDIT_TANK2_HOST` / `TIMEAUDIT_TANK2_DIR`). The web

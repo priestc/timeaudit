@@ -276,15 +276,46 @@
   btnRaw.onclick = function () { view = "raw"; draw(); };
   searchEl.oninput = renderList;
 
+  function inlineImages(html) {
+    // fold <img src="/source-cache/...png"> into data: URIs so the saved file is portable
+    var srcs = [];
+    html.replace(/<img\b[^>]*\bsrc="(\/source-cache\/[^"']+)"/gi, function (m, s) {
+      if (srcs.indexOf(s) === -1) srcs.push(s);
+      return m;
+    });
+    if (!srcs.length) return Promise.resolve(html);
+    return Promise.all(
+      srcs.map(function (s) {
+        return fetch(s)
+          .then(function (r) { return r.ok ? r.blob() : null; })
+          .then(function (b) {
+            if (!b) return null;
+            return new Promise(function (res) {
+              var fr = new FileReader();
+              fr.onload = function () { res({ s: s, d: fr.result }); };
+              fr.onerror = function () { res(null); };
+              fr.readAsDataURL(b);
+            });
+          })
+          .catch(function () { return null; });
+      })
+    ).then(function (pairs) {
+      pairs.forEach(function (p) {
+        if (p) html = html.split('"' + p.s + '"').join('"' + p.d + '"');
+      });
+      return html;
+    });
+  }
+
   btnDownload.onclick = function () {
     if (!current) return;
-    var html = ChronoRender.renderDocument(current.data);
-    var blob = new Blob([html], { type: "text/html" });
-    var url = URL.createObjectURL(blob);
-    dl.href = url;
-    dl.download = (current.meta.name.replace(/\.json$/i, "") || "document") + ".html";
-    dl.click();
-    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    inlineImages(ChronoRender.renderDocument(current.data)).then(function (html) {
+      var url = URL.createObjectURL(new Blob([html], { type: "text/html" }));
+      dl.href = url;
+      dl.download = (current.meta.name.replace(/\.json$/i, "") || "document") + ".html";
+      dl.click();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+    });
   };
 
   fetchJSON("/api/files")

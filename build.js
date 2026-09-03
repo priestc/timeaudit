@@ -11,6 +11,7 @@
 const fs = require("fs");
 const path = require("path");
 const { renderDocument, STYLES, esc, slug } = require("./lib/render");
+const { inlineAssets } = require("./lib/inline-assets");
 
 const SRC = path.resolve(process.argv[2] || __dirname);
 const OUT = path.resolve(process.argv[3] || path.join(__dirname, "dist"));
@@ -136,7 +137,7 @@ function main() {
     let i = 2;
     while (used.has(name)) name = base + "-" + i++ + ".html";
     used.add(name);
-    fs.writeFileSync(path.join(OUT, name), renderDocument(data));
+    fs.writeFileSync(path.join(OUT, name), inlineAssets(renderDocument(data), path.dirname(file)));
     return { file, data, htmlName: name, summary: summarize(data) };
   });
 
