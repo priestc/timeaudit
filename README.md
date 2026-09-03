@@ -39,6 +39,13 @@ see it rendered; toggle **Raw JSON**; **Download HTML** saves a standalone file.
 document: total claims, the resolved / pending / dead-end percentage
 breakdown, a split by `generator.mode`, and a per-document table.
 
+**Claim finder** (sidebar, or `/api/find-claims?url=…`) runs the analysis
+extractor (`lib/wiki.js` — the same code `timeaudit` uses) on any Wikipedia URL
+and lists every claim it detects, each with its section, inline `[n]` markers,
+1450 CE cutoff reasoning, and resolved citation footnotes, plus the
+date-sentences it dropped and why. For tuning how claims are detected — no
+source downloads, no AI.
+
 ## 2. `json-to-html.js` — convert one JSON file to a standalone HTML file
 
 ```

@@ -24,7 +24,7 @@
   aside h1{font-size:1rem;margin:0 0 8px}
   #search{width:100%;padding:7px 10px;border:1px solid var(--border);border-radius:8px;
     background:var(--card);color:var(--fg);font:inherit;font-size:.86rem}
-  #nav{padding:8px 8px 0}
+  #nav{padding:8px 8px 0;display:flex;flex-direction:column;gap:5px}
   #nav .navbtn{width:100%;text-align:left;padding:9px 11px;border-radius:8px;font-size:.88rem;
     font-weight:600;border:1px solid var(--border);background:var(--card)}
   #nav .navbtn.active{background:var(--accent);color:#fff;border-color:var(--accent)}
@@ -73,6 +73,35 @@
   .minibar{display:inline-flex;width:120px;height:10px;border-radius:3px;overflow:hidden;
     border:1px solid var(--border);vertical-align:middle}
   .minibar span{display:block;height:100%}
+
+  /* claim finder */
+  .finder{max-width:900px;margin:0 auto;padding:28px 22px 80px}
+  .finder h1{font-size:1.5rem;margin:0 0 4px}
+  .finder .sub{color:var(--muted);font-size:.85rem;margin-bottom:18px}
+  #finder-form{display:flex;gap:8px;margin-bottom:8px}
+  #finder-url{flex:1;padding:9px 12px;border:1px solid var(--border);border-radius:8px;
+    background:var(--card);color:var(--fg);font:inherit;font-size:.9rem}
+  #finder-form button{padding:9px 18px}
+  #finder-out{margin-top:22px}
+  .fr-head{font-size:.85rem;color:var(--muted)}
+  .fr-counts{margin:6px 0 20px;font-size:.95rem}
+  .fr-counts b{font-size:1.1rem}
+  .fr-claims{list-style:none;margin:0;padding:0}
+  .fr-claims li{background:var(--card);border:1px solid var(--border);border-radius:10px;
+    padding:12px 14px;margin-bottom:10px}
+  .fr-sec{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:4px}
+  .fr-sent{font-size:.95rem;line-height:1.5}
+  .fr-sent sup{color:var(--accent);font-size:.7em;font-weight:600}
+  .fr-cut{margin-top:6px;font-size:.78rem;color:var(--muted)}
+  .fr-marks{margin-top:8px;font-size:.82rem;border-top:1px dashed var(--border);padding-top:7px}
+  .fr-marks .m{margin:3px 0}
+  .fr-marks .lab{font-family:ui-monospace,Menlo,monospace;color:var(--muted);margin-right:6px}
+  .fr-marks .src{color:var(--muted)}
+  .fr-rej summary{cursor:pointer;font-weight:600;margin:24px 0 8px}
+  .fr-rej ol{font-size:.82rem;color:var(--muted);padding-left:20px}
+  .fr-rej li{margin:4px 0}
+  .fr-rej .why{color:var(--accent)}
+  .fr-err{color:#b91c1c;font-weight:600;padding:12px 0}
   @media (max-width:720px){
     body{grid-template-columns:1fr;grid-template-rows:auto 1fr}
     aside{max-height:42vh}
@@ -87,6 +116,7 @@
   </header>
   <div id="nav">
     <button id="btn-stats" class="navbtn" type="button">📊&nbsp; Statistics</button>
+    <button id="btn-finder" class="navbtn" type="button">🔎&nbsp; Claim finder</button>
   </div>
   <ul id="list"></ul>
 </aside>
@@ -111,6 +141,7 @@
   var contentEl = document.getElementById("content");
   var toolbarEl = document.getElementById("toolbar");
   var btnStats = document.getElementById("btn-stats");
+  var btnFinder = document.getElementById("btn-finder");
   var btnRendered = document.getElementById("btn-rendered");
   var btnRaw = document.getElementById("btn-raw");
   var btnDownload = document.getElementById("btn-download");
@@ -119,7 +150,8 @@
   var files = [];
   var current = null;      // { meta, data }
   var view = "rendered";   // doc sub-view: rendered | raw
-  var screen = "doc";      // doc | stats
+  var screen = "doc";      // doc | stats | finder
+  var finderState = { url: "", html: "" };   // survives switching away
 
   var STATUS_LABELS = { resolved: "resolved", pending: "pending", dead_end: "dead end" };
   function esc(s) {
@@ -221,12 +253,17 @@
     );
   }
 
-  function showStats() {
-    screen = "stats";
+  function setNav(active) {
+    screen = active;
     current = null;
-    btnStats.classList.add("active");
-    toolbarEl.hidden = true;
+    toolbarEl.hidden = active !== "doc";
+    btnStats.classList.toggle("active", active === "stats");
+    btnFinder.classList.toggle("active", active === "finder");
     renderList();
+  }
+
+  function showStats() {
+    setNav("stats");
     document.title = "Statistics — Chronology Browser";
     contentEl.innerHTML = '<div class="empty">Loading statistics…</div>';
     fetchJSON("/api/stats")
@@ -234,6 +271,90 @@
       .catch(function (e) {
         contentEl.innerHTML = '<div class="empty">Failed to load statistics: ' + esc(e.message) + "</div>";
       });
+  }
+
+  /* ---- claim finder ---------------------------------------------------- */
+
+  function markerLine(m) {
+    var srcTxt = "";
+    if (m.note_only) srcTxt = ' <span class="src">— explanatory note</span>';
+    else if (m.source) {
+      var bits = [m.source.author, m.source.year, m.source.type].filter(Boolean).join(" · ");
+      srcTxt = ' <span class="src">— ' + esc(bits) + (m.source.sparse ? " (sparse)" : "") + "</span>";
+    } else srcTxt = ' <span class="src">— no source resolved</span>';
+    var fn = m.footnote ? esc(m.footnote.slice(0, 160)) : "<i>no footnote text</i>";
+    return '<div class="m"><span class="lab">[' + esc(m.label) + "]</span>" + fn + srcTxt + "</div>";
+  }
+
+  function renderFinder(d) {
+    if (d.error) return '<div class="fr-err">' + esc(d.error) + "</div>";
+    var claims = d.claims
+      .map(function (c) {
+        var sent = esc(c.sentence_cited).replace(/\[([0-9a-z]{1,3})\]/g, "<sup>[$1]</sup>");
+        var marks = c.markers.length
+          ? '<div class="fr-marks">' + c.markers.map(markerLine).join("") + "</div>"
+          : "";
+        return (
+          "<li><div class=\"fr-sec\">§ " + esc(c.section) + "</div>" +
+          '<div class="fr-sent">' + sent + "</div>" +
+          '<div class="fr-cut">cutoff: ' + esc(c.cutoff.basis) +
+          (c.cutoff.ambiguous ? " · <b>ambiguous</b>" : "") +
+          (c.cutoff.note ? " · " + esc(c.cutoff.note) : "") + "</div>" +
+          marks + "</li>"
+        );
+      })
+      .join("");
+    var rej = d.rejected.length
+      ? '<details class="fr-rej"><summary>Date-sentences dropped (' + d.rejected.length + ")</summary><ol>" +
+        d.rejected
+          .map(function (r) {
+            return "<li>§ " + esc(r.section) + ' <span class="why">' + esc(r.reason) + "</span><br>" + esc(r.sentence) + "</li>";
+          })
+          .join("") +
+        "</ol></details>"
+      : "";
+    return (
+      '<div class="fr-head">' + esc(d.page.title) + " · rev " + esc(d.page.revid) + " · " + d.page.sections + " sections</div>" +
+      '<div class="fr-counts"><b>' + d.claims.length + "</b> claims in scope · <b>" + d.rejected.length + "</b> date-sentences dropped</div>" +
+      (d.claims.length ? '<ol class="fr-claims">' + claims + "</ol>" : '<div class="empty">No in-scope dated claims found.</div>') +
+      rej
+    );
+  }
+
+  function runFinder(url) {
+    finderState.url = url;
+    var out = document.getElementById("finder-out");
+    if (out) out.innerHTML = '<div class="empty">Extracting claims from ' + esc(url) + " …</div>";
+    fetchJSON("/api/find-claims?url=" + encodeURIComponent(url))
+      .then(function (d) {
+        finderState.html = renderFinder(d);
+        var o = document.getElementById("finder-out");
+        if (o) o.innerHTML = finderState.html;
+      })
+      .catch(function (e) {
+        var o = document.getElementById("finder-out");
+        if (o) o.innerHTML = '<div class="fr-err">' + esc(e.message) + "</div>";
+      });
+    try { localStorage.setItem("finder-url", url); } catch (e) {}
+  }
+
+  function showFinder() {
+    setNav("finder");
+    document.title = "Claim finder — Chronology Browser";
+    var last = finderState.url;
+    try { last = last || localStorage.getItem("finder-url") || ""; } catch (e) {}
+    contentEl.innerHTML =
+      '<div class="finder"><h1>Claim finder</h1>' +
+      '<div class="sub">Runs the analysis extractor (<code>lib/wiki.js</code>) on any Wikipedia URL — no source downloads, no AI. For tuning how claims are detected.</div>' +
+      '<form id="finder-form"><input id="finder-url" type="url" placeholder="https://en.wikipedia.org/wiki/Ancient_Egypt" value="' + esc(last) + '">' +
+      "<button type=\"submit\">Find claims</button></form>" +
+      '<div id="finder-out">' + (finderState.html || "") + "</div></div>";
+    var form = document.getElementById("finder-form");
+    form.onsubmit = function (e) {
+      e.preventDefault();
+      var v = document.getElementById("finder-url").value.trim();
+      if (v) runFinder(v);
+    };
   }
 
   function draw() {
@@ -260,6 +381,7 @@
       .then(function (data) {
         screen = "doc";
         btnStats.classList.remove("active");
+        btnFinder.classList.remove("active");
         toolbarEl.hidden = false;
         current = { meta: meta, data: data };
         renderList();
@@ -272,6 +394,7 @@
   }
 
   btnStats.onclick = showStats;
+  btnFinder.onclick = showFinder;
   btnRendered.onclick = function () { view = "rendered"; draw(); };
   btnRaw.onclick = function () { view = "raw"; draw(); };
   searchEl.oninput = renderList;

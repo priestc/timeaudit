@@ -23,7 +23,8 @@ const { loadEnv } = require("./lib/env");
 loadEnv();
 
 const shots = require("./lib/shots");
-const { slugify } = require("./lib/wiki");
+const wiki = require("./lib/wiki");
+const { slugify } = wiki;
 
 let PORT = 8080;
 let DIR = process.cwd();
@@ -226,6 +227,63 @@ const server = http.createServer(async (req, res) => {
     }
     if (pathname === "/api/stats") {
       return send(res, 200, "application/json", JSON.stringify(await computeStats()));
+    }
+    // "claim finder" — run the real extractor (lib/wiki.js) on an arbitrary URL
+    if (pathname === "/api/find-claims") {
+      const target = url.searchParams.get("url") || "";
+      try {
+        wiki.parseWikiUrl(target);
+      } catch (e) {
+        return send(res, 400, "application/json", JSON.stringify({ error: e.message }));
+      }
+      let page;
+      try {
+        page = await wiki.fetchPage(target);
+      } catch (e) {
+        return send(res, 502, "application/json", JSON.stringify({ error: e.message }));
+      }
+      const refIdx = wiki.buildReferenceIndex(page.html);
+      const { claims, rejected } = wiki.extractClaims(page, { maxClaims: 600, includeRejected: true });
+      const shapeMarker = (mk) => {
+        const noteOnly = refIdx.isNoteOnly(mk.noteId, mk.label);
+        const s = noteOnly ? null : refIdx.source(mk.noteId);
+        return {
+          label: mk.label,
+          note_only: noteOnly,
+          footnote: refIdx.markerText(mk.noteId),
+          source: s
+            ? {
+                author: Array.isArray(s.author) ? s.author.join(", ") : s.author,
+                title: s.title,
+                year: s.year,
+                type: s.document_type,
+                url: s.retrieval_url,
+                doi: s._doi || null,
+                sparse: !!s._sparse,
+              }
+            : null,
+        };
+      };
+      return send(
+        res,
+        200,
+        "application/json",
+        JSON.stringify({
+          page: {
+            title: page.title,
+            url: page.url,
+            revid: page.revid,
+            sections: page.sections.length,
+          },
+          claims: claims.map((c) => ({
+            sentence_cited: c.sentence_cited,
+            section: c.section,
+            cutoff: c.cutoff,
+            markers: (c.markers || []).map(shapeMarker),
+          })),
+          rejected,
+        })
+      );
     }
     if (pathname === "/api/file") {
       const raw = await backend.read(url.searchParams.get("id") || "");
