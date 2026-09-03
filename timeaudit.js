@@ -225,9 +225,9 @@ async function main() {
       const hopObj = {
         hop_index: hop,
         cited_by: frontier.cited_by,
-        // hop > 1 here is always reached by finding a DOI *in* the previous
-        // source's own text, so the previous document does explicitly cite it.
-        explicitly_cited_by_previous: hop === 1 ? null : true,
+        // hop > 1 is only ever reached by finding a DOI printed *in* the previous
+        // source's own text (SPEC rule 6 — explicit citations only); this is the
+        // surrounding reference text.
         citation_in_previous_verbatim: hop === 1 ? null : frontier.citationVerbatim || null,
         source: src,
         structured_facts: cls.structured_facts,

@@ -20,7 +20,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [2] (tag FOOTNOTEWright20091) and footnote [a]",
-          "explicitly_cited_by_previous": null,
           "citation_in_previous_verbatim": null,
           "source": {
             "author": "Rita P. Wright",
@@ -36,49 +35,18 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
+          "structured_facts": {
+            "chain_note": "Wright (2009) is a secondary synthesis, not a physical dating study. The radiocarbon evidence behind the 2600-1900 BC mature phase lies in a source Wright cites; that citation has not yet been located in the book itself, so per SPEC rule 6 the chain stops here rather than naming an assumed source."
+          },
           "verbatim_quotes": [
             "Mesopotamia and Egypt ... co-existed with the Indus civilization during its florescence between 2600 and 1900 BC."
           ],
           "is_terminal": false,
           "terminal_type": null
-        },
-        {
-          "hop_index": 2,
-          "cited_by": "Kenoyer (1991) identified independently as the source of the HARP radiocarbon chronology underlying Wright (2009)",
-          "explicitly_cited_by_previous": false,
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": "Jonathan Mark Kenoyer",
-            "title": "Urban Process in the Indus Tradition: A Preliminary Model from Harappa",
-            "container_work": "Harappa Excavations 1986-1990: A Multidisciplinary Approach to Third Millennium Urbanism, ed. Richard H. Meadow",
-            "publisher_or_journal": "Prehistory Press, Madison, Wisconsin",
-            "year": 1991,
-            "pages": "29-60 (chronology: 38-40, table: 43)",
-            "identifier": "ISBN 0-9629110-1-1",
-            "document_type": "excavation_report_chapter",
-            "retrieval_url": "https://www.harappa.com/sites/default/files/pdf/Harappa1986-90_04_Kenoyer-UrbanProcess_1.pdf",
-            "retrieval_status": "verified_verbatim",
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/kenoyer-1991-urban-process.pdf"
-          },
-          "structured_facts": {
-            "sample_count": 33,
-            "sample_material": "charcoal",
-            "earliest_calibrated_date": "3338/3213/3203 BC",
-            "latest_sampled_calibrated_date": "c. 1930 BC"
-          },
-          "verbatim_quotes": [
-            "At the present time, a total of 33 carbon samples from the recent excavations at Harappa have been dated ... This sample date is calibrated to 3338, 3213, or 3203 BC (CALIB program, Stuiver and Reimer 1986; Possehl 1990b).",
-            "The date 2600 BC is now considered to mark the approximate beginning of the major integration of urban polities, the use of writing, weights, Harappan type ceramic designs, etc.",
-            "However, at Harappa there are between one and two meters of Period 3 occupation levels above the uppermost dated levels, which would suggest that Period 3 continues to 1900 BC, if not later."
-          ],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
         }
       ],
-      "status": "resolved",
-      "technical_log_refs": ["T1"]
+      "status": "pending",
+      "technical_log_refs": []
     },
     {
       "claim_id": "IVC-002",
@@ -92,7 +60,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [236] (tag Shinde_2019)",
-          "explicitly_cited_by_previous": null,
           "citation_in_previous_verbatim": null,
           "source": {
             "author": ["Vasant Shinde", "Vagheesh M. Narasimhan", "et al."],
