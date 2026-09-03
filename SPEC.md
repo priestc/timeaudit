@@ -198,7 +198,7 @@ Every file actually downloaded while tracing a chain (PDF, HTML, etc.) must be s
 
 A worked example (Wikipedia's "Indus Valley Civilisation" page, two claims) is provided alongside this spec as `indus-valley-civilisation.json`. Both claims are `"status": "pending"`: each chain currently stops at the source the Wikipedia footnote cites, because the onward citation inside that source (the one leading to the physical dating evidence) has not yet been located in the document itself. Per Rule 6 the chain does not advance past that point on assumption. New implementers should validate their output against the same schema and compare structurally against this example before running at scale.
 
-Note that Wikipedia renumbers its inline citations whenever references are added or removed earlier in the article, so the `[n]` markers recorded for a claim are only valid as of the claim's `page.retrieved_at` — a later reader opening the live page may see the same source under a different number.
+Wikipedia's inline citation numbers are a rendering artefact of the current reference list — adding, removing, merging or reordering references anywhere earlier in the article shifts them. Treat the `[n]` markers as valid only as of `page.retrieved_at`; a later reader may see the same source under a different number. (The example above previously recorded the Rita Wright reference as `[2]`; that was a transcription error when the example was written by hand — the live article has rendered it as `[3]` since well before the stated retrieval date.)
 
 ## Explicit non-goals
 
