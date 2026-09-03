@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-03T14:29:28.975Z",
+    "generated_at": "2026-09-03T20:31:08.855Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -16,7 +16,7 @@
   "claims": [
     {
       "claim_id": "IVC-001",
-      "wikipedia_text_verbatim": "The Indus Valley Civilisation[1] (IVC), also known as the Indus Civilisation, was a Bronze Age civilisation[2] in the northwestern regions of South Asia, lasting from 3300 BCE to 1300 BCE, and in its mature form from 2600 BCE to 1900 BCE.[3][a] Together with ancient Egypt, Mesopotamia,and China, it was one of the four centres of the Ancient World.",
+      "wikipedia_text_verbatim": "The Indus Valley Civilisation[1] (IVC), also known as the Indus Civilisation, was a Bronze Age civilisation[2] in the northwestern regions of South Asia, lasting from 3300 BCE to 1300 BCE, and in its mature form from 2600 BCE to 1900 BCE.[3][a]",
       "location_on_page": "Lead section",
       "citation_markers": [
         "1",
@@ -60,22 +60,20 @@
     },
     {
       "claim_id": "IVC-002",
-      "wikipedia_text_verbatim": "The term Harappan is also applied to the Indus Civilisation, after its type site Harappa, the first to be excavated early in the 20th century in what was then the Punjab province of British India and is now Punjab, Pakistan.[7][c] The discovery of Harappa and soon afterwards Mohenjo-daro was the culmination of work that had begun after the founding of the Archaeological Survey of India in the British Raj in 1861.[8] There were earlier and later cultures called Early Harappan and Late Harappan in the same area.",
+      "wikipedia_text_verbatim": "The term Harappan is also applied to the Indus Civilisation, after its type site Harappa, the first to be excavated early in the 20th century in what was then the Punjab province of British India and is now Punjab, Pakistan.[7][c]",
       "location_on_page": "Lead section",
       "citation_markers": [
         "7",
-        "c",
-        "8"
+        "c"
       ],
       "citation_footnotes_verbatim": {
         "7": "Habib 2015, p. 13.",
-        "8": "Wright 2009, p. 2.",
         "c": "Habib: \"Harappa, in Sahiwal district of west Punjab, Pakistan, had long been known to archaeologists as an extensive site on the Ravi river, but its true significance as a major city of an early great civilisation remained unrecognised until the discovery of Mohenjo-daro near the banks of the Indus, in the Larkana district of Sindh, by Rakhaldas Banerji in 1922. Sir John Marshall, then Director General of the Archaeological Survey of India, used the term 'Indus civilization' for the culture discovered at Harappa and Mohenjo-daro, a term doubly apt because of the geographical context implied in the name 'Indus' and the presence of cities implied in the word 'civilization'. Others, notably the Archaeological Survey of India after Independence, have preferred to call it 'Harappan', or 'Mature Harappan', taking Harappa to be its type-site.\"[7]"
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [7][c][8]",
+          "cited_by": "Wikipedia footnote [7][c]",
           "citation_in_previous_verbatim": null,
           "source": {
             "author": "Irfan Habib",
@@ -105,136 +103,37 @@
     },
     {
       "claim_id": "IVC-003",
-      "wikipedia_text_verbatim": "The cities of the ancient Indus were noted for their urban planning, baked brick houses, elaborate drainage systems, water supply systems, clusters of large non-residential buildings, and techniques of handicraft and metallurgy.[d] Mohenjo-daro and Harappa very likely grew to contain between 30,000 and 60,000 individuals,[12] and the civilisation may have contained between one and five million individuals during its florescence.[13] A gradual drying of the region during the 3rd millennium BCE may have been the initial stimulus for its urbanisation.",
+      "wikipedia_text_verbatim": "A gradual drying of the region during the 3rd millennium BCE may have been the initial stimulus for its urbanisation.",
       "location_on_page": "Lead section",
-      "citation_markers": [
-        "d",
-        "12",
-        "13"
-      ],
-      "citation_footnotes_verbatim": {
-        "12": "Dyson 2018, p. 29 \"Mohenjo-daro and Harappa may each have contained between 30,000 and 60,000 people (perhaps more in the former case). Water transport was crucial for the provisioning of these and other cities. That said, the vast majority of people lived in rural areas. At the height of the Indus valley civilization the subcontinent may have contained 4-6 million people.\"",
-        "13": "McIntosh 2008, p. 387: \"The enormous potential of the greater Indus region offered scope for huge population increase; by the end of the Mature Harappan period, the Harappans are estimated to have numbered somewhere between 1 and 5 million, probably well below the region's carrying capacity.\"",
-        "d": "These covered carnelian products, seal carving, work in copper, bronze, lead, and tin.[11]"
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [d][12][13]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": "Tim Dyson",
-            "title": "A Population History of India: From the First Modern People to the Present Day",
-            "container_work": null,
-            "publisher_or_journal": "Oxford University Press",
-            "year": 2018,
-            "pages": null,
-            "identifier": "ISBN 978-0-19-882905-8",
-            "document_type": "book",
-            "retrieval_url": "https://books.google.com/books?id=3TRtDwAAQBAJ",
-            "retrieval_status": "not_independently_verified",
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/dyson-2018-a-population-history-of.html"
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
       "status": "pending",
-      "technical_log_refs": []
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
     },
     {
       "claim_id": "IVC-004",
-      "wikipedia_text_verbatim": "Recent geophysical research suggests that, unlike the Sarasvati described in the Rigveda as a snow-fed river, the Ghaggar-Hakra was a system of perennial monsoon-fed rivers, which became seasonal around the time the civilisation diminished, approximately 4,000 years ago.[6][k]",
-      "location_on_page": "Etymology",
-      "citation_markers": [
-        "6",
-        "k"
-      ],
-      "citation_footnotes_verbatim": {
-        "6": "Giosan et al. 2012.",
-        "k": "Giosan (2012): \"Numerous speculations have advanced the idea that the Ghaggar-Hakra fluvial system, at times identified with the lost mythical river of Sarasvati (e.g., 4, 5, 7, 19), was a large glacier fed Himalayan river. Potential sources for this river include the Yamuna River, the Sutlej River, or both rivers. However, the lack of large-scale incision on the interfluve demonstrates that large, glacier-fed rivers did not flow across the Ghaggar-Hakra region during the Holocene. ... The present Ghaggar-Hakra valley and its tributary rivers are currently dry or have seasonal flows. Yet rivers were undoubtedly active in this region during the Urban Harappan Phase. We recovered sandy fluvial deposits approximately 5,400 y old at Fort Abbas in Pakistan (SI Text), and recent work (33) on the upper Ghaggar-Hakra interfluve in India also documented Holocene channel sands that are approximately 4,300 y old. On the upper interfluve, fine-grained floodplain deposition continued until the end of the Late Harappan Phase, as recent as 2,900 y ago (33) (Fig. 2B). This widespread fluvial redistribution of sediment suggests that reliable monsoon rains were able to sustain perennial rivers earlier during the Holocene and explains why Harappan settlements flourished along the entire Ghaggar-Hakra system without access to a glacier-fed river.\"[6]"
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [6][k]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": [
-              "L Giosan",
-              "Clift, PD",
-              "Macklin, MG",
-              "Fuller, DQ",
-              "Constantinescu, S",
-              "Durcan, JA",
-              "Stevens, T",
-              "Duller, GA",
-              "Tabrez, AR",
-              "Gangal, K",
-              "Adhikari, R",
-              "Alizai, A",
-              "Filip, F",
-              "VanLaningham, S",
-              "Syvitski, JP"
-            ],
-            "title": "Fluvial landscapes of the Harappan civilization",
-            "container_work": null,
-            "publisher_or_journal": "Proceedings of the National Academy of Sciences",
-            "year": 2012,
-            "pages": "E1688-E1694",
-            "identifier": null,
-            "document_type": "journal_article",
-            "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3387054",
-            "retrieval_status": "unreachable",
-            "is_public_domain": false,
-            "local_cache_path": null
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
-      "status": "dead_end",
-      "technical_log_refs": []
-    },
-    {
-      "claim_id": "IVC-005",
-      "wikipedia_text_verbatim": "Around 6500 BCE, agriculture emerged in Balochistan, on the margins of the Indus alluvium.[25][m][26][n] In the following millennia, settled life made inroads into the Indus plains, setting the stage for the growth of rural and urban settlements.[27][o] The more organised sedentary life, in turn, led to a net increase in the birth rate.[25][p] The large urban centres of Mohenjo-daro and Harappa very likely grew to containing between 30,000 and 60,000 individuals, and during the civilisation's florescence, the population of the subcontinent grew to between 4–6 million people.[25][q] During this period the death rate increased, as the close living conditions of humans and domesticated animals led to an increase in contagious diseases.[26][r] According to one estimate, the population of the Indus civilisation at its peak may have been between one and five million.[28][s]",
+      "wikipedia_text_verbatim": "Around 6500 BCE, agriculture emerged in Balochistan, on the margins of the Indus alluvium.[25][m][26][n]",
       "location_on_page": "Extent",
       "citation_markers": [
         "25",
         "m",
         "26",
-        "n",
-        "27",
-        "o",
-        "p",
-        "q",
-        "r",
-        "28",
-        "s"
+        "n"
       ],
       "citation_footnotes_verbatim": {
         "25": "Dyson 2018, p. 29.",
         "26": "Fisher 2018, p. 33.",
-        "27": "Coningham & Young 2015, p. 138.",
-        "28": "McIntosh 2008, pp. 186–187.",
         "m": "Dyson: \"The subcontinent's people were hunter-gatherers for many millennia. There were very few of them. Indeed, 10,000 years ago there may only have been a couple of hundred thousand people, living in small, often isolated groups, the descendants of various 'modern' human incomers. Then, perhaps linked to events in Mesopotamia, about 8,500 years ago agriculture emerged in Baluchistan.\"[25]",
-        "n": "Fisher: \"The earliest discovered instance in India of well-established, settled agricultural society is at Mehrgarh in the hills between the Bolan Pass and the Indus plain (today in Pakistan) (see Map 3.1). From as early as 7000 BCE, communities there started investing increased labor in preparing the land and selecting, planting, tending, and harvesting particular grain-producing plants. They also domesticated animals, including sheep, goats, pigs, and oxen (both humped zebu [Bos indicus] and unhumped [Bos taurus]). Castrating oxen, for instance, turned them from mainly meat sources into domesticated draft-animals as well.[26]",
-        "o": "Coningham and Young: \"Mehrgarh remains one of the key sites in South Asia because it has provided the earliest known undisputed evidence for farming and pastoral communities in the region, and its plant and animal material provide clear evidence for the ongoing manipulation, and domestication, of certain species. Perhaps most importantly in a South Asian context, the role played by zebu makes this a distinctive, localised development, with a character completely different to other parts of the world. Finally, the longevity of the site, and its articulation with the neighbouring site of Nausharo (c. 2800–2000 BCE), provides a very clear continuity from South Asia's first farming villages to the emergence of its first cities (Jarrige, 1984).\"[27]",
-        "p": "Dyson: \"In the millennia which followed, farming developed and spread slowly into the Indus valley and adjacent areas. The transition to agriculture led to population growth and the eventual rise of the Indus civilisation. With the movement to settled agriculture, and the emergence of villages, towns and cities, there was probably a modest rise in the average death rate and a slightly greater rise in the birth rate.\"[25]",
-        "q": "Dyson: \"Mohenjo-daro and Harappa may each have contained between 30,000 and 60,000 people (perhaps more in the former case). Water transport was crucial for the provisioning of these and other cities. That said, the vast majority of people lived in rural areas. At the height of the Indus valley civilisation the subcontinent may have contained 4-6 million people.\"[25]",
-        "r": "Fisher: \"Such an \"agricultural revolution\" enabled food surpluses that supported growing populations. Their, largely cereal diet did not necessarily make people healthier, however, since conditions like caries and protein deficiencies can increase. Further, infectious diseases spread faster with denser living conditions of both humans and domesticated animals (which can spread measles, influenza, and other diseases to humans).\"[26]",
-        "s": "McIntosh: \"Population Growth and Distribution: \"The prehistory of the Indo-Iranian borderlands shows a steady increase over time in the number and density of settlements based on farming and pastoralism. By contrast, the population of the Indus plains and adjacent regions lived mainly by hunting and gathering; the limited traces suggest their settlements were far fewer in number, and were small and widely scattered, though to some extent this apparent situation must reflect the difficulty of locating hunter-gatherer settlements. The presence of domestic animals in some hunter-gatherer settlements attests to contact with the people of the border-lands, probably in the context of pastoralists' seasonal movement from the hills into the plains. The potential for population expansion in the hills was severely limited, and so, from the fourth millennium into the third, settlers moved out from the borderlands into the plains and beyond into Gujarat, the first being pastoralists, followed later by farmers. The enormous potential of the greater Indus region offered scope for huge population increase; by the end of the Mature Harappan period, the Harappans are estimated to have numbered somewhere between 1 and 5 million, probably well below the region's carrying capacity.\"[28]"
+        "n": "Fisher: \"The earliest discovered instance in India of well-established, settled agricultural society is at Mehrgarh in the hills between the Bolan Pass and the Indus plain (today in Pakistan) (see Map 3.1). From as early as 7000 BCE, communities there started investing increased labor in preparing the land and selecting, planting, tending, and harvesting particular grain-producing plants. They also domesticated animals, including sheep, goats, pigs, and oxen (both humped zebu [Bos indicus] and unhumped [Bos taurus]). Castrating oxen, for instance, turned them from mainly meat sources into domesticated draft-animals as well.[26]"
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [25][m][26][n][27][o][p][q][r][28][s]",
+          "cited_by": "Wikipedia footnote [25][m][26][n]",
           "citation_in_previous_verbatim": null,
           "source": {
             "author": "Tim Dyson",
@@ -260,74 +159,35 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-006",
-      "wikipedia_text_verbatim": "In 1861, three years after the dissolution of the East India Company and the establishment of Crown rule in India, archaeology on the subcontinent became more formally organised with the founding of the Archaeological Survey of India (ASI).[42] Alexander Cunningham, the Survey's first director-general, who had visited Harappa in 1853 and had noted the imposing brick walls, visited again to carry out a survey, but this time of a site whose entire upper layer had been stripped in the interim.[42][43] Although his original goal of demonstrating Harappa to be a lost Buddhist city mentioned in the seventh century CE travels of the Chinese visitor, Xuanzang, proved elusive,[43] Cunningham did publish his findings in 1875.[44] For the first time, he interpreted a Harappan stamp seal, with its unknown script, which he concluded to be of an origin foreign to India.[44][45]",
+      "claim_id": "IVC-005",
+      "wikipedia_text_verbatim": "Although his original goal of demonstrating Harappa to be a lost Buddhist city mentioned in the seventh century CE travels of the Chinese visitor, Xuanzang, proved elusive,[43] Cunningham did publish his findings in 1875.[44]",
       "location_on_page": "Discovery and history of excavation",
       "citation_markers": [
-        "42",
         "43",
-        "44",
-        "45"
+        "44"
       ],
       "citation_footnotes_verbatim": {
-        "42": "Wright 2009, pp. 6–7.",
         "43": "Coningham & Young 2015, p. 180.",
-        "44": "Wright 2009, p. 7.",
-        "45": null
+        "44": "Wright 2009, p. 7."
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [42][43][44][45]",
+          "cited_by": "Wikipedia footnote [43][44]",
           "citation_in_previous_verbatim": null,
           "source": {
-            "author": "Rita P. Wright",
-            "title": "The Ancient Indus: Urbanism, Economy, and Society",
+            "author": [
+              "Robin Coningham",
+              "Young, Ruth"
+            ],
+            "title": "The Archaeology of South Asia: From the Indus to Asoka, c. 6500 BCE – 200 CE",
             "container_work": null,
             "publisher_or_journal": "Cambridge University Press",
-            "year": 2009,
+            "year": 2015,
             "pages": null,
-            "identifier": "ISBN 978-0-521-57219-4",
+            "identifier": "ISBN 978-1-316-41898-7",
             "document_type": "book",
-            "retrieval_url": "https://books.google.com/books?id=gAgFPQAACAAJ",
-            "retrieval_status": "not_independently_verified",
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/wright-2009-the-ancient-indus-urbanism.html"
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
-      "status": "pending",
-      "technical_log_refs": []
-    },
-    {
-      "claim_id": "IVC-007",
-      "wikipedia_text_verbatim": "The cities of the ancient Indus had \"social hierarchies, their writing system, their large planned cities and their long-distance trade[which] mark them to archaeologists as a full-fledged 'civilisation.'[62] The mature phase of the Harappan civilisation lasted from c. 2600–1900 BCE.",
-      "location_on_page": "Chronology",
-      "citation_markers": [
-        "62"
-      ],
-      "citation_footnotes_verbatim": {
-        "62": "Chandler, Graham (September–October 1999). \"Traders of the Plain\". Saudi Aramco World: 34–42. Archived from the original on 18 February 2007. Retrieved 11 February 2007."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [62]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": "Graham Chandler",
-            "title": "Traders of the Plain",
-            "container_work": null,
-            "publisher_or_journal": "Saudi Aramco World",
-            "year": 1999,
-            "pages": "34-42",
-            "identifier": null,
-            "document_type": "journal_article",
-            "retrieval_url": "http://www.saudiaramcoworld.com/issue/199905/traders.of.the.plain.htm",
+            "retrieval_url": null,
             "retrieval_status": "unreachable",
             "is_public_domain": false,
             "local_cache_path": null
@@ -342,33 +202,36 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-008",
-      "wikipedia_text_verbatim": "Mehrgarh is a Neolithic (7000 BCE to c. 2500 BCE) mountain site in the Balochistan province of Pakistan,[74] which gave new insights on the emergence of the Indus Valley Civilisation.[62][w] Mehrgarh is one of the earliest sites with evidence of farming and herding in South Asia.[75][76] Mehrgarh was influenced by the Near Eastern Neolithic,[77] with similarities between \"domesticated wheat varieties, early phases of farming, pottery, other archaeological artefacts, some domesticated plants and herd animals\".[78][x]",
+      "claim_id": "IVC-006",
+      "wikipedia_text_verbatim": "The mature phase of the Harappan civilisation lasted from c. 2600–1900 BCE.",
+      "location_on_page": "Chronology",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "pending",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "IVC-007",
+      "wikipedia_text_verbatim": "Mehrgarh is a Neolithic (7000 BCE to c. 2500 BCE) mountain site in the Balochistan province of Pakistan,[74] which gave new insights on the emergence of the Indus Valley Civilisation.[62][w]",
       "location_on_page": "Pre-Harappan era: Mehrgarh",
       "citation_markers": [
         "74",
         "62",
-        "w",
-        "75",
-        "76",
-        "77",
-        "78",
-        "x"
+        "w"
       ],
       "citation_footnotes_verbatim": {
         "62": "Chandler, Graham (September–October 1999). \"Traders of the Plain\". Saudi Aramco World: 34–42. Archived from the original on 18 February 2007. Retrieved 11 February 2007.",
         "74": "\"Stone age man used dentist drill\". 6 April 2006. Archived from the original on 14 November 2019. Retrieved 24 March 2016 – via news.bbc.co.uk.",
-        "75": "\"Archaeological Site of Mehrgarh\". UNESCO World Heritage Centre. 30 January 2004. Archived from the original on 3 November 2020. Retrieved 26 December 2019.",
-        "76": "Hirst, K. Kris (2005) [Updated 30 May 2019]. \"Mehrgarh, Pakistan and Life in the Indus Valley Before Harappa\". ThoughtCo. Archived from the original on 29 October 2020. Retrieved 9 March 2021.",
-        "77": "Gangal, Sarson & Shukurov 2014.",
-        "78": "Singh, Sakshi 2016.",
-        "w": "According to Ahmad Hasan Dani, professor emeritus at Quaid-e-Azam University, Islamabad, the discovery of Mehrgarh \"changed the entire concept of the Indus civilisation ... There we have the whole sequence, right from the beginning of settled village life.\"[62]",
-        "x": "According to Gangal et al. (2014), there is strong archeological and geographical evidence that neolithic farming spread from the Near East into north-west India.[77][78] Gangal et al. (2014):[77] \"There are several lines of evidence that support the idea of a connection between the Neolithic in the Near East and in the Indian subcontinent. The prehistoric site of Mehrgarh in Baluchistan (modern Pakistan) is the earliest Neolithic site in the north-west Indian subcontinent, dated as early as 8500 BCE.\"[80]"
+        "w": "According to Ahmad Hasan Dani, professor emeritus at Quaid-e-Azam University, Islamabad, the discovery of Mehrgarh \"changed the entire concept of the Indus civilisation ... There we have the whole sequence, right from the beginning of settled village life.\"[62]"
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [74][62][w][75][76][77][78][x]",
+          "cited_by": "Wikipedia footnote [74][62][w]",
           "citation_in_previous_verbatim": null,
           "source": {
             "author": null,
@@ -394,61 +257,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-009",
-      "wikipedia_text_verbatim": "(2015) note that \"new, possibly West Asian, body types are reported from the graves of Mehrgarh beginning in the Togau phase (3800 BCE).\"[94]",
-      "location_on_page": "Pre-Harappan era: Mehrgarh",
-      "citation_markers": [
-        "94"
-      ],
-      "citation_footnotes_verbatim": {
-        "94": "Mascarenhas et al. 2015, p. 9."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [94]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": [
-              "Desmond D. Mascarenhas",
-              "Raina, Anupuma",
-              "Aston, Christopher E.",
-              "Sanghera, Dharambir K."
-            ],
-            "title": "Genetic and Cultural Reconstruction of the Migration of an Ancient Lineage",
-            "container_work": null,
-            "publisher_or_journal": "BioMed Research International",
-            "year": 2015,
-            "pages": "1-16",
-            "identifier": null,
-            "document_type": "journal_article",
-            "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4605215",
-            "retrieval_status": "not_independently_verified",
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/mascarenhas-2015-genetic-and-cultural-reconstruction.xml"
-          },
-          "structured_facts": {
-            "date_expressions_found": [
-              "712–738 CE",
-              "1435–1530 CE",
-              "2600–1900 BCE",
-              "2500–1900 BCE",
-              "738-739 CE"
-            ]
-          },
-          "verbatim_quotes": [
-            "At least 40 common STRs were used for each comparison listed in Figure 1 and the dendrogram was constructed using the TMRCA values as branch-points.",
-            "A dendrogram of these TMRCA computations was shown in Figure 1 (left panel, with town locations shown on the map in the right-hand panel)."
-          ],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
-        }
-      ],
-      "status": "resolved",
-      "technical_log_refs": []
-    },
-    {
-      "claim_id": "IVC-010",
+      "claim_id": "IVC-008",
       "wikipedia_text_verbatim": "The Early Harappan Ravi Phase, named after the nearby Ravi River, lasted from c. 3300 BCE until 2800 BCE.",
       "location_on_page": "Early Harappan",
       "citation_markers": [],
@@ -461,7 +270,7 @@
       }
     },
     {
-      "claim_id": "IVC-011",
+      "claim_id": "IVC-009",
       "wikipedia_text_verbatim": "It started when farmers from the mountains gradually moved between their mountain homes and the lowland river valleys,[97] and is related to the Hakra Phase, identified in the Ghaggar-Hakra River Valley to the west, and predates the Kot Diji Phase (2800–2600 BCE, Harappan 2), named after a site in northern Sindh, Pakistan, near Mohenjo-daro.",
       "location_on_page": "Early Harappan",
       "citation_markers": [
@@ -499,7 +308,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-012",
+      "claim_id": "IVC-010",
       "wikipedia_text_verbatim": "The earliest examples of the Indus script date to the 3rd millennium BCE.[98][99]",
       "location_on_page": "Early Harappan",
       "citation_markers": [
@@ -539,20 +348,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-013",
-      "wikipedia_text_verbatim": "Early Harappan communities turned to large urban centres by 2600 BCE, from where the mature Harappan phase started.",
-      "location_on_page": "Early Harappan",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-014",
+      "claim_id": "IVC-011",
       "wikipedia_text_verbatim": "By 2600 BCE, the Early Harappan communities turned into large urban centres.",
       "location_on_page": "Mature Harappan",
       "citation_markers": [],
@@ -565,98 +361,7 @@
       }
     },
     {
-      "claim_id": "IVC-015",
-      "wikipedia_text_verbatim": "Hoffman examined a large collections of copper/bronze artifacts from Harappa, covering the timeline from 3300 to 1700 BCE, and challenged some older broad interpretations of bronze production.",
-      "location_on_page": "Metallurgy",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-016",
-      "wikipedia_text_verbatim": "The weights and measures later used in Kautilya's Arthashastra (4th century BCE) are the same as those used in Lothal.[124]",
-      "location_on_page": "Metrology",
-      "citation_markers": [
-        "124"
-      ],
-      "citation_footnotes_verbatim": {
-        "124": "Sergent, Bernard (1997). Genèse de l'Inde (in French). Paris: Payot. p. 113. ISBN 978-2-228-89116-5."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [124]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": "Bernard Sergent",
-            "title": "Genèse de l'Inde",
-            "container_work": null,
-            "publisher_or_journal": "Payot",
-            "year": 1997,
-            "pages": "113",
-            "identifier": "ISBN 978-2-228-89116-5",
-            "document_type": "book",
-            "retrieval_url": null,
-            "retrieval_status": "unreachable",
-            "is_public_domain": false,
-            "local_cache_path": null
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
-      "status": "dead_end",
-      "technical_log_refs": []
-    },
-    {
-      "claim_id": "IVC-017",
-      "wikipedia_text_verbatim": "Some of these crafts are still practised in the subcontinent today.[116] Some make-up and toiletry items (a special kind of combs (kakai), the use of collyrium and a special three-in-one toiletry gadget) that were found in Harappan contexts still have similar counterparts in modern India.[128] Terracotta female figurines were found (c. 2800–2600 BCE) which had red colour applied to the \"manga\" (line of partition of the hair).[128]",
-      "location_on_page": "Arts and crafts",
-      "citation_markers": [
-        "116",
-        "128"
-      ],
-      "citation_footnotes_verbatim": {
-        "116": "Kenoyer 1997.",
-        "128": "Lal 2002, p. 82."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [116][128]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": "Jonathan Mark Kenoyer",
-            "title": "Trade and Technology of the Indus Valley: New Insights from Harappa, Pakistan",
-            "container_work": null,
-            "publisher_or_journal": "World Archaeology",
-            "year": 1997,
-            "pages": "262-280",
-            "identifier": null,
-            "document_type": "journal_article",
-            "retrieval_url": null,
-            "retrieval_status": "unreachable",
-            "is_public_domain": false,
-            "local_cache_path": null
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
-      "status": "dead_end",
-      "technical_log_refs": []
-    },
-    {
-      "claim_id": "IVC-018",
+      "claim_id": "IVC-012",
       "wikipedia_text_verbatim": "Archeological remains from 2000 to 3000 BC have been found from the city of Lothal of pieces on a board that resemble chess.[129]",
       "location_on_page": "Arts and crafts",
       "citation_markers": [
@@ -694,23 +399,19 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-019",
-      "wikipedia_text_verbatim": "Though written considerably later, the arts treatise Natya Shastra (c. 200 BCE – 200 CE) classifies musical instruments into four groups based on their means of acoustical production—strings, membranes, solid materials and air—and it is probable that such instruments had existed since the IVC.[131] Archeological evidence indicates the use of simple rattles and vessel flutes, while iconographical evidence suggests early harps and drums were also used.[132] An ideogram in the IVC contains the earliest known depiction of an arched harp, dated sometime before 1800 BCE.[133]",
+      "claim_id": "IVC-013",
+      "wikipedia_text_verbatim": "Though written considerably later, the arts treatise Natya Shastra (c. 200 BCE – 200 CE) classifies musical instruments into four groups based on their means of acoustical production—strings, membranes, solid materials and air—and it is probable that such instruments had existed since the IVC.[131]",
       "location_on_page": "Arts and crafts",
       "citation_markers": [
-        "131",
-        "132",
-        "133"
+        "131"
       ],
       "citation_footnotes_verbatim": {
-        "131": "Flora 2000, p. 319.",
-        "132": "Flora 2000, pp. 319–320.",
-        "133": "Devale, Sue Carole; Lawergren, Bo; Rimmer, Joan; Evans, Robert; Taylor, William; Bordas, Cristina; Fulton, Cheryl Ann; Schechter, John M.; Thym-Hochrein, Nancy; Devaere, Hannelore; McMaster, Mary (2001). \"Harp\". Grove Music Online (8th ed.). Oxford University Press. doi:10.1093/gmo/9781561592630.article.45738. ISBN 978-1-56159-263-0. (subscription, Wikilibrary access, or UK public library membership required)"
+        "131": "Flora 2000, p. 319."
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [131][132][133]",
+          "cited_by": "Wikipedia footnote [131]",
           "citation_in_previous_verbatim": null,
           "source": {
             "author": "Reis Flora",
@@ -736,20 +437,57 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-020",
-      "wikipedia_text_verbatim": "Ceremonial vessel; 2600–2450 BC; terracotta with black paint; 49.53 × 25.4 cm; Los Angeles County Museum of Art (US)",
+      "claim_id": "IVC-014",
+      "wikipedia_text_verbatim": "An ideogram in the IVC contains the earliest known depiction of an arched harp, dated sometime before 1800 BCE.[133]",
       "location_on_page": "Arts and crafts",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
+      "citation_markers": [
+        "133"
+      ],
+      "citation_footnotes_verbatim": {
+        "133": "Devale, Sue Carole; Lawergren, Bo; Rimmer, Joan; Evans, Robert; Taylor, William; Bordas, Cristina; Fulton, Cheryl Ann; Schechter, John M.; Thym-Hochrein, Nancy; Devaere, Hannelore; McMaster, Mary (2001). \"Harp\". Grove Music Online (8th ed.). Oxford University Press. doi:10.1093/gmo/9781561592630.article.45738. ISBN 978-1-56159-263-0. (subscription, Wikilibrary access, or UK public library membership required)"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [133]",
+          "citation_in_previous_verbatim": null,
+          "source": {
+            "author": [
+              "Sue Carole Devale",
+              "Lawergren, Bo",
+              "Rimmer, Joan",
+              "Evans, Robert",
+              "Taylor, William",
+              "Bordas, Cristina",
+              "Fulton, Cheryl Ann",
+              "Schechter, John M.",
+              "Thym-Hochrein, Nancy",
+              "Devaere, Hannelore",
+              "McMaster, Mary"
+            ],
+            "title": "Harp",
+            "container_work": "Grove Music Online",
+            "publisher_or_journal": "Oxford University Press",
+            "year": 2001,
+            "pages": null,
+            "identifier": "doi:10.1093/gmo/9781561592630.article.45738",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": "https://doi.org/10.1093/gmo/9781561592630.article.45738",
+            "retrieval_status": "unreachable",
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "structured_facts": {},
+          "verbatim_quotes": [],
+          "is_terminal": false,
+          "terminal_type": null
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-021",
+      "claim_id": "IVC-015",
       "wikipedia_text_verbatim": "Cubical weights, standardised throughout the Indus cultural zone; 2600–1900 BC; chert; British Museum (London)",
       "location_on_page": "Arts and crafts",
       "citation_markers": [],
@@ -762,150 +500,7 @@
       }
     },
     {
-      "claim_id": "IVC-022",
-      "wikipedia_text_verbatim": "Mohenjo-daro beads; 2600–1900 BC; carnelian and terracotta; British Museum",
-      "location_on_page": "Arts and crafts",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-023",
-      "wikipedia_text_verbatim": "Ram-headed bird mounted on wheels, probably a toy; 2600–1900 BC; terracotta; Guimet Museum (Paris)",
-      "location_on_page": "Arts and crafts",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-024",
-      "wikipedia_text_verbatim": "Terracotta die from Mohenjo-daro, c. 2600-1900 BCE",
-      "location_on_page": "Arts and crafts",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-025",
-      "wikipedia_text_verbatim": "Reclining mouflon; 2600–1900 BC; marble; length: 28 cm; Metropolitan Museum of Art (New York City)",
-      "location_on_page": "Human statuettes",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-026",
-      "wikipedia_text_verbatim": "The Priest-King; 2400–1900 BC; low fired steatite; height: 17.5 cm; National Museum of Pakistan (Karachi)",
-      "location_on_page": "Human statuettes",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-027",
-      "wikipedia_text_verbatim": "Male dancing torso; 2400–1900 BC; limestone; height: 9.9 cm; National Museum (New Delhi)",
-      "location_on_page": "Human statuettes",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-028",
-      "wikipedia_text_verbatim": "The Dancing Girl; 2400–1900 BC; bronze; height: 10.8 cm; National Museum (New Delhi)",
-      "location_on_page": "Human statuettes",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-029",
-      "wikipedia_text_verbatim": "Seal; 3000–1500 BC; baked steatite; 2 × 2 cm; Metropolitan Museum of Art (New York City)",
-      "location_on_page": "Seals",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-030",
-      "wikipedia_text_verbatim": "Stamp seal and modern impression: unicorn and incense burner (?); 2600–1900 BC; burnt steatite; 3.8 × 3.8 × 1 cm; Metropolitan Museum of Art",
-      "location_on_page": "Seals",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-031",
-      "wikipedia_text_verbatim": "Seal with two-horned bull and inscription; 2010 BC; steatite; overall: 3.2 x 3.2 cm; Cleveland Museum of Art (Cleveland, Ohio, US)",
-      "location_on_page": "Seals",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-032",
-      "wikipedia_text_verbatim": "Seal with unicorn and inscription; 2010 BC; steatite; overall: 3.5 x 3.6 cm; Cleveland Museum of Art",
-      "location_on_page": "Seals",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-033",
+      "claim_id": "IVC-016",
       "wikipedia_text_verbatim": "During 4300–3200 BCE of the chalcolithic period (copper age), the Indus Valley Civilisation area shows ceramic similarities with southern Turkmenistan and northern Iran which suggest considerable mobility and trade.",
       "location_on_page": "Trade and transportation",
       "citation_markers": [],
@@ -918,7 +513,7 @@
       }
     },
     {
-      "claim_id": "IVC-034",
+      "claim_id": "IVC-017",
       "wikipedia_text_verbatim": "During the Early Harappan period (about 3200–2600 BCE), similarities in pottery, seals, figurines, ornaments, etc.",
       "location_on_page": "Trade and transportation",
       "citation_markers": [],
@@ -931,7 +526,7 @@
       }
     },
     {
-      "claim_id": "IVC-035",
+      "claim_id": "IVC-018",
       "wikipedia_text_verbatim": "92-94) may be evidence of maritime trade between Susa and the Indus Valley in the late 3rd millennium BCE.",
       "location_on_page": "Trade and transportation",
       "citation_markers": [],
@@ -944,7 +539,7 @@
       }
     },
     {
-      "claim_id": "IVC-036",
+      "claim_id": "IVC-019",
       "wikipedia_text_verbatim": "This led to the local development of a mix of \"wetland\" and \"dryland\" agriculture of local Oryza sativa indica rice agriculture, before the truly \"wetland\" rice Oryza sativa japonica arrived around 2000 BCE.[164]",
       "location_on_page": "Agriculture",
       "citation_markers": [
@@ -988,21 +583,19 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-037",
-      "wikipedia_text_verbatim": "Seven food-balls (\"laddus\") were found in intact form, along with two figurines of bulls and a hand-held copper adze, during excavations in 2017 from western Rajasthan.[168] Dated to about 2600 BCE, they were likely composed of legumes, primarily mung, and cereals.[168] The authors speculated the food-balls to be of a ritualistic significance, given the finds of bull figurines, adze and a seal in immediate vicinity.[168][169]",
+      "claim_id": "IVC-020",
+      "wikipedia_text_verbatim": "Dated to about 2600 BCE, they were likely composed of legumes, primarily mung, and cereals.[168]",
       "location_on_page": "Food",
       "citation_markers": [
-        "168",
-        "169"
+        "168"
       ],
       "citation_footnotes_verbatim": {
-        "168": "Agnihorti, Rajesh; Farooqui, Anjum; Khonde, Niteshkumar; Mathews, Runcie P.; Sharma, Shalini; Gahlaud, S.K.S; Manjul, Sanjay Kumar; Manjul, Arvin; Sawlani, Ravi (June 2021). \"Microscopic, biochemical and stable isotopic investigation of seven multi-nutritional food-balls from Indus archaeological site, Rajasthan (India)\". Journal of Archaeological Science: Reports. 37 102917. Bibcode:2021JArSR..3702917A. doi:10.1016/j.jasrep.2021.102917.",
-        "169": "Tewari, Mohita (25 March 2021). \"Harappan people ate multigrain, high-protein 'laddoos': Study – Times of India\". The Times of India. Archived from the original on 19 February 2022. Retrieved 21 June 2021."
+        "168": "Agnihorti, Rajesh; Farooqui, Anjum; Khonde, Niteshkumar; Mathews, Runcie P.; Sharma, Shalini; Gahlaud, S.K.S; Manjul, Sanjay Kumar; Manjul, Arvin; Sawlani, Ravi (June 2021). \"Microscopic, biochemical and stable isotopic investigation of seven multi-nutritional food-balls from Indus archaeological site, Rajasthan (India)\". Journal of Archaeological Science: Reports. 37 102917. Bibcode:2021JArSR..3702917A. doi:10.1016/j.jasrep.2021.102917."
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [168][169]",
+          "cited_by": "Wikipedia footnote [168]",
           "citation_in_previous_verbatim": null,
           "source": {
             "author": [
@@ -1038,7 +631,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-038",
+      "claim_id": "IVC-021",
       "wikipedia_text_verbatim": "Around 1900 BCE signs of a gradual decline began to emerge, and by around 1700 BCE most of the cities had been abandoned.",
       "location_on_page": "Late Harappan",
       "citation_markers": [],
@@ -1051,7 +644,7 @@
       }
     },
     {
-      "claim_id": "IVC-039",
+      "claim_id": "IVC-022",
       "wikipedia_text_verbatim": "During the period of approximately 1900 to 1700 BCE, multiple regional cultures emerged within the area of the Indus civilisation.",
       "location_on_page": "Late Harappan",
       "citation_markers": [],
@@ -1064,7 +657,7 @@
       }
     },
     {
-      "claim_id": "IVC-040",
+      "claim_id": "IVC-023",
       "wikipedia_text_verbatim": "During the later half of the 2nd millennium BCE, most of the post-urban Late Harappan settlements were abandoned altogether.",
       "location_on_page": "Late Harappan",
       "citation_markers": [],
@@ -1077,40 +670,32 @@
       }
     },
     {
-      "claim_id": "IVC-041",
-      "wikipedia_text_verbatim": "Suggested contributory causes for the localisation of the IVC include changes in the course of the river,[220] and climate change that is also signalled for the neighbouring areas of the Middle East.[221][222] As of 2016[update] many scholars believe that drought, and a decline in trade with Egypt and Mesopotamia, caused the collapse of the Indus civilisation.[223] The climate change which caused the collapse of the Indus Valley Civilisation was possibly due to \"an abrupt and critical mega-drought and cooling 4,200 years ago\", which marks the onset of the Meghalayan Age, the present stage of the Holocene.[224]",
+      "claim_id": "IVC-024",
+      "wikipedia_text_verbatim": "The climate change which caused the collapse of the Indus Valley Civilisation was possibly due to \"an abrupt and critical mega-drought and cooling 4,200 years ago\", which marks the onset of the Meghalayan Age, the present stage of the Holocene.[224]",
       "location_on_page": "Climate change and drought",
       "citation_markers": [
-        "220",
-        "221",
-        "222",
-        "223",
         "224"
       ],
       "citation_footnotes_verbatim": {
-        "220": "David Knipe (1991), Hinduism. San Francisco: Harper",
-        "221": "\"Decline of Bronze Age 'megacities' linked to climate change\". phys.org. February 2014. Archived from the original on 22 June 2018. Retrieved 31 October 2015.",
-        "222": "Marris, Emma (3 March 2014). \"Two-hundred-year drought doomed Indus Valley Civilization\". Nature. doi:10.1038/nature.2014.14800.",
-        "223": "Lawler, Andrew (6 June 2008). \"Indus Collapse: The End or the Beginning of an Asian Culture?\". Science. 320 (5881): 1281–1283. doi:10.1126/science.320.5881.1281. PMID 18535222.",
         "224": "\"Collapse of civilizations worldwide defines youngest unit of the Geologic Time Scale\". News and Meetings. International Commission on Stratigraphy. Archived from the original on 15 July 2018. Retrieved 15 July 2018."
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [220][221][222][223][224]",
+          "cited_by": "Wikipedia footnote [224]",
           "citation_in_previous_verbatim": null,
           "source": {
             "author": null,
-            "title": "David Knipe (1991), Hinduism. San Francisco: Harper",
+            "title": "Collapse of civilizations worldwide defines youngest unit of the Geologic Time Scale",
             "container_work": null,
-            "publisher_or_journal": null,
-            "year": 1991,
+            "publisher_or_journal": "International Commission on Stratigraphy",
+            "year": null,
             "pages": null,
             "identifier": null,
-            "document_type": "other",
-            "retrieval_url": null,
+            "document_type": "book",
+            "retrieval_url": "http://www.stratigraphy.org/index.php/ics-news-and-meetings/119-collapse-of-civilizations-worldwide-defines-youngest-unit-of-the-geologic-time-scale",
             "retrieval_status": "unreachable",
-            "is_public_domain": null,
+            "is_public_domain": false,
             "local_cache_path": null
           },
           "structured_facts": {},
@@ -1123,23 +708,19 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-042",
-      "wikipedia_text_verbatim": "The Indus Valley climate grew significantly cooler and drier from about 1800 BCE, linked to a general weakening of the monsoon at that time.[6] The Indian monsoon declined and aridity increased, with the Ghaggar-Hakra retracting its reach towards the foothills of the Himalaya,[6][227][228] leading to erratic and less extensive floods that made inundation agriculture less sustainable.",
+      "claim_id": "IVC-025",
+      "wikipedia_text_verbatim": "The Indus Valley climate grew significantly cooler and drier from about 1800 BCE, linked to a general weakening of the monsoon at that time.[6]",
       "location_on_page": "Climate change and drought",
       "citation_markers": [
-        "6",
-        "227",
-        "228"
+        "6"
       ],
       "citation_footnotes_verbatim": {
-        "6": "Giosan et al. 2012.",
-        "227": "Rachel Nuwer (28 May 2012). \"An Ancient Civilization, Upended by Climate Change\". New York Times. LiveScience. Archived from the original on 7 October 2019. Retrieved 29 May 2012.",
-        "228": "Charles Choi (29 May 2012). \"Huge Ancient Civilization's Collapse Explained\". New York Times. Archived from the original on 1 May 2020. Retrieved 18 May 2016."
+        "6": "Giosan et al. 2012."
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [6][227][228]",
+          "cited_by": "Wikipedia footnote [6]",
           "citation_in_previous_verbatim": null,
           "source": {
             "author": [
@@ -1181,15 +762,11 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-043",
-      "wikipedia_text_verbatim": "Archaeological excavations indicate that the decline of Harappa drove people eastward.[233] According to Possehl, after 1900 BCE the number of sites in today's India increased from 218 to 853.",
+      "claim_id": "IVC-026",
+      "wikipedia_text_verbatim": "According to Possehl, after 1900 BCE the number of sites in today's India increased from 218 to 853.",
       "location_on_page": "Continuity and coexistence",
-      "citation_markers": [
-        "233"
-      ],
-      "citation_footnotes_verbatim": {
-        "233": "Warrier, Shrikala. Kamandalu: The Seven Sacred Rivers of Hinduism. Mayur University. p. 125."
-      },
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -1198,8 +775,8 @@
       }
     },
     {
-      "claim_id": "IVC-044",
-      "wikipedia_text_verbatim": "According to Andrew Lawler, \"excavations along the Gangetic plain show that cities began to arise there starting about 1200 BCE, just a few centuries after Harappa was deserted and much earlier than once suspected.\"[223][ai] According to Jim Shaffer there was a continuous series of cultural developments, just as in most areas of the world.",
+      "claim_id": "IVC-027",
+      "wikipedia_text_verbatim": "According to Andrew Lawler, \"excavations along the Gangetic plain show that cities began to arise there starting about 1200 BCE, just a few centuries after Harappa was deserted and much earlier than once suspected.\"[223][ai]",
       "location_on_page": "Continuity and coexistence",
       "citation_markers": [
         "223",
@@ -1238,7 +815,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-045",
+      "claim_id": "IVC-028",
       "wikipedia_text_verbatim": "At sites such as Bhagwanpura (in Haryana), archaeological excavations have discovered an overlap between the final phase of Late Harappan pottery and the earliest phase of Painted Grey Ware pottery, the latter being associated with the Vedic culture and dating from around 1200 BCE.",
       "location_on_page": "Continuity and coexistence",
       "citation_markers": [],
@@ -1251,62 +828,19 @@
       }
     },
     {
-      "claim_id": "IVC-046",
-      "wikipedia_text_verbatim": "In their report on archaeological excavations at Rojdi, Gregory Possehl and M.H. Raval write that although there are \"obvious signs of cultural continuity\" between the Harappan civilisation and later South Asian cultures, many aspects of the Harappan \"sociocultural system\" and \"integrated civilisation\" were \"lost forever,\" while the Second Urbanisation of India (beginning with the Northern Black Polished Ware culture, c. 600 BCE) \"lies well outside this sociocultural environment\".[236]",
-      "location_on_page": "Continuity and coexistence",
-      "citation_markers": [
-        "236"
-      ],
-      "citation_footnotes_verbatim": {
-        "236": "Possehl, Gregory L.; Raval, M.H. (1989). Harappan Civilisation and Rojdi. Oxford & IBH Publishing Company. p. 19. ISBN 81-204-0404-1."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [236]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": [
-              "Gregory L. Possehl",
-              "Raval, M.H."
-            ],
-            "title": "Harappan Civilisation and Rojdi",
-            "container_work": null,
-            "publisher_or_journal": "Oxford & IBH Publishing Company",
-            "year": 1989,
-            "pages": "19",
-            "identifier": "ISBN 81-204-0404-1",
-            "document_type": "book",
-            "retrieval_url": "https://books.google.com/books?id=LtgUAAAAIAAJ",
-            "retrieval_status": "not_independently_verified",
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/possehl-1989-harappan-civilisation-and-rojdi.html"
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
-      "status": "pending",
-      "technical_log_refs": []
-    },
-    {
-      "claim_id": "IVC-047",
-      "wikipedia_text_verbatim": "As of 2016[update], archaeological data suggests that the material culture classified as Late Harappan may have persisted until at least c. 1000–900 BCE and was partially contemporaneous with the Painted Grey Ware culture.[235] Harvard archaeologist Richard Meadow points to the late Harappan settlement of Pirak, which thrived continuously from 1800 BCE to the time of the invasion of Alexander the Great in 325 BCE.[223]",
+      "claim_id": "IVC-029",
+      "wikipedia_text_verbatim": "As of 2016[update], archaeological data suggests that the material culture classified as Late Harappan may have persisted until at least c. 1000–900 BCE and was partially contemporaneous with the Painted Grey Ware culture.[235]",
       "location_on_page": "Post-Harappan",
       "citation_markers": [
-        "235",
-        "223"
+        "235"
       ],
       "citation_footnotes_verbatim": {
-        "223": "Lawler, Andrew (6 June 2008). \"Indus Collapse: The End or the Beginning of an Asian Culture?\". Science. 320 (5881): 1281–1283. doi:10.1126/science.320.5881.1281. PMID 18535222.",
         "235": "Shaffer, Jim (1993). \"Reurbanization: The eastern Punjab and beyond\". In Spodek, Howard; Srinivasan, Doris M. (eds.). Urban Form and Meaning in South Asia: The Shaping of Cities from Prehistoric to Precolonial Times."
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [235][223]",
+          "cited_by": "Wikipedia footnote [235]",
           "citation_in_previous_verbatim": null,
           "source": {
             "author": "Jim Shaffer",
@@ -1332,8 +866,46 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-048",
-      "wikipedia_text_verbatim": "on a reconstructed genome obtained from a female skeleton found in an IVC-related cemetery in Rakhigarhi, Haryana, India, dating to around 2,800–2,300 BCE.[239] The analysis suggested that the majority of the genome was closely related to Mesolithic Iranian hunter-gatherers.",
+      "claim_id": "IVC-030",
+      "wikipedia_text_verbatim": "Harvard archaeologist Richard Meadow points to the late Harappan settlement of Pirak, which thrived continuously from 1800 BCE to the time of the invasion of Alexander the Great in 325 BCE.[223]",
+      "location_on_page": "Post-Harappan",
+      "citation_markers": [
+        "223"
+      ],
+      "citation_footnotes_verbatim": {
+        "223": "Lawler, Andrew (6 June 2008). \"Indus Collapse: The End or the Beginning of an Asian Culture?\". Science. 320 (5881): 1281–1283. doi:10.1126/science.320.5881.1281. PMID 18535222."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [223]",
+          "citation_in_previous_verbatim": null,
+          "source": {
+            "author": "Andrew Lawler",
+            "title": "Indus Collapse: The End or the Beginning of an Asian Culture?",
+            "container_work": null,
+            "publisher_or_journal": "Science",
+            "year": 2008,
+            "pages": "1281-1283",
+            "identifier": null,
+            "document_type": "journal_article",
+            "retrieval_url": null,
+            "retrieval_status": "unreachable",
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "structured_facts": {},
+          "verbatim_quotes": [],
+          "is_terminal": false,
+          "terminal_type": null
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "IVC-031",
+      "wikipedia_text_verbatim": "In 2019, a study was published by Shinde et al. on a reconstructed genome obtained from a female skeleton found in an IVC-related cemetery in Rakhigarhi, Haryana, India, dating to around 2,800–2,300 BCE.[239]",
       "location_on_page": "Genetics",
       "citation_markers": [
         "239"
