@@ -301,16 +301,32 @@ async function main() {
       }
     }
 
-    // screenshot each final quote as it appears in the source PDF (original font)
+    // screenshot each final quote as it appears in the source PDF (original
+    // font), plus the whole page it sits on (running heads, page numbers, other
+    // columns and all — authenticity), shared across quotes on the same page
     for (const h of c.hops) {
       h.quote_images = [];
+      h.quote_page_images = [];
       if (!h._pdfPath || !h.verbatim_quotes.length) continue;
+      const base = path.basename(h._pdfPath, ".pdf");
+      const dir = path.join(opt.cache, page.slug);
+      const fullByPage = {};
       h.verbatim_quotes.forEach((q, qi) => {
-        const rel = path.join("source-cache", page.slug, path.basename(h._pdfPath, ".pdf") + ".h" + h.hop_index + "q" + (qi + 1) + ".png");
-        const abs = path.join(opt.cache, page.slug, path.basename(rel));
-        const shot = scholar.snapshotQuote(h._pdfPath, q, abs);
-        h.quote_images[qi] = shot ? "/" + rel.replace(/\\/g, "/") : null;
-        if (shot) log("      quote shot: " + rel + " (p." + shot.page + ")");
+        const relCrop = path.join("source-cache", page.slug, base + ".h" + h.hop_index + "q" + (qi + 1) + ".png");
+        const shot = scholar.snapshotQuote(h._pdfPath, q, path.join(dir, path.basename(relCrop)));
+        h.quote_images[qi] = shot ? "/" + relCrop.replace(/\\/g, "/") : null;
+        if (!shot) {
+          h.quote_page_images[qi] = null;
+          return;
+        }
+        log("      quote shot: " + relCrop + " (p." + shot.page + ")");
+        if (!(shot.page in fullByPage)) {
+          const relFull = path.join("source-cache", page.slug, base + ".p" + shot.page + ".png");
+          const ok = scholar.snapshotPage(h._pdfPath, shot.page, path.join(dir, path.basename(relFull)));
+          fullByPage[shot.page] = ok ? "/" + relFull.replace(/\\/g, "/") : null;
+          if (ok) log("      full page:  " + relFull);
+        }
+        h.quote_page_images[qi] = fullByPage[shot.page];
       });
     }
 

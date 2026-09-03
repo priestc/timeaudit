@@ -277,9 +277,10 @@
   searchEl.oninput = renderList;
 
   function inlineImages(html) {
-    // fold <img src="/source-cache/...png"> into data: URIs so the saved file is portable
+    // fold /source-cache/... image URLs (quote crop <img src>, full-page <a href>)
+    // into data: URIs so the saved file is portable
     var srcs = [];
-    html.replace(/<img\b[^>]*\bsrc="(\/source-cache\/[^"']+)"/gi, function (m, s) {
+    html.replace(/(?:src|href)="(\/source-cache\/[^"']+\.(?:png|jpe?g|webp|gif))"/gi, function (m, s) {
       if (srcs.indexOf(s) === -1) srcs.push(s);
       return m;
     });

@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-03T03:06:45.272Z",
+    "generated_at": "2026-09-03T03:47:53.201Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -49,6 +49,7 @@
           "structured_facts": {},
           "verbatim_quotes": [],
           "quote_images": [],
+          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -115,6 +116,11 @@
             null,
             null
           ],
+          "quote_page_images": [
+            null,
+            null,
+            null
+          ],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -168,6 +174,7 @@
           "structured_facts": {},
           "verbatim_quotes": [],
           "quote_images": [],
+          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": "radiocarbon"
         },
@@ -202,6 +209,9 @@
           ],
           "quote_images": [
             "/source-cache/g-bekli-tepe/doi-10-1017-s0003598x00100122.h2q1.png"
+          ],
+          "quote_page_images": [
+            "/source-cache/g-bekli-tepe/doi-10-1017-s0003598x00100122.p2.png"
           ],
           "is_terminal": false,
           "terminal_type": null
@@ -275,6 +285,11 @@
             "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.h1q2.png",
             null
           ],
+          "quote_page_images": [
+            "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.p7.png",
+            "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.p32.png",
+            null
+          ],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -332,6 +347,7 @@
           "structured_facts": {},
           "verbatim_quotes": [],
           "quote_images": [],
+          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         },
@@ -356,6 +372,7 @@
           "structured_facts": {},
           "verbatim_quotes": [],
           "quote_images": [],
+          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -429,6 +446,7 @@
           },
           "verbatim_quotes": [],
           "quote_images": [],
+          "quote_page_images": [],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -486,6 +504,7 @@
           },
           "verbatim_quotes": [],
           "quote_images": [],
+          "quote_page_images": [],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -551,6 +570,7 @@
           "structured_facts": {},
           "verbatim_quotes": [],
           "quote_images": [],
+          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -590,6 +610,7 @@
           "structured_facts": {},
           "verbatim_quotes": [],
           "quote_images": [],
+          "quote_page_images": [],
           "is_terminal": false,
           "terminal_type": null
         }

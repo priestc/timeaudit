@@ -53,10 +53,13 @@ Full design notes in **`PIPELINE.md`**. Key points:
   extracted `.txt`), and the Wikipedia API response under
   `source-cache/_wikipedia/`.
 - **Quote screenshots**: each verbatim quote from a cached PDF gets a cropped
-  PNG (`pdftotext -bbox-layout` to locate + `pdftoppm` to crop) showing the
-  passage in the source's original typography — `quote_images[]` in the hop,
-  aligned to `verbatim_quotes[]`. `serve.js` serves them at `/source-cache/...`;
-  the standalone-HTML tools inline them as data URIs (`lib/inline-assets.js`).
+  PNG (`pdftotext -bbox-layout` to locate + `pdftoppm` to crop) in the source's
+  original typography — `quote_images[]` — plus the whole page it came from —
+  `quote_page_images[]` — both aligned to `verbatim_quotes[]`. In the viewer the
+  crop links to the full page (opens in a new tab). `serve.js` serves them at
+  `/source-cache/...`; the standalone-HTML tools inline both as data URIs
+  (`lib/inline-assets.js`), with a small click shim in `renderDocument` since a
+  `data:` URI can't be a top-level navigation.
 - **Sync to tank2** (`lib/sync.js`, unless `--no-sync`): `rsync`s the report and
   the whole `source-cache/` tree to `tank2:/home/chris/timeaudit/` (host/dir
   overridable via `TIMEAUDIT_TANK2_HOST` / `TIMEAUDIT_TANK2_DIR`). The web
