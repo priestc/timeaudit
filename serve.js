@@ -264,6 +264,15 @@ const server = http.createServer(async (req, res) => {
             : null,
         };
       };
+      const shapeClaim = (c) => ({
+        sentence_cited: c.sentence_cited,
+        section: c.section,
+        cutoff: c.cutoff,
+        markers: (c.markers || []).map(shapeMarker),
+        context_before: c.context_before || [],
+        context_after: c.context_after || [],
+        reason: c.reason || null, // set on dropped ones
+      });
       return send(
         res,
         200,
@@ -275,13 +284,8 @@ const server = http.createServer(async (req, res) => {
             revid: page.revid,
             sections: page.sections.length,
           },
-          claims: claims.map((c) => ({
-            sentence_cited: c.sentence_cited,
-            section: c.section,
-            cutoff: c.cutoff,
-            markers: (c.markers || []).map(shapeMarker),
-          })),
-          rejected,
+          claims: claims.map(shapeClaim),
+          rejected: rejected.map(shapeClaim),
         })
       );
     }
