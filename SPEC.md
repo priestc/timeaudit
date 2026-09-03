@@ -198,6 +198,8 @@ Every file actually downloaded while tracing a chain (PDF, HTML, etc.) must be s
 
 A worked example (Wikipedia's "Indus Valley Civilisation" page, two claims) is provided alongside this spec as `indus-valley-civilisation.json`. Both claims are `"status": "pending"`: each chain currently stops at the source the Wikipedia footnote cites, because the onward citation inside that source (the one leading to the physical dating evidence) has not yet been located in the document itself. Per Rule 6 the chain does not advance past that point on assumption. New implementers should validate their output against the same schema and compare structurally against this example before running at scale.
 
+Note that Wikipedia renumbers its inline citations whenever references are added or removed earlier in the article, so the `[n]` markers recorded for a claim are only valid as of the claim's `page.retrieved_at` — a later reader opening the live page may see the same source under a different number.
+
 ## Explicit non-goals
 
 - This process does not judge whether a dating claim is correct, contested, or reliable. Fields like `terminal_type` and `structured_facts` are descriptive only.

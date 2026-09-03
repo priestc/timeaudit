@@ -9,19 +9,19 @@
   "claims": [
     {
       "claim_id": "IVC-001",
-      "wikipedia_text_verbatim": "The Indus Valley Civilisation (IVC), also known as the Indus Civilisation, was a Bronze Age civilisation in the northwestern regions of South Asia, lasting from 3300 BCE to 1300 BCE, and in its mature form from 2600 BCE to 1900 BCE.[2][a]",
+      "wikipedia_text_verbatim": "The Indus Valley Civilisation (IVC), also known as the Indus Civilisation, was a Bronze Age civilisation in the northwestern regions of South Asia, lasting from 3300 BCE to 1300 BCE, and in its mature form from 2600 BCE to 1900 BCE.[3][a]",
       "location_on_page": "Lead section, opening paragraph",
-      "citation_markers": ["2", "a"],
+      "citation_markers": ["3", "a"],
       "wikipedia_quote_image": null,
       "wikipedia_quote_page_image": null,
       "citation_footnotes_verbatim": {
         "a": "Wright: 'Mesopotamia and Egypt ... co-existed with the Indus civilization during its florescence between 2600 and 1900 BC.'",
-        "2": null
+        "3": null
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [2] (tag FOOTNOTEWright20091) and footnote [a]",
+          "cited_by": "Wikipedia footnote [3] (tag FOOTNOTEWright20091) and footnote [a]",
           "citation_in_previous_verbatim": null,
           "source": {
             "author": "Rita P. Wright",
@@ -52,18 +52,18 @@
     },
     {
       "claim_id": "IVC-002",
-      "wikipedia_text_verbatim": "In 2019, a study was published by Shinde et al. on a reconstructed genome obtained from a female skeleton found in an IVC-related cemetery in Rakhigarhi, Haryana, India, dating to around 2,800-2,300 BCE.[236]",
+      "wikipedia_text_verbatim": "In 2019, a study was published by Shinde et al. on a reconstructed genome obtained from a female skeleton found in an IVC-related cemetery in Rakhigarhi, Haryana, India, dating to around 2,800-2,300 BCE.[239]",
       "location_on_page": "Genetics subsection",
-      "citation_markers": ["236"],
+      "citation_markers": ["239"],
       "wikipedia_quote_image": null,
       "wikipedia_quote_page_image": null,
       "citation_footnotes_verbatim": {
-        "236": null
+        "239": null
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [236] (tag Shinde_2019)",
+          "cited_by": "Wikipedia footnote [239] (tag Shinde_2019)",
           "citation_in_previous_verbatim": null,
           "source": {
             "author": ["Vasant Shinde", "Vagheesh M. Narasimhan", "et al."],
