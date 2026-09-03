@@ -81,12 +81,14 @@ A formal JSON Schema (draft 2020-12) is provided alongside this document as `sch
 ```
 {
   "claim_id": string,                     // unique within the page, e.g. "IVC-001"
-  "wikipedia_text_verbatim": string,       // exact sentence, no paraphrase
+  "wikipedia_text_verbatim": string,       // exact sentence, no paraphrase, WITH the inline citation markers ("...8000 BCE,[4] during...") exactly where Wikipedia shows them
   "location_on_page": string,              // section heading
   "citation_markers": [string, ...],       // e.g. ["2", "a"]
   "citation_footnotes_verbatim": {         // exact text Wikipedia shows per marker, if any
     "<marker>": string | null
   },
+  "wikipedia_quote_image": string | null,       // path under /source-cache/_wikipedia/ to a screenshot of this sentence on the rendered Wikipedia page (Wikimedia PDF render); null if it could not be located
+  "wikipedia_quote_page_image": string | null,  // path to a screenshot of the whole Wikipedia page the sentence sits on; claims on the same page share one image
   "citation_chain": [ <Hop>, ... ],
   "status": "resolved" | "dead_end" | "pending",
   "technical_log_refs": [string, ...]      // IDs into technical_log, if any hop was terminal-physical

@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-03T03:47:53.201Z",
+    "generated_at": "2026-09-03T13:39:39.020Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -16,7 +16,7 @@
   "claims": [
     {
       "claim_id": "GT-001",
-      "wikipedia_text_verbatim": "The settlement was inhabited from around 9500 BCE to at least 8000 BCE, during the Pre-Pottery Neolithic.",
+      "wikipedia_text_verbatim": "The settlement was inhabited from around 9500 BCE to at least 8000 BCE,[4] during the Pre-Pottery Neolithic.",
       "location_on_page": "Lead section",
       "citation_markers": [
         "4"
@@ -24,6 +24,8 @@
       "citation_footnotes_verbatim": {
         "4": "Breuers & Kinzel 2022, p. 471."
       },
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim1.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p1.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -59,7 +61,7 @@
     },
     {
       "claim_id": "GT-002",
-      "wikipedia_text_verbatim": "Göbekli Tepe was built and occupied during the earliest part of the Southwest Asian Neolithic, known as the Pre-Pottery Neolithic (PPN, c. 9600–7000 BCE). Beginning at the end of the last Ice Age, the PPN marks \"the beginnings of village life\", producing the earliest evidence for permanent human settlements in the world. One of the earliest known sites is Körtik Tepe, dated to 10,700-9250 BC, which may have been a predecessor of the PPN artistic and material culture in Upper Mesopotamia, including Göbekli Tepe and the other Taş Tepeler sites.",
+      "wikipedia_text_verbatim": "Göbekli Tepe was built and occupied during the earliest part of the Southwest Asian Neolithic, known as the Pre-Pottery Neolithic (PPN, c. 9600–7000 BCE).[29] Beginning at the end of the last Ice Age, the PPN marks \"the beginnings of village life\",[30] producing the earliest evidence for permanent human settlements in the world.[30][31] One of the earliest known sites is Körtik Tepe, dated to 10,700-9250 BC,[32] which may have been a predecessor of the PPN artistic and material culture in Upper Mesopotamia, including Göbekli Tepe and the other Taş Tepeler sites.[33]",
       "location_on_page": "Dawn of village life",
       "citation_markers": [
         "29",
@@ -75,6 +77,8 @@
         "32": "Özkaya & Coşkun 2010.",
         "33": "Richter & Darabi 2023, p. 168 \"Considering the prosperous sedentary life, building tradition and imagery-based symbolic trends and cultural influence since the Younger Dryas, it is apparent that Körtiktepe (and likely other unexcavated Late Epipalaeolithic sites in the region) was an important predecessor of the PPNA culture in the Upper Tigris Basin, which later flourished with Hallan Çemi, Çayönü, Demirköy Höyük, Hasankeyf Höyük, Çemka Höyük, Gusir Höyük and Boncuklu Tarla. It is also likely that, if not the predecessor, Körtiktepe at least had a great influence on the animal symbolism at the dawn of the Neolithic, with a lasting effect on subsequent PPN sites such as Göbeklitepe, Karahantepe, Jerf el Ahmar, Dja'de el Mughara and Nevalı Çori in the Middle Euphrates Basin, as well as Nemrik 9 and Qermez Dere in the Middle Tigris Basin.\""
       },
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim2.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p3.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -130,7 +134,7 @@
     },
     {
       "claim_id": "GT-003",
-      "wikipedia_text_verbatim": "Archaeologists have long associated the appearance of these settlements with the Neolithic Revolution—the transition from hunting and gathering to agriculture—but disagree on whether the adoption of farming caused people to settle down, or settling down caused people to adopt farming. Despite the name, the Neolithic Revolution in Southwest Asia was \"drawn out and locally variable\". Elements of village life appeared as early as 10,000 years before the Neolithic in places, and the transition to agriculture took thousands of years, with different paces and trajectories in different regions. Archaeologists divide the Pre-Pottery Neolithic into two subperiods: the Pre-Pottery Neolithic A (PPNA, c. 9600–8800 BCE) and the Pre-Pottery Neolithic B (PPNB, c. 8800 and 7000 BCE). The earliest phases at Göbekli Tepe have been dated to the PPNA; later phases to the PPNB.",
+      "wikipedia_text_verbatim": "Archaeologists have long associated the appearance of these settlements with the Neolithic Revolution—the transition from hunting and gathering to agriculture—but disagree on whether the adoption of farming caused people to settle down, or settling down caused people to adopt farming.[34] Despite the name, the Neolithic Revolution in Southwest Asia was \"drawn out and locally variable\".[35] Elements of village life appeared as early as 10,000 years before the Neolithic in places,[36][37] and the transition to agriculture took thousands of years, with different paces and trajectories in different regions.[38][39] Archaeologists divide the Pre-Pottery Neolithic into two subperiods: the Pre-Pottery Neolithic A (PPNA, c. 9600–8800 BCE) and the Pre-Pottery Neolithic B (PPNB, c. 8800 and 7000 BCE).[31] The earliest phases at Göbekli Tepe have been dated to the PPNA; later phases to the PPNB.[8]",
       "location_on_page": "Dawn of village life",
       "citation_markers": [
         "34",
@@ -152,6 +156,8 @@
         "38": "Fuller, Willcox & Allaby 2012.",
         "39": "Arbuckle 2014."
       },
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim3.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p3.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -222,7 +228,7 @@
     },
     {
       "claim_id": "GT-004",
-      "wikipedia_text_verbatim": "Radiocarbon dating shows that the earliest exposed structures at Göbekli Tepe were built between 9500 and 9000 BCE, towards the end of the Pre-Pottery Neolithic A (PPNA) period. The site was significantly expanded in the early 9th millennium BCE and remained in use until around 8000 BCE, or perhaps slightly later (the early Pre-Pottery Neolithic B, PPNB). There is evidence that smaller groups returned to live amongst the ruins after the Neolithic structures were abandoned.",
+      "wikipedia_text_verbatim": "Radiocarbon dating shows that the earliest exposed structures at Göbekli Tepe were built between 9500 and 9000 BCE, towards the end of the Pre-Pottery Neolithic A (PPNA) period.[48][8] The site was significantly expanded in the early 9th millennium BCE and remained in use until around 8000 BCE, or perhaps slightly later (the early Pre-Pottery Neolithic B, PPNB).[8] There is evidence that smaller groups returned to live amongst the ruins after the Neolithic structures were abandoned.[8]",
       "location_on_page": "Chronology",
       "citation_markers": [
         "48",
@@ -232,6 +238,8 @@
         "8": "Kinzel & Clare 2020, pp. 32–33.",
         "48": "Dietrich et al. 2013."
       },
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim4.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p4.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -299,7 +307,7 @@
     },
     {
       "claim_id": "GT-005",
-      "wikipedia_text_verbatim": "Schmidt originally dated the site to the PPN based on the types of stone tools found there, considering a PPNA date \"most probable\". Establishing its absolute chronology took longer due to methodological challenges. Though the first two radiocarbon dates were published in 1998, these and other samples from the fill of the structure dated to the late 10th and early 9th millennium – 500 to 1,000 years later than expected for a PPNA site. Schmidt's team explained the discrepancy in light of their theory that this material was brought to the site from elsewhere when it was abandoned, and so was not representative of the actual use of the structures. They instead turned to a novel method of dating organic material preserved in the plaster on the structure's walls, which resulted in dates more consistent with a PPNA occupation, in the middle or even early 10th millennium BCE. Subsequent research led to a significant revision of Schmidt's chronology, including the abandonment of the hypothesis that the fill of the structures was brought from elsewhere, and a recognition that direct dates on plaster are affected by the old wood effect. Together with new radiocarbon dates, this has established the site's absolute chronology as falling in the period 9500 to 8000 BCE – the late PPNA and PPNB.",
+      "wikipedia_text_verbatim": "Schmidt originally dated the site to the PPN based on the types of stone tools found there, considering a PPNA date \"most probable\".[49] Establishing its absolute chronology took longer due to methodological challenges.[50][51] Though the first two radiocarbon dates were published in 1998,[52] these and other samples from the fill of the structure dated to the late 10th and early 9th millennium – 500 to 1,000 years later than expected for a PPNA site.[50] Schmidt's team explained the discrepancy in light of their theory that this material was brought to the site from elsewhere when it was abandoned, and so was not representative of the actual use of the structures.[50][51] They instead turned to a novel method of dating organic material preserved in the plaster on the structure's walls, which resulted in dates more consistent with a PPNA occupation, in the middle or even early 10th millennium BCE.[53][54][48] Subsequent research led to a significant revision of Schmidt's chronology, including the abandonment of the hypothesis that the fill of the structures was brought from elsewhere, and a recognition that direct dates on plaster are affected by the old wood effect.[55] Together with new radiocarbon dates, this has established the site's absolute chronology as falling in the period 9500 to 8000 BCE – the late PPNA and PPNB.[1][56]",
       "location_on_page": "Chronology",
       "citation_markers": [
         "49",
@@ -325,6 +333,8 @@
         "55": "Kinzel & Clare 2020, p. 38.",
         "56": "Kinzel & Clare 2020."
       },
+      "wikipedia_quote_image": null,
+      "wikipedia_quote_page_image": null,
       "citation_chain": [
         {
           "hop_index": 1,
@@ -389,6 +399,8 @@
       "location_on_page": "Building phases",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim6.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p4.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -402,6 +414,8 @@
       "location_on_page": "Building phases",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim7.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p4.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -411,7 +425,7 @@
     },
     {
       "claim_id": "GT-008",
-      "wikipedia_text_verbatim": "Phase 1: The earliest settlement phase dates to the second half of the 10th millennium BCE and includes the first versions of enclosures A to D and round-oval domestic structures, which indicate a (semi) sedentary lifestyle.",
+      "wikipedia_text_verbatim": "Phase 1: The earliest settlement phase dates to the second half of the 10th millennium BCE and includes the first versions of enclosures A to D and round-oval domestic structures, which indicate a (semi) sedentary lifestyle.[57]",
       "location_on_page": "Building phases",
       "citation_markers": [
         "57"
@@ -419,6 +433,8 @@
       "citation_footnotes_verbatim": {
         "57": "Kinzel & Clare 2020, p. 32."
       },
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim8.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p5.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -460,6 +476,8 @@
       "location_on_page": "Building phases",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim9.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p5.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -469,7 +487,7 @@
     },
     {
       "claim_id": "GT-010",
-      "wikipedia_text_verbatim": "Nonetheless, a second major slope-slide event occurred, which likely resulted in enclosure D being abandoned in the late 9th millennium BCE.",
+      "wikipedia_text_verbatim": "Nonetheless, a second major slope-slide event occurred, which likely resulted in enclosure D being abandoned in the late 9th millennium BCE.[8]",
       "location_on_page": "Building phases",
       "citation_markers": [
         "8"
@@ -477,6 +495,8 @@
       "citation_footnotes_verbatim": {
         "8": "Kinzel & Clare 2020, pp. 32–33."
       },
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim10.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p5.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -518,6 +538,8 @@
       "location_on_page": "Building phases",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim11.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p5.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -531,6 +553,8 @@
       "location_on_page": "Large enclosures",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim12.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p5.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],
@@ -540,7 +564,7 @@
     },
     {
       "claim_id": "GT-013",
-      "wikipedia_text_verbatim": "Some of the floors in this, the oldest layer, are made of terrazzo (burnt lime); others are the bedrock from which pedestals hold the large pair of central pillars, which were carved in high relief. Radiocarbon dating places the construction of these early circles c. 9000 BCE.",
+      "wikipedia_text_verbatim": "Some of the floors in this, the oldest layer, are made of terrazzo (burnt lime); others are the bedrock from which pedestals hold the large pair of central pillars, which were carved in high relief.[63] Radiocarbon dating places the construction of these early circles c. 9000 BCE.",
       "location_on_page": "Large enclosures",
       "citation_markers": [
         "63"
@@ -548,6 +572,8 @@
       "citation_footnotes_verbatim": {
         "63": "Schmidt 2010, p. 251."
       },
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim13.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p6.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -580,7 +606,7 @@
     },
     {
       "claim_id": "GT-014",
-      "wikipedia_text_verbatim": "Carbon dating has yielded dates between 8800 and 8000 BCE. Several T-pillars up to 1.5 metres tall occupy the centre of the rooms.",
+      "wikipedia_text_verbatim": "Carbon dating has yielded dates between 8800 and 8000 BCE.[66] Several T-pillars up to 1.5 metres tall occupy the centre of the rooms.",
       "location_on_page": "Large enclosures",
       "citation_markers": [
         "66"
@@ -588,6 +614,8 @@
       "citation_footnotes_verbatim": {
         "66": "Schmidt 2009, p. 291."
       },
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim14.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p6.png",
       "citation_chain": [
         {
           "hop_index": 1,
@@ -624,6 +652,8 @@
       "location_on_page": "Landslides and reconstruction",
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
+      "wikipedia_quote_image": "/source-cache/_wikipedia/g-bekli-tepe.claim15.png",
+      "wikipedia_quote_page_image": "/source-cache/_wikipedia/g-bekli-tepe.p9.png",
       "citation_chain": [],
       "status": "pending",
       "technical_log_refs": [],

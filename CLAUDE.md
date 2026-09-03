@@ -60,6 +60,11 @@ Full design notes in **`PIPELINE.md`**. Key points:
   `/source-cache/...`; the standalone-HTML tools inline both as data URIs
   (`lib/inline-assets.js`), with a small click shim in `renderDocument` since a
   `data:` URI can't be a top-level navigation.
+- **Wikipedia page screenshot**: `wikipedia_text_verbatim` keeps the inline
+  `[n]` markers. `lib/wiki.js` also fetches the article's Wikimedia PDF render
+  (`_wikipedia/<slug>.pdf`); `timeaudit.js` screenshots each claim sentence on
+  it — `wikipedia_quote_image` (crop) + `wikipedia_quote_page_image` (full page,
+  shared per page) on the Claim. Shown under the claim's quote in the viewer.
 - **Sync to tank2** (`lib/sync.js`, unless `--no-sync`): `rsync`s the report and
   the whole `source-cache/` tree to `tank2:/home/chris/timeaudit/` (host/dir
   overridable via `TIMEAUDIT_TANK2_HOST` / `TIMEAUDIT_TANK2_DIR`). The web

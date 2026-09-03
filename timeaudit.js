@@ -176,6 +176,28 @@ async function main() {
   if (mode === "local") log("  chains needing judgement will stay 'pending' (no AI in this mode)");
   if (!scholar.havePdftotext()) log("  ! pdftotext not found — PDF sources will not be text-mined");
 
+  // screenshot each claim's sentence on the rendered Wikipedia page (its own
+  // citation markers, infobox, layout — where the quote is actually taken from)
+  if (page.pdfPath) {
+    const wdir = path.join(opt.cache, "_wikipedia");
+    const wbase = path.join("source-cache", "_wikipedia", page.slug);
+    const fullByPage = {};
+    for (let ci = 0; ci < rawClaims.length; ci++) {
+      const c = rawClaims[ci];
+      const relCrop = wbase + ".claim" + (ci + 1) + ".png";
+      const shot = scholar.snapshotQuote(page.pdfPath, c.sentence, path.join(wdir, path.basename(relCrop)));
+      if (!shot) continue;
+      c.wikipedia_quote_image = "/" + relCrop.replace(/\\/g, "/");
+      if (!(shot.page in fullByPage)) {
+        const relFull = wbase + ".p" + shot.page + ".png";
+        const ok = scholar.snapshotPage(page.pdfPath, shot.page, path.join(wdir, path.basename(relFull)));
+        fullByPage[shot.page] = ok ? "/" + relFull.replace(/\\/g, "/") : null;
+      }
+      c.wikipedia_quote_page_image = fullByPage[shot.page];
+    }
+    log("• wikipedia page screenshots: " + rawClaims.filter((c) => c.wikipedia_quote_image).length + "/" + rawClaims.length);
+  }
+
   const budget = { left: opt.downloads };
   const claims = [];
 

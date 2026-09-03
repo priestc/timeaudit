@@ -9,9 +9,11 @@
   "claims": [
     {
       "claim_id": "IVC-001",
-      "wikipedia_text_verbatim": "The Indus Valley Civilisation (IVC), also known as the Indus Civilisation, was a Bronze Age civilisation in the northwestern regions of South Asia, lasting from 3300 BCE to 1300 BCE, and in its mature form from 2600 BCE to 1900 BCE.",
+      "wikipedia_text_verbatim": "The Indus Valley Civilisation (IVC), also known as the Indus Civilisation, was a Bronze Age civilisation in the northwestern regions of South Asia, lasting from 3300 BCE to 1300 BCE, and in its mature form from 2600 BCE to 1900 BCE.[2][a]",
       "location_on_page": "Lead section, opening paragraph",
       "citation_markers": ["2", "a"],
+      "wikipedia_quote_image": null,
+      "wikipedia_quote_page_image": null,
       "citation_footnotes_verbatim": {
         "a": "Wright: 'Mesopotamia and Egypt ... co-existed with the Indus civilization during its florescence between 2600 and 1900 BC.'",
         "2": null
@@ -50,9 +52,11 @@
     },
     {
       "claim_id": "IVC-002",
-      "wikipedia_text_verbatim": "In 2019, a study was published by Shinde et al. on a reconstructed genome obtained from a female skeleton found in an IVC-related cemetery in Rakhigarhi, Haryana, India, dating to around 2,800-2,300 BCE.",
+      "wikipedia_text_verbatim": "In 2019, a study was published by Shinde et al. on a reconstructed genome obtained from a female skeleton found in an IVC-related cemetery in Rakhigarhi, Haryana, India, dating to around 2,800-2,300 BCE.[236]",
       "location_on_page": "Genetics subsection",
       "citation_markers": ["236"],
+      "wikipedia_quote_image": null,
+      "wikipedia_quote_page_image": null,
       "citation_footnotes_verbatim": {
         "236": null
       },
