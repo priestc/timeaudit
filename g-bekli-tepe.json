@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-04T22:24:08.418Z",
+    "generated_at": "2026-09-04T22:35:30.666Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -409,7 +409,7 @@
       "status": "dead_end",
       "technical_log_refs": [],
       "structured_facts": {
-        "cutoff_basis": "date language but no parseable year (kept per rule 0)"
+        "cutoff_basis": "modern year present but an ancient period is referenced"
       }
     },
     {
