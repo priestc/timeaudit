@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-04T00:33:54.985Z",
+    "generated_at": "2026-09-04T16:26:19.493Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -16,38 +16,34 @@
   "claims": [
     {
       "claim_id": "IVC-001",
-      "wikipedia_text_verbatim": "The Indus Valley Civilisation[1] (IVC), also known as the Indus Civilisation, was a Bronze Age civilisation[2] in the northwestern regions of South Asia, lasting from 3300 BCE to 1300 BCE, and in its mature form from 2600 BCE to 1900 BCE.[3][a]",
+      "wikipedia_text_verbatim": "in the northwestern regions of South Asia, lasting from 3300 BCE to 1300 BCE, and in its mature form from 2600 BCE to 1900 BCE.[3][a]",
       "location_on_page": "Lead section",
       "citation_markers": [
-        "1",
-        "2",
         "3",
         "a"
       ],
       "citation_footnotes_verbatim": {
-        "1": "Dyson 2018, p. vi",
-        "2": "\"Indus civilization | History, Location, Map, Artifacts, Language, & Facts | Britannica\". Encyclopedia Britannica. Archived from the original on 29 May 2026. Retrieved 4 June 2026.",
         "3": "Wright 2009, p. 1.",
         "a": "Wright: \"Mesopotamia and Egypt ... co-existed with the Indus civilization during its florescence between 2600 and 1900 BC.\"[3]"
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [1][2][3][a]",
+          "cited_by": "Wikipedia footnote [3][a]",
           "citation_in_previous_verbatim": null,
           "source": {
-            "author": "Tim Dyson",
-            "title": "A Population History of India: From the First Modern People to the Present Day",
+            "author": "Rita P. Wright",
+            "title": "The Ancient Indus: Urbanism, Economy, and Society",
             "container_work": null,
-            "publisher_or_journal": "Oxford University Press",
-            "year": 2018,
+            "publisher_or_journal": "Cambridge University Press",
+            "year": 2009,
             "pages": null,
-            "identifier": "ISBN 978-0-19-882905-8",
+            "identifier": "ISBN 978-0-521-57219-4",
             "document_type": "book",
-            "retrieval_url": "https://books.google.com/books?id=3TRtDwAAQBAJ",
+            "retrieval_url": "https://books.google.com/books?id=gAgFPQAACAAJ",
             "retrieval_status": "not_independently_verified",
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/dyson-2018-a-population-history-of.html"
+            "local_cache_path": "/source-cache/indus-valley-civilisation/wright-2009-the-ancient-indus-urbanism.html"
           },
           "structured_facts": {},
           "verbatim_quotes": [],
@@ -160,20 +156,18 @@
     },
     {
       "claim_id": "IVC-005",
-      "wikipedia_text_verbatim": "Although his original goal of demonstrating Harappa to be a lost Buddhist city mentioned in the seventh century CE travels of the Chinese visitor, Xuanzang, proved elusive,[43] Cunningham did publish his findings in 1875.[44]",
+      "wikipedia_text_verbatim": "Although his original goal of demonstrating Harappa to be a lost Buddhist city mentioned in the seventh century CE travels of the Chinese visitor, Xuanzang, proved elusive,[43]",
       "location_on_page": "Discovery and history of excavation",
       "citation_markers": [
-        "43",
-        "44"
+        "43"
       ],
       "citation_footnotes_verbatim": {
-        "43": "Coningham & Young 2015, p. 180.",
-        "44": "Wright 2009, p. 7."
+        "43": "Coningham & Young 2015, p. 180."
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [43][44]",
+          "cited_by": "Wikipedia footnote [43]",
           "citation_in_previous_verbatim": null,
           "source": {
             "author": [
@@ -199,10 +193,7 @@
         }
       ],
       "status": "dead_end",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "cutoff_note": "range straddles the 1450 CE cutoff; included for the pre-1450 portion (650–1449 CE)"
-      }
+      "technical_log_refs": []
     },
     {
       "claim_id": "IVC-006",
@@ -260,22 +251,18 @@
     },
     {
       "claim_id": "IVC-008",
-      "wikipedia_text_verbatim": "Mehrgarh is a Neolithic (7000 BCE to c. 2500 BCE) mountain site in the Balochistan province of Pakistan,[74] which gave new insights on the emergence of the Indus Valley Civilisation.[62][w]",
+      "wikipedia_text_verbatim": "Mehrgarh is a Neolithic (7000 BCE to c. 2500 BCE) mountain site in the Balochistan province of Pakistan,[74]",
       "location_on_page": "Pre-Harappan era: Mehrgarh",
       "citation_markers": [
-        "74",
-        "62",
-        "w"
+        "74"
       ],
       "citation_footnotes_verbatim": {
-        "62": "Chandler, Graham (September–October 1999). \"Traders of the Plain\". Saudi Aramco World: 34–42. Archived from the original on 18 February 2007. Retrieved 11 February 2007.",
-        "74": "\"Stone age man used dentist drill\". 6 April 2006. Archived from the original on 14 November 2019. Retrieved 24 March 2016 – via news.bbc.co.uk.",
-        "w": "According to Ahmad Hasan Dani, professor emeritus at Quaid-e-Azam University, Islamabad, the discovery of Mehrgarh \"changed the entire concept of the Indus civilisation ... There we have the whole sequence, right from the beginning of settled village life.\"[62]"
+        "74": "\"Stone age man used dentist drill\". 6 April 2006. Archived from the original on 14 November 2019. Retrieved 24 March 2016 – via news.bbc.co.uk."
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [74][62][w]",
+          "cited_by": "Wikipedia footnote [74]",
           "citation_in_previous_verbatim": null,
           "source": {
             "author": null,
@@ -302,53 +289,6 @@
     },
     {
       "claim_id": "IVC-009",
-      "wikipedia_text_verbatim": "Jarrige notes \"the assumption that farming economy was introduced full-fledged from Near-East to South Asia\",[79][x][y][z] and the similarities between Neolithic sites from eastern Mesopotamia and the western Indus valley, which are evidence of a \"cultural continuum\" between those sites.",
-      "location_on_page": "Pre-Harappan era: Mehrgarh",
-      "citation_markers": [
-        "79",
-        "x",
-        "y",
-        "z"
-      ],
-      "citation_footnotes_verbatim": {
-        "79": "Jarrige 2008a.",
-        "x": "According to Gangal et al. (2014), there is strong archeological and geographical evidence that neolithic farming spread from the Near East into north-west India.[77][78] Gangal et al. (2014):[77] \"There are several lines of evidence that support the idea of a connection between the Neolithic in the Near East and in the Indian subcontinent. The prehistoric site of Mehrgarh in Baluchistan (modern Pakistan) is the earliest Neolithic site in the north-west Indian subcontinent, dated as early as 8500 BCE.\"[80]",
-        "y": "Neolithic domesticated crops in Mehrgarh include more than 90% barley and a small amount of wheat. There is good evidence for the local domestication of barley and the zebu cattle at Mehrgarh,[79][81] but the wheat varieties are suggested to be of Near-Eastern origin, as the modern distribution of wild varieties of wheat is limited to Northern Levant and Southern Turkey.[82] A detailed satellite map study of a few archaeological sites in the Baluchistan and Khybar Pakhtunkhwa regions also suggests similarities in early phases of farming with sites in Western Asia.[83] Pottery prepared by sequential slab construction, circular fire pits filled with burnt pebbles, and large granaries are common to both Mehrgarh and many Mesopotamian sites.[84] The postures of the skeletal remains in graves at Mehrgarh bear strong resemblance to those at Ali Kosh in the Zagros Mountains of southern Iran.[79] Clay figurines found in Mehrgarh resemble those discovered at Teppe Zagheh on the Qazvin plain south of the Elburz range in Iran (the 7th millennium BCE) and Jeitun in Turkmenistan (the 6th millennium BCE).[85] Strong arguments have been made for the Near-Eastern origin of some domesticated plants and herd animals at Jeitun in Turkmenistan (pp. 225–227).[86]",
-        "z": "The Near East is separated from the Indus Valley by the arid plateaus, ridges and deserts of Iran and Afghanistan, where rainfall agriculture is possible only in the foothills and cul-de-sac valleys.[87] Nevertheless, this area was not an insurmountable obstacle for the dispersal of the Neolithic. The route south of the Caspian sea is a part of the Silk Road, some sections of which were in use from at least 3,000 BCE, connecting Badakhshan (north-eastern Afghanistan and south-eastern Tajikistan) with Western Asia, Egypt and India.[88] Similarly, the section from Badakhshan to the Mesopotamian plains (the Great Khorasan Road) was apparently functioning by 4,000 BCE and numerous prehistoric sites are located along it, whose assemblages are dominated by the Cheshmeh-Ali (Tehran Plain) ceramic technology, forms and designs.[87] Striking similarities in figurines and pottery styles, and mud-brick shapes, between widely separated early Neolithic sites in the Zagros Mountains of north-western Iran (Jarmo and Sarab), the Deh Luran Plain in southwestern Iran (Tappeh Ali Kosh and Chogha Sefid), Susiana (Chogha Bonut and Chogha Mish), the Iranian Central Plateau (Tappeh-Sang-e Chakhmaq), and Turkmenistan (Jeitun) suggest a common incipient culture.[89] The Neolithic dispersal across South Asia plausibly involved migration of the population.[90][86] This possibility is also supported by Y-chromosome and mtDNA analyses.[91][92]"
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [79][x][y][z]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": "Jean-Francois Jarrige",
-            "title": "Mehrgarh Neolithic",
-            "container_work": "Pragdhara",
-            "publisher_or_journal": null,
-            "year": 2008,
-            "pages": "136-154",
-            "identifier": null,
-            "document_type": "other",
-            "retrieval_url": "http://www.archaeology.up.nic.in/doc/mn_jfj.pdf",
-            "retrieval_status": "unreachable",
-            "is_public_domain": false,
-            "local_cache_path": null
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
-      "status": "dead_end",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "cutoff_basis": "date language but no parseable year (kept per rule 0)"
-      }
-    },
-    {
-      "claim_id": "IVC-010",
       "wikipedia_text_verbatim": "Mascarenhas et al. (2015) note that \"new, possibly West Asian, body types are reported from the graves of Mehrgarh beginning in the Togau phase (3800 BCE).\"[94]",
       "location_on_page": "Pre-Harappan era: Mehrgarh",
       "citation_markers": [
@@ -402,7 +342,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-011",
+      "claim_id": "IVC-010",
       "wikipedia_text_verbatim": "The Early Harappan Ravi Phase, named after the nearby Ravi River, lasted from c. 3300 BCE until 2800 BCE.",
       "location_on_page": "Early Harappan",
       "citation_markers": [],
@@ -415,45 +355,20 @@
       }
     },
     {
-      "claim_id": "IVC-012",
-      "wikipedia_text_verbatim": "It started when farmers from the mountains gradually moved between their mountain homes and the lowland river valleys,[97] and is related to the Hakra Phase, identified in the Ghaggar-Hakra River Valley to the west, and predates the Kot Diji Phase (2800–2600 BCE, Harappan 2), named after a site in northern Sindh, Pakistan, near Mohenjo-daro.",
+      "claim_id": "IVC-011",
+      "wikipedia_text_verbatim": "is related to the Hakra Phase, identified in the Ghaggar-Hakra River Valley to the west, and predates the Kot Diji Phase (2800–2600 BCE, Harappan 2), named after a site in northern Sindh, Pakistan, near Mohenjo-daro.",
       "location_on_page": "Early Harappan",
-      "citation_markers": [
-        "97"
-      ],
-      "citation_footnotes_verbatim": {
-        "97": "Possehl, G. L. (2000). \"The Early Harappan Phase\". Bulletin of the Deccan College Research Institute. 60/61: 227–241. JSTOR 42936617."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [97]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": "G. L. Possehl",
-            "title": "The Early Harappan Phase",
-            "container_work": null,
-            "publisher_or_journal": "Bulletin of the Deccan College Research Institute",
-            "year": 2000,
-            "pages": "227-241",
-            "identifier": null,
-            "document_type": "journal_article",
-            "retrieval_url": "https://www.jstor.org/stable/42936617#id-name=JSTOR",
-            "retrieval_status": "not_independently_verified",
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/possehl-2000-the-early-harappan-phase.html"
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
       "status": "pending",
-      "technical_log_refs": []
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
     },
     {
-      "claim_id": "IVC-013",
+      "claim_id": "IVC-012",
       "wikipedia_text_verbatim": "The earliest examples of the Indus script date to the 3rd millennium BCE.[98][99]",
       "location_on_page": "Early Harappan",
       "citation_markers": [
@@ -493,7 +408,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-014",
+      "claim_id": "IVC-013",
       "wikipedia_text_verbatim": "By 2600 BCE, the Early Harappan communities turned into large urban centres.",
       "location_on_page": "Mature Harappan",
       "citation_markers": [],
@@ -506,7 +421,7 @@
       }
     },
     {
-      "claim_id": "IVC-015",
+      "claim_id": "IVC-014",
       "wikipedia_text_verbatim": "These chert weights were in a ratio of 5:2:1 with weights of 0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 50, 100, 200, and 500 units, with each unit weighing approximately 28 grams, similar to the English Imperial ounce or Greek uncia, and smaller objects were weighed in similar ratios with the units of 0.871.",
       "location_on_page": "Metrology",
       "citation_markers": [],
@@ -519,7 +434,7 @@
       }
     },
     {
-      "claim_id": "IVC-016",
+      "claim_id": "IVC-015",
       "wikipedia_text_verbatim": "Archeological remains from 2000 to 3000 BC have been found from the city of Lothal of pieces on a board that resemble chess.[129]",
       "location_on_page": "Arts and crafts",
       "citation_markers": [
@@ -557,7 +472,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-017",
+      "claim_id": "IVC-016",
       "wikipedia_text_verbatim": "Though written considerably later, the arts treatise Natya Shastra (c. 200 BCE – 200 CE) classifies musical instruments into four groups based on their means of acoustical production—strings, membranes, solid materials and air—and it is probable that such instruments had existed since the IVC.[131]",
       "location_on_page": "Arts and crafts",
       "citation_markers": [
@@ -595,7 +510,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-018",
+      "claim_id": "IVC-017",
       "wikipedia_text_verbatim": "An ideogram in the IVC contains the earliest known depiction of an arched harp, dated sometime before 1800 BCE.[133]",
       "location_on_page": "Arts and crafts",
       "citation_markers": [
@@ -645,7 +560,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-019",
+      "claim_id": "IVC-018",
       "wikipedia_text_verbatim": "Cubical weights, standardised throughout the Indus cultural zone; 2600–1900 BC; chert; British Museum (London)",
       "location_on_page": "Arts and crafts",
       "citation_markers": [],
@@ -658,80 +573,7 @@
       }
     },
     {
-      "claim_id": "IVC-020",
-      "wikipedia_text_verbatim": "When I first saw them I found it difficult to believe that they were prehistoric; they seemed to completely upset all established ideas about early art, and culture.",
-      "location_on_page": "Human statuettes",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "cutoff_basis": "date language but no parseable year (kept per rule 0)",
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-021",
-      "wikipedia_text_verbatim": "Regarding the red jasper torso, the discoverer, Vats, claims a Harappan date, but Marshall considered this statuette is probably historical, dating to the Gupta period, comparing it to the much later Lohanipur torso.[135]",
-      "location_on_page": "Human statuettes",
-      "citation_markers": [
-        "135"
-      ],
-      "citation_footnotes_verbatim": {
-        "135": null
-      },
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "cutoff_basis": "date language but no parseable year (kept per rule 0)",
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-022",
-      "wikipedia_text_verbatim": "Overall, anthropologist Gregory Possehl tends to consider that these statuettes probably form the pinnacle of Indus art during the Mature Harappan period.[136]",
-      "location_on_page": "Human statuettes",
-      "citation_markers": [
-        "136"
-      ],
-      "citation_footnotes_verbatim": {
-        "136": "Possehl 2002, p. 111."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [136]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": "Gregory L. Possehl",
-            "title": "The Indus Civilization: A Contemporary Perspective",
-            "container_work": null,
-            "publisher_or_journal": "Rowman Altamira",
-            "year": 2002,
-            "pages": null,
-            "identifier": "ISBN 978-0-7591-1642-9",
-            "document_type": "book",
-            "retrieval_url": "https://books.google.com/books?id=XVgeAAAAQBAJ&pg=PA154",
-            "retrieval_status": "not_independently_verified",
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/possehl-2002-the-indus-civilization-a.html"
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "cutoff_basis": "date language but no parseable year (kept per rule 0)"
-      }
-    },
-    {
-      "claim_id": "IVC-023",
+      "claim_id": "IVC-019",
       "wikipedia_text_verbatim": "During 4300–3200 BCE of the chalcolithic period (copper age), the Indus Valley Civilisation area shows ceramic similarities with southern Turkmenistan and northern Iran which suggest considerable mobility and trade.",
       "location_on_page": "Trade and transportation",
       "citation_markers": [],
@@ -744,7 +586,7 @@
       }
     },
     {
-      "claim_id": "IVC-024",
+      "claim_id": "IVC-020",
       "wikipedia_text_verbatim": "During the Early Harappan period (about 3200–2600 BCE), similarities in pottery, seals, figurines, ornaments, etc.",
       "location_on_page": "Trade and transportation",
       "citation_markers": [],
@@ -757,166 +599,7 @@
       }
     },
     {
-      "claim_id": "IVC-025",
-      "wikipedia_text_verbatim": "Ancient DNA studies of graves at Bronze Age sites at Gonur Depe, Turkmenistan, and Shahr-e Sukhteh, Iran, have identified 11 individuals of South Asian descent, who are presumed to be of mature Indus Valley origin.[152]",
-      "location_on_page": "Trade and transportation",
-      "citation_markers": [
-        "152"
-      ],
-      "citation_footnotes_verbatim": {
-        "152": "Narasimhan, Vagheesh M.; et al. (6 September 2019). \"The formation of human populations in South and Central Asia\". Science. 365 (6457) eaat7487. Bibcode:2019Sci...365t7487N. doi:10.1126/science.aat7487. PMC 6822619. PMID 31488661."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [152]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": [
-              "Vagheesh M. Narasimhan",
-              "Patterson, Nick",
-              "Moorjani, Priya",
-              "Rohland, Nadin",
-              "Bernardos, Rebecca",
-              "Mallick, Swapan",
-              "Lazaridis, Iosif",
-              "Nakatsuka, Nathan",
-              "Olalde, Iñigo",
-              "Lipson, Mark",
-              "Kim, Alexander M.",
-              "Olivieri, Luca M.",
-              "Coppa, Alfredo",
-              "Vidale, Massimo",
-              "Mallory, James",
-              "Moiseyev, Vyacheslav",
-              "Kitov, Egor",
-              "Monge, Janet",
-              "Adamski, Nicole",
-              "Alex, Neel",
-              "Broomandkhoshbacht, Nasreen",
-              "Candilio, Francesca",
-              "Callan, Kimberly",
-              "Cheronet, Olivia",
-              "Culleton, Brendan J.",
-              "Ferry, Matthew",
-              "Fernandes, Daniel",
-              "Freilich, Suzanne",
-              "Gamarra, Beatriz",
-              "Gaudio, Daniel",
-              "Hajdinjak, Mateja",
-              "Harney, Éadaoin",
-              "Harper, Thomas K.",
-              "Keating, Denise",
-              "Lawson, Ann Marie",
-              "Mah, Matthew",
-              "Mandl, Kirsten",
-              "Michel, Megan",
-              "Novak, Mario",
-              "Oppenheimer, Jonas",
-              "Rai, Niraj",
-              "Sirak, Kendra",
-              "Slon, Viviane",
-              "Stewardson, Kristin",
-              "Zalzala, Fatma",
-              "Zhang, Zhao",
-              "Akhatov, Gaziz",
-              "Bagashev, Anatoly N.",
-              "Bagnera, Alessandra",
-              "Baitanayev, Bauryzhan",
-              "Bendezu-Sarmiento, Julio",
-              "Bissembaev, Arman A.",
-              "Bonora, Gian Luca",
-              "Chargynov, Temirlan T.",
-              "Chikisheva, Tatiana",
-              "Dashkovskiy, Petr K.",
-              "Derevianko, Anatoly",
-              "Dobeš, Miroslav",
-              "Douka, Katerina",
-              "Dubova, Nadezhda",
-              "Duisengali, Meiram N.",
-              "Enshin, Dmitry",
-              "Epimakhov, Andrey",
-              "Fribus, Alexey V.",
-              "Fuller, Dorian",
-              "Goryachev, Alexander",
-              "Gromov, Andrey",
-              "Grushin, Sergey P.",
-              "Hanks, Bryan",
-              "Judd, Margaret",
-              "Kazizov, Erlan",
-              "Khokhlov, Aleksander",
-              "Krygin, Aleksander P.",
-              "Kupriyanova, Elena",
-              "Kuznetsov, Pavel",
-              "Luiselli, Donata",
-              "Maksudov, Farhod",
-              "Mamedov, Aslan M.",
-              "Mamirov, Talgat B.",
-              "Meiklejohn, Christopher",
-              "Merrett, Deborah C.",
-              "Micheli, Roberto",
-              "Mochalov, Oleg",
-              "Mustafokulov, Samariddin",
-              "Nayak, Ayushi",
-              "Pettener, Davide",
-              "Potts, Richard",
-              "Razhev, Dmitry",
-              "Rykun, Marina",
-              "Sarno, Stefania",
-              "Savenkova, Tatyana M.",
-              "Sikhymbaeva, Kulyan",
-              "Slepchenko, Sergey M.",
-              "Soltobaev, Oroz A.",
-              "Stepanova, Nadezhda",
-              "Svyatko, Svetlana",
-              "Tabaldiev, Kubatbek",
-              "Teschler-Nicola, Maria",
-              "Tishkin, Alexey A.",
-              "Tkachev, Vitaly V.",
-              "Vasilyev, Sergey",
-              "Velemínský, Petr",
-              "Voyakin, Dmitriy",
-              "Yermolayeva, Antonina",
-              "Zahir, Muhammad",
-              "Zubkov, Valery S.",
-              "Zubova, Alisa",
-              "Shinde, Vasant S.",
-              "Lalueza-Fox, Carles",
-              "Meyer, Matthias",
-              "Anthony, David",
-              "Boivin, Nicole",
-              "Thangaraj, Kumarasamy",
-              "Kennett, Douglas J.",
-              "Frachetti, Michael",
-              "Pinhasi, Ron",
-              "Reich, David"
-            ],
-            "title": "The formation of human populations in South and Central Asia",
-            "container_work": null,
-            "publisher_or_journal": "Science",
-            "year": 2019,
-            "pages": null,
-            "identifier": null,
-            "document_type": "journal_article",
-            "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6822619",
-            "retrieval_status": "unreachable",
-            "is_public_domain": false,
-            "local_cache_path": null
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
-      "status": "dead_end",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "cutoff_basis": "date language but no parseable year (kept per rule 0)"
-      }
-    },
-    {
-      "claim_id": "IVC-026",
+      "claim_id": "IVC-021",
       "wikipedia_text_verbatim": "92-94) may be evidence of maritime trade between Susa and the Indus Valley in the late 3rd millennium BCE.",
       "location_on_page": "Trade and transportation",
       "citation_markers": [],
@@ -929,7 +612,7 @@
       }
     },
     {
-      "claim_id": "IVC-027",
+      "claim_id": "IVC-022",
       "wikipedia_text_verbatim": "This led to the local development of a mix of \"wetland\" and \"dryland\" agriculture of local Oryza sativa indica rice agriculture, before the truly \"wetland\" rice Oryza sativa japonica arrived around 2000 BCE.[164]",
       "location_on_page": "Agriculture",
       "citation_markers": [
@@ -973,7 +656,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-028",
+      "claim_id": "IVC-023",
       "wikipedia_text_verbatim": "Dated to about 2600 BCE, they were likely composed of legumes, primarily mung, and cereals.[168]",
       "location_on_page": "Food",
       "citation_markers": [
@@ -1021,22 +704,8 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-029",
-      "wikipedia_text_verbatim": "Meluḫḫa or Melukhkha (Sumerian: 𒈨𒈛𒄩𒆠 Me-luḫ-ḫaKI) is the Sumerian name of a prominent trading partner of Sumer during the Middle Bronze Age.",
-      "location_on_page": "Language",
-      "citation_markers": [],
-      "citation_footnotes_verbatim": {},
-      "citation_chain": [],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "cutoff_basis": "date language but no parseable year (kept per rule 0)",
-        "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "IVC-030",
-      "wikipedia_text_verbatim": "Between 400 and as many as 600 distinct Indus symbols[174] have been found on stamp seals, small tablets, ceramic pots and more than a dozen other materials, including a \"signboard\" that apparently once hung over the gate of the inner citadel of the Indus city of Dholavira.",
+      "claim_id": "IVC-024",
+      "wikipedia_text_verbatim": "Between 400 and as many as 600 distinct Indus symbols[174]",
       "location_on_page": "Possible writing system",
       "citation_markers": [
         "174"
@@ -1073,7 +742,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-031",
+      "claim_id": "IVC-025",
       "wikipedia_text_verbatim": "Around 1900 BCE signs of a gradual decline began to emerge, and by around 1700 BCE most of the cities had been abandoned.",
       "location_on_page": "Late Harappan",
       "citation_markers": [],
@@ -1086,7 +755,7 @@
       }
     },
     {
-      "claim_id": "IVC-032",
+      "claim_id": "IVC-026",
       "wikipedia_text_verbatim": "During the period of approximately 1900 to 1700 BCE, multiple regional cultures emerged within the area of the Indus civilisation.",
       "location_on_page": "Late Harappan",
       "citation_markers": [],
@@ -1099,48 +768,7 @@
       }
     },
     {
-      "claim_id": "IVC-033",
-      "wikipedia_text_verbatim": "The pottery of the Late Harappan period is described as \"showing some continuity with mature Harappan pottery traditions\", but also distinctive differences.[212]",
-      "location_on_page": "Late Harappan",
-      "citation_markers": [
-        "212"
-      ],
-      "citation_footnotes_verbatim": {
-        "212": "Singh, Upinder 2008, p. 211."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [212]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": "Singh, Upinder",
-            "title": "A History of Ancient and Early Medieval India: From the Stone Age to the 12th Century",
-            "container_work": null,
-            "publisher_or_journal": "Pearson Education India",
-            "year": 2008,
-            "pages": null,
-            "identifier": "ISBN 978-81-317-1120-0",
-            "document_type": "book",
-            "retrieval_url": "https://books.google.com/books?id=H3lUIIYxWkEC",
-            "retrieval_status": "not_independently_verified",
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/upinder-2008-a-history-of-ancient.html"
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "cutoff_basis": "date language but no parseable year (kept per rule 0)"
-      }
-    },
-    {
-      "claim_id": "IVC-034",
+      "claim_id": "IVC-027",
       "wikipedia_text_verbatim": "During the later half of the 2nd millennium BCE, most of the post-urban Late Harappan settlements were abandoned altogether.",
       "location_on_page": "Late Harappan",
       "citation_markers": [],
@@ -1153,7 +781,7 @@
       }
     },
     {
-      "claim_id": "IVC-035",
+      "claim_id": "IVC-028",
       "wikipedia_text_verbatim": "The climate change which caused the collapse of the Indus Valley Civilisation was possibly due to \"an abrupt and critical mega-drought and cooling 4,200 years ago\", which marks the onset of the Meghalayan Age, the present stage of the Holocene.[224]",
       "location_on_page": "Climate change and drought",
       "citation_markers": [
@@ -1191,7 +819,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-036",
+      "claim_id": "IVC-029",
       "wikipedia_text_verbatim": "The Indus Valley climate grew significantly cooler and drier from about 1800 BCE, linked to a general weakening of the monsoon at that time.[6]",
       "location_on_page": "Climate change and drought",
       "citation_markers": [
@@ -1245,7 +873,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-037",
+      "claim_id": "IVC-030",
       "wikipedia_text_verbatim": "According to Possehl, after 1900 BCE the number of sites in today's India increased from 218 to 853.",
       "location_on_page": "Continuity and coexistence",
       "citation_markers": [],
@@ -1258,7 +886,7 @@
       }
     },
     {
-      "claim_id": "IVC-038",
+      "claim_id": "IVC-031",
       "wikipedia_text_verbatim": "According to Andrew Lawler, \"excavations along the Gangetic plain show that cities began to arise there starting about 1200 BCE, just a few centuries after Harappa was deserted and much earlier than once suspected.\"[223][ai]",
       "location_on_page": "Continuity and coexistence",
       "citation_markers": [
@@ -1298,7 +926,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-039",
+      "claim_id": "IVC-032",
       "wikipedia_text_verbatim": "At sites such as Bhagwanpura (in Haryana), archaeological excavations have discovered an overlap between the final phase of Late Harappan pottery and the earliest phase of Painted Grey Ware pottery, the latter being associated with the Vedic culture and dating from around 1200 BCE.",
       "location_on_page": "Continuity and coexistence",
       "citation_markers": [],
@@ -1311,7 +939,7 @@
       }
     },
     {
-      "claim_id": "IVC-040",
+      "claim_id": "IVC-033",
       "wikipedia_text_verbatim": "As of 2016[update], archaeological data suggests that the material culture classified as Late Harappan may have persisted until at least c. 1000–900 BCE and was partially contemporaneous with the Painted Grey Ware culture.[235]",
       "location_on_page": "Post-Harappan",
       "citation_markers": [
@@ -1349,7 +977,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-041",
+      "claim_id": "IVC-034",
       "wikipedia_text_verbatim": "Harvard archaeologist Richard Meadow points to the late Harappan settlement of Pirak, which thrived continuously from 1800 BCE to the time of the invasion of Alexander the Great in 325 BCE.[223]",
       "location_on_page": "Post-Harappan",
       "citation_markers": [
@@ -1387,7 +1015,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-042",
+      "claim_id": "IVC-035",
       "wikipedia_text_verbatim": "In 2019, a study was published by Shinde et al. on a reconstructed genome obtained from a female skeleton found in an IVC-related cemetery in Rakhigarhi, Haryana, India, dating to around 2,800–2,300 BCE.[239]",
       "location_on_page": "Genetics",
       "citation_markers": [
