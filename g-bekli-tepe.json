@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-04T19:56:24.169Z",
+    "generated_at": "2026-09-04T22:24:08.418Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -44,6 +44,7 @@
             "document_type": "excavation_report_chapter",
             "retrieval_url": "https://www.researchgate.net/publication/360996154",
             "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 403 from https://www.researchgate.net/publication/360996154",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -87,6 +88,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5489262",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/gresky-2017-modified-human-crania-from.xml"
           },
@@ -140,6 +142,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.researchgate.net/publication/267411578",
             "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 403 from https://www.researchgate.net/publication/267411578",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -179,6 +182,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5556129",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/watkins-2017-from-pleistocene-to-holocene.xml"
           },
@@ -203,6 +207,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://doi.org/10.1007/s40656-017-0152-3",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": null,
             "local_cache_path": "/source-cache/g-bekli-tepe/doi-10-1007-s40656-017-0152-3.pdf"
           },
@@ -255,6 +260,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2013_1.pdf",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.pdf"
           },
@@ -306,16 +312,15 @@
             "identifier": "ISBN 978-1-78925-495-2",
             "document_type": "excavation_report_chapter",
             "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/g-bekli-tepe/kinzel-2020-monumental-compared-to.html"
+            "local_cache_path": null
           },
-          "structured_facts": {
-            "sample_count_mentioned": 14
-          },
+          "structured_facts": {},
           "verbatim_quotes": [],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
+          "is_terminal": false,
+          "terminal_type": null
         }
       ],
       "status": "resolved",
@@ -350,19 +355,18 @@
             "identifier": "ISBN 978-1-78925-495-2",
             "document_type": "excavation_report_chapter",
             "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/g-bekli-tepe/kinzel-2020-monumental-compared-to.html"
+            "local_cache_path": null
           },
-          "structured_facts": {
-            "sample_count_mentioned": 14
-          },
+          "structured_facts": {},
           "verbatim_quotes": [],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
+          "is_terminal": false,
+          "terminal_type": null
         }
       ],
-      "status": "resolved",
+      "status": "dead_end",
       "technical_log_refs": []
     },
     {
@@ -392,6 +396,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.researchgate.net/publication/258182967",
             "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 403 from https://www.researchgate.net/publication/258182967",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -441,6 +446,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2002_2.pdf",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/pustovoytov-2002-14c-dating-of-pedogenic.pdf"
           },
@@ -479,6 +485,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2010_2.pdf",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2010-a-radiocarbon-date-from.pdf"
           },
@@ -533,6 +540,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2013_1.pdf",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.pdf"
           },
@@ -599,6 +607,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://doi.org/10.34780/efb.v0i2.1012",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/clare-2020-g-bekli-tepe-turkey-a.html"
           },
@@ -628,19 +637,18 @@
             "identifier": "ISBN 978-1-78925-495-2",
             "document_type": "excavation_report_chapter",
             "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/g-bekli-tepe/kinzel-2020-monumental-compared-to.html"
+            "local_cache_path": null
           },
-          "structured_facts": {
-            "sample_count_mentioned": 14
-          },
+          "structured_facts": {},
           "verbatim_quotes": [],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
+          "is_terminal": false,
+          "terminal_type": null
         }
       ],
-      "status": "resolved",
+      "status": "pending",
       "technical_log_refs": []
     },
     {
@@ -698,19 +706,18 @@
             "identifier": "ISBN 978-1-78925-495-2",
             "document_type": "excavation_report_chapter",
             "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/g-bekli-tepe/kinzel-2020-monumental-compared-to.html"
+            "local_cache_path": null
           },
-          "structured_facts": {
-            "sample_count_mentioned": 14
-          },
+          "structured_facts": {},
           "verbatim_quotes": [],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
+          "is_terminal": false,
+          "terminal_type": null
         }
       ],
-      "status": "resolved",
+      "status": "dead_end",
       "technical_log_refs": []
     },
     {
@@ -755,19 +762,18 @@
             "identifier": "ISBN 978-1-78925-495-2",
             "document_type": "excavation_report_chapter",
             "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/g-bekli-tepe/kinzel-2020-monumental-compared-to.html"
+            "local_cache_path": null
           },
-          "structured_facts": {
-            "sample_count_mentioned": 14
-          },
+          "structured_facts": {},
           "verbatim_quotes": [],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
+          "is_terminal": false,
+          "terminal_type": null
         }
       ],
-      "status": "resolved",
+      "status": "dead_end",
       "technical_log_refs": []
     },
     {
@@ -836,6 +842,7 @@
             "document_type": "excavation_report_chapter",
             "retrieval_url": null,
             "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -879,6 +886,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5489262",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/gresky-2017-modified-human-crania-from.xml"
           },
@@ -945,6 +953,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.bbc.co.uk/travel/article/20210815-an-immense-mystery-older-than-stonehenge",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/2021-an-immense-mystery-older.html"
           },

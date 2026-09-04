@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-04T19:54:49.458Z",
+    "generated_at": "2026-09-04T22:23:57.387Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -45,9 +45,10 @@
             "identifier": "ISBN 978-0-521-57219-4",
             "document_type": "book",
             "retrieval_url": "https://books.google.com/books?id=gAgFPQAACAAJ",
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/wright-2009-the-ancient-indus-urbanism.html"
+            "local_cache_path": null
           },
           "structured_facts": {},
           "verbatim_quotes": [],
@@ -73,6 +74,7 @@
             "document_type": "other",
             "retrieval_url": null,
             "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "is_public_domain": null,
             "local_cache_path": null
           },
@@ -82,7 +84,7 @@
           "terminal_type": null
         }
       ],
-      "status": "pending",
+      "status": "dead_end",
       "technical_log_refs": []
     },
     {
@@ -116,9 +118,10 @@
             "identifier": "ISBN 978-93-82381-53-2",
             "document_type": "book",
             "retrieval_url": "https://books.google.com/books?id=t4gUjwEACAAJ",
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/habib-2015-the-indus-civilization.html"
+            "local_cache_path": null
           },
           "structured_facts": {},
           "verbatim_quotes": [],
@@ -144,6 +147,7 @@
             "document_type": "other",
             "retrieval_url": null,
             "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "is_public_domain": null,
             "local_cache_path": null
           },
@@ -153,7 +157,7 @@
           "terminal_type": null
         }
       ],
-      "status": "pending",
+      "status": "dead_end",
       "technical_log_refs": [],
       "structured_facts": {
         "cutoff_basis": "date language but no parseable year (kept per rule 0)"
@@ -207,9 +211,10 @@
             "identifier": "ISBN 978-0-19-882905-8",
             "document_type": "book",
             "retrieval_url": "https://books.google.com/books?id=3TRtDwAAQBAJ",
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/dyson-2018-a-population-history-of.html"
+            "local_cache_path": null
           },
           "structured_facts": {},
           "verbatim_quotes": [],
@@ -234,9 +239,10 @@
             "identifier": "ISBN 978-1-107-11162-2",
             "document_type": "book",
             "retrieval_url": "https://books.google.com/books?id=kZVuDwAAQBAJ",
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/fisher-2018-an-environmental-history-of.html"
+            "local_cache_path": null
           },
           "structured_facts": {},
           "verbatim_quotes": [],
@@ -244,7 +250,7 @@
           "terminal_type": null
         }
       ],
-      "status": "pending",
+      "status": "dead_end",
       "technical_log_refs": []
     },
     {
@@ -277,6 +283,7 @@
             "document_type": "book",
             "retrieval_url": null,
             "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -329,6 +336,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://news.bbc.co.uk/2/hi/science/nature/4882968.stm",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/2006-stone-age-man-used.html"
           },
@@ -373,6 +381,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4605215",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/mascarenhas-2015-genetic-and-cultural-reconstruction.xml"
           },
@@ -451,6 +460,7 @@
             "document_type": "book",
             "retrieval_url": null,
             "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -515,9 +525,10 @@
             "identifier": "ISBN 978-1-4917-7353-6",
             "document_type": "book",
             "retrieval_url": "https://books.google.com/books?id=yjStCgAAQBAJ&dq=chaturanga+pieces+from+lothal&pg=PT9",
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/greenberg-2015-the-anti-war-wargame-a.html"
+            "local_cache_path": null
           },
           "structured_facts": {},
           "verbatim_quotes": [],
@@ -525,7 +536,7 @@
           "terminal_type": null
         }
       ],
-      "status": "pending",
+      "status": "dead_end",
       "technical_log_refs": []
     },
     {
@@ -554,9 +565,10 @@
             "identifier": "ISBN 978-0-8240-4946-1",
             "document_type": "excavation_report_chapter",
             "retrieval_url": "https://books.google.com/books?id=ZOlNv8MAXIEC",
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/flora-2000-classification-of-musical-instruments.html"
+            "local_cache_path": null
           },
           "structured_facts": {},
           "verbatim_quotes": [],
@@ -564,7 +576,7 @@
           "terminal_type": null
         }
       ],
-      "status": "pending",
+      "status": "dead_end",
       "technical_log_refs": []
     },
     {
@@ -606,6 +618,7 @@
             "document_type": "excavation_report_chapter",
             "retrieval_url": "https://doi.org/10.1093/gmo/9781561592630.article.45738",
             "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 302 from https://doi.org/10.1093/gmo/9781561592630.article.45738",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -697,6 +710,7 @@
             "document_type": "journal_article",
             "retrieval_url": "http://www.cam.ac.uk/research/news/rice-farming-in-india-much-older-than-thought-used-as-summer-crop-by-indus-civilisation",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/bates-2016-rice-farming-in-india.html"
           },
@@ -752,6 +766,7 @@
             "document_type": "journal_article",
             "retrieval_url": null,
             "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -791,6 +806,7 @@
             "document_type": "book",
             "retrieval_url": "https://doi.org/10.11575/PRISM/23641",
             "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/wells-1998-an-introduction-to-indus.html"
           },
@@ -869,6 +885,7 @@
             "document_type": "book",
             "retrieval_url": "http://www.stratigraphy.org/index.php/ics-news-and-meetings/119-collapse-of-civilizations-worldwide-defines-youngest-unit-of-the-geologic-time-scale",
             "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 404 from http://www.stratigraphy.org/index.php/ics-news-and-meetings/119-collapse-of-civilizations-worldwide-defines-youngest-unit-of-the-geologic-time-scale",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -924,6 +941,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3387054",
             "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 404 from https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3387054/fullTextXML",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -978,6 +996,7 @@
             "document_type": "journal_article",
             "retrieval_url": null,
             "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -1030,6 +1049,7 @@
             "document_type": "excavation_report_chapter",
             "retrieval_url": null,
             "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -1069,6 +1089,7 @@
             "document_type": "journal_article",
             "retrieval_url": null,
             "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -1124,6 +1145,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6800651",
             "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 404 from https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6800651/fullTextXML",
             "is_public_domain": false,
             "local_cache_path": null
           },

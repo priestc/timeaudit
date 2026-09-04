@@ -114,6 +114,7 @@ A formal JSON Schema (draft 2020-12) is provided alongside this document as `sch
     "document_type": string,               // "book" | "journal_article" | "excavation_report_chapter" | "web_page" | "thesis" | "other"
     "retrieval_url": string | null,
     "retrieval_status": "verified_verbatim" | "not_independently_verified" | "unreachable",
+    "retrieval_note": string | null,       // the *specific* reason retrieval didn't reach verified_verbatim, whenever one is known — e.g. "unable to retrieve source because copyrighted (Google Books preview only, not the full text)", "paywalled — publisher requires purchase or institutional access", "blocked by an anti-bot / browser-verification challenge", "no retrievable URL could be resolved from this citation's metadata". null only when nothing more specific than the bare status is known. Never guess a reason that wasn't actually observed (Rule 5) — record what's true, or leave it null.
     "is_public_domain": boolean | null,
     "local_cache_path": string | null      // path under /source-cache/ where the downloaded file was saved; see Local Source Cache section
   },

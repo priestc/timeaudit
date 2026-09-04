@@ -226,10 +226,14 @@ async function main() {
         if (dl.status === "downloaded" || dl.status === "cached") {
           src.local_cache_path = "/" + dl.rel.replace(/\\/g, "/");
           src.retrieval_status = dl.status === "cached" ? src.retrieval_status : "not_independently_verified";
+          src.retrieval_note = null;
           log("      " + dl.status + (dl.via ? " via " + dl.via : "") + " -> " + dl.rel);
         } else {
           src.retrieval_status = dl.status === "unreachable" ? "unreachable" : src.retrieval_status;
-          log("      " + dl.status);
+          // record the most accurate reason available, whatever stage failed
+          // (skipped-budget included — that's still "why", even if not yet unreachable)
+          if (dl.reason) src.retrieval_note = dl.reason;
+          log("      " + dl.status + (dl.reason ? " — " + dl.reason : ""));
         }
         const text = dl.file ? scholar.extractText(dl.file, dl.contentType) : "";
         const cls = scholar.classifyText(text, c);
