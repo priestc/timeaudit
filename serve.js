@@ -270,6 +270,7 @@ const server = http.createServer(async (req, res) => {
         sentence_cited: c.sentence_cited,
         section: c.section,
         cutoff: c.cutoff,
+        triggers: c.triggers || [],
         markers: (c.markers || []).map(shapeMarker),
         context_before: c.context_before || [],
         context_after: c.context_after || [],

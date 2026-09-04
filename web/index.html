@@ -95,6 +95,7 @@
   .fr-sent{font-size:.95rem;line-height:1.55}
   .fr-sent .ctx{color:var(--muted)}
   .fr-sent .hit{color:var(--fg);font-weight:500}
+  .fr-sent mark.trg{background:rgba(250,204,21,.38);color:inherit;font-weight:700;border-radius:2px;padding:0 1px}
   .fr-sent sup{color:var(--accent);font-size:.7em;font-weight:600}
   .fr-cut{margin-top:6px;font-size:.78rem;color:var(--muted)}
   .fr-marks{margin-top:8px;font-size:.82rem;border-top:1px dashed var(--border);padding-top:7px}
@@ -287,7 +288,34 @@
   }
 
   function claimCard(c) {
-    var hit = esc(c.sentence_cited).replace(/\[([0-9a-z]{1,3})\]/g, "<sup>[$1]</sup>");
+    // highlight the word(s) that made this sentence a date candidate (step 1).
+    // Collect match ranges on the plain (tag-free) escaped string, merge any
+    // overlaps, then splice <mark> in from right to left so nothing nests.
+    var plain = esc(c.sentence_cited);
+    var trigs = (c.triggers || []).slice().sort(function (a, b) { return b.length - a.length; });
+    var ranges = [];
+    trigs.forEach(function (t) {
+      if (!t) return;
+      var re = new RegExp(esc(t).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+      var m;
+      while ((m = re.exec(plain))) {
+        ranges.push([m.index, m.index + m[0].length]);
+        if (m.index === re.lastIndex) re.lastIndex++;
+      }
+    });
+    ranges.sort(function (a, b) { return a[0] - b[0]; });
+    var merged = [];
+    ranges.forEach(function (r) {
+      var last = merged[merged.length - 1];
+      if (last && r[0] <= last[1]) last[1] = Math.max(last[1], r[1]);
+      else merged.push(r.slice());
+    });
+    var hit = plain;
+    for (var i = merged.length - 1; i >= 0; i--) {
+      hit = hit.slice(0, merged[i][0]) + '<mark class="trg">' +
+        hit.slice(merged[i][0], merged[i][1]) + "</mark>" + hit.slice(merged[i][1]);
+    }
+    hit = hit.replace(/\[([0-9a-z]{1,3})\]/g, "<sup>[$1]</sup>");
     var before = (c.context_before || []).join(" ");
     var after = (c.context_after || []).join(" ");
     var sent =
