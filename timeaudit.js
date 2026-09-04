@@ -195,7 +195,6 @@ async function main() {
     }
 
     c.hops = [];
-    let status = "pending";
 
     if (!hopSources.length) {
       c.status = "pending";
@@ -204,67 +203,89 @@ async function main() {
       continue;
     }
 
-    // hop 1: the Wikipedia-cited source
-    const visited = new Set();
-    let frontier = { source: hopSources[0], cited_by: "Wikipedia footnote " + c.markers.map((m) => "[" + m.label + "]").filter((v, i, a) => a.indexOf(v) === i).join("") };
-    for (let hop = 1; hop <= opt.depth && frontier; hop++) {
-      const src = frontier.source;
-      [src._doi, src.retrieval_url].filter(Boolean).forEach((k) => visited.add(k));
-      log("   hop " + hop + ": " + shortCite(src));
-      const dl = await scholar.fetchSource(src, { cacheDir: opt.cache, pageSlug: page.slug, email: opt.email, budget });
-      if (dl.status === "downloaded" || dl.status === "cached") {
-        src.local_cache_path = "/" + dl.rel.replace(/\\/g, "/");
-        src.retrieval_status = dl.status === "cached" ? src.retrieval_status : "not_independently_verified";
-        log("      " + dl.status + (dl.via ? " via " + dl.via : "") + " -> " + dl.rel);
-      } else {
-        src.retrieval_status = dl.status === "unreachable" ? "unreachable" : src.retrieval_status;
-        log("      " + dl.status);
-      }
-      const text = dl.file ? scholar.extractText(dl.file, dl.contentType) : "";
-      const cls = scholar.classifyText(text, c);
-      const hopObj = {
-        hop_index: hop,
-        cited_by: frontier.cited_by,
-        // hop > 1 is only ever reached by finding a DOI printed *in* the previous
-        // source's own text (SPEC rule 6 — explicit citations only); this is the
-        // surrounding reference text.
-        citation_in_previous_verbatim: hop === 1 ? null : frontier.citationVerbatim || null,
-        source: src,
-        structured_facts: cls.structured_facts,
-        verbatim_quotes: [],
-        is_terminal: cls.is_terminal,
-        terminal_type: cls.terminal_type,
-        _classify: cls,
-        _excerpt: focusExcerpt(text),
-      };
-      c.hops.push(hopObj);
+    // A sentence that cites more than one source in parallel (e.g. "[98][99]"
+    // on two separately-titled works) gets one independent chain per source —
+    // each is its own "Wikipedia citation", not a continuation of the other.
+    if (hopSources.length > 1) log("   " + hopSources.length + " parallel Wikipedia-cited sources on this sentence");
+    const citedByBase = "Wikipedia footnote " + c.markers.map((m) => "[" + m.label + "]").filter((v, i, a) => a.indexOf(v) === i).join("");
+    const visited = new Set(); // shared across branches: don't re-fetch a lead both already reached
+    let anyResolved = false;
+    let allDeadEnd = true;
 
-      if (cls.is_terminal) {
-        status = "resolved";
-        break;
-      }
-      if (dl.status === "unreachable" && hop === 1) status = "dead_end";
+    for (let si = 0; si < hopSources.length; si++) {
+      const parallel = hopSources.length > 1 ? { index: si + 1, total: hopSources.length } : null;
+      let frontier = { source: hopSources[si], cited_by: citedByBase, parallel };
+      let branchDeadEnd = false;
 
-      // onward lead for the next hop (skip anything already in this chain)
-      const leads = scholar.findOnwardLeads(text).filter((l) => !visited.has(l.value) && !visited.has(l.url));
-      const lead = leads.find((l) => l.near_method) || leads[0];
-      if (!lead || budget.left <= 0) {
-        frontier = null;
-      } else {
-        frontier = {
-          cited_by: "onward citation found in " + (src.local_cache_path || shortCite(src)) + (lead.near_method ? " (near dating-method text)" : ""),
-          citationVerbatim: lead.context || null,
-          source: {
-            author: null, title: null, container_work: null, publisher_or_journal: null,
-            year: null, pages: null, identifier: "doi:" + lead.value, document_type: "journal_article",
-            retrieval_url: lead.url, retrieval_status: "not_independently_verified",
-            is_public_domain: null, local_cache_path: null, _doi: lead.value,
-          },
+      for (let hop = 1; hop <= opt.depth && frontier; hop++) {
+        const src = frontier.source;
+        [src._doi, src.retrieval_url].filter(Boolean).forEach((k) => visited.add(k));
+        const globalHop = c.hops.length + 1;
+        log("   hop " + globalHop + (frontier.parallel ? " (parallel " + frontier.parallel.index + "/" + frontier.parallel.total + ")" : "") + ": " + shortCite(src));
+        const dl = await scholar.fetchSource(src, { cacheDir: opt.cache, pageSlug: page.slug, email: opt.email, budget });
+        if (dl.status === "downloaded" || dl.status === "cached") {
+          src.local_cache_path = "/" + dl.rel.replace(/\\/g, "/");
+          src.retrieval_status = dl.status === "cached" ? src.retrieval_status : "not_independently_verified";
+          log("      " + dl.status + (dl.via ? " via " + dl.via : "") + " -> " + dl.rel);
+        } else {
+          src.retrieval_status = dl.status === "unreachable" ? "unreachable" : src.retrieval_status;
+          log("      " + dl.status);
+        }
+        const text = dl.file ? scholar.extractText(dl.file, dl.contentType) : "";
+        const cls = scholar.classifyText(text, c);
+        const hopObj = {
+          // hop_index stays a single sequence across every branch, so array
+          // position === hop_index - 1 holds for downstream code (AI quote/
+          // terminal-hop lookups); `parallel` (branch-root hops only) is what
+          // tells the renderer where one branch ends and the next begins.
+          hop_index: globalHop,
+          cited_by: frontier.cited_by,
+          // hop > 1 within a branch is only ever reached by finding a DOI
+          // printed *in* the previous source's own text (SPEC rule 6 —
+          // explicit citations only); this is the surrounding reference text.
+          // A branch's own root hop cites nothing previous — it's a second,
+          // independent citation straight from Wikipedia.
+          citation_in_previous_verbatim: hop === 1 ? null : frontier.citationVerbatim || null,
+          parallel: hop === 1 ? frontier.parallel : null,
+          source: src,
+          structured_facts: cls.structured_facts,
+          verbatim_quotes: [],
+          is_terminal: cls.is_terminal,
+          terminal_type: cls.terminal_type,
+          _classify: cls,
+          _excerpt: focusExcerpt(text),
         };
+        c.hops.push(hopObj);
+
+        if (cls.is_terminal) {
+          anyResolved = true;
+          break;
+        }
+        if (dl.status === "unreachable" && hop === 1) branchDeadEnd = true;
+
+        // onward lead for the next hop (skip anything already reached by any branch)
+        const leads = scholar.findOnwardLeads(text).filter((l) => !visited.has(l.value) && !visited.has(l.url));
+        const lead = leads.find((l) => l.near_method) || leads[0];
+        if (!lead || budget.left <= 0) {
+          frontier = null;
+        } else {
+          frontier = {
+            cited_by: "onward citation found in " + (src.local_cache_path || shortCite(src)) + (lead.near_method ? " (near dating-method text)" : ""),
+            citationVerbatim: lead.context || null,
+            source: {
+              author: null, title: null, container_work: null, publisher_or_journal: null,
+              year: null, pages: null, identifier: "doi:" + lead.value, document_type: "journal_article",
+              retrieval_url: lead.url, retrieval_status: "not_independently_verified",
+              is_public_domain: null, local_cache_path: null, _doi: lead.value,
+            },
+          };
+        }
       }
+
+      if (!branchDeadEnd) allDeadEnd = false;
     }
 
-    c.status = status;
+    c.status = anyResolved ? "resolved" : allDeadEnd ? "dead_end" : "pending";
 
     // optional AI pass
     if (useAI) {

@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-04T19:45:45.086Z",
+    "generated_at": "2026-09-04T19:54:49.458Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -31,6 +31,10 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [3][a]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 1,
+            "total": 2
+          },
           "source": {
             "author": "Rita P. Wright",
             "title": "The Ancient Indus: Urbanism, Economy, and Society",
@@ -44,6 +48,33 @@
             "retrieval_status": "not_independently_verified",
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/wright-2009-the-ancient-indus-urbanism.html"
+          },
+          "structured_facts": {},
+          "verbatim_quotes": [],
+          "is_terminal": false,
+          "terminal_type": null
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Wikipedia footnote [3][a]",
+          "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 2,
+            "total": 2
+          },
+          "source": {
+            "author": null,
+            "title": "Wright: \"Mesopotamia and Egypt ... co-existed with the Indus civilization during its florescence between 2600 and 1900 BC.\"[3]",
+            "container_work": null,
+            "publisher_or_journal": null,
+            "year": 1900,
+            "pages": null,
+            "identifier": null,
+            "document_type": "other",
+            "retrieval_url": null,
+            "retrieval_status": "unreachable",
+            "is_public_domain": null,
+            "local_cache_path": null
           },
           "structured_facts": {},
           "verbatim_quotes": [],
@@ -71,6 +102,10 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [7][c]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 1,
+            "total": 2
+          },
           "source": {
             "author": "Irfan Habib",
             "title": "The Indus Civilization",
@@ -84,6 +119,33 @@
             "retrieval_status": "not_independently_verified",
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/habib-2015-the-indus-civilization.html"
+          },
+          "structured_facts": {},
+          "verbatim_quotes": [],
+          "is_terminal": false,
+          "terminal_type": null
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Wikipedia footnote [7][c]",
+          "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 2,
+            "total": 2
+          },
+          "source": {
+            "author": null,
+            "title": "Habib: \"Harappa, in Sahiwal district of west Punjab, Pakistan, had long been known to archaeologists as an extensive site on the Ravi river, but its true significance as a major city of an early great civilisation remained unrecognised unti",
+            "container_work": null,
+            "publisher_or_journal": null,
+            "year": 1922,
+            "pages": null,
+            "identifier": null,
+            "document_type": "other",
+            "retrieval_url": null,
+            "retrieval_status": "unreachable",
+            "is_public_domain": null,
+            "local_cache_path": null
           },
           "structured_facts": {},
           "verbatim_quotes": [],
@@ -131,6 +193,10 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [25][m][26][n]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 1,
+            "total": 2
+          },
           "source": {
             "author": "Tim Dyson",
             "title": "A Population History of India: From the First Modern People to the Present Day",
@@ -144,6 +210,33 @@
             "retrieval_status": "not_independently_verified",
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/dyson-2018-a-population-history-of.html"
+          },
+          "structured_facts": {},
+          "verbatim_quotes": [],
+          "is_terminal": false,
+          "terminal_type": null
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Wikipedia footnote [25][m][26][n]",
+          "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 2,
+            "total": 2
+          },
+          "source": {
+            "author": "Michael H. Fisher",
+            "title": "An Environmental History of India: From Earliest Times to the Twenty-First Century",
+            "container_work": null,
+            "publisher_or_journal": "Cambridge University Press",
+            "year": 2018,
+            "pages": null,
+            "identifier": "ISBN 978-1-107-11162-2",
+            "document_type": "book",
+            "retrieval_url": "https://books.google.com/books?id=kZVuDwAAQBAJ",
+            "retrieval_status": "not_independently_verified",
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/indus-valley-civilisation/fisher-2018-an-environmental-history-of.html"
           },
           "structured_facts": {},
           "verbatim_quotes": [],
@@ -169,6 +262,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [43]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": [
               "Robin Coningham",
@@ -223,6 +317,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [74]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": null,
             "title": "Stone age man used dentist drill",
@@ -261,6 +356,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [94]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": [
               "Desmond D. Mascarenhas",
@@ -343,6 +439,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [98][99]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": "Asko Parpola",
             "title": "Deciphering the Indus Script",
@@ -407,6 +504,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [129]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": "Henry J. Greenberg",
             "title": "The Anti-War Wargame: a Comprehensive Analysis of the Origins of the Game of Chess 1989-1990",
@@ -445,6 +543,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [131]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": "Reis Flora",
             "title": "Classification of Musical Instruments",
@@ -483,6 +582,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [133]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": [
               "Sue Carole Devale",
@@ -585,6 +685,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [164]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": "Jennifer Bates",
             "title": "Rice farming in India much older than thought, used as 'summer crop' by Indus civilisation",
@@ -629,6 +730,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [168]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": [
               "Rajesh Agnihorti",
@@ -677,6 +779,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [174]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": "Bryan Wells",
             "title": "An introduction to indus writing",
@@ -754,6 +857,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [224]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": null,
             "title": "Collapse of civilizations worldwide defines youngest unit of the Geologic Time Scale",
@@ -792,6 +896,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [6]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": [
               "L Giosan",
@@ -861,6 +966,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [223][ai]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": "Andrew Lawler",
             "title": "Indus Collapse: The End or the Beginning of an Asian Culture?",
@@ -912,6 +1018,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [235]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": "Jim Shaffer",
             "title": "Reurbanization: The eastern Punjab and beyond",
@@ -950,6 +1057,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [223]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": "Andrew Lawler",
             "title": "Indus Collapse: The End or the Beginning of an Asian Culture?",
@@ -988,6 +1096,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [239]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": [
               "Vasant Shinde",

@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-04T16:26:05.084Z",
+    "generated_at": "2026-09-04T19:56:24.169Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -29,6 +29,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [4]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": [
               "Jonas Breuers",
@@ -70,6 +71,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [29]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": [
               "Julia Gresky",
@@ -123,6 +125,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [32]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": [
               "Vecihi Özkaya",
@@ -164,6 +167,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [31]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": "Trevor Watkins",
             "title": "From Pleistocene to Holocene: the prehistory of southwest Asia in evolutionary context",
@@ -187,6 +191,7 @@
           "hop_index": 2,
           "cited_by": "onward citation found in /source-cache/g-bekli-tepe/watkins-2017-from-pleistocene-to-holocene.xml",
           "citation_in_previous_verbatim": "Hist Philos Life Sci Hist Philos Life Sci 365 springeropen 8003052 History and Philosophy of the Life Sciences 0391-9714 1742-6316 pmc-is-collection-domain yes pmc-collection-title Springer PMC5556129 PMC5556129.1 5556129 5556129 28808914 10.1007/s40656-017-0152-3 152 1 Original Paper From Pleistocene t",
+          "parallel_citation": null,
           "source": {
             "author": null,
             "title": null,
@@ -230,6 +235,288 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [48][8]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 1,
+            "total": 2
+          },
+          "source": {
+            "author": [
+              "Oliver Dietrich",
+              "Köksal-Schmidt, Çiğdem",
+              "Notroff, Jens",
+              "Schmidt, Klaus"
+            ],
+            "title": "Establishing a Radiocarbon Sequence for Göbekli Tepe: State of Research and New Data",
+            "container_work": null,
+            "publisher_or_journal": "Neo-Lithics",
+            "year": 2013,
+            "pages": "35-37",
+            "identifier": null,
+            "document_type": "journal_article",
+            "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2013_1.pdf",
+            "retrieval_status": "not_independently_verified",
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.pdf"
+          },
+          "structured_facts": {
+            "lab_codes": [
+              "KIA-44149",
+              "Hd20025",
+              "Hd-20036",
+              "KIA-28407",
+              "KIA-44701",
+              "Hd-20025"
+            ],
+            "sample_count_mentioned": 150,
+            "date_expressions_found": [
+              "9745-9314 calBC",
+              "9746-8818 calBC",
+              "9127-8763 calBC",
+              "8241-7795 calBC",
+              "9261-9139 calBC",
+              "8617-8315 calBC"
+            ]
+          },
+          "verbatim_quotes": [
+            "These are not in primary positions but rather embedded in Pleistocene Lake sediments, which are assumed to have been deposited between 110.000 and 40.000 BP (Moumani et al.",
+            "12 2 The sequence in Area B is confirmed through four radiocarbon dates from the Levels B 6 and B 4-2 giving a time range from ca.",
+            "Neo-Lithics 1/13 35 Contribution Establishing a Radiocarbon Sequence for Göbekli Tepe."
+          ],
+          "is_terminal": true,
+          "terminal_type": "radiocarbon"
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Wikipedia footnote [48][8]",
+          "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 2,
+            "total": 2
+          },
+          "source": {
+            "author": [
+              "Moritz Kinzel",
+              "Clare, Lee"
+            ],
+            "title": "Monumental – compared to what? A perspective from Göbekli Tepe",
+            "container_work": "Monumentalising Life in the Neolithic: Narratives of Change and Continuity",
+            "publisher_or_journal": "Oxbow",
+            "year": 2020,
+            "pages": "29-48",
+            "identifier": "ISBN 978-1-78925-495-2",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
+            "retrieval_status": "not_independently_verified",
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/g-bekli-tepe/kinzel-2020-monumental-compared-to.html"
+          },
+          "structured_facts": {
+            "sample_count_mentioned": 14
+          },
+          "verbatim_quotes": [],
+          "is_terminal": true,
+          "terminal_type": "radiocarbon"
+        }
+      ],
+      "status": "resolved",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "GT-006",
+      "wikipedia_text_verbatim": "The site was significantly expanded in the early 9th millennium BCE and remained in use until around 8000 BCE, or perhaps slightly later (the early Pre-Pottery Neolithic B, PPNB).[8]",
+      "location_on_page": "Chronology",
+      "citation_markers": [
+        "8"
+      ],
+      "citation_footnotes_verbatim": {
+        "8": "Kinzel & Clare 2020, pp. 32–33."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [8]",
+          "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
+          "source": {
+            "author": [
+              "Moritz Kinzel",
+              "Clare, Lee"
+            ],
+            "title": "Monumental – compared to what? A perspective from Göbekli Tepe",
+            "container_work": "Monumentalising Life in the Neolithic: Narratives of Change and Continuity",
+            "publisher_or_journal": "Oxbow",
+            "year": 2020,
+            "pages": "29-48",
+            "identifier": "ISBN 978-1-78925-495-2",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
+            "retrieval_status": "not_independently_verified",
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/g-bekli-tepe/kinzel-2020-monumental-compared-to.html"
+          },
+          "structured_facts": {
+            "sample_count_mentioned": 14
+          },
+          "verbatim_quotes": [],
+          "is_terminal": true,
+          "terminal_type": "radiocarbon"
+        }
+      ],
+      "status": "resolved",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "GT-007",
+      "wikipedia_text_verbatim": "these and other samples from the fill of the structure dated to the late 10th and early 9th millennium – 500 to 1,000 years later than expected for a PPNA site.[50]",
+      "location_on_page": "Chronology",
+      "citation_markers": [
+        "50"
+      ],
+      "citation_footnotes_verbatim": {
+        "50": "Dietrich 2011."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [50]",
+          "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
+          "source": {
+            "author": "Oliver Dietrich",
+            "title": "Radiocarbon dating the first temples of mankind. Comments on 14C-Dates from Göbekli Tepe",
+            "container_work": null,
+            "publisher_or_journal": "Zeitschrift für Orient-Archäologie",
+            "year": 2011,
+            "pages": "12-25",
+            "identifier": null,
+            "document_type": "journal_article",
+            "retrieval_url": "https://www.researchgate.net/publication/258182967",
+            "retrieval_status": "unreachable",
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "structured_facts": {},
+          "verbatim_quotes": [],
+          "is_terminal": false,
+          "terminal_type": null
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "cutoff_basis": "date language but no parseable year (kept per rule 0)"
+      }
+    },
+    {
+      "claim_id": "GT-008",
+      "wikipedia_text_verbatim": "They instead turned to a novel method of dating organic material preserved in the plaster on the structure's walls, which resulted in dates more consistent with a PPNA occupation, in the middle or even early 10th millennium BCE.[53][54][48]",
+      "location_on_page": "Chronology",
+      "citation_markers": [
+        "53",
+        "54",
+        "48"
+      ],
+      "citation_footnotes_verbatim": {
+        "48": "Dietrich et al. 2013.",
+        "53": "Pustovoytov 2002.",
+        "54": "Dietrich & Schmidt 2010."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [53][54][48]",
+          "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 1,
+            "total": 3
+          },
+          "source": {
+            "author": "Konstantin Pustovoytov",
+            "title": "14C Dating of Pedogenic Carbonate Coatings on Wall Stones at Göbekli Tepe (Southeastern Turkey)",
+            "container_work": null,
+            "publisher_or_journal": "Neo-Lithics",
+            "year": 2002,
+            "pages": "3-4",
+            "identifier": null,
+            "document_type": "journal_article",
+            "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2002_2.pdf",
+            "retrieval_status": "not_independently_verified",
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/g-bekli-tepe/pustovoytov-2002-14c-dating-of-pedogenic.pdf"
+          },
+          "structured_facts": {
+            "lab_codes": [
+              "Beta 134455"
+            ]
+          },
+          "verbatim_quotes": [
+            "Today experience in dating pedogenic carbonate pendants at archaeological sites such as artificial earth or stone constructions by the radiocarbon method remains rather limited (Pustovoytov 2002).",
+            "The arrow indicates the microlayer from which carbonate was drilled out for radiocarbon dating; the 14cage is given non-calibrated.",
+            "Strictly speaking, the effects of \"dead\" carbon admixture and 14C contamination on the radiocarbon age of pedogenic carbonate coatings (Amundson et al."
+          ],
+          "is_terminal": true,
+          "terminal_type": "radiocarbon"
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Wikipedia footnote [53][54][48]",
+          "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 2,
+            "total": 3
+          },
+          "source": {
+            "author": [
+              "Oliver Dietrich",
+              "Schmidt, Klaus"
+            ],
+            "title": "A Radiocarbon Date from the Wall Plaster of Enclosure D of Göbekli Tepe",
+            "container_work": null,
+            "publisher_or_journal": "Neo-Lithics",
+            "year": 2010,
+            "pages": "8",
+            "identifier": null,
+            "document_type": "journal_article",
+            "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2010_2.pdf",
+            "retrieval_status": "not_independently_verified",
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2010-a-radiocarbon-date-from.pdf"
+          },
+          "structured_facts": {
+            "lab_codes": [
+              "KIA-44149"
+            ],
+            "sample_count_mentioned": 1,
+            "date_expressions_found": [
+              "6400-5800 BC",
+              "5000-6000 BC",
+              "6000-5500 BC",
+              "6400-6200 BC",
+              "8210-8370 calBC",
+              "7000-5300 calBC",
+              "6700-6200 calBC",
+              "4500-3500 BCE",
+              "9600–8800 calBC",
+              "8800–8200 calBC"
+            ],
+            "laboratory_named": "Radiocarbon Dating Laboratory"
+          },
+          "verbatim_quotes": [
+            "1999 Crop water availability in early agriculture: evidence from carbon isotope discrimination of seeds from a tenth millennium BP site on the Euphrates.",
+            "2000 Agro-pastoralist colonization of Cyprus in the 10th millennium BP: Initial assessment.",
+            "2000 Agro-pastoralist Colonization of Cyprus in the 10th Millennium BP: Initial Assessments."
+          ],
+          "is_terminal": true,
+          "terminal_type": "radiocarbon"
+        },
+        {
+          "hop_index": 3,
+          "cited_by": "Wikipedia footnote [53][54][48]",
+          "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 3,
+            "total": 3
+          },
           "source": {
             "author": [
               "Oliver Dietrich",
@@ -281,20 +568,53 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "GT-006",
-      "wikipedia_text_verbatim": "The site was significantly expanded in the early 9th millennium BCE and remained in use until around 8000 BCE, or perhaps slightly later (the early Pre-Pottery Neolithic B, PPNB).[8]",
+      "claim_id": "GT-009",
+      "wikipedia_text_verbatim": "Together with new radiocarbon dates, this has established the site's absolute chronology as falling in the period 9500 to 8000 BCE – the late PPNA and PPNB.[1][56]",
       "location_on_page": "Chronology",
       "citation_markers": [
-        "8"
+        "1",
+        "56"
       ],
       "citation_footnotes_verbatim": {
-        "8": "Kinzel & Clare 2020, pp. 32–33."
+        "1": "Clare 2020.",
+        "56": "Kinzel & Clare 2020."
       },
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [8]",
+          "cited_by": "Wikipedia footnote [1][56]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 1,
+            "total": 2
+          },
+          "source": {
+            "author": "Lee Clare",
+            "title": "Göbekli Tepe, Turkey. A brief summary of research at a new World Heritage Site (2015–2019)",
+            "container_work": null,
+            "publisher_or_journal": "E-Forschungsberichte",
+            "year": 2020,
+            "pages": "81-88",
+            "identifier": "doi:10.34780/efb.v0i2.1012",
+            "document_type": "journal_article",
+            "retrieval_url": "https://doi.org/10.34780/efb.v0i2.1012",
+            "retrieval_status": "not_independently_verified",
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/g-bekli-tepe/clare-2020-g-bekli-tepe-turkey-a.html"
+          },
+          "structured_facts": {},
+          "verbatim_quotes": [],
+          "is_terminal": false,
+          "terminal_type": "radiocarbon"
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Wikipedia footnote [1][56]",
+          "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 2,
+            "total": 2
+          },
           "source": {
             "author": [
               "Moritz Kinzel",
@@ -321,137 +641,6 @@
         }
       ],
       "status": "resolved",
-      "technical_log_refs": []
-    },
-    {
-      "claim_id": "GT-007",
-      "wikipedia_text_verbatim": "these and other samples from the fill of the structure dated to the late 10th and early 9th millennium – 500 to 1,000 years later than expected for a PPNA site.[50]",
-      "location_on_page": "Chronology",
-      "citation_markers": [
-        "50"
-      ],
-      "citation_footnotes_verbatim": {
-        "50": "Dietrich 2011."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [50]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": "Oliver Dietrich",
-            "title": "Radiocarbon dating the first temples of mankind. Comments on 14C-Dates from Göbekli Tepe",
-            "container_work": null,
-            "publisher_or_journal": "Zeitschrift für Orient-Archäologie",
-            "year": 2011,
-            "pages": "12-25",
-            "identifier": null,
-            "document_type": "journal_article",
-            "retrieval_url": "https://www.researchgate.net/publication/258182967",
-            "retrieval_status": "unreachable",
-            "is_public_domain": false,
-            "local_cache_path": null
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
-      "status": "dead_end",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "cutoff_basis": "date language but no parseable year (kept per rule 0)"
-      }
-    },
-    {
-      "claim_id": "GT-008",
-      "wikipedia_text_verbatim": "They instead turned to a novel method of dating organic material preserved in the plaster on the structure's walls, which resulted in dates more consistent with a PPNA occupation, in the middle or even early 10th millennium BCE.[53][54][48]",
-      "location_on_page": "Chronology",
-      "citation_markers": [
-        "53",
-        "54",
-        "48"
-      ],
-      "citation_footnotes_verbatim": {
-        "48": "Dietrich et al. 2013.",
-        "53": "Pustovoytov 2002.",
-        "54": "Dietrich & Schmidt 2010."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [53][54][48]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": "Konstantin Pustovoytov",
-            "title": "14C Dating of Pedogenic Carbonate Coatings on Wall Stones at Göbekli Tepe (Southeastern Turkey)",
-            "container_work": null,
-            "publisher_or_journal": "Neo-Lithics",
-            "year": 2002,
-            "pages": "3-4",
-            "identifier": null,
-            "document_type": "journal_article",
-            "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2002_2.pdf",
-            "retrieval_status": "not_independently_verified",
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/g-bekli-tepe/pustovoytov-2002-14c-dating-of-pedogenic.pdf"
-          },
-          "structured_facts": {
-            "lab_codes": [
-              "Beta 134455"
-            ]
-          },
-          "verbatim_quotes": [
-            "Today experience in dating pedogenic carbonate pendants at archaeological sites such as artificial earth or stone constructions by the radiocarbon method remains rather limited (Pustovoytov 2002).",
-            "The arrow indicates the microlayer from which carbonate was drilled out for radiocarbon dating; the 14cage is given non-calibrated.",
-            "Strictly speaking, the effects of \"dead\" carbon admixture and 14C contamination on the radiocarbon age of pedogenic carbonate coatings (Amundson et al."
-          ],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
-        }
-      ],
-      "status": "resolved",
-      "technical_log_refs": []
-    },
-    {
-      "claim_id": "GT-009",
-      "wikipedia_text_verbatim": "Together with new radiocarbon dates, this has established the site's absolute chronology as falling in the period 9500 to 8000 BCE – the late PPNA and PPNB.[1][56]",
-      "location_on_page": "Chronology",
-      "citation_markers": [
-        "1",
-        "56"
-      ],
-      "citation_footnotes_verbatim": {
-        "1": "Clare 2020.",
-        "56": "Kinzel & Clare 2020."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [1][56]",
-          "citation_in_previous_verbatim": null,
-          "source": {
-            "author": "Lee Clare",
-            "title": "Göbekli Tepe, Turkey. A brief summary of research at a new World Heritage Site (2015–2019)",
-            "container_work": null,
-            "publisher_or_journal": "E-Forschungsberichte",
-            "year": 2020,
-            "pages": "81-88",
-            "identifier": "doi:10.34780/efb.v0i2.1012",
-            "document_type": "journal_article",
-            "retrieval_url": "https://doi.org/10.34780/efb.v0i2.1012",
-            "retrieval_status": "not_independently_verified",
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/g-bekli-tepe/clare-2020-g-bekli-tepe-turkey-a.html"
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": "radiocarbon"
-        }
-      ],
-      "status": "pending",
       "technical_log_refs": []
     },
     {
@@ -495,6 +684,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [57]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": [
               "Moritz Kinzel",
@@ -551,6 +741,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [8]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": [
               "Moritz Kinzel",
@@ -633,6 +824,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [66]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": "Klaus Schmidt",
             "title": "Göbekli Tepe. Eine Beschreibung der wichtigsten Befunde erstellt nach den Arbeiten der Grabungsteams der Jahre 1995–2007",
@@ -671,6 +863,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [29]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": [
               "Julia Gresky",
@@ -740,6 +933,7 @@
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [98]",
           "citation_in_previous_verbatim": null,
+          "parallel_citation": null,
           "source": {
             "author": null,
             "title": "An immense mystery older than Stonehenge",

@@ -60,6 +60,7 @@ Everything except one optional step runs locally with no API calls to any AI:
 | **Text extraction** | `pdftotext` (poppler) for PDFs, tag-strip for HTML/XML. Cached as a sibling `.txt`. |
 | **Terminal classification** | Regex signatures for radiocarbon / OSL / U-Th / Ar-Ar / dendro / TL / comparative, plus lab-code (`OxA-1234`, `KIA-…`), calibrated-range (`8617–8315 calBC`) and sample-count extraction. A hop is only called *terminal* on strong evidence (lab codes, ≥2 calibrated ranges, or explicit "N samples were dated" wording) — otherwise the method is recorded as a guess and the chain stays `pending`. |
 | **Multi-hop** | If a hop isn't terminal, DOIs inside its extracted text (preferring ones near dating-method language) become the next hop, up to `--depth` (default 3). Already-visited DOIs/URLs are skipped. |
+| **Parallel citations** | A sentence citing more than one distinct source (`[98][99]` on two different works) gets one independent chain per source — every one is fetched and traced, not just the first. Each branch's own hop 1 is marked `parallel_citation: {index, total}` (SPEC rule 6); the viewer labels these "Wikipedia parallel citation N of M". A claim resolves if *any* branch does. |
 | **Assemble** | Build the SPEC JSON. (The `T<n>` shared technical log is disabled for now.) |
 | **Sync** | `rsync` the report and the whole `source-cache/` tree to the tank2 folder. |
 
@@ -124,9 +125,9 @@ the download hit rate. OpenAlex and Europe PMC need no key.
 
 ## What the output looks like
 
-`status` per claim is `resolved` (a hop reached a dating method), `dead_end`
-(hop 1 unreachable, no leads) or `pending` (chain followed but no confident
-terminus — the common case in `local` mode). A `local` run is a strong
+`status` per claim is `resolved` (any branch reached a dating method), `dead_end`
+(every branch's own hop 1 was unreachable, no leads) or `pending` (chain(s)
+followed but no confident terminus — the common case in `local` mode). A `local` run is a strong
 scaffold, not a finished extraction: expect to finish `pending` chains and
 sanity-check `resolved` ones. Re-running is cheap — cached sources are reused.
 

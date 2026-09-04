@@ -31,6 +31,8 @@ This spec is designed to be followed by an AI system processing many Wikipedia p
    - If in doubt about a source's copyright status, treat it as copyrighted and apply the stricter limit.
 5. **Never fabricate a quote, a citation, a lab code, or a date.** If a source cannot be accessed, mark it as `"retrieval_status": "unreachable"` and stop that branch of the chain. Do not reconstruct plausible-sounding content to fill a gap.
 6. **Only explicitly-cited sources may appear in a chain — no inference, ever.** A source belongs in `citation_chain` **if and only if** it is explicitly cited by the document immediately before it in the chain (and the first hop is the source the Wikipedia footnote itself points to). A link established by background knowledge, domain expertise, editorial judgement, "this is well known to be the underlying source", content or date similarity, or any means other than a citation you can physically locate in the preceding document is **not a hop** and must not be recorded. If you cannot find the citation in the preceding document, the chain stops there — `"status": "pending"` (citation not yet located) or `"dead_end"` (that document was unreachable). You do not get to fill the gap with an asserted source. Each hop after the first records `citation_in_previous_verbatim`: the bibliography entry or footnote **exactly as printed in the preceding document** (a factual reference string, not copyrightable prose, so it may be reproduced in full); leave it null only when the citation demonstrably exists but its exact text could not be extracted (e.g. a bare identifier in a data table).
+
+   **A sentence with more than one Wikipedia footnote is not automatically one chain.** If the footnotes resolve to genuinely different sources (`[98][99]` citing two different works, as opposed to `[98][98]`/`{{rp}}`-style repeats of the same one), each is its own independent starting point — a **parallel citation** — and gets its own chain, traced and fetched exactly as hop 1 would be on its own. Do not pick "the first one" and drop the rest: attempt every parallel source. Mark the first hop of every branch after the first with `parallel_citation: {"index": n, "total": N}` (1-based, `N` = how many parallel sources this sentence has); leave it `null` on every other hop, including the sole hop of a sentence with only one cited source. A claim's overall `status` is `"resolved"` if *any* branch reaches a terminal node, `"dead_end"` only if *every* branch's own hop 1 was unreachable, and `"pending"` otherwise.
 7. **Only record a hop if the source is used as evidence for the claim.** A hop represents a source the previous document actually relies on to support the dated claim — not every source that document happens to mention. If a source discusses, cites, or quotes another work for background, historical context, contrast, or incidental scholarly conversation, and the claim's evidentiary basis does not depend on that other work, it is **not** a hop and must not be added to `citation_chain`. This applies even after a terminal node is reached: once a hop is marked `is_terminal: true`, the chain for that claim stops there — do not continue extracting further sources that terminal document happens to reference, unless the terminal document's own dating conclusion is itself shown to depend on that further source. When uncertain whether a mentioned source counts as evidentiary or contextual, ask: "if this citation were deleted from the document, would the document's stated date or method still stand on its own?" If yes, it's context, not a hop.
 8. **Every downloaded source file must be saved to a local cache folder, not fetched and discarded.** Any PDF, HTML page, or other document retrieved while tracing a chain must be written to `/source-cache/<page-slug>/` (see Local Source Cache section below), and its local path recorded in `source.local_cache_path`. This allows a future rescan of the same claim to re-read the cached file instead of re-downloading it, saving bandwidth and avoiding redundant requests to the same external hosts across a large-scale crawl.
 9. **Stop conditions for a chain:** a chain is considered resolved (`"status": "resolved"`) once it reaches a node classified as `"is_terminal": true`. A chain may also be marked `"status": "dead_end"` (source unreachable) or `"status": "pending"` (not yet fully traced, e.g., time/resource constraints on this pass).
@@ -97,9 +99,10 @@ A formal JSON Schema (draft 2020-12) is provided alongside this document as `sch
 
 ```
 {
-  "hop_index": integer,                    // 1-based position in the chain
+  "hop_index": integer,                    // 1-based position in citation_chain overall — sequential across the whole array, not reset per branch (see parallel_citation)
   "cited_by": string,                      // which prior document/footnote pointed here (free-form)
-  "citation_in_previous_verbatim": string | null,  // hop_index > 1: the reference/citation text exactly as printed in the PREVIOUS hop's document (bibliography entry or footnote). Every hop after the first is, by Rule 6, explicitly cited; this is null only when that citation could not be extracted verbatim. Always null on hop 1 (the Wikipedia footnote text lives in the Claim's citation_footnotes_verbatim).
+  "citation_in_previous_verbatim": string | null,  // hop_index > 1 *within its branch*: the reference/citation text exactly as printed in the PREVIOUS hop's document (bibliography entry or footnote). Every hop after the first in a branch is, by Rule 6, explicitly cited; this is null only when that citation could not be extracted verbatim. Always null on a branch's own hop 1 (the Wikipedia footnote text lives in the Claim's citation_footnotes_verbatim) — this is not necessarily array index 0; see parallel_citation.
+  "parallel_citation": { "index": integer, "total": integer } | null,  // set only on the first hop of a branch when the sentence has more than one separately-cited source (Rule 6); null on every other hop, including the sole hop of a single-source sentence
   "source": {
     "author": string | [string, ...] | null,
     "title": string,
@@ -125,19 +128,27 @@ A formal JSON Schema (draft 2020-12) is provided alongside this document as `sch
 
 `hop_index` is a raw position. When a chain is **displayed** (report viewer,
 generated HTML), each hop is shown with a role label derived from its position
-and `is_terminal`, not the bare number:
+*within its own branch* and `is_terminal`, not the bare number. A branch is the
+run of hops starting at a `parallel_citation`-marked hop (or array index 0) up
+to, but not including, the next `parallel_citation`-marked hop:
 
-| Condition | Label |
+| Condition (evaluated within the hop's own branch) | Label |
 | --------- | ----- |
-| `hop_index == 1` and this hop is **not** terminal | `Wikipedia citation` |
-| `hop_index == 1` and this hop **is** terminal (the Wikipedia-cited source itself carries the primary technical result) | `Wikipedia citation / Final technical source` |
-| the hop with `is_terminal: true`, when it is not hop 1 | `Final technical source` |
-| a hop between the Wikipedia citation and the final technical source | `Intermediate hop N` (N counts only the intermediate hops, from 1) |
-| the last hop of a chain that never reached a terminal (`status` `pending`/`dead_end`) | `Furthest source reached` |
+| first hop of a branch, `parallel_citation` is `null` (only one source on this sentence), not terminal | `Wikipedia citation` |
+| first hop of a branch, `parallel_citation` is `null`, **is** terminal | `Wikipedia citation / Final technical source` |
+| first hop of a branch, `parallel_citation` is `{index, total}`, not terminal | `Wikipedia parallel citation {index} of {total}` |
+| first hop of a branch, `parallel_citation` is `{index, total}`, **is** terminal | `Wikipedia parallel citation {index} of {total} / Final technical source` |
+| the hop with `is_terminal: true` within its branch, when it is not that branch's first hop | `Final technical source` |
+| a hop between a branch's first hop and its final technical source | `Intermediate hop N` (N counts only the intermediate hops of that branch, from 1) |
+| the last hop of a branch that never reached a terminal (`status` `pending`/`dead_end`) | `Furthest source reached` |
 
-Consequence: the word "hop" only ever appears when a chain has **three or more**
-links. One- and two-link chains read as `Wikipedia citation` →
-`Final technical source` (or the combined label for a one-link chain).
+Consequence: the word "hop" only ever appears when a branch has **three or
+more** links. One- and two-link branches read as `Wikipedia citation` (or
+`Wikipedia parallel citation N of M`) → `Final technical source` (or the
+combined label for a one-link branch). "Cites the next source" is only shown
+between two hops of the *same* branch — a branch's last hop does not "cite"
+the next branch's first hop; they're independent, both cited directly by
+Wikipedia.
 
 ### Local Source Cache
 
