@@ -153,6 +153,7 @@
   var view = "rendered";   // doc sub-view: rendered | raw
   var screen = "doc";      // doc | stats | finder
   var finderState = { url: "", html: "" };   // survives switching away
+  var suppressHash = false; // guard: hash we set ourselves shouldn't re-route
 
   var STATUS_LABELS = { resolved: "resolved", pending: "pending", dead_end: "dead end" };
   function esc(s) {
@@ -265,6 +266,7 @@
 
   function showStats() {
     setNav("stats");
+    clearHash();
     document.title = "Statistics — Chronology Browser";
     contentEl.innerHTML = '<div class="empty">Loading statistics…</div>';
     fetchJSON("/api/stats")
@@ -349,8 +351,65 @@
     );
   }
 
+  /* ---- claim finder URL sync (so a plain F5 re-runs it) -------------- */
+
+  function parseWikiInput(u) {
+    var m = String(u || "").match(
+      /^https?:\/\/([a-z-]{2,12})\.(?:m\.)?wikipedia\.org\/wiki\/([^?#]+)/i
+    );
+    if (!m) return null;
+    var slug = m[2];
+    try { slug = decodeURIComponent(slug); } catch (e) {}
+    return { lang: m[1].toLowerCase(), slug: slug.replace(/_/g, " ") };
+  }
+  function wikiUrl(lang, slug) {
+    return "https://" + lang + ".wikipedia.org/wiki/" +
+      encodeURIComponent(slug.replace(/ /g, "_")).replace(/%2F/gi, "/").replace(/%3A/gi, ":");
+  }
+  // "https://en.wikipedia.org/wiki/Stonehenge" -> "#finder/Stonehenge"
+  // non-English wikis keep a "lang:" prefix ("#finder/de:Stonehenge")
+  function finderHash(u) {
+    var p = parseWikiInput(u);
+    if (!p) return "#finder";
+    return "#finder/" + (p.lang === "en" ? "" : p.lang + ":") + p.slug.replace(/ /g, "_");
+  }
+  function urlFromHash(h) {
+    var m = String(h || "").match(/^#finder\/(.+)$/);
+    if (!m) return "";
+    var rest = m[1];
+    try { rest = decodeURIComponent(rest); } catch (e) {}
+    var lm = rest.match(/^([a-z]{2,3}):(.+)$/);
+    return wikiUrl(lm ? lm[1] : "en", (lm ? lm[2] : rest).replace(/_/g, " "));
+  }
+  function setHash(h) {
+    if (location.hash === h) return;
+    suppressHash = true;
+    location.hash = h;
+  }
+  function clearHash() {
+    if (!location.hash) return;
+    try {
+      history.replaceState(null, "", location.pathname + location.search);
+    } catch (e) {
+      suppressHash = true;
+      location.hash = "";
+    }
+  }
+  function routeFromHash() {
+    if (!/^#finder(\/|$)/.test(location.hash)) return false;
+    showFinder();
+    var u = urlFromHash(location.hash);
+    if (u) {
+      var inp = document.getElementById("finder-url");
+      if (inp) inp.value = u;
+      if (finderState.url !== u || !finderState.html) runFinder(u);
+    }
+    return true;
+  }
+
   function runFinder(url) {
     finderState.url = url;
+    setHash(finderHash(url));
     var out = document.getElementById("finder-out");
     if (out) out.innerHTML = '<div class="empty">Extracting claims from ' + esc(url) + " …</div>";
     fetchJSON("/api/find-claims?url=" + encodeURIComponent(url))
@@ -368,6 +427,7 @@
 
   function showFinder() {
     setNav("finder");
+    if (!/^#finder(\/|$)/.test(location.hash)) setHash("#finder");
     document.title = "Claim finder — Chronology Browser";
     var last = finderState.url;
     try { last = last || localStorage.getItem("finder-url") || ""; } catch (e) {}
@@ -408,6 +468,7 @@
     fetchJSON("/api/file?id=" + encodeURIComponent(meta.id))
       .then(function (data) {
         screen = "doc";
+        clearHash();
         btnStats.classList.remove("active");
         btnFinder.classList.remove("active");
         toolbarEl.hidden = false;
@@ -470,10 +531,18 @@
     });
   };
 
+  window.addEventListener("hashchange", function () {
+    if (suppressHash) { suppressHash = false; return; }
+    if (routeFromHash()) return;
+    if (files.length === 1) load(files[0]);
+    else showStats();
+  });
+
   fetchJSON("/api/files")
     .then(function (data) {
       files = data;
       renderList();
+      if (routeFromHash()) return;
       if (files.length === 1) load(files[0]);
       else if (files.length > 1) showStats();
     })
