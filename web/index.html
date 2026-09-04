@@ -44,6 +44,18 @@
     background:var(--card);color:var(--fg);border-radius:8px;cursor:pointer}
   button:hover{border-color:var(--accent)}
   button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+  #reanalyze-bar{display:none;gap:10px;align-items:center;padding:8px 16px;
+    background:var(--sidebar);border-bottom:1px solid var(--border);
+    font-size:.8rem;color:var(--muted)}
+  #reanalyze-bar.show{display:flex}
+  #reanalyze-bar.ra-ok{color:#16a34a}
+  #reanalyze-bar.ra-fail{color:#b91c1c}
+  #reanalyze-bar #ra-text{flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+  #reanalyze-bar .spin{flex:none;width:12px;height:12px;border-radius:50%;
+    border:2px solid var(--border);border-top-color:var(--accent);animation:ra-spin .8s linear infinite}
+  #reanalyze-bar.ra-ok .spin,#reanalyze-bar.ra-fail .spin{animation:none;border-top-color:currentColor;opacity:.5}
+  @keyframes ra-spin{to{transform:rotate(360deg)}}
   .content{flex:1;overflow:auto;position:relative}
   #frame{width:100%;height:100%;border:0;display:block;background:var(--bg)}
   .empty{color:var(--muted);padding:60px 24px;text-align:center}
@@ -126,9 +138,11 @@
     <button id="btn-rendered" class="on">Rendered</button>
     <button id="btn-raw">Raw JSON</button>
     <span class="spacer"></span>
+    <button id="btn-reanalyze" title="Rerun the full extraction pipeline for this article">🔄&nbsp; Re-analyze</button>
     <button id="btn-download">Download HTML</button>
     <a id="dl" hidden></a>
   </div>
+  <div id="reanalyze-bar"><span class="spin"></span><span id="ra-text"></span></div>
   <div class="content" id="content">
     <div class="empty">Select a document from the list, or open Statistics.</div>
   </div>
@@ -146,6 +160,9 @@
   var btnRendered = document.getElementById("btn-rendered");
   var btnRaw = document.getElementById("btn-raw");
   var btnDownload = document.getElementById("btn-download");
+  var btnReanalyze = document.getElementById("btn-reanalyze");
+  var reanalyzeBar = document.getElementById("reanalyze-bar");
+  var raText = document.getElementById("ra-text");
   var dl = document.getElementById("dl");
 
   var files = [];
@@ -154,6 +171,7 @@
   var screen = "doc";      // doc | stats | finder
   var finderState = { url: "", html: "" };   // survives switching away
   var suppressHash = false; // guard: hash we set ourselves shouldn't re-route
+  var reanalyzePoll = null; // setInterval handle for the currently-open doc
 
   var STATUS_LABELS = { resolved: "resolved", pending: "pending", dead_end: "dead end" };
   function esc(s) {
@@ -259,6 +277,8 @@
     screen = active;
     current = null;
     toolbarEl.hidden = active !== "doc";
+    stopReanalyzePoll();
+    hideReanalyzeBar();
     btnStats.classList.toggle("active", active === "stats");
     btnFinder.classList.toggle("active", active === "finder");
     renderList();
@@ -396,15 +416,27 @@
     }
   }
   function routeFromHash() {
-    if (!/^#finder(\/|$)/.test(location.hash)) return false;
-    showFinder();
-    var u = urlFromHash(location.hash);
-    if (u) {
-      var inp = document.getElementById("finder-url");
-      if (inp) inp.value = u;
-      if (finderState.url !== u || !finderState.html) runFinder(u);
+    var h = location.hash;
+    if (/^#finder(\/|$)/.test(h)) {
+      showFinder();
+      var u = urlFromHash(h);
+      if (u) {
+        var inp = document.getElementById("finder-url");
+        if (inp) inp.value = u;
+        if (finderState.url !== u || !finderState.html) runFinder(u);
+      }
+      return true;
     }
-    return true;
+    var dm = h.match(/^#doc\/(.+)$/);
+    if (dm) {
+      var id = decodeURIComponent(dm[1]);
+      var meta = files.filter(function (f) { return f.id === id; })[0];
+      if (meta) {
+        load(meta);
+        return true;
+      }
+    }
+    return false;
   }
 
   function runFinder(url) {
@@ -465,10 +497,12 @@
   }
 
   function load(meta) {
+    stopReanalyzePoll();
+    hideReanalyzeBar();
     fetchJSON("/api/file?id=" + encodeURIComponent(meta.id))
       .then(function (data) {
         screen = "doc";
-        clearHash();
+        setHash("#doc/" + encodeURIComponent(meta.id));
         btnStats.classList.remove("active");
         btnFinder.classList.remove("active");
         toolbarEl.hidden = false;
@@ -476,6 +510,16 @@
         renderList();
         draw();
         document.title = meta.title + " — Chronology Browser";
+        // pick back up a re-analysis that was already running (e.g. across an F5)
+        fetchJSON("/api/reanalyze/status?id=" + encodeURIComponent(meta.id))
+          .then(function (job) {
+            if (job && job.running) {
+              btnReanalyze.disabled = true;
+              showReanalyzeBar("", (job.log || []).slice(-1)[0] || "Re-analyzing…");
+              startReanalyzePoll(meta.id);
+            }
+          })
+          .catch(function () {});
       })
       .catch(function (e) {
         contentEl.innerHTML = '<div class="empty">Failed to load: ' + esc(e.message) + "</div>";
@@ -529,6 +573,77 @@
       dl.click();
       setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
     });
+  };
+
+  /* ---- re-analyze: rerun the full pipeline for the open document ------ */
+
+  function showReanalyzeBar(cls, text) {
+    reanalyzeBar.className = ("show " + (cls || "")).trim();
+    raText.textContent = text;
+  }
+  function hideReanalyzeBar() {
+    reanalyzeBar.className = "";
+  }
+  function stopReanalyzePoll() {
+    if (reanalyzePoll) { clearInterval(reanalyzePoll); reanalyzePoll = null; }
+  }
+  function pollReanalyze(id) {
+    fetchJSON("/api/reanalyze/status?id=" + encodeURIComponent(id))
+      .then(function (job) {
+        if (job.running) {
+          showReanalyzeBar("", (job.log || []).slice(-1)[0] || "Re-analyzing…");
+          return;
+        }
+        stopReanalyzePoll();
+        if (current && current.meta.id === id) btnReanalyze.disabled = false;
+        if (job.ok) {
+          showReanalyzeBar("ra-ok", "Re-analysis complete — reloading…");
+          fetchJSON("/api/files").then(function (data) {
+            files = data;
+            renderList();
+            var meta = files.filter(function (f) { return f.id === id; })[0];
+            if (meta && current && current.meta.id === id) {
+              fetchJSON("/api/file?id=" + encodeURIComponent(id)).then(function (data2) {
+                current = { meta: meta, data: data2 };
+                draw();
+                showReanalyzeBar("ra-ok", "Re-analysis complete.");
+                setTimeout(hideReanalyzeBar, 5000);
+              });
+            }
+          });
+        } else {
+          var last = (job.log || []).slice(-1)[0];
+          showReanalyzeBar("ra-fail", "Re-analysis failed" + (last ? " — " + last : ""));
+        }
+      })
+      .catch(function () { /* transient network hiccup — next tick will retry */ });
+  }
+  function startReanalyzePoll(id) {
+    stopReanalyzePoll();
+    pollReanalyze(id);
+    reanalyzePoll = setInterval(function () { pollReanalyze(id); }, 2000);
+  }
+
+  btnReanalyze.onclick = function () {
+    if (!current) return;
+    var id = current.meta.id;
+    btnReanalyze.disabled = true;
+    showReanalyzeBar("", "Starting re-analysis…");
+    fetch("/api/reanalyze?id=" + encodeURIComponent(id), { method: "POST" })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.error) {
+          btnReanalyze.disabled = false;
+          showReanalyzeBar("ra-fail", d.error);
+          return;
+        }
+        showReanalyzeBar("", "Re-analyzing (" + (d.mode || "default") + " mode) — this can take a few minutes…");
+        startReanalyzePoll(id);
+      })
+      .catch(function (e) {
+        btnReanalyze.disabled = false;
+        showReanalyzeBar("ra-fail", e.message);
+      });
   };
 
   window.addEventListener("hashchange", function () {

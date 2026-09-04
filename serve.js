@@ -18,6 +18,7 @@
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
+const { spawn } = require("child_process");
 
 const { loadEnv } = require("./lib/env");
 loadEnv();
@@ -146,6 +147,58 @@ async function reportForSlug(slug) {
     }
   }
   return null;
+}
+
+/* ---------- re-analyze: rerun the full extraction pipeline on demand ---------- */
+
+const MODES = ["local", "hybrid", "ai-only"];
+const reanalyzeJobs = new Map(); // doc id -> { running, ok, log: [], startedAt, finishedAt }
+
+function jobSnapshot(job) {
+  return { running: job.running, ok: job.ok, log: job.log, startedAt: job.startedAt, finishedAt: job.finishedAt };
+}
+
+// re-runs the same pipeline timeaudit.js on the CLI does, writing over the
+// original file (filesystem backend) or into DIR then `db.js push` (firestore).
+// Not synced to tank2 from here — a run triggered from inside the web UI
+// shouldn't shell out an interactive `ssh tank2`.
+function startReanalyze(id, docUrl, mode, outDir) {
+  const job = { running: true, ok: null, log: [], startedAt: Date.now(), finishedAt: null };
+  reanalyzeJobs.set(id, job);
+  const args = [path.join(ROOT, "timeaudit.js"), docUrl, "--out", outDir, "--no-sync"];
+  if (mode) args.push("--mode", mode);
+  if (backend.name === "firestore") args.push("--push");
+  const feed = (buf) => {
+    for (const line of buf.toString("utf8").split(/\r?\n/)) {
+      if (!line) continue;
+      job.log.push(line);
+      if (job.log.length > 400) job.log.shift();
+    }
+  };
+  let child;
+  try {
+    child = spawn(process.execPath, args, { cwd: ROOT });
+  } catch (e) {
+    job.running = false;
+    job.ok = false;
+    job.finishedAt = Date.now();
+    job.log.push("failed to start: " + e.message);
+    return job;
+  }
+  child.stdout.on("data", feed);
+  child.stderr.on("data", feed);
+  child.on("close", (code) => {
+    job.running = false;
+    job.ok = code === 0;
+    job.finishedAt = Date.now();
+  });
+  child.on("error", (e) => {
+    job.running = false;
+    job.ok = false;
+    job.finishedAt = Date.now();
+    job.log.push("failed to start: " + e.message);
+  });
+  return job;
 }
 
 const STATUS_ORDER = ["resolved", "pending", "dead_end"];
@@ -301,6 +354,35 @@ const server = http.createServer(async (req, res) => {
       const raw = await backend.read(url.searchParams.get("id") || "");
       if (raw == null) return send(res, 404, "text/plain", "not found");
       return send(res, 200, "application/json", raw);
+    }
+    // "Re-analyze" — rerun the full timeaudit.js pipeline for a document's
+    // Wikipedia URL, overwriting it in place once the run finishes.
+    if (pathname === "/api/reanalyze" && req.method === "POST") {
+      const id = url.searchParams.get("id") || "";
+      const raw = await backend.read(id);
+      if (raw == null) return send(res, 404, "application/json", JSON.stringify({ error: "document not found" }));
+      let data;
+      try {
+        data = JSON.parse(raw);
+      } catch (e) {
+        return send(res, 500, "application/json", JSON.stringify({ error: "could not parse document: " + e.message }));
+      }
+      const docUrl = data.page && data.page.url;
+      if (!docUrl) return send(res, 400, "application/json", JSON.stringify({ error: "document has no page.url to re-fetch" }));
+      const existing = reanalyzeJobs.get(id);
+      if (existing && existing.running) {
+        return send(res, 200, "application/json", JSON.stringify({ started: false, running: true }));
+      }
+      const mode = MODES.includes(data.generator && data.generator.mode) ? data.generator.mode : null;
+      const outDir = backend.name === "filesystem" ? path.dirname(path.resolve(DIR, id)) : DIR;
+      startReanalyze(id, docUrl, mode, outDir);
+      return send(res, 200, "application/json", JSON.stringify({ started: true, url: docUrl, mode: mode || "(default)" }));
+    }
+    if (pathname === "/api/reanalyze/status") {
+      const id = url.searchParams.get("id") || "";
+      const job = reanalyzeJobs.get(id);
+      if (!job) return send(res, 404, "application/json", JSON.stringify({ error: "no re-analyze job for this document yet" }));
+      return send(res, 200, "application/json", JSON.stringify(jobSnapshot(job)));
     }
     // cached assets (images only). Screenshots under _shots/ are a presentation
     // artefact — generated here, on demand, from the report + cached sources.
