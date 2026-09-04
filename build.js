@@ -13,6 +13,7 @@ const path = require("path");
 const { renderDocument, STYLES, esc, slug } = require("./lib/render");
 const { inlineAssets } = require("./lib/inline-assets");
 const { ensureShots } = require("./lib/shots");
+const { buildContextMap } = require("./lib/context");
 
 const SRC = path.resolve(process.argv[2] || __dirname);
 const OUT = path.resolve(process.argv[3] || path.join(__dirname, "dist"));
@@ -148,7 +149,13 @@ async function main() {
       process.stderr.write("  (screenshot step skipped for " + name + ": " + e.message + ")\n");
     }
     const hasShot = (rel) => fs.existsSync(path.join(cacheRoot, "_shots", rel));
-    fs.writeFileSync(path.join(OUT, name), inlineAssets(renderDocument(data, { hasShot }), baseDir));
+    let context = {};
+    try {
+      if (Array.isArray(data.claims)) context = buildContextMap(data, cacheRoot);
+    } catch (e) {
+      process.stderr.write("  (context step skipped for " + name + ": " + e.message + ")\n");
+    }
+    fs.writeFileSync(path.join(OUT, name), inlineAssets(renderDocument(data, { hasShot, context }), baseDir));
     cards.push({ file, data, htmlName: name, summary: summarize(data) });
   }
 

@@ -26,6 +26,7 @@ loadEnv();
 const shots = require("./lib/shots");
 const wiki = require("./lib/wiki");
 const { slugify } = wiki;
+const { buildContextMap } = require("./lib/context");
 
 let PORT = 8080;
 let DIR = process.cwd();
@@ -149,6 +150,11 @@ async function reportForSlug(slug) {
   return null;
 }
 
+// the directory a doc's report + source-cache live/should be written under
+function outDirForId(id) {
+  return backend.name === "filesystem" ? path.dirname(path.resolve(DIR, id)) : DIR;
+}
+
 /* ---------- re-analyze: rerun the full extraction pipeline on demand ---------- */
 
 const MODES = ["local", "hybrid", "ai-only"];
@@ -158,6 +164,40 @@ function jobSnapshot(job) {
   return { running: job.running, ok: job.ok, log: job.log, startedAt: job.startedAt, finishedAt: job.finishedAt };
 }
 
+// Delete every on-disk artefact left over from the previous run of this page
+// (the report JSON, its academic source-cache, its cached wiki snapshot, its
+// screenshot cache) so a re-analysis starts completely from scratch instead
+// of quietly reusing stale downloads or leaving a stray file behind if the
+// article's title (and so its slug) changed since the last run.
+function wipeForFreshRun(id, slug, outDir, job) {
+  try {
+    const jsonPath = backend.name === "filesystem" ? path.resolve(DIR, id) : path.join(outDir, slug + ".json");
+    if (fs.existsSync(jsonPath)) {
+      fs.unlinkSync(jsonPath);
+      job.log.push("deleted previous report: " + path.relative(ROOT, jsonPath));
+    }
+  } catch (e) {
+    job.log.push("could not delete previous report: " + e.message);
+  }
+  const cacheRoot = path.join(outDir, "source-cache");
+  for (const p of [
+    path.join(cacheRoot, slug),
+    path.join(cacheRoot, "_wikipedia", slug + ".parse.json"),
+    path.join(cacheRoot, "_wikipedia", slug + ".html"),
+    path.join(cacheRoot, "_wikipedia", slug + ".wikitext"),
+    path.join(cacheRoot, "_shots", slug),
+  ]) {
+    try {
+      if (fs.existsSync(p)) {
+        fs.rmSync(p, { recursive: true, force: true });
+        job.log.push("cleared cache: " + path.relative(ROOT, p));
+      }
+    } catch (e) {
+      job.log.push("could not clear " + p + ": " + e.message);
+    }
+  }
+}
+
 // re-runs the same pipeline timeaudit.js on the CLI does, writing over the
 // original file (filesystem backend) or into DIR then `db.js push` (firestore).
 // Not synced to tank2 from here — a run triggered from inside the web UI
@@ -165,6 +205,9 @@ function jobSnapshot(job) {
 function startReanalyze(id, docUrl, mode, outDir) {
   const job = { running: true, ok: null, log: [], startedAt: Date.now(), finishedAt: null };
   reanalyzeJobs.set(id, job);
+  const slug = String(id).replace(/\.json$/i, "");
+  job.log.push("• re-analyzing from scratch — deleting the previous report and cached sources");
+  wipeForFreshRun(id, slug, outDir, job);
   const args = [path.join(ROOT, "timeaudit.js"), docUrl, "--out", outDir, "--no-sync"];
   if (mode) args.push("--mode", mode);
   if (backend.name === "firestore") args.push("--push");
@@ -355,6 +398,26 @@ const server = http.createServer(async (req, res) => {
       if (raw == null) return send(res, 404, "text/plain", "not found");
       return send(res, 200, "application/json", raw);
     }
+    // grey "sentence before/after" context for the doc viewer (see lib/context.js)
+    // — derived from the cached wiki page, {} if there isn't one (ai-only mode).
+    if (pathname === "/api/context") {
+      const id = url.searchParams.get("id") || "";
+      const raw = await backend.read(id);
+      if (raw == null) return send(res, 404, "application/json", JSON.stringify({ error: "document not found" }));
+      let data;
+      try {
+        data = JSON.parse(raw);
+      } catch (e) {
+        return send(res, 500, "application/json", JSON.stringify({ error: "could not parse document: " + e.message }));
+      }
+      let context = {};
+      try {
+        context = buildContextMap(data, path.join(outDirForId(id), "source-cache"));
+      } catch {
+        /* best-effort */
+      }
+      return send(res, 200, "application/json", JSON.stringify(context));
+    }
     // "Re-analyze" — rerun the full timeaudit.js pipeline for a document's
     // Wikipedia URL, overwriting it in place once the run finishes.
     if (pathname === "/api/reanalyze" && req.method === "POST") {
@@ -374,8 +437,7 @@ const server = http.createServer(async (req, res) => {
         return send(res, 200, "application/json", JSON.stringify({ started: false, running: true }));
       }
       const mode = MODES.includes(data.generator && data.generator.mode) ? data.generator.mode : null;
-      const outDir = backend.name === "filesystem" ? path.dirname(path.resolve(DIR, id)) : DIR;
-      startReanalyze(id, docUrl, mode, outDir);
+      startReanalyze(id, docUrl, mode, outDirForId(id));
       return send(res, 200, "application/json", JSON.stringify({ started: true, url: docUrl, mode: mode || "(default)" }));
     }
     if (pathname === "/api/reanalyze/status") {

@@ -492,8 +492,21 @@
       frame.id = "frame";
       contentEl.innerHTML = "";
       contentEl.appendChild(frame);
-      frame.srcdoc = ChronoRender.renderDocument(current.data);
+      frame.srcdoc = ChronoRender.renderDocument(current.data, { context: current.context || {} });
     }
+  }
+
+  // grey "sentence before/after" context (see lib/context.js) loads after the
+  // first paint and triggers one redraw — it's a nice-to-have, never blocking.
+  function loadContext(id) {
+    fetchJSON("/api/context?id=" + encodeURIComponent(id))
+      .then(function (ctx) {
+        if (current && current.meta.id === id) {
+          current.context = ctx;
+          if (view === "rendered") draw();
+        }
+      })
+      .catch(function () {});
   }
 
   function load(meta) {
@@ -506,9 +519,10 @@
         btnStats.classList.remove("active");
         btnFinder.classList.remove("active");
         toolbarEl.hidden = false;
-        current = { meta: meta, data: data };
+        current = { meta: meta, data: data, context: {} };
         renderList();
         draw();
+        loadContext(meta.id);
         document.title = meta.title + " — Chronology Browser";
         // pick back up a re-analysis that was already running (e.g. across an F5)
         fetchJSON("/api/reanalyze/status?id=" + encodeURIComponent(meta.id))
@@ -604,8 +618,9 @@
             var meta = files.filter(function (f) { return f.id === id; })[0];
             if (meta && current && current.meta.id === id) {
               fetchJSON("/api/file?id=" + encodeURIComponent(id)).then(function (data2) {
-                current = { meta: meta, data: data2 };
+                current = { meta: meta, data: data2, context: {} };
                 draw();
+                loadContext(id);
                 showReanalyzeBar("ra-ok", "Re-analysis complete.");
                 setTimeout(hideReanalyzeBar, 5000);
               });

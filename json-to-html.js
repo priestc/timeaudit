@@ -17,6 +17,7 @@ const path = require("path");
 const { renderDocument, slug } = require("./lib/render");
 const { inlineAssets } = require("./lib/inline-assets");
 const { ensureShots } = require("./lib/shots");
+const { buildContextMap } = require("./lib/context");
 
 function die(msg) {
   process.stderr.write("error: " + msg + "\n");
@@ -60,7 +61,13 @@ async function convertFile(inPath, outPath) {
     process.stderr.write("  (screenshot step skipped: " + e.message + ")\n");
   }
   const hasShot = (rel) => fs.existsSync(path.join(cacheRoot, "_shots", rel));
-  const html = inlineAssets(renderDocument(data, { hasShot }), baseDir);
+  let context = {};
+  try {
+    context = buildContextMap(data, cacheRoot);
+  } catch (e) {
+    process.stderr.write("  (context step skipped: " + e.message + ")\n");
+  }
+  const html = inlineAssets(renderDocument(data, { hasShot, context }), baseDir);
   if (outPath === "-") {
     process.stdout.write(html);
     return;
