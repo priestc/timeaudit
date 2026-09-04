@@ -264,7 +264,9 @@ const server = http.createServer(async (req, res) => {
             : null,
         };
       };
-      const shapeClaim = (c) => ({
+      const shapeClaim = (c, isRejected) => ({
+        rejected: isRejected,
+        seq: c.seq,
         sentence_cited: c.sentence_cited,
         section: c.section,
         cutoff: c.cutoff,
@@ -273,6 +275,11 @@ const server = http.createServer(async (req, res) => {
         context_after: c.context_after || [],
         reason: c.reason || null, // set on dropped ones
       });
+      // kept + rejected, interleaved in the order they appear in the article
+      const candidates = claims
+        .map((c) => shapeClaim(c, false))
+        .concat(rejected.map((c) => shapeClaim(c, true)))
+        .sort((a, b) => a.seq - b.seq);
       return send(
         res,
         200,
@@ -284,8 +291,8 @@ const server = http.createServer(async (req, res) => {
             revid: page.revid,
             sections: page.sections.length,
           },
-          claims: claims.map(shapeClaim),
-          rejected: rejected.map(shapeClaim),
+          candidates: candidates,
+          counts: { kept: claims.length, rejected: rejected.length },
         })
       );
     }

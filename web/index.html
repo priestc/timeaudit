@@ -89,7 +89,7 @@
   .fr-claims{list-style:none;margin:0;padding:0}
   .fr-claims li{background:var(--card);border:1px solid var(--border);border-radius:10px;
     padding:12px 14px;margin-bottom:10px}
-  .fr-claims li.dropped{opacity:.85;border-style:dashed}
+  .fr-claims li.rejected{background:rgba(220,38,38,.09);border-color:rgba(220,38,38,.42)}
   .fr-sec{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:4px}
   .fr-drop{color:#b91c1c;font-weight:700;text-transform:none;letter-spacing:0;margin-left:6px}
   .fr-sent{font-size:.95rem;line-height:1.55}
@@ -101,7 +101,6 @@
   .fr-marks .m{margin:3px 0}
   .fr-marks .lab{font-family:ui-monospace,Menlo,monospace;color:var(--muted);margin-right:6px}
   .fr-marks .src{color:var(--muted)}
-  .fr-rej summary{cursor:pointer;font-weight:600;margin:24px 0 10px}
   .fr-err{color:#b91c1c;font-weight:600;padding:12px 0}
   @media (max-width:720px){
     body{grid-template-columns:1fr;grid-template-rows:auto 1fr}
@@ -299,9 +298,9 @@
       ? '<div class="fr-marks">' + c.markers.map(markerLine).join("") + "</div>"
       : "";
     return (
-      '<li' + (c.reason ? ' class="dropped"' : "") + ">" +
+      '<li' + (c.rejected || c.reason ? ' class="rejected"' : "") + ">" +
       '<div class="fr-sec">§ ' + esc(c.section) +
-      (c.reason ? ' <span class="fr-drop">dropped — ' + esc(c.reason) + "</span>" : "") +
+      (c.reason ? ' <span class="fr-drop">rejected — ' + esc(c.reason) + "</span>" : "") +
       "</div>" +
       '<div class="fr-sent">' + sent + "</div>" +
       '<div class="fr-cut">cutoff: ' + esc(c.cutoff.basis) +
@@ -313,15 +312,12 @@
 
   function renderFinder(d) {
     if (d.error) return '<div class="fr-err">' + esc(d.error) + "</div>";
-    var rej = d.rejected.length
-      ? '<details class="fr-rej"><summary>Date-sentences dropped (' + d.rejected.length + ")</summary>" +
-        '<ol class="fr-claims">' + d.rejected.map(claimCard).join("") + "</ol></details>"
-      : "";
+    var c = d.counts || { kept: 0, rejected: 0 };
+    var cands = d.candidates || [];
     return (
       '<div class="fr-head">' + esc(d.page.title) + " · rev " + esc(d.page.revid) + " · " + d.page.sections + " sections</div>" +
-      '<div class="fr-counts"><b>' + d.claims.length + "</b> claims in scope · <b>" + d.rejected.length + "</b> date-sentences dropped</div>" +
-      (d.claims.length ? '<ol class="fr-claims">' + d.claims.map(claimCard).join("") + "</ol>" : '<div class="empty">No in-scope dated claims found.</div>') +
-      rej
+      '<div class="fr-counts"><b>' + c.kept + "</b> claims kept · <b>" + c.rejected + "</b> rejected · in document order</div>" +
+      (cands.length ? '<ol class="fr-claims">' + cands.map(claimCard).join("") + "</ol>" : '<div class="empty">No dated claim candidates found.</div>')
     );
   }
 
