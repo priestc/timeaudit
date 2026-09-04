@@ -469,6 +469,19 @@ const server = http.createServer(async (req, res) => {
       const ext = pathname.split(".").pop().toLowerCase();
       return send(res, 200, "image/" + (ext === "jpg" ? "jpeg" : ext), fs.readFileSync(full));
     }
+    // the raw cached document a source was resolved from ("local cache path"
+    // links in the viewer) — served as-is, whatever format it was saved in.
+    if (/^\/source-cache\/.+\.(pdf|xml|html?|txt)$/i.test(pathname)) {
+      const root = path.resolve(DIR, "source-cache");
+      const full = path.resolve(DIR, "." + pathname);
+      if (!full.startsWith(root + path.sep) || !fs.existsSync(full)) return send(res, 404, "text/plain", "not found");
+      const ext = pathname.split(".").pop().toLowerCase();
+      const mime =
+        { pdf: "application/pdf", xml: "application/xml", html: "text/html; charset=utf-8", htm: "text/html; charset=utf-8", txt: "text/plain; charset=utf-8" }[
+          ext
+        ] || "application/octet-stream";
+      return send(res, 200, mime, fs.readFileSync(full));
+    }
     send(res, 404, "text/plain", "not found");
   } catch (e) {
     process.stderr.write("request error: " + (e && e.message ? e.message : e) + "\n");
