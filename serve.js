@@ -307,6 +307,59 @@ async function computeStats() {
   };
 }
 
+// a stable identity for a source, so the same book/paper cited from several
+// claims (even across documents) is one row with every claim that cites it
+function sourceKey(s) {
+  return (
+    (s.identifier && String(s.identifier).trim()) ||
+    [s.author, s.title, s.year].map((v) => (v == null ? "" : String(v))).join("|")
+  );
+}
+
+// Corpus-wide: every source that could never be retrieved (grouped, SPEC's
+// retrieval_note carries the specific reason), and every source that a claim
+// actually validated against (is_terminal: true), each with backlinks to the
+// claim(s)/document(s) that cite it.
+async function computeSourceReport() {
+  const list = await backend.list();
+  const unreachable = new Map();
+  const validated = new Map();
+
+  for (const f of list) {
+    let raw, data;
+    try {
+      raw = await backend.read(f.id);
+      data = JSON.parse(raw);
+    } catch {
+      continue;
+    }
+    if (!Array.isArray(data.claims)) continue;
+    const docTitle = (data.page && data.page.title) || f.title;
+
+    for (const c of data.claims) {
+      for (const h of c.citation_chain || []) {
+        const s = h.source || {};
+        const ref = { doc_id: f.id, doc_title: docTitle, claim_id: c.claim_id };
+        const key = sourceKey(s);
+        if (s.retrieval_status === "unreachable") {
+          if (!unreachable.has(key)) unreachable.set(key, { source: s, refs: [] });
+          unreachable.get(key).refs.push(ref);
+        }
+        if (h.is_terminal) {
+          if (!validated.has(key)) validated.set(key, { source: s, terminal_type: h.terminal_type, refs: [] });
+          validated.get(key).refs.push(ref);
+        }
+      }
+    }
+  }
+
+  const byTitle = (a, b) => (a.source.title || "").localeCompare(b.source.title || "");
+  return {
+    unreachable: [...unreachable.values()].sort(byTitle),
+    validated: [...validated.values()].sort(byTitle),
+  };
+}
+
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, "http://localhost");
   const pathname = decodeURIComponent(url.pathname);
@@ -323,6 +376,9 @@ const server = http.createServer(async (req, res) => {
     }
     if (pathname === "/api/stats") {
       return send(res, 200, "application/json", JSON.stringify(await computeStats()));
+    }
+    if (pathname === "/api/sources") {
+      return send(res, 200, "application/json", JSON.stringify(await computeSourceReport()));
     }
     // "claim finder" — run the real extractor (lib/wiki.js) on an arbitrary URL
     if (pathname === "/api/find-claims") {

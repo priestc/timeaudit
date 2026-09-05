@@ -85,6 +85,35 @@
   .minibar{display:inline-flex;width:120px;height:10px;border-radius:3px;overflow:hidden;
     border:1px solid var(--border);vertical-align:middle}
   .minibar span{display:block;height:100%}
+  .badge{display:inline-block;font-size:.72rem;font-weight:600;padding:2px 8px;border-radius:999px;
+    text-transform:lowercase;letter-spacing:.02em;border:1px solid transparent;white-space:nowrap}
+  .badge-ok{background:#dcfce7;color:#166534}.badge-warn{background:#fef3c7;color:#92400e}
+  .badge-bad{background:#fee2e2;color:#991b1b}.badge-term{background:#ede9fe;color:#5b21b6}
+  .badge-neutral{background:#e5e7eb;color:#374151}
+  @media (prefers-color-scheme:dark){
+    .badge-ok{background:#14532d;color:#bbf7d0}.badge-warn{background:#78350f;color:#fde68a}
+    .badge-bad{background:#7f1d1d;color:#fecaca}.badge-term{background:#4c1d95;color:#ddd6fe}
+    .badge-neutral{background:#374151;color:#e5e7eb}
+  }
+
+  /* sources page */
+  .sources{max-width:900px;margin:0 auto;padding:28px 22px 80px}
+  .sources h1{font-size:1.5rem;margin:0 0 4px}
+  .sources .sub{color:var(--muted);font-size:.85rem;margin-bottom:14px}
+  .sources h2{font-size:1rem;margin:28px 0 4px}
+  .src-list{list-style:none;margin:0;padding:0}
+  .src-card{background:var(--card);border:1px solid var(--border);border-radius:10px;
+    padding:12px 14px;margin-bottom:10px}
+  .src-title{font-weight:600;font-size:.95rem}
+  .src-bits{color:var(--muted);font-size:.82rem;margin-top:2px}
+  .src-status-row{margin-top:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+  .src-note{font-style:italic;color:var(--muted);font-size:.82rem}
+  .src-refs-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);
+    font-weight:700;margin-top:10px}
+  .src-refs{margin-top:4px;display:flex;flex-wrap:wrap;gap:6px}
+  .src-ref{font-size:.8rem;padding:2px 8px;border:1px solid var(--border);border-radius:6px;
+    text-decoration:none;color:var(--accent);background:var(--bg)}
+  .src-ref:hover{border-color:var(--accent)}
 
   /* claim finder */
   .finder{max-width:900px;margin:0 auto;padding:28px 22px 80px}
@@ -130,6 +159,7 @@
   <div id="nav">
     <button id="btn-stats" class="navbtn" type="button">📊&nbsp; Statistics</button>
     <button id="btn-finder" class="navbtn" type="button">🔎&nbsp; Claim finder</button>
+    <button id="btn-sources" class="navbtn" type="button">📚&nbsp; Sources</button>
   </div>
   <ul id="list"></ul>
 </aside>
@@ -157,6 +187,7 @@
   var toolbarEl = document.getElementById("toolbar");
   var btnStats = document.getElementById("btn-stats");
   var btnFinder = document.getElementById("btn-finder");
+  var btnSources = document.getElementById("btn-sources");
   var btnRendered = document.getElementById("btn-rendered");
   var btnRaw = document.getElementById("btn-raw");
   var btnDownload = document.getElementById("btn-download");
@@ -181,6 +212,9 @@
   }
   function statusClass(k) {
     return "s-" + (["resolved", "pending", "dead_end"].indexOf(k) !== -1 ? k : "other");
+  }
+  function badge(text, kind) {
+    return '<span class="badge badge-' + esc(kind || "neutral") + '">' + esc(text) + "</span>";
   }
 
   function fetchJSON(url) {
@@ -281,6 +315,7 @@
     hideReanalyzeBar();
     btnStats.classList.toggle("active", active === "stats");
     btnFinder.classList.toggle("active", active === "finder");
+    btnSources.classList.toggle("active", active === "sources");
     renderList();
   }
 
@@ -293,6 +328,94 @@
       .then(function (s) { contentEl.innerHTML = renderStats(s); })
       .catch(function (e) {
         contentEl.innerHTML = '<div class="empty">Failed to load statistics: ' + esc(e.message) + "</div>";
+      });
+  }
+
+  /* ---- sources: unreachable / validated, across the whole corpus ------ */
+
+  function srcRefs(refs) {
+    return (
+      '<div class="src-refs">' +
+      refs
+        .map(function (r) {
+          return (
+            '<a href="#" class="src-ref" data-doc="' + esc(r.doc_id) + '" data-claim="' + esc(r.claim_id) + '">' +
+            esc(r.doc_title) + " · " + esc(r.claim_id) +
+            "</a>"
+          );
+        })
+        .join("") +
+      "</div>"
+    );
+  }
+
+  function sourceCard(entry, kind) {
+    var s = entry.source || {};
+    var author = Array.isArray(s.author) ? s.author.join(", ") : s.author;
+    var bits = [author, s.year, s.document_type].filter(Boolean).join(" · ");
+    var badgeHtml =
+      kind === "validated"
+        ? badge((entry.terminal_type || "terminal").replace(/_/g, " "), "term")
+        : badge("unreachable", "bad");
+    return (
+      '<li class="src-card">' +
+      '<div class="src-title">' + esc(s.title || "(untitled source)") + "</div>" +
+      (bits ? '<div class="src-bits">' + esc(bits) + "</div>" : "") +
+      '<div class="src-status-row">' + badgeHtml +
+      (kind === "unreachable" && s.retrieval_note ? ' <span class="src-note">' + esc(s.retrieval_note) + "</span>" : "") +
+      "</div>" +
+      '<div class="src-refs-label">cited from</div>' +
+      srcRefs(entry.refs) +
+      "</li>"
+    );
+  }
+
+  function renderSources(d) {
+    var unreachable = d.unreachable || [];
+    var validated = d.validated || [];
+    return (
+      '<div class="sources">' +
+      "<h1>Sources</h1>" +
+      '<div class="sub">across every document in this source, deduplicated by identity</div>' +
+      "<h2>Unreachable sources (" + unreachable.length + ")</h2>" +
+      '<div class="sub">no full text could be retrieved online — see each one’s reason</div>' +
+      (unreachable.length
+        ? '<ul class="src-list">' + unreachable.map(function (e) { return sourceCard(e, "unreachable"); }).join("") + "</ul>"
+        : '<div class="empty">None — every cited source has been reached.</div>') +
+      "<h2>Validated sources (" + validated.length + ")</h2>" +
+      '<div class="sub">sources whose text was confirmed to carry the dating method behind a claim</div>' +
+      (validated.length
+        ? '<ul class="src-list">' + validated.map(function (e) { return sourceCard(e, "validated"); }).join("") + "</ul>"
+        : '<div class="empty">None yet.</div>') +
+      "</div>"
+    );
+  }
+
+  function wireSourceRefs() {
+    var links = contentEl.querySelectorAll("a.src-ref");
+    for (var i = 0; i < links.length; i++) {
+      links[i].onclick = function (e) {
+        e.preventDefault();
+        var docId = this.getAttribute("data-doc");
+        var claimId = this.getAttribute("data-claim");
+        var meta = files.filter(function (f) { return f.id === docId; })[0];
+        if (meta) load(meta, claimId);
+      };
+    }
+  }
+
+  function showSources() {
+    setNav("sources");
+    clearHash();
+    document.title = "Sources — Chronology Browser";
+    contentEl.innerHTML = '<div class="empty">Loading sources…</div>';
+    fetchJSON("/api/sources")
+      .then(function (d) {
+        contentEl.innerHTML = renderSources(d);
+        wireSourceRefs();
+      })
+      .catch(function (e) {
+        contentEl.innerHTML = '<div class="empty">Failed to load sources: ' + esc(e.message) + "</div>";
       });
   }
 
@@ -492,9 +615,22 @@
       frame.id = "frame";
       contentEl.innerHTML = "";
       contentEl.appendChild(frame);
+      if (pendingScrollTo) {
+        // not cleared here: draw() re-runs once more when loadContext()
+        // resolves shortly after, replacing this iframe — the target must
+        // survive that second draw() too. Cleared only by the next load().
+        var claimId = pendingScrollTo;
+        frame.addEventListener("load", function () {
+          try {
+            var el = frame.contentDocument.getElementById(claimId);
+            if (el) el.scrollIntoView({ block: "start" });
+          } catch (e) {}
+        });
+      }
       frame.srcdoc = ChronoRender.renderDocument(current.data, { context: current.context || {} });
     }
   }
+  var pendingScrollTo = null; // claim_id to scroll to on the next iframe load
 
   // grey "sentence before/after" context (see lib/context.js) loads after the
   // first paint and triggers one redraw — it's a nice-to-have, never blocking.
@@ -509,7 +645,7 @@
       .catch(function () {});
   }
 
-  function load(meta) {
+  function load(meta, scrollToClaimId) {
     stopReanalyzePoll();
     hideReanalyzeBar();
     fetchJSON("/api/file?id=" + encodeURIComponent(meta.id))
@@ -518,9 +654,11 @@
         setHash("#doc/" + encodeURIComponent(meta.id));
         btnStats.classList.remove("active");
         btnFinder.classList.remove("active");
+        btnSources.classList.remove("active");
         toolbarEl.hidden = false;
         current = { meta: meta, data: data, context: {} };
         renderList();
+        pendingScrollTo = scrollToClaimId || null;
         draw();
         loadContext(meta.id);
         document.title = meta.title + " — Chronology Browser";
@@ -542,6 +680,7 @@
 
   btnStats.onclick = showStats;
   btnFinder.onclick = showFinder;
+  btnSources.onclick = showSources;
   btnRendered.onclick = function () { view = "rendered"; draw(); };
   btnRaw.onclick = function () { view = "raw"; draw(); };
   searchEl.oninput = renderList;
