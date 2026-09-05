@@ -121,6 +121,7 @@ A formal JSON Schema (draft 2020-12) is provided alongside this document as `sch
   },
   "structured_facts": { ... },             // free-form key/value for any extractable facts specific to this hop
   "verbatim_quotes": [string, ...],        // max 3 for copyrighted sources; see Rule 4
+  "wikipedia_note_quotes": [string, ...],  // passage(s) a Wikipedia explanatory ("[m]"/"[n]") footnote on the citing sentence quotes from THIS source — an editorial selection made by Wikipedia, not text-mined by the extractor. A lettered note like `Dyson: "…"[25]` is a snippet *from* source [25], not a citation of its own: its quote is attached to that source's hop here, and the note is not added to citation_chain. Same Rule 4 quote cap.
   "is_terminal": boolean,
   "terminal_type": "radiocarbon" | "OSL" | "uranium_thorium" | "argon_argon" | "dendrochronology" | "thermoluminescence" | "comparative" | "genetic_context_dating" | "other_physical" | null
 }

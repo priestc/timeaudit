@@ -184,14 +184,21 @@ async function main() {
     log("\n[" + (ci + 1) + "/" + rawClaims.length + "] " + c.section + " :: " + c.sentence.slice(0, 90) + "…");
 
     // resolve markers -> footnote text + source; split hop-worthy vs note-only
-    const hopSources = [];
+    const hopSources = []; // { src, noteId, label } — one per distinct real source
+    const letterNotes = []; // { label, refs: [noteId], snippets: [string] } — the [m]/[n] kind
     for (const mk of c.markers) {
       mk.footnoteText = refIdx.markerText(mk.noteId);
-      if (refIdx.isNoteOnly(mk.noteId, mk.label)) continue;
+      if (refIdx.isNoteOnly(mk.noteId, mk.label)) {
+        const ann = refIdx.noteAnnotation(mk.noteId);
+        if (ann.snippets.length) letterNotes.push({ label: mk.label, refs: ann.refs, snippets: ann.snippets });
+        continue;
+      }
       const src = refIdx.source(mk.noteId);
       if (!src) continue;
       const worthy = src.author || src._doi || src.year || (src.title && !src._sparse) || src.retrieval_url;
-      if (worthy && !hopSources.some((h) => sameSource(h, src))) hopSources.push(src);
+      if (worthy && !hopSources.some((h) => sameSource(h.src, src))) {
+        hopSources.push({ src, noteId: mk.noteId, label: mk.label });
+      }
     }
 
     c.hops = [];
@@ -207,14 +214,19 @@ async function main() {
     // on two separately-titled works) gets one independent chain per source —
     // each is its own "Wikipedia citation", not a continuation of the other.
     if (hopSources.length > 1) log("   " + hopSources.length + " parallel Wikipedia-cited sources on this sentence");
-    const citedByBase = "Wikipedia footnote " + c.markers.map((m) => "[" + m.label + "]").filter((v, i, a) => a.indexOf(v) === i).join("");
     const visited = new Set(); // shared across branches: don't re-fetch a lead both already reached
     let anyResolved = false;
     let allDeadEnd = true;
 
     for (let si = 0; si < hopSources.length; si++) {
       const parallel = hopSources.length > 1 ? { index: si + 1, total: hopSources.length } : null;
-      let frontier = { source: hopSources[si], cited_by: citedByBase, parallel };
+      const rootSrc = hopSources[si].src;
+      rootSrc._fromNote = hopSources[si].noteId; // link back to the [n] marker
+      let frontier = {
+        source: rootSrc,
+        cited_by: "Wikipedia footnote [" + hopSources[si].label + "]",
+        parallel,
+      };
       let branchDeadEnd = false;
 
       for (let hop = 1; hop <= opt.depth && frontier; hop++) {
@@ -255,6 +267,9 @@ async function main() {
           source: src,
           structured_facts: cls.structured_facts,
           verbatim_quotes: [],
+          // filled after the loop: passage(s) a Wikipedia [m]/[n] explanatory
+          // note quotes from THIS source (editorially picked, not text-mined)
+          wikipedia_note_quotes: [],
           is_terminal: cls.is_terminal,
           terminal_type: cls.terminal_type,
           _classify: cls,
@@ -291,6 +306,24 @@ async function main() {
     }
 
     c.status = anyResolved ? "resolved" : allDeadEnd ? "dead_end" : "pending";
+
+    // Hang each lettered explanatory note's quote on the hop for the source it
+    // cites: an [m] that reads `Dyson: "…"[25]` is a snippet FROM [25], not a
+    // citation of its own. Match by the ref it points at; fall back to the
+    // sole hop / hop 1 if the sentence has just one source.
+    for (const ln of letterNotes) {
+      let hop =
+        c.hops.find((hp) => hp.source && ln.refs.indexOf(hp.source._fromNote) !== -1) ||
+        (c.hops.length === 1 ? c.hops[0] : c.hops.find((hp) => hp.parallel && hp.parallel.index === 1));
+      if (hop) {
+        for (const q of ln.snippets) {
+          if (hop.wikipedia_note_quotes.length < 3 && !hop.wikipedia_note_quotes.includes(q)) {
+            hop.wikipedia_note_quotes.push(q);
+          }
+        }
+        log("   note [" + ln.label + "] -> quote attached to hop " + hop.hop_index);
+      }
+    }
 
     // optional AI pass
     if (useAI) {

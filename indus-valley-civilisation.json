@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T15:07:23.446Z",
+    "generated_at": "2026-09-05T15:38:58.401Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -29,12 +29,9 @@
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [3][a]",
+          "cited_by": "Wikipedia footnote [3]",
           "citation_in_previous_verbatim": null,
-          "parallel_citation": {
-            "index": 1,
-            "total": 2
-          },
+          "parallel_citation": null,
           "source": {
             "author": "Rita P. Wright",
             "title": "The Ancient Indus: Urbanism, Economy, and Society",
@@ -53,35 +50,9 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        },
-        {
-          "hop_index": 2,
-          "cited_by": "Wikipedia footnote [3][a]",
-          "citation_in_previous_verbatim": null,
-          "parallel_citation": {
-            "index": 2,
-            "total": 2
-          },
-          "source": {
-            "author": null,
-            "title": "Wright: \"Mesopotamia and Egypt ... co-existed with the Indus civilization during its florescence between 2600 and 1900 BC.\"[3]",
-            "container_work": null,
-            "publisher_or_journal": null,
-            "year": 1900,
-            "pages": null,
-            "identifier": null,
-            "document_type": "other",
-            "retrieval_url": null,
-            "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
-            "retrieved_via_wayback": false,
-            "is_public_domain": null,
-            "local_cache_path": null
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
+          "wikipedia_note_quotes": [
+            "Mesopotamia and Egypt ... co-existed with the Indus civilization during its florescence between 2600 and 1900 BC."
+          ],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -121,7 +92,7 @@
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [25][m][26][n]",
+          "cited_by": "Wikipedia footnote [25]",
           "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 1,
@@ -145,12 +116,15 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [
+            "The subcontinent's people were hunter-gatherers for many millennia. There were very few of them. Indeed, 10,000 years ago there may only have been a couple of hundred thousand people, living in small, often isolated groups, the descendants of various 'modern' human incomers. Then, perhaps linked to events in Mesopotamia, about 8,500 years ago agriculture emerged in Baluchistan."
+          ],
           "is_terminal": false,
           "terminal_type": null
         },
         {
           "hop_index": 2,
-          "cited_by": "Wikipedia footnote [25][m][26][n]",
+          "cited_by": "Wikipedia footnote [26]",
           "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 2,
@@ -174,6 +148,9 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [
+            "The earliest discovered instance in India of well-established, settled agricultural society is at Mehrgarh in the hills between the Bolan Pass and the Indus plain (today in Pakistan) (see Map 3.1). From as early as 7000 BCE, communities there started investing increased labor in preparing the land and selecting, planting, tending, and harvesting particular grain-producing plants. They also domesticated animals, including sheep, goats, pigs, and oxen (both humped zebu [Bos indicus] and unhumped [Bos taurus]). Castrating oxen, for instance, turned them from mainly meat sources into domesticated draft-animals as well."
+          ],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -218,6 +195,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -272,6 +250,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -329,6 +308,7 @@
             "At least 40 common STRs were used for each comparison listed in Figure 1 and the dendrogram was constructed using the TMRCA values as branch-points.",
             "A dendrogram of these TMRCA computations was shown in Figure 1 (left panel, with town locations shown on the map in the right-hand panel)."
           ],
+          "wikipedia_note_quotes": [],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -377,7 +357,7 @@
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [98][99]",
+          "cited_by": "Wikipedia footnote [99]",
           "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
@@ -398,6 +378,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -465,6 +446,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -506,6 +488,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -559,6 +542,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -658,6 +642,7 @@
             ]
           },
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": true,
           "terminal_type": "radiocarbon"
         }
@@ -709,6 +694,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -750,6 +736,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -830,6 +817,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -891,6 +879,7 @@
             "This fluvial quiescence suggests a gradual decrease in flood intensity that probably stimulated intensive agriculture initially and encouraged urbanization around 4,500&#x000a0;BP.",
             "Shuttle Radar Topography Mission (SRTM) data ( 22 ) combined with field surveys and radiocarbon and optically stimulated luminescence dating offer us a way to analyze fluvial landforms and date deposits of the Indo-Gangetic Plain."
           ],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": "radiocarbon"
         },
@@ -917,6 +906,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -952,7 +942,7 @@
       "citation_chain": [
         {
           "hop_index": 1,
-          "cited_by": "Wikipedia footnote [223][ai]",
+          "cited_by": "Wikipedia footnote [223]",
           "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
@@ -973,6 +963,9 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [
+            "Most sites of the Painted Grey Ware culture in the Ghaggar-Hakra and Upper Ganges Plain were small farming villages. However, \"several dozen\" PGW sites eventually emerged as relatively large settlements that can be characterised as towns, the largest of which were fortified by ditches or moats and embankments made of piled earth with wooden palisades, albeit smaller and simpler than the elaborately fortified large cities which grew after 600 BCE in the more fully urban Northern Black Polished Ware culture."
+          ],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -1027,6 +1020,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -1068,6 +1062,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
@@ -1125,6 +1120,7 @@
           },
           "structured_facts": {},
           "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
           "is_terminal": false,
           "terminal_type": null
         }
