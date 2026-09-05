@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T15:59:27.005Z",
+    "generated_at": "2026-09-05T16:10:50.640Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -562,7 +562,7 @@
             "document_type": "excavation_report_chapter",
             "retrieval_url": "https://doi.org/10.1093/gmo/9781561592630.article.45738",
             "retrieval_status": "unreachable",
-            "retrieval_note": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=uUD868-nQCCV8oQ9wyNPX4bqTWnZa9RA2n6ZtZsDIrYredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)",
+            "retrieval_note": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=ss10aaQ0U4ewNzg6CVMZwtiiwnIVgzi2ZWYXu7BTTf0redirect%3D%2Fgrovemusic%2FdocumentID%2Fom)",
             "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
@@ -731,48 +731,6 @@
     },
     {
       "claim_id": "IVC-022",
-      "wikipedia_text_verbatim": "Between 400 and as many as 600 distinct Indus symbols[174]",
-      "location_on_page": "Possible writing system",
-      "citation_markers": [
-        "174"
-      ],
-      "citation_footnotes_verbatim": {
-        "174": "Wells, Bryan (1998). An introduction to indus writing. doi:10.11575/PRISM/23641. hdl:1880/25900. ISBN 978-0-612-31309-5.[page needed]"
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [174]",
-          "citation_in_previous_verbatim": null,
-          "parallel_citation": null,
-          "source": {
-            "author": "Bryan Wells",
-            "title": "An introduction to indus writing",
-            "container_work": null,
-            "publisher_or_journal": null,
-            "year": 1998,
-            "pages": null,
-            "identifier": "doi:10.11575/PRISM/23641",
-            "document_type": "book",
-            "retrieval_url": "https://doi.org/10.11575/PRISM/23641",
-            "retrieval_status": "not_independently_verified",
-            "retrieval_note": null,
-            "retrieved_via_wayback": false,
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/wells-1998-an-introduction-to-indus.html"
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
-        }
-      ],
-      "status": "pending",
-      "technical_log_refs": []
-    },
-    {
-      "claim_id": "IVC-023",
       "wikipedia_text_verbatim": "Around 1900 BCE signs of a gradual decline began to emerge, and by around 1700 BCE most of the cities had been abandoned.",
       "location_on_page": "Late Harappan",
       "citation_markers": [],
@@ -785,7 +743,7 @@
       }
     },
     {
-      "claim_id": "IVC-024",
+      "claim_id": "IVC-023",
       "wikipedia_text_verbatim": "During the period of approximately 1900 to 1700 BCE, multiple regional cultures emerged within the area of the Indus civilisation.",
       "location_on_page": "Late Harappan",
       "citation_markers": [],
@@ -798,7 +756,7 @@
       }
     },
     {
-      "claim_id": "IVC-025",
+      "claim_id": "IVC-024",
       "wikipedia_text_verbatim": "During the later half of the 2nd millennium BCE, most of the post-urban Late Harappan settlements were abandoned altogether.",
       "location_on_page": "Late Harappan",
       "citation_markers": [],
@@ -811,7 +769,7 @@
       }
     },
     {
-      "claim_id": "IVC-026",
+      "claim_id": "IVC-025",
       "wikipedia_text_verbatim": "The climate change which caused the collapse of the Indus Valley Civilisation was possibly due to \"an abrupt and critical mega-drought and cooling 4,200 years ago\", which marks the onset of the Meghalayan Age, the present stage of the Holocene.[224]",
       "location_on_page": "Climate change and drought",
       "citation_markers": [
@@ -853,7 +811,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-027",
+      "claim_id": "IVC-026",
       "wikipedia_text_verbatim": "The Indus Valley climate grew significantly cooler and drier from about 1800 BCE, linked to a general weakening of the monsoon at that time.[6]",
       "location_on_page": "Climate change and drought",
       "citation_markers": [
@@ -942,7 +900,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-028",
+      "claim_id": "IVC-027",
       "wikipedia_text_verbatim": "According to Possehl, after 1900 BCE the number of sites in today's India increased from 218 to 853.",
       "location_on_page": "Continuity and coexistence",
       "citation_markers": [],
@@ -955,7 +913,7 @@
       }
     },
     {
-      "claim_id": "IVC-029",
+      "claim_id": "IVC-028",
       "wikipedia_text_verbatim": "According to Andrew Lawler, \"excavations along the Gangetic plain show that cities began to arise there starting about 1200 BCE, just a few centuries after Harappa was deserted and much earlier than once suspected.\"[223][ai]",
       "location_on_page": "Continuity and coexistence",
       "citation_markers": [
@@ -999,7 +957,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-030",
+      "claim_id": "IVC-029",
       "wikipedia_text_verbatim": "At sites such as Bhagwanpura (in Haryana), archaeological excavations have discovered an overlap between the final phase of Late Harappan pottery and the earliest phase of Painted Grey Ware pottery, the latter being associated with the Vedic culture and dating from around 1200 BCE.",
       "location_on_page": "Continuity and coexistence",
       "citation_markers": [],
@@ -1012,7 +970,7 @@
       }
     },
     {
-      "claim_id": "IVC-031",
+      "claim_id": "IVC-030",
       "wikipedia_text_verbatim": "As of 2016[update], archaeological data suggests that the material culture classified as Late Harappan may have persisted until at least c. 1000–900 BCE and was partially contemporaneous with the Painted Grey Ware culture.[235]",
       "location_on_page": "Post-Harappan",
       "citation_markers": [
@@ -1054,7 +1012,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-032",
+      "claim_id": "IVC-031",
       "wikipedia_text_verbatim": "Harvard archaeologist Richard Meadow points to the late Harappan settlement of Pirak, which thrived continuously from 1800 BCE to the time of the invasion of Alexander the Great in 325 BCE.[223]",
       "location_on_page": "Post-Harappan",
       "citation_markers": [
@@ -1096,7 +1054,7 @@
       "technical_log_refs": []
     },
     {
-      "claim_id": "IVC-033",
+      "claim_id": "IVC-032",
       "wikipedia_text_verbatim": "In 2019, a study was published by Shinde et al. on a reconstructed genome obtained from a female skeleton found in an IVC-related cemetery in Rakhigarhi, Haryana, India, dating to around 2,800–2,300 BCE.[239]",
       "location_on_page": "Genetics",
       "citation_markers": [
