@@ -1,0 +1,133 @@
+{
+  "schema_version": "1.0",
+  "generator": {
+    "tool": "timeaudit",
+    "mode": "local",
+    "generated_at": "2026-09-05T19:54:23.041Z",
+    "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
+    "ai_model": null
+  },
+  "page": {
+    "title": "Lucius Junius Brutus",
+    "url": "https://en.wikipedia.org/wiki/Lucius_Junius_Brutus",
+    "retrieved_at": "2026-09-05",
+    "wikipedia_revision_id": "1364456420"
+  },
+  "claims": [
+    {
+      "claim_id": "LJB-001",
+      "wikipedia_text_verbatim": "Lucius Junius Brutus (died c. 509 BC)[2]",
+      "location_on_page": "Lead section",
+      "citation_markers": [
+        "2"
+      ],
+      "citation_footnotes_verbatim": {
+        "2": "Gagarin, Michael, ed. (2010). \"Lucius Junius Brutus\". Oxford Encyclopedia of Ancient Greece and Rome. Oxford University Press. ISBN 978-0-19-517072-6. Retrieved 2024-08-28."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [2]",
+          "parallel_citation": null,
+          "source": {
+            "author": null,
+            "title": "Lucius Junius Brutus",
+            "container_work": "Oxford Encyclopedia of Ancient Greece and Rome",
+            "publisher_or_journal": "Oxford University Press",
+            "year": 2010,
+            "pages": null,
+            "identifier": "ISBN 978-0-19-517072-6",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": "https://www.oxfordreference.com/display/10.1093/oi/authority.20110803095532587",
+            "wikipedia_access_date": "2024-08-28",
+            "retrieval_status": "retrieved",
+            "retrieval_note": null,
+            "retrieved_via_wayback": true,
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/lucius-junius-brutus/2010-lucius-junius-brutus.html"
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "retrieved",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "LJB-002",
+      "wikipedia_text_verbatim": "The chronology has been challenged, with many scholars rejecting the traditional sixth-century date in favour of a later one – around 470 BC, or even after 450.",
+      "location_on_page": "Background and historicity",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "LJB-003",
+      "wikipedia_text_verbatim": "Brutus and Lucretia's bereaved husband, Lucius Tarquinius Collatinus, were elected as the first consuls of Rome (509 BC Varronian).",
+      "location_on_page": "Consulship and death",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "LJB-004",
+      "wikipedia_text_verbatim": "Brutus' first acts during his consulship, according to Livy, included administering an oath to the people of Rome to never again accept a king in Rome (see above) and replenishing the number of senators to 300 from the principal men of the equites.",
+      "location_on_page": "Consulship and death",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "LJB-005",
+      "wikipedia_text_verbatim": "He minted coins featuring his portrait on two occasions: first on a denarius while triumvir monetalis in 54, then on a gold aureus in the final months of the Liberators' civil war in 42 BC.[26]",
+      "location_on_page": "Brutus in literature and art",
+      "citation_markers": [
+        "26"
+      ],
+      "citation_footnotes_verbatim": {
+        "26": "Crawford 1974, p. 455, 506."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [26]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Michael Hewson Crawford",
+            "title": "Roman republican coinage",
+            "container_work": null,
+            "publisher_or_journal": "Cambridge University Press",
+            "year": 1974,
+            "pages": null,
+            "identifier": "ISBN 978-0-521-07492-6",
+            "document_type": "book",
+            "retrieval_url": "https://books.google.com/books?id=U86A9w9xiDcC",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    }
+  ]
+}
