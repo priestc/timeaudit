@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T17:26:53.519Z",
+    "generated_at": "2026-09-05T17:38:03.883Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -61,7 +61,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -188,7 +188,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -220,7 +220,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://news.bbc.co.uk/2/hi/science/nature/4882968.stm",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
             "is_public_domain": false,
@@ -229,7 +229,7 @@
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "pending",
+      "status": "retrieved",
       "technical_log_refs": []
     },
     {
@@ -263,7 +263,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4605215",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
             "is_public_domain": false,
@@ -272,7 +272,7 @@
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "pending",
+      "status": "retrieved",
       "technical_log_refs": []
     },
     {
@@ -282,7 +282,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -295,7 +295,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -377,7 +377,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -390,7 +390,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -511,7 +511,7 @@
             "retrieval_url": "https://doi.org/10.1093/gmo/9781561592630.article.45738",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=SnpapaWKVzxiWTAWuochILH2dFsqQwVeb8hhosO7kGAredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)",
+            "retrieval_note": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=96HplFfHnWOstvvbAVpbSwX3AL6uNANaTyslB2oZ6xsredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)",
             "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
@@ -529,7 +529,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -542,7 +542,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -555,7 +555,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -568,7 +568,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -600,7 +600,7 @@
             "document_type": "journal_article",
             "retrieval_url": "http://www.cam.ac.uk/research/news/rice-farming-in-india-much-older-than-thought-used-as-summer-crop-by-indus-civilisation",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
             "is_public_domain": false,
@@ -609,7 +609,7 @@
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "pending",
+      "status": "retrieved",
       "technical_log_refs": []
     },
     {
@@ -667,7 +667,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -680,7 +680,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -693,7 +693,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -725,7 +725,7 @@
             "document_type": "book",
             "retrieval_url": "http://www.stratigraphy.org/index.php/ics-news-and-meetings/119-collapse-of-civilizations-worldwide-defines-youngest-unit-of-the-geologic-time-scale",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": true,
             "is_public_domain": false,
@@ -734,7 +734,7 @@
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "pending",
+      "status": "retrieved",
       "technical_log_refs": []
     },
     {
@@ -779,7 +779,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3387054",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": true,
             "is_public_domain": false,
@@ -788,7 +788,7 @@
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "pending",
+      "status": "retrieved",
       "technical_log_refs": []
     },
     {
@@ -798,7 +798,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -851,7 +851,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -975,7 +975,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6800651",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": true,
             "is_public_domain": false,
@@ -984,7 +984,7 @@
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "pending",
+      "status": "retrieved",
       "technical_log_refs": []
     }
   ]

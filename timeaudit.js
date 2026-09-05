@@ -19,7 +19,9 @@
  *     NOT YET IMPLEMENTED. Returns once phase-2 source retrieval is stronger.
  *     Until then: one hop per cited source, no multi-hop citation chasing, no
  *     terminal-method classification, no text-mined quotes; every traced claim
- *     is "pending" (source in hand) or "dead_end" (source unreachable).
+ *     is "retrieved" (at least one cited source downloaded), "dead_end" (every
+ *     cited source unreachable), or "no_source" (nothing citable on the
+ *     sentence). ("resolved" / "pending" are phase-3 outcomes and do not occur.)
  *   then: write <slug>.json and copy the report + cache to the tank2 folder
  *
  * Options:
@@ -201,7 +203,7 @@ async function main() {
     c.hops = [];
 
     if (!hopSources.length) {
-      c.status = "pending";
+      c.status = "no_source";
       c.notes = { extraction_note: "no citation with resolvable source metadata on this sentence" };
       claims.push(c);
       continue;
@@ -224,7 +226,10 @@ async function main() {
       const dl = await scholar.fetchSource(src, { cacheDir: opt.cache, pageSlug: page.slug, email: opt.email, budget });
       if (dl.status === "downloaded" || dl.status === "cached") {
         src.local_cache_path = "/" + dl.rel.replace(/\\/g, "/");
-        src.retrieval_status = dl.status === "cached" ? src.retrieval_status : "not_independently_verified";
+        // phase 2 only downloads the file; "retrieved" = it's in the cache.
+        // Checking its contents against the claim is phase 3 (would be
+        // "verified_verbatim").
+        src.retrieval_status = "retrieved";
         src.retrieval_note = null;
         src.retrieved_via_wayback = !!dl.viaWayback;
         anyDownloaded = true;
@@ -251,9 +256,10 @@ async function main() {
       });
     }
 
-    // "pending" = the source(s) are in hand, phase 3 hasn't read them yet;
-    // "dead_end" = every cited source on this sentence was unreachable.
-    c.status = anyDownloaded ? "pending" : "dead_end";
+    // "retrieved" = at least one cited source is in the cache; "dead_end" =
+    // every cited source on this sentence was unreachable. (Whether a retrieved
+    // source actually backs the claim is phase 3 — "resolved" / "pending".)
+    c.status = anyDownloaded ? "retrieved" : "dead_end";
 
     // Hang each lettered explanatory note's quote on the hop for the source it
     // cites: an [m] that reads `Dyson: "…"[25]` is a snippet FROM [25], not a

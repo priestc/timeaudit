@@ -254,7 +254,7 @@ function startTimeauditJob(jobKey, url, opts) {
   return job;
 }
 
-const STATUS_ORDER = ["resolved", "pending", "dead_end"];
+const STATUS_ORDER = ["retrieved", "dead_end", "no_source", "resolved", "pending"];
 
 // Aggregate every page document into corpus-wide statistics.
 async function computeStats() {

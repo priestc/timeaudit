@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T17:26:40.729Z",
+    "generated_at": "2026-09-05T17:37:55.707Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -85,7 +85,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5489262",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
             "is_public_domain": false,
@@ -94,7 +94,7 @@
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "pending",
+      "status": "retrieved",
       "technical_log_refs": []
     },
     {
@@ -164,7 +164,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5556129",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
             "is_public_domain": false,
@@ -173,7 +173,7 @@
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "pending",
+      "status": "retrieved",
       "technical_log_refs": []
     },
     {
@@ -212,7 +212,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2013_1.pdf",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
             "is_public_domain": false,
@@ -250,7 +250,7 @@
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "pending",
+      "status": "retrieved",
       "technical_log_refs": []
     },
     {
@@ -365,7 +365,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2002_2.pdf",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
             "is_public_domain": false,
@@ -394,7 +394,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2010_2.pdf",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
             "is_public_domain": false,
@@ -425,7 +425,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2013_1.pdf",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
             "is_public_domain": false,
@@ -434,7 +434,7 @@
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "pending",
+      "status": "retrieved",
       "technical_log_refs": []
     },
     {
@@ -468,7 +468,7 @@
             "document_type": "journal_article",
             "retrieval_url": "https://doi.org/10.34780/efb.v0i2.1012",
             "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
+            "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
             "is_public_domain": false,
@@ -506,7 +506,7 @@
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "pending",
+      "status": "retrieved",
       "technical_log_refs": []
     },
     {
@@ -516,7 +516,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -529,7 +529,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -583,7 +583,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -637,7 +637,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -650,7 +650,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -663,7 +663,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
@@ -714,7 +714,7 @@
       "citation_markers": [],
       "citation_footnotes_verbatim": {},
       "citation_chain": [],
-      "status": "pending",
+      "status": "no_source",
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"

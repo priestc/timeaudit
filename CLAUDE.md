@@ -38,9 +38,12 @@ Full design notes in **`PIPELINE.md`**. Key points:
     `extractText()` writes a `.txt` beside each cached file for phase 3.
   - **Phase 3 — read the sources — NOT IMPLEMENTED YET.** Returns once phase-2
     retrieval is stronger. Until then there is no onward (multi-hop) citation
-    chasing, no terminal-method classification, no text-mined quotes; a traced
-    claim is `status:"pending"` (source in hand) or `"dead_end"` (every cited
-    source unreachable). `scholar.classifyText` / `findOnwardLeads` and the
+    chasing, no terminal-method classification, no text-mined quotes; a claim's
+    `status` is `"retrieved"` (≥1 cited source downloaded), `"dead_end"` (every
+    cited source unreachable), or `"no_source"` (nothing citable), and a
+    source's `retrieval_status` is `"retrieved"` or `"unreachable"`
+    (`"resolved"` / `"pending"` / `"verified_verbatim"` are phase-3 values).
+    `scholar.classifyText` / `findOnwardLeads` and the
     `hybrid` mode + `ai.refineClaim` were removed; `is_terminal` /
     `terminal_type` / `structured_facts` / `verbatim_quotes` /
     `citation_in_previous_verbatim` are no longer emitted on hops.

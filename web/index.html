@@ -80,8 +80,8 @@
   table.brk th{color:var(--muted);font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.03em}
   table.brk td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
   .dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:7px;vertical-align:middle}
-  .s-resolved{background:#16a34a}.s-pending{background:#d97706}.s-dead_end{background:#dc2626}
-  .s-unknown,.s-unspecified{background:#9ca3af}.s-other{background:#7c3aed}
+  .s-retrieved,.s-resolved{background:#16a34a}.s-pending{background:#d97706}.s-dead_end{background:#dc2626}
+  .s-no_source,.s-unknown,.s-unspecified{background:#9ca3af}.s-other{background:#7c3aed}
   .minibar{display:inline-flex;width:120px;height:10px;border-radius:3px;overflow:hidden;
     border:1px solid var(--border);vertical-align:middle}
   .minibar span{display:block;height:100%}
@@ -224,14 +224,14 @@
   var analyzePoll = null;   // setInterval handle for an in-flight "add article" run
   var homeState = { url: "" };
 
-  var STATUS_LABELS = { resolved: "resolved", pending: "pending", dead_end: "dead end" };
+  var STATUS_LABELS = { retrieved: "retrieved", dead_end: "dead end", no_source: "no source", resolved: "resolved", pending: "pending" };
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"]/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
     });
   }
   function statusClass(k) {
-    return "s-" + (["resolved", "pending", "dead_end"].indexOf(k) !== -1 ? k : "other");
+    return "s-" + (["retrieved", "dead_end", "no_source", "resolved", "pending"].indexOf(k) !== -1 ? k : "other");
   }
   function badge(text, kind) {
     return '<span class="badge badge-' + esc(kind || "neutral") + '">' + esc(text) + "</span>";

@@ -123,13 +123,14 @@ the download hit rate. OpenAlex and Europe PMC need no key.
 
 ## What the output looks like
 
-`status` per claim is `pending` (at least one cited source was downloaded and is
-waiting for phase-3 analysis — the common case) or `dead_end` (every cited
-source was unreachable). `resolved` is a phase-3 outcome and does not occur yet.
-Each hop carries the `source` block (metadata + `retrieval_status` /
-`retrieval_note` / `retrieved_via_wayback` / `local_cache_path`) and, where a
-Wikipedia explanatory note quotes it, `wikipedia_note_quotes`. Re-running is
-cheap — cached sources are reused.
+`status` per claim is `retrieved` (at least one cited source was downloaded to
+the cache — the common case), `dead_end` (every cited source was unreachable),
+or `no_source` (the sentence cites nothing with resolvable metadata). `resolved`
+and `pending` are phase-3 trace outcomes and do not occur yet. Each hop's
+`source` block carries `retrieval_status` (`retrieved` | `unreachable`),
+`retrieval_note`, `retrieved_via_wayback`, and `local_cache_path`, plus
+`wikipedia_note_quotes` where a Wikipedia explanatory note quotes the source.
+Re-running is cheap — cached sources are reused.
 
 ## Limitations
 

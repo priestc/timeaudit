@@ -28,7 +28,8 @@ The reference implementation (`timeaudit`) currently implements **phases 1 and 2
 
 - `citation_chain` has exactly **one hop per source the Wikipedia sentence cites** (all parallel citations included). There is no onward/multi-hop chasing.
 - Hops omit `is_terminal`, `terminal_type`, `structured_facts`, `verbatim_quotes`, and `citation_in_previous_verbatim` (they carry `source`, `cited_by`, `hop_index`, `parallel_citation`, and `wikipedia_note_quotes`).
-- `status` is only ever `"pending"` (the cited source was retrieved, phase 3 hasn't read it) or `"dead_end"` (every cited source was unreachable). `"resolved"` is a phase-3 outcome.
+- A claim's `status` is `"retrieved"` (at least one cited source was downloaded to the cache), `"dead_end"` (every cited source was unreachable), or `"no_source"` (the sentence cites nothing with resolvable source metadata). `"resolved"` and `"pending"` describe *phase-3* trace outcomes and are not emitted yet.
+- A source's `retrieval_status` is `"retrieved"` (the file is in the cache) or `"unreachable"` (download failed). `"verified_verbatim"` — the source text actually checked against the claim — is a phase-3 outcome.
 - The shared technical log is not written.
 
 The rest of this document specifies the whole protocol; the fields above are still part of the schema and return when phase 3 is built.
@@ -107,8 +108,8 @@ A formal JSON Schema (draft 2020-12) is provided alongside this document as `sch
     "<marker>": string | null
   },
   "citation_chain": [ <Hop>, ... ],
-  "status": "resolved" | "dead_end" | "pending",
-  "technical_log_refs": [string, ...]      // IDs into technical_log, if any hop was terminal-physical
+  "status": "retrieved" | "dead_end" | "no_source" | "resolved" | "pending",   // phases 1-2 emit only the first three (see Implementation status); "resolved" (a branch reached a terminal source) and "pending" (chain traced but no terminus) are phase-3 outcomes
+  "technical_log_refs": [string, ...]      // [phase 3] IDs into technical_log, if any hop was terminal-physical
 }
 ```
 
@@ -135,7 +136,8 @@ source with everything else populated.
     "document_type": string,               // "book" | "journal_article" | "excavation_report_chapter" | "web_page" | "thesis" | "other"
     "retrieval_url": string | null,
     "wikipedia_access_date": string | null,  // the "Retrieved <date>" recorded on the Wikipedia citation — when an editor last verified the online source at retrieval_url. Not a cache; just a freshness marker. The pipeline uses it to aim a Wayback Machine lookup at the right point in time.
-    "retrieval_status": "verified_verbatim" | "not_independently_verified" | "unreachable",
+    "retrieval_status": "retrieved" | "unreachable" | "verified_verbatim",   // phases 1-2 emit "retrieved" (file saved to the cache) or "unreachable" (download failed); "verified_verbatim" (source text checked against the claim) is a phase-3 outcome
+    // (older reports may carry the pre-phase-split value "not_independently_verified" in place of "retrieved")
     "retrieval_note": string | null,       // the *specific* reason retrieval didn't reach verified_verbatim, whenever one is known — e.g. "unable to retrieve source because copyrighted (Google Books preview only, not the full text)", "paywalled — publisher requires purchase or institutional access", "blocked by an anti-bot / browser-verification challenge", "no retrievable URL could be resolved from this citation's metadata". null only when nothing more specific than the bare status is known. Never guess a reason that wasn't actually observed (Rule 5) — record what's true, or leave it null.
     "retrieved_via_wayback": boolean,      // true when local_cache_path was saved from a Wayback Machine archived snapshot because the live URL failed, rather than from the live URL itself — a real difference in provenance worth surfacing, not just an implementation detail
     "is_public_domain": boolean | null,
