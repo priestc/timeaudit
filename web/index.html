@@ -374,7 +374,9 @@
   function sourceCard(entry, kind) {
     var s = entry.source || {};
     var author = Array.isArray(s.author) ? s.author.join(", ") : s.author;
-    var bits = [author, s.year, s.document_type].filter(Boolean).join(" · ");
+    // an ISBN (or other identifier) is the practical way to chase down a book
+    // that has no working online copy — surface it on the card
+    var bits = [author, s.year, s.document_type, s.identifier].filter(Boolean).join(" · ");
     var badgeHtml =
       kind === "validated"
         ? badge((entry.terminal_type || "terminal").replace(/_/g, " "), "term")
