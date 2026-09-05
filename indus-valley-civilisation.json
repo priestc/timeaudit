@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T01:28:45.812Z",
+    "generated_at": "2026-09-05T01:37:00.482Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -47,6 +47,7 @@
             "retrieval_url": "https://books.google.com/books?id=gAgFPQAACAAJ",
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -75,6 +76,7 @@
             "retrieval_url": null,
             "retrieval_status": "unreachable",
             "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
             "is_public_domain": null,
             "local_cache_path": null
           },
@@ -137,6 +139,7 @@
             "retrieval_url": "https://books.google.com/books?id=3TRtDwAAQBAJ",
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -165,6 +168,7 @@
             "retrieval_url": "https://books.google.com/books?id=kZVuDwAAQBAJ",
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -208,6 +212,7 @@
             "retrieval_url": null,
             "retrieval_status": "unreachable",
             "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -261,6 +266,7 @@
             "retrieval_url": "https://news.bbc.co.uk/2/hi/science/nature/4882968.stm",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/2006-stone-age-man-used.html"
           },
@@ -306,6 +312,7 @@
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4605215",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/mascarenhas-2015-genetic-and-cultural-reconstruction.xml"
           },
@@ -385,6 +392,7 @@
             "retrieval_url": null,
             "retrieval_status": "unreachable",
             "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -451,6 +459,7 @@
             "retrieval_url": "https://books.google.com/books?id=yjStCgAAQBAJ&dq=chaturanga+pieces+from+lothal&pg=PT9",
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -491,6 +500,7 @@
             "retrieval_url": "https://books.google.com/books?id=ZOlNv8MAXIEC",
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -543,6 +553,7 @@
             "retrieval_url": "https://doi.org/10.1093/gmo/9781561592630.article.45738",
             "retrieval_status": "unreachable",
             "retrieval_note": "HTTP 302 from https://doi.org/10.1093/gmo/9781561592630.article.45738",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -635,6 +646,7 @@
             "retrieval_url": "http://www.cam.ac.uk/research/news/rice-farming-in-india-much-older-than-thought-used-as-summer-crop-by-indus-civilisation",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/bates-2016-rice-farming-in-india.html"
           },
@@ -691,6 +703,7 @@
             "retrieval_url": null,
             "retrieval_status": "unreachable",
             "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -731,6 +744,7 @@
             "retrieval_url": "https://doi.org/10.11575/PRISM/23641",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/wells-1998-an-introduction-to-indus.html"
           },
@@ -810,6 +824,7 @@
             "retrieval_url": "http://www.stratigraphy.org/index.php/ics-news-and-meetings/119-collapse-of-civilizations-worldwide-defines-youngest-unit-of-the-geologic-time-scale",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": true,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/collapse-of-civilizations-worldwide.html"
           },
@@ -864,9 +879,40 @@
             "identifier": null,
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3387054",
-            "retrieval_status": "unreachable",
-            "retrieval_note": "HTTP 404 from https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3387054/fullTextXML",
+            "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
+            "retrieved_via_wayback": true,
             "is_public_domain": false,
+            "local_cache_path": "/source-cache/indus-valley-civilisation/giosan-2012-fluvial-landscapes-of-the.html"
+          },
+          "structured_facts": {},
+          "verbatim_quotes": [
+            "We report morphologic and chronologic evidence indicating that fluvial landscapes in Harappan territory became remarkably stable during the late Holocene as aridification intensified in the region after approximately 5,000&#x000a0;BP.",
+            "This fluvial quiescence suggests a gradual decrease in flood intensity that probably stimulated intensive agriculture initially and encouraged urbanization around 4,500&#x000a0;BP.",
+            "Shuttle Radar Topography Mission (SRTM) data ( 22 ) combined with field surveys and radiocarbon and optically stimulated luminescence dating offer us a way to analyze fluvial landforms and date deposits of the Indo-Gangetic Plain."
+          ],
+          "is_terminal": false,
+          "terminal_type": "radiocarbon"
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "onward citation found in /source-cache/indus-valley-civilisation/giosan-2012-fluvial-landscapes-of-the.html (near dating-method text)",
+          "citation_in_previous_verbatim": "a State University. Footnotes The authors declare no conflict of interest. This article is a PNAS Direct Submission. See Author Summary on page 10138 (volume 109, number 26). This article contains supporting information online at www.pnas.org/lookup/suppl/doi:10.1073/pnas.1112743109/-/DCSupplemental . References 1. Madella M, Fuller DQ. P",
+          "parallel_citation": null,
+          "source": {
+            "author": null,
+            "title": null,
+            "container_work": null,
+            "publisher_or_journal": null,
+            "year": null,
+            "pages": null,
+            "identifier": "doi:10.1073/pnas.1112743109/-/DCSupplemental",
+            "document_type": "journal_article",
+            "retrieval_url": "https://doi.org/10.1073/pnas.1112743109/-/DCSupplemental",
+            "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 404 from https://doi.org/10.1073/pnas.1112743109/-/DCSupplemental",
+            "retrieved_via_wayback": false,
+            "is_public_domain": null,
             "local_cache_path": null
           },
           "structured_facts": {},
@@ -875,7 +921,7 @@
           "terminal_type": null
         }
       ],
-      "status": "dead_end",
+      "status": "pending",
       "technical_log_refs": []
     },
     {
@@ -921,6 +967,7 @@
             "retrieval_url": null,
             "retrieval_status": "unreachable",
             "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -974,6 +1021,7 @@
             "retrieval_url": null,
             "retrieval_status": "unreachable",
             "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -1014,6 +1062,7 @@
             "retrieval_url": null,
             "retrieval_status": "unreachable",
             "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -1070,6 +1119,7 @@
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6800651",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": true,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/shinde-2019-an-ancient-harappan-genome.html"
           },

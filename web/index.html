@@ -362,6 +362,7 @@
       '<div class="src-title">' + esc(s.title || "(untitled source)") + "</div>" +
       (bits ? '<div class="src-bits">' + esc(bits) + "</div>" : "") +
       '<div class="src-status-row">' + badgeHtml +
+      (s.retrieved_via_wayback === true ? " " + badge("via Wayback Machine", "neutral") : "") +
       (kind === "unreachable" && s.retrieval_note ? ' <span class="src-note">' + esc(s.retrieval_note) + "</span>" : "") +
       "</div>" +
       '<div class="src-refs-label">cited from</div>' +

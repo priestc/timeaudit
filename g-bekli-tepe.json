@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T01:29:06.056Z",
+    "generated_at": "2026-09-05T01:37:42.670Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -45,6 +45,7 @@
             "retrieval_url": "https://www.researchgate.net/publication/360996154",
             "retrieval_status": "unreachable",
             "retrieval_note": "HTTP 403 from https://www.researchgate.net/publication/360996154",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -89,6 +90,7 @@
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5489262",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/gresky-2017-modified-human-crania-from.xml"
           },
@@ -143,6 +145,7 @@
             "retrieval_url": "https://www.researchgate.net/publication/267411578",
             "retrieval_status": "unreachable",
             "retrieval_note": "HTTP 403 from https://www.researchgate.net/publication/267411578",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -183,6 +186,7 @@
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5556129",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/watkins-2017-from-pleistocene-to-holocene.xml"
           },
@@ -208,6 +212,7 @@
             "retrieval_url": "https://doi.org/10.1007/s40656-017-0152-3",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": null,
             "local_cache_path": "/source-cache/g-bekli-tepe/doi-10-1007-s40656-017-0152-3.pdf"
           },
@@ -261,6 +266,7 @@
             "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2013_1.pdf",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.pdf"
           },
@@ -314,6 +320,7 @@
             "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -357,6 +364,7 @@
             "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -397,6 +405,7 @@
             "retrieval_url": "https://www.researchgate.net/publication/258182967",
             "retrieval_status": "unreachable",
             "retrieval_note": "HTTP 403 from https://www.researchgate.net/publication/258182967",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -447,6 +456,7 @@
             "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2002_2.pdf",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/pustovoytov-2002-14c-dating-of-pedogenic.pdf"
           },
@@ -486,6 +496,7 @@
             "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2010_2.pdf",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2010-a-radiocarbon-date-from.pdf"
           },
@@ -541,6 +552,7 @@
             "retrieval_url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2013_1.pdf",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.pdf"
           },
@@ -608,6 +620,7 @@
             "retrieval_url": "https://doi.org/10.34780/efb.v0i2.1012",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/clare-2020-g-bekli-tepe-turkey-a.html"
           },
@@ -639,6 +652,7 @@
             "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -708,6 +722,7 @@
             "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -764,6 +779,7 @@
             "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -843,6 +859,7 @@
             "retrieval_url": null,
             "retrieval_status": "unreachable",
             "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -887,6 +904,7 @@
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5489262",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/gresky-2017-modified-human-crania-from.xml"
           },
@@ -954,6 +972,7 @@
             "retrieval_url": "https://www.bbc.co.uk/travel/article/20210815-an-immense-mystery-older-than-stonehenge",
             "retrieval_status": "not_independently_verified",
             "retrieval_note": null,
+            "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/2021-an-immense-mystery-older.html"
           },

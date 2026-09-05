@@ -227,6 +227,7 @@ async function main() {
           src.local_cache_path = "/" + dl.rel.replace(/\\/g, "/");
           src.retrieval_status = dl.status === "cached" ? src.retrieval_status : "not_independently_verified";
           src.retrieval_note = null;
+          src.retrieved_via_wayback = !!dl.viaWayback;
           log("      " + dl.status + (dl.via ? " via " + dl.via : "") + " -> " + dl.rel);
         } else {
           src.retrieval_status = dl.status === "unreachable" ? "unreachable" : src.retrieval_status;
