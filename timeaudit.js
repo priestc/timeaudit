@@ -196,7 +196,11 @@ async function main() {
       }
       const src = refIdx.source(mk.noteId);
       if (!src) continue;
-      const worthy = src.author || src._doi || src.year || (src.title && !src._sparse) || src.retrieval_url;
+      // a citation Wikipedia lists is a real parallel source — show it even if
+      // its metadata is thin (it'll just be "unreachable"). Only skip a parse
+      // with nothing usable at all.
+      const worthy =
+        src.author || src._doi || src.year || src.retrieval_url || (src.title && src.title.trim().length >= 12);
       if (worthy && !hopSources.some((h) => sameSource(h.src, src))) {
         hopSources.push({ src, noteId: mk.noteId, label: mk.label });
       }

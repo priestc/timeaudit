@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T15:44:26.349Z",
+    "generated_at": "2026-09-05T15:51:04.292Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -351,9 +351,42 @@
       "citation_chain": [
         {
           "hop_index": 1,
+          "cited_by": "Wikipedia footnote [98]",
+          "citation_in_previous_verbatim": null,
+          "parallel_citation": {
+            "index": 1,
+            "total": 2
+          },
+          "source": {
+            "author": "Peter T. Daniels",
+            "title": "The World's Writing Systems",
+            "container_work": null,
+            "publisher_or_journal": null,
+            "year": null,
+            "pages": "372",
+            "identifier": null,
+            "document_type": "other",
+            "retrieval_url": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "is_public_domain": null,
+            "local_cache_path": null
+          },
+          "structured_facts": {},
+          "verbatim_quotes": [],
+          "wikipedia_note_quotes": [],
+          "is_terminal": false,
+          "terminal_type": null
+        },
+        {
+          "hop_index": 2,
           "cited_by": "Wikipedia footnote [99]",
           "citation_in_previous_verbatim": null,
-          "parallel_citation": null,
+          "parallel_citation": {
+            "index": 2,
+            "total": 2
+          },
           "source": {
             "author": "Asko Parpola",
             "title": "Deciphering the Indus Script",
