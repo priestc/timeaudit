@@ -189,6 +189,7 @@ async function main() {
     for (const mk of c.markers) {
       mk.footnoteText = refIdx.markerText(mk.noteId);
       if (refIdx.isNoteOnly(mk.noteId, mk.label)) {
+        mk.isNote = true; // a lettered explanatory note, not a citation of its own
         const ann = refIdx.noteAnnotation(mk.noteId);
         if (ann.snippets.length) letterNotes.push({ label: mk.label, refs: ann.refs, snippets: ann.snippets });
         continue;

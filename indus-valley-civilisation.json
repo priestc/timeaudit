@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T15:38:58.401Z",
+    "generated_at": "2026-09-05T15:44:26.349Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -19,12 +19,10 @@
       "wikipedia_text_verbatim": "in the northwestern regions of South Asia, lasting from 3300 BCE to 1300 BCE, and in its mature form from 2600 BCE to 1900 BCE.[3][a]",
       "location_on_page": "Lead section",
       "citation_markers": [
-        "3",
-        "a"
+        "3"
       ],
       "citation_footnotes_verbatim": {
-        "3": "Wright 2009, p. 1.",
-        "a": "Wright: \"Mesopotamia and Egypt ... co-existed with the Indus civilization during its florescence between 2600 and 1900 BC.\"[3]"
+        "3": "Wright 2009, p. 1."
       },
       "citation_chain": [
         {
@@ -79,15 +77,11 @@
       "location_on_page": "Extent",
       "citation_markers": [
         "25",
-        "m",
-        "26",
-        "n"
+        "26"
       ],
       "citation_footnotes_verbatim": {
         "25": "Dyson 2018, p. 29.",
-        "26": "Fisher 2018, p. 33.",
-        "m": "Dyson: \"The subcontinent's people were hunter-gatherers for many millennia. There were very few of them. Indeed, 10,000 years ago there may only have been a couple of hundred thousand people, living in small, often isolated groups, the descendants of various 'modern' human incomers. Then, perhaps linked to events in Mesopotamia, about 8,500 years ago agriculture emerged in Baluchistan.\"[25]",
-        "n": "Fisher: \"The earliest discovered instance in India of well-established, settled agricultural society is at Mehrgarh in the hills between the Bolan Pass and the Indus plain (today in Pakistan) (see Map 3.1). From as early as 7000 BCE, communities there started investing increased labor in preparing the land and selecting, planting, tending, and harvesting particular grain-producing plants. They also domesticated animals, including sheep, goats, pigs, and oxen (both humped zebu [Bos indicus] and unhumped [Bos taurus]). Castrating oxen, for instance, turned them from mainly meat sources into domesticated draft-animals as well.[26]"
+        "26": "Fisher 2018, p. 33."
       },
       "citation_chain": [
         {
@@ -932,12 +926,10 @@
       "wikipedia_text_verbatim": "According to Andrew Lawler, \"excavations along the Gangetic plain show that cities began to arise there starting about 1200 BCE, just a few centuries after Harappa was deserted and much earlier than once suspected.\"[223][ai]",
       "location_on_page": "Continuity and coexistence",
       "citation_markers": [
-        "223",
-        "ai"
+        "223"
       ],
       "citation_footnotes_verbatim": {
-        "223": "Lawler, Andrew (6 June 2008). \"Indus Collapse: The End or the Beginning of an Asian Culture?\". Science. 320 (5881): 1281–1283. doi:10.1126/science.320.5881.1281. PMID 18535222.",
-        "ai": "Most sites of the Painted Grey Ware culture in the Ghaggar-Hakra and Upper Ganges Plain were small farming villages. However, \"several dozen\" PGW sites eventually emerged as relatively large settlements that can be characterised as towns, the largest of which were fortified by ditches or moats and embankments made of piled earth with wooden palisades, albeit smaller and simpler than the elaborately fortified large cities which grew after 600 BCE in the more fully urban Northern Black Polished Ware culture.[234]"
+        "223": "Lawler, Andrew (6 June 2008). \"Indus Collapse: The End or the Beginning of an Asian Culture?\". Science. 320 (5881): 1281–1283. doi:10.1126/science.320.5881.1281. PMID 18535222."
       },
       "citation_chain": [
         {
