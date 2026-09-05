@@ -3,14 +3,14 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-04T22:35:18.056Z",
+    "generated_at": "2026-09-05T01:28:45.812Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
   "page": {
     "title": "Indus Valley Civilisation",
     "url": "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation",
-    "retrieved_at": "2026-09-04",
+    "retrieved_at": "2026-09-05",
     "wikipedia_revision_id": "1371652862"
   },
   "claims": [
@@ -808,10 +808,10 @@
             "identifier": null,
             "document_type": "book",
             "retrieval_url": "http://www.stratigraphy.org/index.php/ics-news-and-meetings/119-collapse-of-civilizations-worldwide-defines-youngest-unit-of-the-geologic-time-scale",
-            "retrieval_status": "unreachable",
-            "retrieval_note": "HTTP 404 from http://www.stratigraphy.org/index.php/ics-news-and-meetings/119-collapse-of-civilizations-worldwide-defines-youngest-unit-of-the-geologic-time-scale",
+            "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
-            "local_cache_path": null
+            "local_cache_path": "/source-cache/indus-valley-civilisation/collapse-of-civilizations-worldwide.html"
           },
           "structured_facts": {},
           "verbatim_quotes": [],
@@ -819,7 +819,7 @@
           "terminal_type": null
         }
       ],
-      "status": "dead_end",
+      "status": "pending",
       "technical_log_refs": []
     },
     {
@@ -1068,10 +1068,10 @@
             "identifier": null,
             "document_type": "journal_article",
             "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6800651",
-            "retrieval_status": "unreachable",
-            "retrieval_note": "HTTP 404 from https://www.ebi.ac.uk/europepmc/webservices/rest/PMC6800651/fullTextXML",
+            "retrieval_status": "not_independently_verified",
+            "retrieval_note": null,
             "is_public_domain": false,
-            "local_cache_path": null
+            "local_cache_path": "/source-cache/indus-valley-civilisation/shinde-2019-an-ancient-harappan-genome.html"
           },
           "structured_facts": {},
           "verbatim_quotes": [],
@@ -1079,7 +1079,7 @@
           "terminal_type": null
         }
       ],
-      "status": "dead_end",
+      "status": "pending",
       "technical_log_refs": []
     }
   ]
