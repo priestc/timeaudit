@@ -115,6 +115,19 @@
     text-decoration:none;color:var(--accent);background:var(--bg)}
   .src-ref:hover{border-color:var(--accent)}
 
+  /* home / add article */
+  .home{max-width:760px;margin:0 auto;padding:48px 22px 80px}
+  .home h1{font-size:1.6rem;margin:0 0 6px}
+  .home .sub{color:var(--muted);font-size:.9rem;margin-bottom:20px}
+  #home-form{display:flex;gap:8px}
+  #home-url{flex:1;padding:11px 14px;border:1px solid var(--border);border-radius:8px;
+    background:var(--card);color:var(--fg);font:inherit;font-size:.95rem}
+  #home-form button{padding:11px 20px;font-weight:600}
+  .home-status{margin-top:16px;font-size:.85rem;color:var(--muted);
+    font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;word-break:break-word}
+  .home-status.home-ok{color:#16a34a}
+  .home-status.home-fail{color:#b91c1c}
+
   /* claim finder */
   .finder{max-width:900px;margin:0 auto;padding:28px 22px 80px}
   .finder h1{font-size:1.5rem;margin:0 0 4px}
@@ -157,9 +170,11 @@
     <input id="search" type="search" placeholder="Filter documents…" autocomplete="off">
   </header>
   <div id="nav">
+    <button id="btn-home" class="navbtn" type="button">🏠&nbsp; Home</button>
     <button id="btn-stats" class="navbtn" type="button">📊&nbsp; Statistics</button>
     <button id="btn-finder" class="navbtn" type="button">🔎&nbsp; Claim finder</button>
-    <button id="btn-sources" class="navbtn" type="button">📚&nbsp; Sources</button>
+    <button id="btn-unreachable" class="navbtn" type="button">🚫&nbsp; Unreachable sources</button>
+    <button id="btn-radiocarbon" class="navbtn" type="button">☢️&nbsp; Radiocarbon sources</button>
   </div>
   <ul id="list"></ul>
 </aside>
@@ -185,9 +200,11 @@
   var searchEl = document.getElementById("search");
   var contentEl = document.getElementById("content");
   var toolbarEl = document.getElementById("toolbar");
+  var btnHome = document.getElementById("btn-home");
   var btnStats = document.getElementById("btn-stats");
   var btnFinder = document.getElementById("btn-finder");
-  var btnSources = document.getElementById("btn-sources");
+  var btnUnreachable = document.getElementById("btn-unreachable");
+  var btnRadiocarbon = document.getElementById("btn-radiocarbon");
   var btnRendered = document.getElementById("btn-rendered");
   var btnRaw = document.getElementById("btn-raw");
   var btnDownload = document.getElementById("btn-download");
@@ -199,10 +216,13 @@
   var files = [];
   var current = null;      // { meta, data }
   var view = "rendered";   // doc sub-view: rendered | raw
-  var screen = "doc";      // doc | stats | finder
+  var screen = "doc";      // doc | home | stats | finder | unreachable | radiocarbon
   var finderState = { url: "", html: "" };   // survives switching away
   var suppressHash = false; // guard: hash we set ourselves shouldn't re-route
   var reanalyzePoll = null; // setInterval handle for the currently-open doc
+  var sourcesCache = null;  // last /api/sources response, shared by both source tabs
+  var analyzePoll = null;   // setInterval handle for an in-flight "add article" run
+  var homeState = { url: "" };
 
   var STATUS_LABELS = { resolved: "resolved", pending: "pending", dead_end: "dead end" };
   function esc(s) {
@@ -313,9 +333,11 @@
     toolbarEl.hidden = active !== "doc";
     stopReanalyzePoll();
     hideReanalyzeBar();
+    btnHome.classList.toggle("active", active === "home");
     btnStats.classList.toggle("active", active === "stats");
     btnFinder.classList.toggle("active", active === "finder");
-    btnSources.classList.toggle("active", active === "sources");
+    btnUnreachable.classList.toggle("active", active === "unreachable");
+    btnRadiocarbon.classList.toggle("active", active === "radiocarbon");
     renderList();
   }
 
@@ -371,24 +393,14 @@
     );
   }
 
-  function renderSources(d) {
-    var unreachable = d.unreachable || [];
-    var validated = d.validated || [];
+  function renderSourceList(title, sub, list, kind) {
     return (
       '<div class="sources">' +
-      "<h1>Sources</h1>" +
-      '<div class="sub">across every document in this source, deduplicated by identity</div>' +
-      "<h2>Unreachable sources (" + unreachable.length + ")</h2>" +
-      '<div class="sub">no full text could be retrieved online — see each one’s reason</div>' +
-      (unreachable.length
-        ? '<ul class="src-list">' + unreachable.map(function (e) { return sourceCard(e, "unreachable"); }).join("") + "</ul>"
-        : '<div class="empty">None — every cited source has been reached.</div>') +
-      "<h2>Validated sources (" + validated.length + ")</h2>" +
-      '<div class="sub">sources whose text was confirmed to carry the dating method behind a claim</div>' +
-      (validated.length
-        ? '<ul class="src-list">' + validated.map(function (e) { return sourceCard(e, "validated"); }).join("") + "</ul>"
-        : '<div class="empty">None yet.</div>') +
-      "</div>"
+      "<h1>" + esc(title) + " (" + list.length + ")</h1>" +
+      '<div class="sub">' + esc(sub) + "</div>" +
+      (list.length
+        ? '<ul class="src-list">' + list.map(function (e) { return sourceCard(e, kind); }).join("") + "</ul>"
+        : '<div class="empty">None.</div>')
     );
   }
 
@@ -405,19 +417,140 @@
     }
   }
 
-  function showSources() {
-    setNav("sources");
-    clearHash();
-    document.title = "Sources — Chronology Browser";
+  // both source tabs share one /api/sources fetch, cached for the session
+  function withSources(cb) {
+    if (sourcesCache) return cb(sourcesCache);
     contentEl.innerHTML = '<div class="empty">Loading sources…</div>';
     fetchJSON("/api/sources")
-      .then(function (d) {
-        contentEl.innerHTML = renderSources(d);
-        wireSourceRefs();
-      })
+      .then(function (d) { sourcesCache = d; cb(d); })
       .catch(function (e) {
         contentEl.innerHTML = '<div class="empty">Failed to load sources: ' + esc(e.message) + "</div>";
       });
+  }
+
+  function showUnreachable() {
+    setNav("unreachable");
+    clearHash();
+    document.title = "Unreachable sources — Chronology Browser";
+    withSources(function (d) {
+      contentEl.innerHTML = renderSourceList(
+        "Unreachable sources",
+        "cited sources whose full text could not be retrieved online — each with the specific reason",
+        d.unreachable || [],
+        "unreachable"
+      );
+      wireSourceRefs();
+    });
+  }
+
+  function showRadiocarbon() {
+    setNav("radiocarbon");
+    clearHash();
+    document.title = "Radiocarbon sources — Chronology Browser";
+    withSources(function (d) {
+      var rc = (d.validated || []).filter(function (e) { return e.terminal_type === "radiocarbon"; });
+      contentEl.innerHTML = renderSourceList(
+        "Radiocarbon sources",
+        "sources whose text was confirmed to carry the radiocarbon date behind a claim",
+        rc,
+        "validated"
+      );
+      wireSourceRefs();
+    });
+  }
+
+  /* ---- home: analyze a new Wikipedia article into the database -------- */
+
+  function slugify(s) {
+    return String(s || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+  }
+
+  function stopAnalyzePoll() {
+    if (analyzePoll) { clearInterval(analyzePoll); analyzePoll = null; }
+  }
+
+  function setHomeStatus(cls, text) {
+    var el = document.getElementById("home-status");
+    if (el) {
+      el.className = "home-status " + (cls || "");
+      el.textContent = text;
+    }
+  }
+
+  function pollAnalyze(jobKey) {
+    fetchJSON("/api/analyze/status?job=" + encodeURIComponent(jobKey))
+      .then(function (job) {
+        if (job.running) {
+          setHomeStatus("", (job.log || []).slice(-1)[0] || "Analyzing…");
+          return;
+        }
+        stopAnalyzePoll();
+        var btn = document.getElementById("home-go");
+        if (btn) btn.disabled = false;
+        if (job.ok) {
+          setHomeStatus("home-ok", "Analysis complete — opening the report…");
+          var slug = jobKey.replace(/^new:/, "");
+          fetchJSON("/api/files").then(function (data) {
+            files = data;
+            renderList();
+            var meta = files.filter(function (f) {
+              var id = String(f.id).replace(/\.json$/i, "");
+              return id === slug || slugify(f.title) === slug;
+            })[0];
+            if (meta) load(meta);
+          });
+        } else {
+          var last = (job.log || []).slice(-1)[0];
+          setHomeStatus("home-fail", "Analysis failed" + (last ? " — " + last : ""));
+        }
+      })
+      .catch(function () { /* transient — retry next tick */ });
+  }
+
+  function runAnalyze(wikiUrl) {
+    homeState.url = wikiUrl;
+    var btn = document.getElementById("home-go");
+    if (btn) btn.disabled = true;
+    setHomeStatus("", "Starting analysis…");
+    fetch("/api/analyze?url=" + encodeURIComponent(wikiUrl), { method: "POST" })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (d.error) {
+          if (btn) btn.disabled = false;
+          setHomeStatus("home-fail", d.error);
+          return;
+        }
+        setHomeStatus("", "Analyzing " + wikiUrl + " — this can take a few minutes…");
+        stopAnalyzePoll();
+        pollAnalyze(d.job);
+        analyzePoll = setInterval(function () { pollAnalyze(d.job); }, 2500);
+      })
+      .catch(function (e) {
+        if (btn) btn.disabled = false;
+        setHomeStatus("home-fail", e.message);
+      });
+  }
+
+  function showHome() {
+    setNav("home");
+    clearHash();
+    document.title = "Home — Chronology Browser";
+    contentEl.innerHTML =
+      '<div class="home">' +
+      "<h1>Add an article</h1>" +
+      '<div class="sub">Paste a Wikipedia URL. It is run through the full extraction pipeline and added to the database.</div>' +
+      '<form id="home-form">' +
+      '<input id="home-url" type="url" placeholder="https://en.wikipedia.org/wiki/Stonehenge" value="' + esc(homeState.url) + '">' +
+      '<button id="home-go" type="submit">Analyze &amp; add</button>' +
+      "</form>" +
+      '<div id="home-status" class="home-status"></div>' +
+      "</div>";
+    var form = document.getElementById("home-form");
+    form.onsubmit = function (e) {
+      e.preventDefault();
+      var v = document.getElementById("home-url").value.trim();
+      if (v) runAnalyze(v);
+    };
   }
 
   /* ---- claim finder ---------------------------------------------------- */
@@ -653,9 +786,9 @@
       .then(function (data) {
         screen = "doc";
         setHash("#doc/" + encodeURIComponent(meta.id));
-        btnStats.classList.remove("active");
-        btnFinder.classList.remove("active");
-        btnSources.classList.remove("active");
+        [btnHome, btnStats, btnFinder, btnUnreachable, btnRadiocarbon].forEach(function (b) {
+          b.classList.remove("active");
+        });
         toolbarEl.hidden = false;
         current = { meta: meta, data: data, context: {} };
         renderList();
@@ -679,9 +812,11 @@
       });
   }
 
+  btnHome.onclick = showHome;
   btnStats.onclick = showStats;
   btnFinder.onclick = showFinder;
-  btnSources.onclick = showSources;
+  btnUnreachable.onclick = showUnreachable;
+  btnRadiocarbon.onclick = showRadiocarbon;
   btnRendered.onclick = function () { view = "rendered"; draw(); };
   btnRaw.onclick = function () { view = "raw"; draw(); };
   searchEl.oninput = renderList;
@@ -804,8 +939,7 @@
   window.addEventListener("hashchange", function () {
     if (suppressHash) { suppressHash = false; return; }
     if (routeFromHash()) return;
-    if (files.length === 1) load(files[0]);
-    else showStats();
+    showHome();
   });
 
   fetchJSON("/api/files")
@@ -813,11 +947,11 @@
       files = data;
       renderList();
       if (routeFromHash()) return;
-      if (files.length === 1) load(files[0]);
-      else if (files.length > 1) showStats();
+      showHome();
     })
     .catch(function (e) {
       listEl.innerHTML = '<li class="meta">Could not list files: ' + esc(e.message) + "</li>";
+      showHome();
     });
 })();
 </script>

@@ -155,10 +155,11 @@ function outDirForId(id) {
   return backend.name === "filesystem" ? path.dirname(path.resolve(DIR, id)) : DIR;
 }
 
-/* ---------- re-analyze: rerun the full extraction pipeline on demand ---------- */
+/* ---------- run the extraction pipeline on demand (re-analyze / add new) ------ */
 
 const MODES = ["local", "hybrid", "ai-only"];
-const reanalyzeJobs = new Map(); // doc id -> { running, ok, log: [], startedAt, finishedAt }
+// keyed by doc id for re-analyze, by "new:<slug>" for a brand-new article
+const reanalyzeJobs = new Map(); // key -> { running, ok, log: [], startedAt, finishedAt }
 
 function jobSnapshot(job) {
   return { running: job.running, ok: job.ok, log: job.log, startedAt: job.startedAt, finishedAt: job.finishedAt };
@@ -198,18 +199,25 @@ function wipeForFreshRun(id, slug, outDir, job) {
   }
 }
 
-// re-runs the same pipeline timeaudit.js on the CLI does, writing over the
-// original file (filesystem backend) or into DIR then `db.js push` (firestore).
-// Not synced to tank2 from here — a run triggered from inside the web UI
-// shouldn't shell out an interactive `ssh tank2`.
-function startReanalyze(id, docUrl, mode, outDir) {
+// Runs the same pipeline timeaudit.js does on the CLI, into `outDir` (then
+// `db.js push` when the backend is Firestore). Not synced to tank2 from here
+// — a run triggered from inside the web UI shouldn't shell out `ssh tank2`.
+//   opts.wipeSlug  present -> delete that slug's previous report + caches first
+//                             ("re-analyze from scratch")
+//   opts.mode      forces --mode; omitted -> timeaudit.js picks its default
+function startTimeauditJob(jobKey, url, opts) {
+  opts = opts || {};
+  const outDir = opts.outDir || DIR;
   const job = { running: true, ok: null, log: [], startedAt: Date.now(), finishedAt: null };
-  reanalyzeJobs.set(id, job);
-  const slug = String(id).replace(/\.json$/i, "");
-  job.log.push("• re-analyzing from scratch — deleting the previous report and cached sources");
-  wipeForFreshRun(id, slug, outDir, job);
-  const args = [path.join(ROOT, "timeaudit.js"), docUrl, "--out", outDir, "--no-sync"];
-  if (mode) args.push("--mode", mode);
+  reanalyzeJobs.set(jobKey, job);
+  if (opts.wipeSlug) {
+    job.log.push("• re-analyzing from scratch — deleting the previous report and cached sources");
+    wipeForFreshRun(jobKey, opts.wipeSlug, outDir, job);
+  } else {
+    job.log.push("• analyzing " + url);
+  }
+  const args = [path.join(ROOT, "timeaudit.js"), url, "--out", outDir, "--no-sync"];
+  if (opts.mode) args.push("--mode", opts.mode);
   if (backend.name === "firestore") args.push("--push");
   const feed = (buf) => {
     for (const line of buf.toString("utf8").split(/\r?\n/)) {
@@ -493,13 +501,38 @@ const server = http.createServer(async (req, res) => {
         return send(res, 200, "application/json", JSON.stringify({ started: false, running: true }));
       }
       const mode = MODES.includes(data.generator && data.generator.mode) ? data.generator.mode : null;
-      startReanalyze(id, docUrl, mode, outDirForId(id));
+      startTimeauditJob(id, docUrl, { mode, outDir: outDirForId(id), wipeSlug: String(id).replace(/\.json$/i, "") });
       return send(res, 200, "application/json", JSON.stringify({ started: true, url: docUrl, mode: mode || "(default)" }));
     }
     if (pathname === "/api/reanalyze/status") {
       const id = url.searchParams.get("id") || "";
       const job = reanalyzeJobs.get(id);
       if (!job) return send(res, 404, "application/json", JSON.stringify({ error: "no re-analyze job for this document yet" }));
+      return send(res, 200, "application/json", JSON.stringify(jobSnapshot(job)));
+    }
+    // "Add article" — analyze a brand-new Wikipedia URL and add it to the DB.
+    // Job is keyed "new:<slug>"; the client polls /api/analyze/status?job=<key>.
+    if (pathname === "/api/analyze" && req.method === "POST") {
+      const target = url.searchParams.get("url") || "";
+      let parsed;
+      try {
+        parsed = wiki.parseWikiUrl(target);
+      } catch (e) {
+        return send(res, 400, "application/json", JSON.stringify({ error: e.message }));
+      }
+      // parseWikiUrl already decodes + de-underscores the title
+      const jobKey = "new:" + slugify(parsed.title || target);
+      const existing = reanalyzeJobs.get(jobKey);
+      if (existing && existing.running) {
+        return send(res, 200, "application/json", JSON.stringify({ started: false, running: true, job: jobKey }));
+      }
+      startTimeauditJob(jobKey, target, { outDir: DIR });
+      return send(res, 200, "application/json", JSON.stringify({ started: true, job: jobKey, url: target }));
+    }
+    if (pathname === "/api/analyze/status") {
+      const jobKey = url.searchParams.get("job") || "";
+      const job = reanalyzeJobs.get(jobKey);
+      if (!job) return send(res, 404, "application/json", JSON.stringify({ error: "no analyze job with that key" }));
       return send(res, 200, "application/json", JSON.stringify(jobSnapshot(job)));
     }
     // cached assets (images only). Screenshots under _shots/ are a presentation
