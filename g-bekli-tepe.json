@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T01:37:42.670Z",
+    "generated_at": "2026-09-05T15:07:07.983Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -416,10 +416,7 @@
         }
       ],
       "status": "dead_end",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "cutoff_basis": "modern year present but an ancient period is referenced"
-      }
+      "technical_log_refs": []
     },
     {
       "claim_id": "GT-008",
@@ -874,65 +871,6 @@
     },
     {
       "claim_id": "GT-019",
-      "wikipedia_text_verbatim": "In 2017, fragments of human crania with incisions were discovered at the site, interpreted as a manifestation of the widespread Neolithic skull cult.[29]",
-      "location_on_page": "Burials",
-      "citation_markers": [
-        "29"
-      ],
-      "citation_footnotes_verbatim": {
-        "29": "Gresky, Haelm & Clare 2017."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [29]",
-          "citation_in_previous_verbatim": null,
-          "parallel_citation": null,
-          "source": {
-            "author": [
-              "Julia Gresky",
-              "Haelm, Juliane",
-              "Clare, Lee"
-            ],
-            "title": "Modified human crania from Göbekli Tepe provide evidence for a new form of Neolithic skull cult",
-            "container_work": null,
-            "publisher_or_journal": "Science Advances",
-            "year": 2017,
-            "pages": null,
-            "identifier": null,
-            "document_type": "journal_article",
-            "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5489262",
-            "retrieval_status": "not_independently_verified",
-            "retrieval_note": null,
-            "retrieved_via_wayback": false,
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/g-bekli-tepe/gresky-2017-modified-human-crania-from.xml"
-          },
-          "structured_facts": {
-            "date_expressions_found": [
-              "9600–7000 calBC",
-              "9600–8000 calBC",
-              "9600–8700 calBC",
-              "8700–8000 calBC"
-            ]
-          },
-          "verbatim_quotes": [
-            "More recently, this conclusion could be verified by newly available (as yet largely unpublished) radiocarbon ages made on organic residues extracted from mud mortar and wall plaster samples ( 35 ).",
-            "32 Dietrich O. , Schmidt K. , A radiocarbon date from the wall plaster of enclosure D of Göbekli Tepe .",
-            "33 Dietrich O. , Köksal-Schmidt Ç. , Notroff J. , Schmidt K. , Establishing a radiocarbon sequence for Göbekli Tepe."
-          ],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
-        }
-      ],
-      "status": "resolved",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "cutoff_basis": "modern year present but an ancient period is referenced"
-      }
-    },
-    {
-      "claim_id": "GT-020",
       "wikipedia_text_verbatim": "However, these measures proved futile when a second major landslide probably caused the enclosure to be abandoned during Building Phase 6, around the late 9th millennium BCE.",
       "location_on_page": "Landslides and reconstruction",
       "citation_markers": [],
@@ -942,50 +880,6 @@
       "technical_log_refs": [],
       "structured_facts": {
         "extraction_note": "no citation with resolvable source metadata on this sentence"
-      }
-    },
-    {
-      "claim_id": "GT-021",
-      "wikipedia_text_verbatim": "As the initial leader of excavation in 1995, he suggested it was a central location for small, pre-pottery neolithic hunter-gatherer nomadic bands from across the region who joined forces on the hilltop for periodic building projects, hold great feasts and then scatter again.[98]",
-      "location_on_page": "Interpretation",
-      "citation_markers": [
-        "98"
-      ],
-      "citation_footnotes_verbatim": {
-        "98": "\"An immense mystery older than Stonehenge\". BBC Travel. 15 August 2021. Retrieved 28 September 2025."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [98]",
-          "citation_in_previous_verbatim": null,
-          "parallel_citation": null,
-          "source": {
-            "author": null,
-            "title": "An immense mystery older than Stonehenge",
-            "container_work": null,
-            "publisher_or_journal": "BBC Travel",
-            "year": 2021,
-            "pages": null,
-            "identifier": null,
-            "document_type": "journal_article",
-            "retrieval_url": "https://www.bbc.co.uk/travel/article/20210815-an-immense-mystery-older-than-stonehenge",
-            "retrieval_status": "not_independently_verified",
-            "retrieval_note": null,
-            "retrieved_via_wayback": false,
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/g-bekli-tepe/2021-an-immense-mystery-older.html"
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "is_terminal": false,
-          "terminal_type": "radiocarbon"
-        }
-      ],
-      "status": "pending",
-      "technical_log_refs": [],
-      "structured_facts": {
-        "cutoff_basis": "modern year present but an ancient period is referenced"
       }
     }
   ]

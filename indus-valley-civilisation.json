@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T01:37:00.482Z",
+    "generated_at": "2026-09-05T15:07:23.446Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -11,7 +11,7 @@
     "title": "Indus Valley Civilisation",
     "url": "https://en.wikipedia.org/wiki/Indus_Valley_Civilisation",
     "retrieved_at": "2026-09-05",
-    "wikipedia_revision_id": "1371652862"
+    "wikipedia_revision_id": "1373320790"
   },
   "claims": [
     {
