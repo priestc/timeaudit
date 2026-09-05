@@ -16,6 +16,23 @@ This process does **not** evaluate whether any date is correct. It records what 
 
 This spec is designed to be followed by an AI system processing many Wikipedia pages at scale, producing one JSON file per page plus entries in a shared cross-page technical log. The output is intended for later pattern analysis across large numbers of pages (which methods recur, which labs, which calibration approaches, how often chains terminate vs. dead-end, etc.).
 
+## Implementation status
+
+The full protocol has **three phases**:
+
+1. **Parse the article for dated claims and classify them** (Core rules 0-4, the Claim object).
+2. **Follow the Wikipedia citations and download the raw text of each cited source** (Core rules 5, 8; `source` retrieval fields).
+3. **Read through those sources** to classify the terminal dating method, chase multi-hop citation chains, and select load-bearing quotes (Core rules 6-9, `is_terminal` / `terminal_type` / `structured_facts` / `verbatim_quotes` / `citation_in_previous_verbatim`, the shared technical log).
+
+The reference implementation (`timeaudit`) currently implements **phases 1 and 2 only**. Consequences for its output until phase 3 lands:
+
+- `citation_chain` has exactly **one hop per source the Wikipedia sentence cites** (all parallel citations included). There is no onward/multi-hop chasing.
+- Hops omit `is_terminal`, `terminal_type`, `structured_facts`, `verbatim_quotes`, and `citation_in_previous_verbatim` (they carry `source`, `cited_by`, `hop_index`, `parallel_citation`, and `wikipedia_note_quotes`).
+- `status` is only ever `"pending"` (the cited source was retrieved, phase 3 hasn't read it) or `"dead_end"` (every cited source was unreachable). `"resolved"` is a phase-3 outcome.
+- The shared technical log is not written.
+
+The rest of this document specifies the whole protocol; the fields above are still part of the schema and return when phase 3 is built.
+
 ---
 
 ## Core rules
@@ -97,11 +114,15 @@ A formal JSON Schema (draft 2020-12) is provided alongside this document as `sch
 
 ### Hop object
 
+The fields marked **[phase 3]** below are not emitted by the current reference
+implementation (see Implementation status) — it writes one hop per Wikipedia-cited
+source with everything else populated.
+
 ```
 {
   "hop_index": integer,                    // 1-based position in citation_chain overall — sequential across the whole array, not reset per branch (see parallel_citation)
   "cited_by": string,                      // which prior document/footnote pointed here (free-form)
-  "citation_in_previous_verbatim": string | null,  // hop_index > 1 *within its branch*: the reference/citation text exactly as printed in the PREVIOUS hop's document (bibliography entry or footnote). Every hop after the first in a branch is, by Rule 6, explicitly cited; this is null only when that citation could not be extracted verbatim. Always null on a branch's own hop 1 (the Wikipedia footnote text lives in the Claim's citation_footnotes_verbatim) — this is not necessarily array index 0; see parallel_citation.
+  "citation_in_previous_verbatim": string | null,  // [phase 3] hop_index > 1 *within its branch*: the reference/citation text exactly as printed in the PREVIOUS hop's document (bibliography entry or footnote). Every hop after the first in a branch is, by Rule 6, explicitly cited; this is null only when that citation could not be extracted verbatim. Always null on a branch's own hop 1 (the Wikipedia footnote text lives in the Claim's citation_footnotes_verbatim) — this is not necessarily array index 0; see parallel_citation.
   "parallel_citation": { "index": integer, "total": integer } | null,  // set only on the first hop of a branch when the sentence has more than one separately-cited source (Rule 6); null on every other hop, including the sole hop of a single-source sentence
   "source": {
     "author": string | [string, ...] | null,
@@ -120,11 +141,11 @@ A formal JSON Schema (draft 2020-12) is provided alongside this document as `sch
     "is_public_domain": boolean | null,
     "local_cache_path": string | null      // path under /source-cache/ where the downloaded file was saved; see Local Source Cache section
   },
-  "structured_facts": { ... },             // free-form key/value for any extractable facts specific to this hop
-  "verbatim_quotes": [string, ...],        // max 3 for copyrighted sources; see Rule 4
-  "wikipedia_note_quotes": [string, ...],  // passage(s) a Wikipedia explanatory ("[m]"/"[n]") footnote on the citing sentence quotes from THIS source — an editorial selection made by Wikipedia, not text-mined by the extractor. A lettered note like `Dyson: "…"[25]` is a snippet *from* source [25], not a citation of its own: its quote is attached to that source's hop here, and the note is not added to citation_chain. Same Rule 4 quote cap.
-  "is_terminal": boolean,
-  "terminal_type": "radiocarbon" | "OSL" | "uranium_thorium" | "argon_argon" | "dendrochronology" | "thermoluminescence" | "comparative" | "genetic_context_dating" | "other_physical" | null
+  "structured_facts": { ... },             // [phase 3] free-form key/value for any extractable facts specific to this hop
+  "verbatim_quotes": [string, ...],        // [phase 3] max 3 for copyrighted sources; see Rule 4
+  "wikipedia_note_quotes": [string, ...],  // passage(s) a Wikipedia explanatory ("[m]"/"[n]") footnote on the citing sentence quotes from THIS source — an editorial selection made by Wikipedia, not text-mined by the extractor. A lettered note like `Dyson: "…"[25]` is a snippet *from* source [25], not a citation of its own: its quote is attached to that source's hop here, and the note is not added to citation_chain. Same Rule 4 quote cap. (Populated in phase 2 — it comes from Wikipedia's own markup, not from reading the source.)
+  "is_terminal": boolean,                  // [phase 3]
+  "terminal_type": "radiocarbon" | "OSL" | "uranium_thorium" | "argon_argon" | "dendrochronology" | "thermoluminescence" | "comparative" | "genetic_context_dating" | "other_physical" | null   // [phase 3]
 }
 ```
 
@@ -153,6 +174,11 @@ combined label for a one-link branch). "Cites the next source" is only shown
 between two hops of the *same* branch — a branch's last hop does not "cite"
 the next branch's first hop; they're independent, both cited directly by
 Wikipedia.
+
+**Phase-3 note:** the reference implementation currently produces exactly one
+hop per Wikipedia-cited source with no terminal classification, so every hop
+displays as `Wikipedia citation` or `Wikipedia parallel citation N of M` and
+none of the multi-hop / terminal labels above appear yet.
 
 ### Local Source Cache
 

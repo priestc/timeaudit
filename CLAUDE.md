@@ -28,20 +28,29 @@ node json-to-html.js indus-valley-civilisation.json
 `timeaudit.js` turns a Wikipedia URL into a SPEC-conforming chronology report.
 Full design notes in **`PIPELINE.md`**. Key points:
 
-- **Three modes, recorded in `generator.mode`** in every report (for tracking
-  which approach works best over a corpus). `--mode` / aliases `--no-ai`,
-  `--ai`, `--ai-only`. Default: `hybrid` if `ANTHROPIC_API_KEY` is set, else
-  `local`.
-  - `local` — only the local software (`lib/wiki.js` + `lib/scholar.js` +
-    `lib/assemble.js`): MediaWiki fetch, claim detection, 1450 CE cutoff,
-    COinS citation parsing, source download + cache, dating-method heuristics,
-    multi-hop DOI chasing. No AI. Judgement-dependent chains → `status:"pending"`.
-  - `hybrid` — local pipeline + one AI call per claim (`lib/ai.js`, raw HTTPS,
-    no SDK dep) to confirm scope, pick the terminal hop, and select ≤3 quotes,
-    each verified to be a substring of the text sent (no fabrication).
+- **Three-phase analysis; the code implements phases 1 and 2 only.**
+  - **Phase 1 — find + classify claims.** MediaWiki fetch, numeric dated-claim
+    detection, 1450 CE cutoff, COinS/footnote citation parsing (`lib/wiki.js`).
+  - **Phase 2 — fetch the cited sources.** Download + cache the raw text of
+    every source the Wikipedia sentence cites, one hop per source, all parallel
+    citations attempted (`lib/scholar.js`): direct URL, Wikipedia `archive-url`,
+    OA lookups (OpenAlex / Europe PMC / Unpaywall), Wayback Machine fallback.
+    `extractText()` writes a `.txt` beside each cached file for phase 3.
+  - **Phase 3 — read the sources — NOT IMPLEMENTED YET.** Returns once phase-2
+    retrieval is stronger. Until then there is no onward (multi-hop) citation
+    chasing, no terminal-method classification, no text-mined quotes; a traced
+    claim is `status:"pending"` (source in hand) or `"dead_end"` (every cited
+    source unreachable). `scholar.classifyText` / `findOnwardLeads` and the
+    `hybrid` mode + `ai.refineClaim` were removed; `is_terminal` /
+    `terminal_type` / `structured_facts` / `verbatim_quotes` /
+    `citation_in_previous_verbatim` are no longer emitted on hops.
+- **Two modes, recorded in `generator.mode`.** `--mode` / aliases `--no-ai` /
+  `--local`, `--ai-only`. Default: `local` (`--ai` / `--hybrid` now error).
+  - `local` — the local software (`lib/wiki.js` + `lib/scholar.js` +
+    `lib/assemble.js`), phases 1-2 as above. No AI.
   - `ai-only` — no local analysis; `lib/ai.js` hands the model just the wiki
     URL + `SPEC.md` link with `web_search`/`web_fetch` and takes back the whole
-    report JSON. No `source-cache/`.
+    report JSON. No `source-cache/`. Needs `ANTHROPIC_API_KEY`.
 - **Shared technical log: disabled for now** (returns later). No
   `technical-log.json` is written, `claim.technical_log_refs` stays `[]`,
   `assemble.mergeTechnicalLog()` is dormant, and the viewer's stats page has no

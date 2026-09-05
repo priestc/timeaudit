@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T16:23:07.050Z",
+    "generated_at": "2026-09-05T17:26:53.519Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -28,7 +28,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [3]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": "Rita P. Wright",
@@ -47,13 +46,9 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
           "wikipedia_note_quotes": [
             "Mesopotamia and Egypt ... co-existed with the Indus civilization during its florescence between 2600 and 1900 BC."
-          ],
-          "is_terminal": false,
-          "terminal_type": null
+          ]
         }
       ],
       "status": "dead_end",
@@ -88,7 +83,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [25]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 1,
             "total": 2
@@ -110,18 +104,13 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
           "wikipedia_note_quotes": [
             "The subcontinent's people were hunter-gatherers for many millennia. There were very few of them. Indeed, 10,000 years ago there may only have been a couple of hundred thousand people, living in small, often isolated groups, the descendants of various 'modern' human incomers. Then, perhaps linked to events in Mesopotamia, about 8,500 years ago agriculture emerged in Baluchistan."
-          ],
-          "is_terminal": false,
-          "terminal_type": null
+          ]
         },
         {
           "hop_index": 2,
           "cited_by": "Wikipedia footnote [26]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 2,
             "total": 2
@@ -143,13 +132,9 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
           "wikipedia_note_quotes": [
             "The earliest discovered instance in India of well-established, settled agricultural society is at Mehrgarh in the hills between the Bolan Pass and the Indus plain (today in Pakistan) (see Map 3.1). From as early as 7000 BCE, communities there started investing increased labor in preparing the land and selecting, planting, tending, and harvesting particular grain-producing plants. They also domesticated animals, including sheep, goats, pigs, and oxen (both humped zebu [Bos indicus] and unhumped [Bos taurus]). Castrating oxen, for instance, turned them from mainly meat sources into domesticated draft-animals as well."
-          ],
-          "is_terminal": false,
-          "terminal_type": null
+          ]
         }
       ],
       "status": "dead_end",
@@ -169,7 +154,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [43]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": [
@@ -191,11 +175,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -228,7 +208,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [74]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": null,
@@ -247,11 +226,7 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/2006-stone-age-man-used.html"
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "pending",
@@ -271,7 +246,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [94]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": [
@@ -295,25 +269,10 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/mascarenhas-2015-genetic-and-cultural-reconstruction.xml"
           },
-          "structured_facts": {
-            "date_expressions_found": [
-              "712–738 CE",
-              "1435–1530 CE",
-              "2600–1900 BCE",
-              "2500–1900 BCE",
-              "738-739 CE"
-            ]
-          },
-          "verbatim_quotes": [
-            "At least 40 common STRs were used for each comparison listed in Figure 1 and the dendrogram was constructed using the TMRCA values as branch-points.",
-            "A dendrogram of these TMRCA computations was shown in Figure 1 (left panel, with town locations shown on the map in the right-hand panel)."
-          ],
-          "wikipedia_note_quotes": [],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
+          "wikipedia_note_quotes": []
         }
       ],
-      "status": "resolved",
+      "status": "pending",
       "technical_log_refs": []
     },
     {
@@ -358,7 +317,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [98]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 1,
             "total": 2
@@ -380,16 +338,11 @@
             "is_public_domain": null,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         },
         {
           "hop_index": 2,
           "cited_by": "Wikipedia footnote [99]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 2,
             "total": 2
@@ -411,11 +364,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -461,7 +410,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [129]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": "Henry J. Greenberg",
@@ -480,11 +428,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -504,7 +448,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [131]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": "Reis Flora",
@@ -523,11 +466,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -547,7 +486,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [133]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": [
@@ -573,16 +511,12 @@
             "retrieval_url": "https://doi.org/10.1093/gmo/9781561592630.article.45738",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=Auv7OYyp3z_31mIan7KSYyVQJF_yR7mpAH8i6ZnxYhAredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)",
+            "retrieval_note": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=SnpapaWKVzxiWTAWuochILH2dFsqQwVeb8hhosO7kGAredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)",
             "retrieved_via_wayback": false,
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -654,7 +588,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [164]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": "Jennifer Bates",
@@ -673,20 +606,10 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/bates-2016-rice-farming-in-india.html"
           },
-          "structured_facts": {
-            "date_expressions_found": [
-              "2890-2630 BC",
-              "2580-2460 BC",
-              "2430-2140 BC"
-            ]
-          },
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
+          "wikipedia_note_quotes": []
         }
       ],
-      "status": "resolved",
+      "status": "pending",
       "technical_log_refs": []
     },
     {
@@ -703,7 +626,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [168]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": [
@@ -732,11 +654,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -795,7 +713,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [224]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": null,
@@ -814,11 +731,7 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/collapse-of-civilizations-worldwide.html"
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "pending",
@@ -838,7 +751,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [6]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": [
@@ -873,43 +785,7 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/giosan-2012-fluvial-landscapes-of-the.html"
           },
-          "structured_facts": {},
-          "verbatim_quotes": [
-            "We report morphologic and chronologic evidence indicating that fluvial landscapes in Harappan territory became remarkably stable during the late Holocene as aridification intensified in the region after approximately 5,000&#x000a0;BP.",
-            "This fluvial quiescence suggests a gradual decrease in flood intensity that probably stimulated intensive agriculture initially and encouraged urbanization around 4,500&#x000a0;BP.",
-            "Shuttle Radar Topography Mission (SRTM) data ( 22 ) combined with field surveys and radiocarbon and optically stimulated luminescence dating offer us a way to analyze fluvial landforms and date deposits of the Indo-Gangetic Plain."
-          ],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": "radiocarbon"
-        },
-        {
-          "hop_index": 2,
-          "cited_by": "onward citation found in /source-cache/indus-valley-civilisation/giosan-2012-fluvial-landscapes-of-the.html (near dating-method text)",
-          "citation_in_previous_verbatim": "a State University. Footnotes The authors declare no conflict of interest. This article is a PNAS Direct Submission. See Author Summary on page 10138 (volume 109, number 26). This article contains supporting information online at www.pnas.org/lookup/suppl/doi:10.1073/pnas.1112743109/-/DCSupplemental . References 1. Madella M, Fuller DQ. P",
-          "parallel_citation": null,
-          "source": {
-            "author": null,
-            "title": null,
-            "container_work": null,
-            "publisher_or_journal": null,
-            "year": null,
-            "pages": null,
-            "identifier": "doi:10.1073/pnas.1112743109/-/DCSupplemental",
-            "document_type": "journal_article",
-            "retrieval_url": "https://doi.org/10.1073/pnas.1112743109/-/DCSupplemental",
-            "wikipedia_access_date": null,
-            "retrieval_status": "unreachable",
-            "retrieval_note": "HTTP 404 from https://doi.org/10.1073/pnas.1112743109/-/DCSupplemental",
-            "retrieved_via_wayback": false,
-            "is_public_domain": null,
-            "local_cache_path": null
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "pending",
@@ -942,7 +818,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [223]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": "Andrew Lawler",
@@ -961,13 +836,9 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
           "wikipedia_note_quotes": [
             "Most sites of the Painted Grey Ware culture in the Ghaggar-Hakra and Upper Ganges Plain were small farming villages. However, \"several dozen\" PGW sites eventually emerged as relatively large settlements that can be characterised as towns, the largest of which were fortified by ditches or moats and embankments made of piled earth with wooden palisades, albeit smaller and simpler than the elaborately fortified large cities which grew after 600 BCE in the more fully urban Northern Black Polished Ware culture."
-          ],
-          "is_terminal": false,
-          "terminal_type": null
+          ]
         }
       ],
       "status": "dead_end",
@@ -1000,7 +871,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [235]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": "Jim Shaffer",
@@ -1019,11 +889,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -1043,7 +909,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [223]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": "Andrew Lawler",
@@ -1062,11 +927,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -1086,7 +947,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [239]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": [
@@ -1121,11 +981,7 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/shinde-2019-an-ancient-harappan-genome.html"
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "pending",

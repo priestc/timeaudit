@@ -4,27 +4,31 @@
  *
  *   timeaudit https://en.wikipedia.org/wiki/Ancient_Egypt
  *
- * Pipeline (local-first; external AI only fills the gaps, and only if a key is set):
- *   1. fetch the page via the MediaWiki API                         [local]
- *   2. find sentences making a numerical age claim                  [local]
- *   3. apply the 1450 CE cutoff                                     [local]
- *   4. parse each cited source from the embedded COinS metadata     [local]
- *   5. download + cache every reachable source under source-cache/  [local]
- *   6. heuristically classify dating method, lab codes, ranges      [local]
- *   7. follow onward citations found inside sources (multi-hop)     [local]
- *   8. one AI call per claim to confirm scope + pick quotes         [AI, optional]
- *   9. write <slug>.json                                          [local]
- *  10. copy the report + all cached material to the tank2 folder    [local]
+ * The analysis has three phases. The code currently implements phases 1 and 2:
+ *
+ *   PHASE 1 — parse the article for dated "claims" and classify them
+ *     1. fetch the page via the MediaWiki API
+ *     2. find sentences making a numerical age claim
+ *     3. apply the 1450 CE cutoff
+ *     4. parse each cited source from the embedded COinS metadata
+ *   PHASE 2 — follow the Wikipedia citations and download the raw source text
+ *     5. download + cache every reachable cited source under source-cache/
+ *        (direct URL, Wikipedia archive-url, OA lookups, Wayback Machine)
+ *     6. extract the plain text of each downloaded source (kept for phase 3)
+ *   PHASE 3 — read through those sources and classify the dating evidence
+ *     NOT YET IMPLEMENTED. Returns once phase-2 source retrieval is stronger.
+ *     Until then: one hop per cited source, no multi-hop citation chasing, no
+ *     terminal-method classification, no text-mined quotes; every traced claim
+ *     is "pending" (source in hand) or "dead_end" (source unreachable).
+ *   then: write <slug>.json and copy the report + cache to the tank2 folder
  *
  * Options:
  *   --out <dir>        where to write <slug>.json         (default: cwd)
  *   --cache <dir>      source-cache root       (default: <out>/source-cache)
  *   --max-claims <n>   cap claims processed                (default: 60)
- *   --depth <n>        max citation-chain hops             (default: 3)
  *   --downloads <n>    max source downloads this run       (default: 40)
  *   --email <addr>     contact email for Unpaywall OA lookup
  *                      (default: $TIMEAUDIT_CONTACT_EMAIL; omitted => no OA lookup)
- *   --ai / --no-ai     force the AI gap-filler on / off   (default: on iff ANTHROPIC_API_KEY)
  *   --no-sync          do not copy anything to tank2
  *   --push             also run `node db.js push` afterwards
  *   --quiet
@@ -52,22 +56,20 @@ const HELP = `timeaudit — generate a Wikipedia chronology extraction report (s
 Modes (recorded in the report's "generator.mode" field, for tracking which
 approach works best over time):
 
-  --mode local     only the local software: page fetch, claim detection, 1450 CE
-                   cutoff, citation parsing, source download + caching,
-                   dating-method heuristics, multi-hop DOI chasing. No AI.
-  --mode hybrid    local pipeline + one AI call per claim to confirm scope and
-                   pick load-bearing quotes (default when ANTHROPIC_API_KEY set)
+  --mode local     the local software, phases 1-2 only: page fetch, claim
+                   detection, 1450 CE cutoff, citation parsing, and downloading
+                   the raw text of every cited source (with Wayback fallback).
+                   No AI. This is the default.
   --mode ai-only   no local analysis — hand the model just the Wikipedia URL and
                    a link to SPEC.md and let it build the whole report itself
                    (using web search / fetch). Needs ANTHROPIC_API_KEY.
 
-  aliases: --no-ai = --mode local,  --ai = --mode hybrid,  --ai-only = --mode ai-only
+  alias: --no-ai / --local = --mode local,  --ai-only = --mode ai-only
 
 Options:
   --out <dir>        where to write <slug>.json          (default: cwd)
   --cache <dir>      source-cache root      (default: <out>/source-cache)
-  --max-claims <n>   cap claims processed  (local/hybrid)  (default: 60)
-  --depth <n>        max citation-chain hops (local/hybrid) (default: 3)
+  --max-claims <n>   cap claims processed                  (default: 60)
   --downloads <n>    max source downloads this run          (default: 40)
   --email <addr>     contact email for Unpaywall OA lookup
                      (default: $TIMEAUDIT_CONTACT_EMAIL; omitted => skip Unpaywall)
@@ -82,7 +84,6 @@ function parseArgs(argv) {
     out: process.cwd(),
     cache: null,
     maxClaims: 60,
-    depth: 3,
     downloads: 40,
     email: process.env.TIMEAUDIT_CONTACT_EMAIL || null,
     mode: null, // resolved after parsing
@@ -90,20 +91,20 @@ function parseArgs(argv) {
     push: false,
     quiet: false,
   };
-  const MODES = ["local", "hybrid", "ai-only"];
+  const MODES = ["local", "ai-only"];
   for (let i = 0; i < argv.length; i++) {
     const a = argv[i];
     if (a === "--out") o.out = path.resolve(argv[++i]);
     else if (a === "--cache") o.cache = path.resolve(argv[++i]);
     else if (a === "--max-claims") o.maxClaims = parseInt(argv[++i], 10);
-    else if (a === "--depth") o.depth = parseInt(argv[++i], 10);
     else if (a === "--downloads") o.downloads = parseInt(argv[++i], 10);
     else if (a === "--email") o.email = argv[++i];
     else if (a === "--mode") {
       o.mode = argv[++i];
       if (!MODES.includes(o.mode)) throw new Error("--mode must be one of: " + MODES.join(", "));
     } else if (a === "--no-ai" || a === "--local") o.mode = "local";
-    else if (a === "--ai" || a === "--hybrid") o.mode = "hybrid";
+    else if (a === "--ai" || a === "--hybrid")
+      throw new Error("hybrid mode is gone — it was phase-3 work (reading the downloaded sources), which is not implemented yet. Use --mode local or --mode ai-only.");
     else if (a === "--ai-only") o.mode = "ai-only";
     else if (a === "--no-sync") o.sync = false;
     else if (a === "--push") o.push = true;
@@ -116,27 +117,18 @@ function parseArgs(argv) {
   return o;
 }
 
-function focusExcerpt(text, size = 3500) {
-  if (!text) return "";
-  const re = /radiocarbon|luminescence|\bOSL\b|dendro|uranium[-\s]?(?:series|thorium)|argon|thermolumin|calibrat|\bcal\.?\s?BP\b|seriation|typolog/i;
-  const m = text.match(re);
-  const at = m ? Math.max(0, m.index - Math.floor(size / 3)) : 0;
-  return text.slice(at, at + size).trim();
-}
-
 async function main() {
   const opt = parseArgs(process.argv.slice(2));
   if (opt.help || !opt.url) {
     process.stdout.write(HELP);
     process.exit(opt.help ? 0 : 1);
   }
-  const mode = opt.mode || (ai.available() ? "hybrid" : "local");
-  if ((mode === "hybrid" || mode === "ai-only") && !ai.available()) {
-    throw new Error("--mode " + mode + " needs ANTHROPIC_API_KEY (set it in .env, or use --mode local)");
+  const mode = opt.mode || "local";
+  if (mode === "ai-only" && !ai.available()) {
+    throw new Error("--mode ai-only needs ANTHROPIC_API_KEY (set it in .env, or use --mode local)");
   }
-  const useAI = mode === "hybrid";
   const log = (...a) => !opt.quiet && process.stderr.write(a.join(" ") + "\n");
-  log("• mode: " + mode + (mode === "local" ? " (no AI)" : " (" + ai.MODEL + ")"));
+  log("• mode: " + mode + (mode === "local" ? " (phases 1-2, no AI)" : " (" + ai.MODEL + ")"));
 
   log("• fetching", opt.url);
   const page = await wiki.fetchPage(opt.url, { cacheDir: opt.cache });
@@ -173,8 +165,8 @@ async function main() {
   const refIdx = wiki.buildReferenceIndex(page.html);
   const rawClaims = wiki.extractClaims(page, { maxClaims: opt.maxClaims });
   log("• " + rawClaims.length + " candidate dated claim(s) in scope" + (rawClaims.length >= opt.maxClaims ? " (capped)" : ""));
-  if (mode === "local") log("  chains needing judgement will stay 'pending' (no AI in this mode)");
-  if (!scholar.havePdftotext()) log("  ! pdftotext not found — PDF sources will not be text-mined");
+  log("  phases 1-2 only: each cited source is fetched once; no phase-3 analysis of the downloaded text yet");
+  if (!scholar.havePdftotext()) log("  ! pdftotext not found — PDF source text will not be extracted");
 
   const budget = { left: opt.downloads };
   const claims = [];
@@ -216,106 +208,57 @@ async function main() {
     }
 
     // A sentence that cites more than one source in parallel (e.g. "[98][99]"
-    // on two separately-titled works) gets one independent chain per source —
-    // each is its own "Wikipedia citation", not a continuation of the other.
+    // on two separately-titled works) gets one independent hop per source —
+    // each its own "Wikipedia citation". Phase 2 fetches every one of them; it
+    // does not chase onward citations found inside a source (that reads the
+    // downloaded text — phase 3).
     if (hopSources.length > 1) log("   " + hopSources.length + " parallel Wikipedia-cited sources on this sentence");
-    const visited = new Set(); // shared across branches: don't re-fetch a lead both already reached
-    let anyResolved = false;
-    let allDeadEnd = true;
+    let anyDownloaded = false;
 
     for (let si = 0; si < hopSources.length; si++) {
       const parallel = hopSources.length > 1 ? { index: si + 1, total: hopSources.length } : null;
-      const rootSrc = hopSources[si].src;
-      rootSrc._fromNote = hopSources[si].noteId; // link back to the [n] marker
-      let frontier = {
-        source: rootSrc,
-        cited_by: "Wikipedia footnote [" + hopSources[si].label + "]",
-        parallel,
-      };
-      let branchDeadEnd = false;
-
-      for (let hop = 1; hop <= opt.depth && frontier; hop++) {
-        const src = frontier.source;
-        [src._doi, src.retrieval_url].filter(Boolean).forEach((k) => visited.add(k));
-        const globalHop = c.hops.length + 1;
-        log("   hop " + globalHop + (frontier.parallel ? " (parallel " + frontier.parallel.index + "/" + frontier.parallel.total + ")" : "") + ": " + shortCite(src));
-        const dl = await scholar.fetchSource(src, { cacheDir: opt.cache, pageSlug: page.slug, email: opt.email, budget });
-        if (dl.status === "downloaded" || dl.status === "cached") {
-          src.local_cache_path = "/" + dl.rel.replace(/\\/g, "/");
-          src.retrieval_status = dl.status === "cached" ? src.retrieval_status : "not_independently_verified";
-          src.retrieval_note = null;
-          src.retrieved_via_wayback = !!dl.viaWayback;
-          log("      " + dl.status + (dl.via ? " via " + dl.via : "") + " -> " + dl.rel);
-        } else {
-          src.retrieval_status = dl.status === "unreachable" ? "unreachable" : src.retrieval_status;
-          // record the most accurate reason available, whatever stage failed
-          // (skipped-budget included — that's still "why", even if not yet unreachable)
-          if (dl.reason) src.retrieval_note = dl.reason;
-          log("      " + dl.status + (dl.reason ? " — " + dl.reason : ""));
-        }
-        const text = dl.file ? scholar.extractText(dl.file, dl.contentType) : "";
-        const cls = scholar.classifyText(text, c);
-        const hopObj = {
-          // hop_index stays a single sequence across every branch, so array
-          // position === hop_index - 1 holds for downstream code (AI quote/
-          // terminal-hop lookups); `parallel` (branch-root hops only) is what
-          // tells the renderer where one branch ends and the next begins.
-          hop_index: globalHop,
-          cited_by: frontier.cited_by,
-          // hop > 1 within a branch is only ever reached by finding a DOI
-          // printed *in* the previous source's own text (SPEC rule 6 —
-          // explicit citations only); this is the surrounding reference text.
-          // A branch's own root hop cites nothing previous — it's a second,
-          // independent citation straight from Wikipedia.
-          citation_in_previous_verbatim: hop === 1 ? null : frontier.citationVerbatim || null,
-          parallel: hop === 1 ? frontier.parallel : null,
-          source: src,
-          structured_facts: cls.structured_facts,
-          verbatim_quotes: [],
-          // filled after the loop: passage(s) a Wikipedia [m]/[n] explanatory
-          // note quotes from THIS source (editorially picked, not text-mined)
-          wikipedia_note_quotes: [],
-          is_terminal: cls.is_terminal,
-          terminal_type: cls.terminal_type,
-          _classify: cls,
-          _excerpt: focusExcerpt(text),
-        };
-        c.hops.push(hopObj);
-
-        if (cls.is_terminal) {
-          anyResolved = true;
-          break;
-        }
-        if (dl.status === "unreachable" && hop === 1) branchDeadEnd = true;
-
-        // onward lead for the next hop (skip anything already reached by any branch)
-        const leads = scholar.findOnwardLeads(text).filter((l) => !visited.has(l.value) && !visited.has(l.url));
-        const lead = leads.find((l) => l.near_method) || leads[0];
-        if (!lead || budget.left <= 0) {
-          frontier = null;
-        } else {
-          frontier = {
-            cited_by: "onward citation found in " + (src.local_cache_path || shortCite(src)) + (lead.near_method ? " (near dating-method text)" : ""),
-            citationVerbatim: lead.context || null,
-            source: {
-              author: null, title: null, container_work: null, publisher_or_journal: null,
-              year: null, pages: null, identifier: "doi:" + lead.value, document_type: "journal_article",
-              retrieval_url: lead.url, retrieval_status: "not_independently_verified",
-              is_public_domain: null, local_cache_path: null, _doi: lead.value,
-            },
-          };
-        }
+      const src = hopSources[si].src;
+      src._fromNote = hopSources[si].noteId; // link back to the [n] marker
+      const globalHop = c.hops.length + 1;
+      log("   source " + globalHop + (parallel ? " (parallel " + parallel.index + "/" + parallel.total + ")" : "") + ": " + shortCite(src));
+      const dl = await scholar.fetchSource(src, { cacheDir: opt.cache, pageSlug: page.slug, email: opt.email, budget });
+      if (dl.status === "downloaded" || dl.status === "cached") {
+        src.local_cache_path = "/" + dl.rel.replace(/\\/g, "/");
+        src.retrieval_status = dl.status === "cached" ? src.retrieval_status : "not_independently_verified";
+        src.retrieval_note = null;
+        src.retrieved_via_wayback = !!dl.viaWayback;
+        anyDownloaded = true;
+        log("      " + dl.status + (dl.via ? " via " + dl.via : "") + " -> " + dl.rel);
+        // extract the plain text now so phase 3 has it ready — nothing reads it yet
+        if (dl.file) scholar.extractText(dl.file, dl.contentType);
+      } else {
+        src.retrieval_status = dl.status === "unreachable" ? "unreachable" : src.retrieval_status;
+        // record the most accurate reason available, whatever stage failed
+        // (skipped-budget included — that's still "why", even if not yet unreachable)
+        if (dl.reason) src.retrieval_note = dl.reason;
+        log("      " + dl.status + (dl.reason ? " — " + dl.reason : ""));
       }
-
-      if (!branchDeadEnd) allDeadEnd = false;
+      c.hops.push({
+        hop_index: globalHop,
+        cited_by: "Wikipedia footnote [" + hopSources[si].label + "]",
+        // set on a parallel source so the renderer can label it "N of M";
+        // null when the sentence cites just one source
+        parallel,
+        source: src,
+        // filled just below: passage(s) a Wikipedia [m]/[n] explanatory note
+        // quotes from THIS source (editorially picked by Wikipedia, not text-mined)
+        wikipedia_note_quotes: [],
+      });
     }
 
-    c.status = anyResolved ? "resolved" : allDeadEnd ? "dead_end" : "pending";
+    // "pending" = the source(s) are in hand, phase 3 hasn't read them yet;
+    // "dead_end" = every cited source on this sentence was unreachable.
+    c.status = anyDownloaded ? "pending" : "dead_end";
 
     // Hang each lettered explanatory note's quote on the hop for the source it
     // cites: an [m] that reads `Dyson: "…"[25]` is a snippet FROM [25], not a
     // citation of its own. Match by the ref it points at; fall back to the
-    // sole hop / hop 1 if the sentence has just one source.
+    // sole hop / first hop if the sentence has just one source.
     for (const ln of letterNotes) {
       let hop =
         c.hops.find((hp) => hp.source && ln.refs.indexOf(hp.source._fromNote) !== -1) ||
@@ -326,41 +269,7 @@ async function main() {
             hop.wikipedia_note_quotes.push(q);
           }
         }
-        log("   note [" + ln.label + "] -> quote attached to hop " + hop.hop_index);
-      }
-    }
-
-    // optional AI pass
-    if (useAI) {
-      try {
-        const r = await ai.refineClaim(c);
-        if (r) {
-          if (r.in_scope === false) {
-            log("   ✗ AI: not an in-scope pre-1450 age claim — dropped");
-            continue;
-          }
-          if (r.status) c.status = r.status;
-          for (const [k, arr] of Object.entries(r.quotes || {})) {
-            const h = c.hops[parseInt(k, 10) - 1];
-            if (h) h.verbatim_quotes = arr;
-          }
-          if (r.terminal_hop && c.hops[r.terminal_hop - 1]) {
-            const h = c.hops[r.terminal_hop - 1];
-            h.is_terminal = true;
-            h.terminal_type = r.terminal_type || h.terminal_type;
-          }
-          c.notes = Object.assign(c.notes || {}, { ai_note: r.notes || null, ai_model: r._model });
-          log("   ✓ AI: status=" + c.status + (r.terminal_hop ? " terminal@hop" + r.terminal_hop + " (" + r.terminal_type + ")" : ""));
-        }
-      } catch (e) {
-        log("   ! AI call failed (" + e.message + ") — keeping local result");
-      }
-    } else {
-      // promote heuristic quotes when running without AI, capped per SPEC
-      for (const h of c.hops) {
-        if (!h.verbatim_quotes.length && h._classify.candidate_quotes.length) {
-          h.verbatim_quotes = h._classify.candidate_quotes.slice(0, h.source.is_public_domain ? 8 : 3);
-        }
+        log("   note [" + ln.label + "] -> quote attached to source " + hop.hop_index);
       }
     }
 
@@ -372,7 +281,7 @@ async function main() {
   }
 
   // ---- assemble ----
-  const gen = assemble.generatorBlock(mode, { ai_model: useAI ? ai.MODEL : null });
+  const gen = assemble.generatorBlock(mode);
   const doc = assemble.buildDocument(page, claims, gen);
   fs.mkdirSync(opt.out, { recursive: true });
   const jsonPath = path.join(opt.out, page.slug + ".json");
@@ -383,7 +292,7 @@ async function main() {
 
   await finish(opt, jsonPath, log);
   log("\nDone [" + mode + "]. Review " + path.relative(process.cwd(), jsonPath) +
-    (mode === "local" ? " — heuristic output; 'pending' chains need --mode hybrid or a human." : "."));
+    (mode === "local" ? " — phases 1-2: claims found + sources fetched. Phase-3 evidence analysis is not implemented yet." : "."));
 }
 
 // sync the report + source cache to tank2, then optional db push

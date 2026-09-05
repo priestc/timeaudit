@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T16:23:46.610Z",
+    "generated_at": "2026-09-05T17:26:40.729Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -28,7 +28,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [4]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": [
@@ -50,11 +49,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -74,7 +69,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [29]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": [
@@ -97,25 +91,10 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/gresky-2017-modified-human-crania-from.xml"
           },
-          "structured_facts": {
-            "date_expressions_found": [
-              "9600–7000 calBC",
-              "9600–8000 calBC",
-              "9600–8700 calBC",
-              "8700–8000 calBC"
-            ]
-          },
-          "verbatim_quotes": [
-            "More recently, this conclusion could be verified by newly available (as yet largely unpublished) radiocarbon ages made on organic residues extracted from mud mortar and wall plaster samples ( 35 ).",
-            "32 Dietrich O. , Schmidt K. , A radiocarbon date from the wall plaster of enclosure D of Göbekli Tepe .",
-            "33 Dietrich O. , Köksal-Schmidt Ç. , Notroff J. , Schmidt K. , Establishing a radiocarbon sequence for Göbekli Tepe."
-          ],
-          "wikipedia_note_quotes": [],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
+          "wikipedia_note_quotes": []
         }
       ],
-      "status": "resolved",
+      "status": "pending",
       "technical_log_refs": []
     },
     {
@@ -132,7 +111,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [32]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": [
@@ -154,11 +132,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -178,7 +152,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [31]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": "Trevor Watkins",
@@ -197,42 +170,7 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/watkins-2017-from-pleistocene-to-holocene.xml"
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": "radiocarbon"
-        },
-        {
-          "hop_index": 2,
-          "cited_by": "onward citation found in /source-cache/g-bekli-tepe/watkins-2017-from-pleistocene-to-holocene.xml",
-          "citation_in_previous_verbatim": "Hist Philos Life Sci Hist Philos Life Sci 365 springeropen 8003052 History and Philosophy of the Life Sciences 0391-9714 1742-6316 pmc-is-collection-domain yes pmc-collection-title Springer PMC5556129 PMC5556129.1 5556129 5556129 28808914 10.1007/s40656-017-0152-3 152 1 Original Paper From Pleistocene t",
-          "parallel_citation": null,
-          "source": {
-            "author": null,
-            "title": null,
-            "container_work": null,
-            "publisher_or_journal": null,
-            "year": null,
-            "pages": null,
-            "identifier": "doi:10.1007/s40656-017-0152-3",
-            "document_type": "journal_article",
-            "retrieval_url": "https://doi.org/10.1007/s40656-017-0152-3",
-            "wikipedia_access_date": null,
-            "retrieval_status": "not_independently_verified",
-            "retrieval_note": null,
-            "retrieved_via_wayback": false,
-            "is_public_domain": null,
-            "local_cache_path": "/source-cache/g-bekli-tepe/doi-10-1007-s40656-017-0152-3.pdf"
-          },
-          "structured_facts": {},
-          "verbatim_quotes": [
-            "Multistep food plant processing at Grotta Paglicci (Southern Italy) around 32,600 cal BP.",
-            "Typologie de bâtiments communautaires à Tell ‘Abr 3 (PPNA) en Syrie du Nord."
-          ],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": "radiocarbon"
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "pending",
@@ -254,7 +192,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [48]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 1,
             "total": 2
@@ -281,38 +218,11 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.pdf"
           },
-          "structured_facts": {
-            "lab_codes": [
-              "KIA-44149",
-              "Hd20025",
-              "Hd-20036",
-              "KIA-28407",
-              "KIA-44701",
-              "Hd-20025"
-            ],
-            "sample_count_mentioned": 150,
-            "date_expressions_found": [
-              "9745-9314 calBC",
-              "9746-8818 calBC",
-              "9127-8763 calBC",
-              "8241-7795 calBC",
-              "9261-9139 calBC",
-              "8617-8315 calBC"
-            ]
-          },
-          "verbatim_quotes": [
-            "These are not in primary positions but rather embedded in Pleistocene Lake sediments, which are assumed to have been deposited between 110.000 and 40.000 BP (Moumani et al.",
-            "12 2 The sequence in Area B is confirmed through four radiocarbon dates from the Levels B 6 and B 4-2 giving a time range from ca.",
-            "Neo-Lithics 1/13 35 Contribution Establishing a Radiocarbon Sequence for Göbekli Tepe."
-          ],
-          "wikipedia_note_quotes": [],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
+          "wikipedia_note_quotes": []
         },
         {
           "hop_index": 2,
           "cited_by": "Wikipedia footnote [8]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 2,
             "total": 2
@@ -337,14 +247,10 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
-      "status": "resolved",
+      "status": "pending",
       "technical_log_refs": []
     },
     {
@@ -361,7 +267,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [8]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": [
@@ -383,11 +288,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -407,7 +308,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [50]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": "Oliver Dietrich",
@@ -426,11 +326,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -454,7 +350,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [53]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 1,
             "total": 3
@@ -476,24 +371,11 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/pustovoytov-2002-14c-dating-of-pedogenic.pdf"
           },
-          "structured_facts": {
-            "lab_codes": [
-              "Beta 134455"
-            ]
-          },
-          "verbatim_quotes": [
-            "Today experience in dating pedogenic carbonate pendants at archaeological sites such as artificial earth or stone constructions by the radiocarbon method remains rather limited (Pustovoytov 2002).",
-            "The arrow indicates the microlayer from which carbonate was drilled out for radiocarbon dating; the 14cage is given non-calibrated.",
-            "Strictly speaking, the effects of \"dead\" carbon admixture and 14C contamination on the radiocarbon age of pedogenic carbonate coatings (Amundson et al."
-          ],
-          "wikipedia_note_quotes": [],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
+          "wikipedia_note_quotes": []
         },
         {
           "hop_index": 2,
           "cited_by": "Wikipedia footnote [54]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 2,
             "total": 3
@@ -518,38 +400,11 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2010-a-radiocarbon-date-from.pdf"
           },
-          "structured_facts": {
-            "lab_codes": [
-              "KIA-44149"
-            ],
-            "sample_count_mentioned": 1,
-            "date_expressions_found": [
-              "6400-5800 BC",
-              "5000-6000 BC",
-              "6000-5500 BC",
-              "6400-6200 BC",
-              "8210-8370 calBC",
-              "7000-5300 calBC",
-              "6700-6200 calBC",
-              "4500-3500 BCE",
-              "9600–8800 calBC",
-              "8800–8200 calBC"
-            ],
-            "laboratory_named": "Radiocarbon Dating Laboratory"
-          },
-          "verbatim_quotes": [
-            "1999 Crop water availability in early agriculture: evidence from carbon isotope discrimination of seeds from a tenth millennium BP site on the Euphrates.",
-            "2000 Agro-pastoralist colonization of Cyprus in the 10th millennium BP: Initial assessment.",
-            "2000 Agro-pastoralist Colonization of Cyprus in the 10th Millennium BP: Initial Assessments."
-          ],
-          "wikipedia_note_quotes": [],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
+          "wikipedia_note_quotes": []
         },
         {
           "hop_index": 3,
           "cited_by": "Wikipedia footnote [48]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 3,
             "total": 3
@@ -576,36 +431,10 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.pdf"
           },
-          "structured_facts": {
-            "lab_codes": [
-              "KIA-44149",
-              "Hd20025",
-              "Hd-20036",
-              "KIA-28407",
-              "KIA-44701",
-              "Hd-20025"
-            ],
-            "sample_count_mentioned": 150,
-            "date_expressions_found": [
-              "9745-9314 calBC",
-              "9746-8818 calBC",
-              "9127-8763 calBC",
-              "8241-7795 calBC",
-              "9261-9139 calBC",
-              "8617-8315 calBC"
-            ]
-          },
-          "verbatim_quotes": [
-            "These are not in primary positions but rather embedded in Pleistocene Lake sediments, which are assumed to have been deposited between 110.000 and 40.000 BP (Moumani et al.",
-            "12 2 The sequence in Area B is confirmed through four radiocarbon dates from the Levels B 6 and B 4-2 giving a time range from ca.",
-            "Neo-Lithics 1/13 35 Contribution Establishing a Radiocarbon Sequence for Göbekli Tepe."
-          ],
-          "wikipedia_note_quotes": [],
-          "is_terminal": true,
-          "terminal_type": "radiocarbon"
+          "wikipedia_note_quotes": []
         }
       ],
-      "status": "resolved",
+      "status": "pending",
       "technical_log_refs": []
     },
     {
@@ -624,7 +453,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [1]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 1,
             "total": 2
@@ -646,16 +474,11 @@
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/clare-2020-g-bekli-tepe-turkey-a.html"
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": "radiocarbon"
+          "wikipedia_note_quotes": []
         },
         {
           "hop_index": 2,
           "cited_by": "Wikipedia footnote [56]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": {
             "index": 2,
             "total": 2
@@ -680,11 +503,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "pending",
@@ -730,7 +549,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [57]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": [
@@ -752,11 +570,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -789,7 +603,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [8]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": [
@@ -811,11 +624,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",
@@ -874,7 +683,6 @@
         {
           "hop_index": 1,
           "cited_by": "Wikipedia footnote [66]",
-          "citation_in_previous_verbatim": null,
           "parallel_citation": null,
           "source": {
             "author": "Klaus Schmidt",
@@ -893,11 +701,7 @@
             "is_public_domain": false,
             "local_cache_path": null
           },
-          "structured_facts": {},
-          "verbatim_quotes": [],
-          "wikipedia_note_quotes": [],
-          "is_terminal": false,
-          "terminal_type": null
+          "wikipedia_note_quotes": []
         }
       ],
       "status": "dead_end",

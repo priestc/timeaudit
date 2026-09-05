@@ -17,13 +17,16 @@ database; the viewer and converters work without it.
 [`PIPELINE.md`](./PIPELINE.md):
 
 ```
-node timeaudit.js https://en.wikipedia.org/wiki/Ancient_Egypt --mode local
-node timeaudit.js https://en.wikipedia.org/wiki/Ancient_Egypt --mode hybrid   # + AI gap-filler
+node timeaudit.js https://en.wikipedia.org/wiki/Ancient_Egypt                 # --mode local (default)
 node timeaudit.js https://en.wikipedia.org/wiki/Ancient_Egypt --mode ai-only  # model does it all
 ```
 
-The mode is recorded in the report's `generator.mode` field so runs can be
-compared over time.
+The analysis has three phases — (1) find + classify dated claims, (2) download
+the raw text of every cited source, (3) read those sources. **The code does
+phases 1 and 2**; phase 3 (terminal-method classification, multi-hop citation
+chasing, quote selection) is not built yet. See `PIPELINE.md`. The mode is
+recorded in the report's `generator.mode` field so runs can be compared over
+time.
 
 ## 1. Web UI — browse every JSON in the project
 
@@ -85,9 +88,9 @@ node serve.js --source firestore   # serve the web UI from the DB instead of dis
 | --------------- | ---------------------------------------------------------- |
 | `timeaudit.js`  | generate a report from a Wikipedia URL (see `PIPELINE.md`)  |
 | `lib/wiki.js`   | fetch page, extract dated claims, apply cutoff, parse citations |
-| `lib/scholar.js`| resolve/download/cache sources, classify dating method, multi-hop |
+| `lib/scholar.js`| resolve / download / cache the raw text of each cited source (phase 2) |
 | `lib/assemble.js` | shape the SPEC JSON (technical-log builder dormant)        |
-| `lib/ai.js`     | optional one-call-per-claim AI gap-filler                   |
+| `lib/ai.js`     | `--mode ai-only` only: model builds the whole report        |
 | `lib/sync.js`   | copy report + source cache to the tank2 folder              |
 | `lib/render.js` | shared renderer (JSON → HTML); runs in Node and the browser |
 | `lib/firebase.js` / `lib/store.js` | Firestore handle + document read/write   |

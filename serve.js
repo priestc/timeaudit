@@ -157,7 +157,9 @@ function outDirForId(id) {
 
 /* ---------- run the extraction pipeline on demand (re-analyze / add new) ------ */
 
-const MODES = ["local", "hybrid", "ai-only"];
+// modes timeaudit.js still accepts; an old report whose generator.mode is
+// "hybrid" (removed) re-analyzes with the default instead of erroring
+const MODES = ["local", "ai-only"];
 // keyed by doc id for re-analyze, by "new:<slug>" for a brand-new article
 const reanalyzeJobs = new Map(); // key -> { running, ok, log: [], startedAt, finishedAt }
 
@@ -326,7 +328,8 @@ function sourceKey(s) {
 
 // Corpus-wide: every source that could never be retrieved (grouped, SPEC's
 // retrieval_note carries the specific reason), and every source that a claim
-// actually validated against (is_terminal: true), each with backlinks to the
+// actually validated against (hop.is_terminal — a phase-3 output, so this list
+// stays empty until phase 3 is implemented), each with backlinks to the
 // claim(s)/document(s) that cite it.
 async function computeSourceReport() {
   const list = await backend.list();
