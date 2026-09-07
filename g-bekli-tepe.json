@@ -3,14 +3,14 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-05T19:54:09.502Z",
+    "generated_at": "2026-09-07T22:53:42.342Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
   "page": {
     "title": "Göbekli Tepe",
     "url": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
-    "retrieved_at": "2026-09-05",
+    "retrieved_at": "2026-09-07",
     "wikipedia_revision_id": "1372090689"
   },
   "claims": [
