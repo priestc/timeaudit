@@ -396,19 +396,28 @@
         '<a href="#" class="status-link" id="back-stats">&larr; statistics</a>' +
         '<span class="dot ' + statusClass(status) + '"></span>' +
         "<b>" + esc(label) + " claims (" + claims.length + ")</b>" +
-        '<span class="sub">click a claim to open it in its report</span></div>';
+        '<span class="sub">each claim links back to its report</span></div>';
       var frame = document.createElement("iframe");
       frame.id = "frame";
       contentEl.appendChild(frame);
       var synth = { schema_version: "1.0", page: { title: label + " claims" }, claims: claims };
-      var html = ChronoRender.renderDocument(synth, {}).replace(
-        "</body>",
-        '<script>document.addEventListener("click",function(ev){' +
-          'if(ev.target.closest("a,summary,button"))return;' +
-          'var el=ev.target.closest("article.claim");' +
-          'if(el&&el.id)parent.postMessage({timeauditOpenClaim:el.id},"*");});<\/script></body>'
-      );
-      frame.srcdoc = html;
+      // give each rendered claim an explicit "open in report" link — a plain
+      // whole-claim click handler would swallow text selection (copying an
+      // ISBN, a quote, …)
+      var inject =
+        "<style>.claim-open{margin-left:auto;font-size:.72rem;padding:2px 9px;" +
+        "border:1px solid var(--border);border-radius:6px;color:var(--accent);cursor:pointer;" +
+        "background:var(--card);font-weight:400;white-space:nowrap}" +
+        ".claim-open:hover{border-color:var(--accent)}</style>" +
+        "<script>(function(){var a=document.querySelectorAll('article.claim');" +
+        "for(var i=0;i<a.length;i++){(function(art){if(!art.id)return;" +
+        "var h=art.querySelector('.claim-head');if(!h)return;" +
+        "var b=document.createElement('span');b.className='claim-open';" +
+        "b.textContent='open in report \\u2197';" +
+        "b.addEventListener('click',function(e){e.stopPropagation();" +
+        "parent.postMessage({timeauditOpenClaim:art.id},'*');});" +
+        "h.appendChild(b);})(a[i]);}})();<\/script>";
+      frame.srcdoc = ChronoRender.renderDocument(synth, {}).replace("</body>", inject + "</body>");
       var back = document.getElementById("back-stats");
       if (back) back.onclick = function (e) { e.preventDefault(); showStats(); };
     };
