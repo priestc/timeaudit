@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-09T18:21:46.642Z",
+    "generated_at": "2026-09-09T19:56:53.383Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -97,6 +97,12 @@
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "the Internet Archive has scans of this title but none matched the citation's title + author closely enough to trust"
+              },
+              {
                 "via": "citation metadata",
                 "url": null,
                 "result": "no_url",
@@ -166,6 +172,12 @@
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
+              {
                 "via": "citation metadata",
                 "url": null,
                 "result": "no_url",
@@ -221,6 +233,12 @@
             "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
+              {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "the Internet Archive has scans of this title but none matched the citation's title + author closely enough to trust"
+              },
               {
                 "via": "citation metadata",
                 "url": null,
@@ -366,10 +384,22 @@
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf",
-                "result": "http_403",
-                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
               },
               {
                 "via": "cited url",
@@ -506,14 +536,20 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/worldofbede0000hunt/worldofbede0000hunt.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/worldofbede0000hunt/worldofbede0000hunt_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               }
             ],
             "metadata_history": [
@@ -568,14 +604,20 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/worldofbede0000hunt/worldofbede0000hunt.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/worldofbede0000hunt/worldofbede0000hunt_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               }
             ],
             "metadata_history": [
@@ -630,14 +672,20 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/worldofbede0000hunt/worldofbede0000hunt.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/worldofbede0000hunt/worldofbede0000hunt_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               }
             ],
             "metadata_history": [
@@ -964,21 +1012,21 @@
             "retrieval_history": [
               {
                 "via": "internet archive pdf",
-                "url": "https://archive.org/download/oxforddictionary0000farm_d0b7/oxforddictionary0000farm_d0b7.pdf",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1.pdf",
                 "result": "lending_restricted",
                 "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               },
               {
                 "via": "internet archive text",
-                "url": "https://archive.org/download/oxforddictionary0000farm_d0b7/oxforddictionary0000farm_d0b7_djvu.txt",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1_djvu.txt",
                 "result": "lending_restricted",
                 "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               },
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf",
-                "result": "http_403",
-                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
               },
               {
                 "via": "cited url",
@@ -1048,20 +1096,20 @@
               {
                 "via": "internet archive pdf",
                 "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1.pdf",
-                "result": "http_500",
-                "detail": "HTTP 500 from https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1.pdf"
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               },
               {
                 "via": "internet archive text",
                 "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1_djvu.txt",
-                "result": "http_500",
-                "detail": "HTTP 500 from https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1_djvu.txt"
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               },
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf",
-                "result": "http_403",
-                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
               },
               {
                 "via": "cited url",
@@ -1177,21 +1225,21 @@
             "retrieval_history": [
               {
                 "via": "internet archive pdf",
-                "url": "https://archive.org/download/oxforddictionary0000farm_d0b7/oxforddictionary0000farm_d0b7.pdf",
-                "result": "network_error",
-                "detail": "network error contacting https://archive.org/download/oxforddictionary0000farm_d0b7/oxforddictionary0000farm_d0b7.pdf (socket idle timeout)"
+                "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
               },
               {
                 "via": "internet archive text",
-                "url": "https://archive.org/download/oxforddictionary0000farm_d0b7/oxforddictionary0000farm_d0b7_djvu.txt",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1_djvu.txt",
                 "result": "lending_restricted",
                 "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               },
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf",
-                "result": "http_403",
-                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
               },
               {
                 "via": "cited url",
@@ -1261,20 +1309,20 @@
               {
                 "via": "internet archive pdf",
                 "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1.pdf",
-                "result": "http_500",
-                "detail": "HTTP 500 from https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1.pdf"
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               },
               {
                 "via": "internet archive text",
                 "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1_djvu.txt",
                 "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               },
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf",
-                "result": "http_403",
-                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
               },
               {
                 "via": "cited url",
@@ -1377,14 +1425,20 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/bedevenerable0000brow/bedevenerable0000brow.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/bedevenerable0000brow/bedevenerable0000brow_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               }
             ],
             "metadata_history": [
@@ -1479,14 +1533,20 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/bedevenerable0000brow/bedevenerable0000brow.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/bedevenerable0000brow/bedevenerable0000brow_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               }
             ],
             "metadata_history": [
@@ -1580,14 +1640,20 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/venerablebedeia18ward/venerablebedeia18ward.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/venerablebedeia18ward/venerablebedeia18ward_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               }
             ],
             "metadata_history": [
@@ -1677,6 +1743,12 @@
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
+              {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=AzLW0QEACAAJ&output=pdf",
                 "result": "http_403",
@@ -1735,6 +1807,12 @@
             "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
+              {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
               {
                 "via": "citation metadata",
                 "url": null,
@@ -1807,14 +1885,20 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/rereadingbedeecc0000high/rereadingbedeecc0000high.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/rereadingbedeecc0000high/rereadingbedeecc0000high_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
               }
             ],
             "metadata_history": [

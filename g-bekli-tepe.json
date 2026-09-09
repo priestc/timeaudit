@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-09T18:02:19.415Z",
+    "generated_at": "2026-09-09T19:53:16.769Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -290,6 +290,12 @@
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
+              {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=T6QGEAAAQBAJ&output=pdf",
@@ -579,6 +585,12 @@
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
+              {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=T6QGEAAAQBAJ&output=pdf",
                 "result": "http_429",
@@ -661,6 +673,12 @@
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
+              {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=T6QGEAAAQBAJ&output=pdf",
                 "result": "http_429",
@@ -729,6 +747,12 @@
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
+              {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=T6QGEAAAQBAJ&output=pdf",
@@ -821,6 +845,12 @@
             "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
+              {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
               {
                 "via": "citation metadata",
                 "url": null,

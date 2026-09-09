@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-09T18:06:44.551Z",
+    "generated_at": "2026-09-09T19:54:28.381Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -44,6 +44,18 @@
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
+              {
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/ancientindusurba0000wrig/ancientindusurba0000wrig.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/ancientindusurba0000wrig/ancientindusurba0000wrig_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=gAgFPQAACAAJ&output=pdf",
@@ -118,6 +130,12 @@
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
+              {
                 "via": "wikipedia archive-url",
                 "url": "https://web.archive.org/web/20240329130555id_/https://books.google.com/books?id=3TRtDwAAQBAJ",
                 "result": "copyright",
@@ -166,6 +184,12 @@
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
+              {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
               {
                 "via": "wikipedia archive-url",
                 "url": "https://web.archive.org/web/20240328155237id_/https://books.google.com/books?id=kZVuDwAAQBAJ",
@@ -230,6 +254,12 @@
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
+              {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=hB5TCgAAQBAJ&output=pdf",
@@ -435,9 +465,9 @@
             "title": "The World's Writing Systems",
             "container_work": null,
             "publisher_or_journal": null,
-            "year": 1996,
+            "year": null,
             "pages": "372",
-            "identifier": "ISBN 9780195386929",
+            "identifier": null,
             "document_type": "other",
             "retrieval_url": null,
             "wikipedia_access_date": null,
@@ -470,19 +500,9 @@
               {
                 "via": "open library",
                 "query": "The World's Writing Systems Peter T. Daniels",
-                "result": "enriched",
-                "found": {
-                  "title": "The world's writing systems",
-                  "author": [
-                    "William Bright",
-                    "Peter T. Daniels"
-                  ],
-                  "year": 1996,
-                  "container": null,
-                  "doi": null,
-                  "isbn": "9780195386929"
-                },
-                "detail": "match score 3/4"
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
               }
             ],
             "is_public_domain": null,
@@ -512,6 +532,18 @@
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
+              {
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/decipheringindus0000parp/decipheringindus0000parp.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/decipheringindus0000parp/decipheringindus0000parp_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=m1WNQgAACAAJ&output=pdf",
@@ -610,6 +642,12 @@
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
+              {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=yjStCgAAQBAJ&output=pdf",
                 "result": "http_429",
@@ -663,16 +701,10 @@
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "internet archive pdf",
-                "url": "https://archive.org/download/garlandencyclope0001unse/garlandencyclope0001unse.pdf",
-                "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
-              },
-              {
-                "via": "internet archive text",
-                "url": "https://archive.org/download/garlandencyclope0001unse/garlandencyclope0001unse_djvu.txt",
-                "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "the Internet Archive has scans of this title but none matched the citation's title + author closely enough to trust"
               },
               {
                 "via": "google books pdf",
@@ -736,14 +768,20 @@
             "retrieval_url": "https://doi.org/10.1093/gmo/9781561592630.article.45738",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=6gsiqiVmYjIl46R5mVo318ijXrwUa9NMP_URcL9j09gredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)",
+            "retrieval_note": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=qvz2RHu6g-N5MPbcq4XiBCMAbFGK_jImYD0KFtOoTqsredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
+              {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "no Internet Archive scan found for this title + author"
+              },
               {
                 "via": "cited url",
                 "url": "https://doi.org/10.1093/gmo/9781561592630.article.45738",
                 "result": "login_wall",
-                "detail": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=6gsiqiVmYjIl46R5mVo318ijXrwUa9NMP_URcL9j09gredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)"
+                "detail": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=qvz2RHu6g-N5MPbcq4XiBCMAbFGK_jImYD0KFtOoTqsredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)"
               }
             ],
             "metadata_history": [],
@@ -883,13 +921,13 @@
               "Sawlani, Ravi"
             ],
             "title": "Microscopic, biochemical and stable isotopic investigation of seven multi-nutritional food-balls from Indus archaeological site, Rajasthan (India)",
-            "container_work": "Journal of Archaeological Science: Reports",
+            "container_work": null,
             "publisher_or_journal": "Journal of Archaeological Science: Reports",
             "year": 2021,
             "pages": null,
-            "identifier": "doi:10.1016/j.jasrep.2021.102917",
+            "identifier": null,
             "document_type": "journal_article",
-            "retrieval_url": "https://doi.org/10.1016/j.jasrep.2021.102917",
+            "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "retrieved",
             "retrieval_note": null,
