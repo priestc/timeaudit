@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-09T18:30:39.453Z",
+    "generated_at": "2026-09-09T19:52:03.356Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -183,8 +183,8 @@
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=EAEOAAAAQAAJ&output=pdf",
-                "result": "http_403",
-                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=EAEOAAAAQAAJ&output=pdf"
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=EAEOAAAAQAAJ&output=pdf"
               },
               {
                 "via": "cited url",
@@ -252,15 +252,15 @@
             "document_type": "book",
             "retrieval_url": null,
             "wikipedia_access_date": null,
-            "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_status": "retrieved",
+            "retrieval_note": null,
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/cu31924028290066/cu31924028290066.pdf",
+                "result": "retrieved",
+                "detail": null
               }
             ],
             "metadata_history": [
@@ -273,7 +273,7 @@
               }
             ],
             "is_public_domain": false,
-            "local_cache_path": null
+            "local_cache_path": "/source-cache/roman-republic/livy-history-of-rome.pdf"
           },
           "wikipedia_note_quotes": []
         }
@@ -361,14 +361,20 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/historyofrome00gran/historyofrome00gran.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/historyofrome00gran/historyofrome00gran_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               }
             ],
             "metadata_history": [
@@ -488,7 +494,7 @@
                 "via": "internet archive text",
                 "url": "https://archive.org/download/historyofrome00gran/historyofrome00gran_djvu.txt",
                 "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               }
             ],
             "metadata_history": [
@@ -621,14 +627,20 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/historyofrome00gran/historyofrome00gran.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/historyofrome00gran/historyofrome00gran_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               }
             ],
             "metadata_history": [
@@ -1155,16 +1167,9 @@
               {
                 "via": "crossref",
                 "query": "Fronda 2011 Hannibal: tactics, strategy, and geostrategy Hoyos (2011)",
-                "result": "no_match",
+                "result": "low_confidence",
                 "found": null,
-                "detail": "no results"
-              },
-              {
-                "via": "open library",
-                "query": "Hannibal: tactics, strategy, and geostrategy Fronda",
-                "result": "no_match",
-                "found": null,
-                "detail": "no results"
+                "detail": "best of 1 results scored only 0/4 — not adopted"
               }
             ],
             "is_public_domain": null,
@@ -1258,6 +1263,12 @@
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
+              {
+                "via": "internet archive",
+                "url": "https://archive.org/advancedsearch.php",
+                "result": "no_match",
+                "detail": "the Internet Archive has scans of this title but none matched the citation's title + author closely enough to trust"
+              },
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=VTart9CwmMsC&output=pdf",
