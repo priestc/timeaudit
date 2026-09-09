@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-09T17:19:56.647Z",
+    "generated_at": "2026-09-09T18:03:51.821Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -178,13 +178,13 @@
                 "via": "internet archive text",
                 "url": "https://archive.org/download/beginningsofrome0000corn/beginningsofrome0000corn_djvu.txt",
                 "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               },
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=EAEOAAAAQAAJ&output=pdf",
-                "result": "http_502",
-                "detail": "HTTP 502 from https://books.google.com/books/download/book.pdf?id=EAEOAAAAQAAJ&output=pdf"
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=EAEOAAAAQAAJ&output=pdf"
               },
               {
                 "via": "cited url",
@@ -252,15 +252,15 @@
             "document_type": "book",
             "retrieval_url": null,
             "wikipedia_access_date": null,
-            "retrieval_status": "retrieved",
-            "retrieval_note": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "internet archive pdf",
-                "url": "https://archive.org/download/cu31924028290066/cu31924028290066.pdf",
-                "result": "retrieved",
-                "detail": null
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
               }
             ],
             "metadata_history": [
@@ -273,7 +273,7 @@
               }
             ],
             "is_public_domain": false,
-            "local_cache_path": "/source-cache/roman-republic/livy-history-of-rome.pdf"
+            "local_cache_path": null
           },
           "wikipedia_note_quotes": []
         }
@@ -372,6 +372,13 @@
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"History of Rome\" inauthor:Grant",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 Google Books results scored only 2/4"
+              },
               {
                 "via": "crossref",
                 "query": "Michael Grant 1978 History of Rome Charles Scribner's Sons",
@@ -479,6 +486,13 @@
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"History of Rome\" inauthor:Grant",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 Google Books results scored only 2/4"
+              },
               {
                 "via": "crossref",
                 "query": "Michael Grant 1978 History of Rome Charles Scribner's Sons",
@@ -612,6 +626,13 @@
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"History of Rome\" inauthor:Grant",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 Google Books results scored only 2/4"
+              },
               {
                 "via": "crossref",
                 "query": "Michael Grant 1978 History of Rome Charles Scribner's Sons",
@@ -793,6 +814,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"Carthage and Rome\" inauthor:H",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
+              {
                 "via": "crossref",
                 "query": "Scullard, H. H 1989 Carthage and Rome CAH2 7",
                 "result": "low_confidence",
@@ -887,6 +915,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"Carthage and Rome\" inauthor:H",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
+              {
                 "via": "crossref",
                 "query": "Scullard, H. H 1989 Carthage and Rome CAH2 7",
                 "result": "low_confidence",
@@ -968,6 +1003,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"The Carthaginians in Spain\" inauthor:H",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
+              {
                 "via": "crossref",
                 "query": "Scullard, H. H 1989 The Carthaginians in Spain CAH2 8 (1989)",
                 "result": "low_confidence",
@@ -1036,6 +1078,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"The Carthaginians in Spain\" inauthor:H",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
+              {
                 "via": "crossref",
                 "query": "Scullard, H. H 1989 The Carthaginians in Spain CAH2 8 (1989)",
                 "result": "low_confidence",
@@ -1090,6 +1139,13 @@
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"Hannibal\" inauthor:Fronda",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
               {
                 "via": "crossref",
                 "query": "Fronda 2011 Hannibal: tactics, strategy, and geostrategy Hoyos (2011)",
@@ -1181,46 +1237,53 @@
             "publisher_or_journal": "CAH2 8 (1989)",
             "year": 1989,
             "pages": "44–80",
-            "identifier": "doi:10.1017/chol9780521234481.004",
+            "identifier": "ISBN 9780806130040",
             "document_type": "other",
-            "retrieval_url": "https://doi.org/10.1017/chol9780521234481.004",
+            "retrieval_url": "https://books.google.com/books?id=VTart9CwmMsC",
             "wikipedia_access_date": null,
-            "retrieval_status": "retrieved",
-            "retrieval_note": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=VTart9CwmMsC&output=pdf",
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=VTart9CwmMsC&output=pdf"
+              },
+              {
                 "via": "cited url",
-                "url": "https://doi.org/10.1017/chol9780521234481.004",
-                "result": "retrieved",
-                "detail": null
+                "url": "https://books.google.com/books?id=VTart9CwmMsC",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
             "metadata_history": [
               {
-                "via": "crossref",
-                "query": "Briscoe, John 1989 The second Punic war CAH2 8 (1989)",
+                "via": "google books",
+                "query": "intitle:\"The second Punic war\" inauthor:John",
                 "result": "enriched",
                 "found": {
-                  "title": "The Second Punic War",
+                  "title": "Hannibal's War: A Military History of the Second Punic War",
                   "author": [
-                    "John Briscoe"
+                    "John Francis Lazenby"
                   ],
-                  "year": 1989,
-                  "container": "The Cambridge Ancient History",
-                  "doi": "10.1017/chol9780521234481.004",
-                  "isbn": null
+                  "year": 1998,
+                  "container": "University of Oklahoma Press",
+                  "doi": null,
+                  "isbn": "9780806130040",
+                  "gbId": "VTart9CwmMsC"
                 },
-                "detail": "match score 4/4"
+                "detail": "match score 3/4 (volume VTart9CwmMsC)"
               }
             ],
             "is_public_domain": null,
-            "local_cache_path": "/source-cache/roman-republic/john-1989-the-second-punic-war.html"
+            "local_cache_path": null
           },
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "retrieved",
+      "status": "dead_end",
       "technical_log_refs": []
     },
     {
@@ -1429,6 +1492,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"The Roman empire and its problems in the late second\" inauthor:A",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
+              {
                 "via": "crossref",
                 "query": "Lintott, A 1994 The Roman empire and its problems in the late second century CAH2 9 (1994)",
                 "result": "enriched",
@@ -1492,6 +1562,13 @@
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"The Roman empire and its problems in the late second\" inauthor:A",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
               {
                 "via": "crossref",
                 "query": "Lintott, A 1994 The Roman empire and its problems in the late second century CAH2 9 (1994)",
@@ -1570,6 +1647,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"Sulla\" inauthor:Robin",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 5 Google Books results scored only 1/4"
+              },
+              {
                 "via": "crossref",
                 "query": "Seager, Robin 1994 \"Sulla\" CAH2 9 (1994)",
                 "result": "low_confidence",
@@ -1624,6 +1708,13 @@
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"The rise of Pompey\" inauthor:Robin",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
               {
                 "via": "crossref",
                 "query": "Seager, Robin 1994 The rise of Pompey CAH2 9 (1994)",

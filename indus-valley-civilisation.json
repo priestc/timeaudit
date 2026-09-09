@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-09T17:16:49.110Z",
+    "generated_at": "2026-09-09T18:06:44.551Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -44,18 +44,6 @@
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
-              {
-                "via": "internet archive pdf",
-                "url": "https://archive.org/download/ancientindusurba0000wrig/ancientindusurba0000wrig.pdf",
-                "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
-              },
-              {
-                "via": "internet archive text",
-                "url": "https://archive.org/download/ancientindusurba0000wrig/ancientindusurba0000wrig_djvu.txt",
-                "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
-              },
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=gAgFPQAACAAJ&output=pdf",
@@ -230,32 +218,49 @@
               "Young, Ruth"
             ],
             "title": "The Archaeology of South Asia: From the Indus to Asoka, c. 6500 BCE – 200 CE",
-            "container_work": null,
+            "container_work": "Cambridge University Press",
             "publisher_or_journal": "Cambridge University Press",
             "year": 2015,
             "pages": null,
             "identifier": "ISBN 978-1-316-41898-7",
             "document_type": "book",
-            "retrieval_url": null,
+            "retrieval_url": "https://books.google.com/books?id=hB5TCgAAQBAJ",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=hB5TCgAAQBAJ&output=pdf",
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=hB5TCgAAQBAJ&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=hB5TCgAAQBAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
             "metadata_history": [
               {
-                "via": "crossref",
-                "query": "Robin Coningham 2015 The Archaeology of South Asia: From the Indus to Asoka, c. 6500 BCE – 200 CE Cambridge University Press",
-                "result": "low_confidence",
-                "found": null,
-                "detail": "best of 3 results scored only 2/4 — not adopted"
+                "via": "google books",
+                "query": "intitle:\"The Archaeology of South Asia\" inauthor:Coningham",
+                "result": "enriched",
+                "found": {
+                  "title": "The Archaeology of South Asia: From the Indus to Asoka, c.6500 BCE–200 CE",
+                  "author": [
+                    "Robin Coningham",
+                    "Ruth Young"
+                  ],
+                  "year": 2015,
+                  "container": "Cambridge University Press",
+                  "doi": null,
+                  "isbn": "9780521846974",
+                  "gbId": "hB5TCgAAQBAJ"
+                },
+                "detail": "match score 4/4 (volume hB5TCgAAQBAJ)"
               }
             ],
             "is_public_domain": false,
@@ -449,6 +454,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"The World's Writing Systems\" inauthor:Daniels",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
+              {
                 "via": "crossref",
                 "query": "Peter T. Daniels The World's Writing Systems",
                 "result": "no_match",
@@ -488,32 +500,48 @@
           "source": {
             "author": "Asko Parpola",
             "title": "Deciphering the Indus Script",
-            "container_work": null,
+            "container_work": "Cambridge University Press",
             "publisher_or_journal": "Cambridge University Press",
             "year": 1994,
             "pages": null,
             "identifier": "ISBN 978-0-521-43079-1",
             "document_type": "book",
-            "retrieval_url": null,
+            "retrieval_url": "https://books.google.com/books?id=m1WNQgAACAAJ",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=m1WNQgAACAAJ&output=pdf",
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=m1WNQgAACAAJ&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=m1WNQgAACAAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
             "metadata_history": [
               {
-                "via": "crossref",
-                "query": "Asko Parpola 1994 Deciphering the Indus Script Cambridge University Press",
-                "result": "no_match",
-                "found": null,
-                "detail": "no results"
+                "via": "google books",
+                "query": "intitle:\"Deciphering the Indus Script\" inauthor:Parpola",
+                "result": "enriched",
+                "found": {
+                  "title": "Deciphering the Indus Script",
+                  "author": [
+                    "Asko Parpola"
+                  ],
+                  "year": 1994,
+                  "container": "Cambridge University Press",
+                  "doi": null,
+                  "isbn": "9780521430791",
+                  "gbId": "m1WNQgAACAAJ"
+                },
+                "detail": "match score 4/4 (volume m1WNQgAACAAJ)"
               }
             ],
             "is_public_domain": false,
@@ -647,6 +675,12 @@
                 "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               },
               {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=ZOlNv8MAXIEC&output=pdf",
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=ZOlNv8MAXIEC&output=pdf"
+              },
+              {
                 "via": "cited url",
                 "url": "https://books.google.com/books?id=ZOlNv8MAXIEC",
                 "result": "copyright",
@@ -702,14 +736,14 @@
             "retrieval_url": "https://doi.org/10.1093/gmo/9781561592630.article.45738",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=W1TVG8LiLzml0OGeOi3MokImvkwtu3PZb_uVjM3TEAoredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)",
+            "retrieval_note": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=6gsiqiVmYjIl46R5mVo318ijXrwUa9NMP_URcL9j09gredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
                 "via": "cited url",
                 "url": "https://doi.org/10.1093/gmo/9781561592630.article.45738",
                 "result": "login_wall",
-                "detail": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=W1TVG8LiLzml0OGeOi3MokImvkwtu3PZb_uVjM3TEAoredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)"
+                "detail": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=6gsiqiVmYjIl46R5mVo318ijXrwUa9NMP_URcL9j09gredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)"
               }
             ],
             "metadata_history": [],
@@ -869,6 +903,13 @@
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"Microscopic, biochemical and stable isotopic investigation of seven multi-nutritional food-balls\" inauthor:Agnihorti",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
               {
                 "via": "crossref",
                 "query": "Rajesh Agnihorti 2021 Microscopic, biochemical and stable isotopic investigation of seven multi-nutritional food-balls from Indus archaeological site, Rajasthan (India) Journal of Archaeological Science: Reports",
@@ -1088,6 +1129,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"Indus Collapse\" inauthor:Lawler",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
+              {
                 "via": "crossref",
                 "query": "Andrew Lawler 2008 Indus Collapse: The End or the Beginning of an Asian Culture? Science",
                 "result": "enriched",
@@ -1167,6 +1215,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"Reurbanization\" inauthor:Shaffer",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
+              {
                 "via": "crossref",
                 "query": "Jim Shaffer 1993 Reurbanization: The eastern Punjab and beyond Urban Form and Meaning in South Asia: The Shaping of Cities from Prehistoric to Precolonial Times",
                 "result": "low_confidence",
@@ -1221,6 +1276,13 @@
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"Indus Collapse\" inauthor:Lawler",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
               {
                 "via": "crossref",
                 "query": "Andrew Lawler 2008 Indus Collapse: The End or the Beginning of an Asian Culture? Science",

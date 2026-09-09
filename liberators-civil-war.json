@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-09T17:18:42.451Z",
+    "generated_at": "2026-09-09T18:24:48.863Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -70,7 +70,7 @@
                 "via": "internet archive pdf",
                 "url": "https://archive.org/download/romanrepublic00craw/romanrepublic00craw.pdf",
                 "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               },
               {
                 "via": "internet archive text",
@@ -81,8 +81,8 @@
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=PoTAz6MHlosC&output=pdf",
-                "result": "http_429",
-                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=PoTAz6MHlosC&output=pdf"
+                "result": "http_403",
+                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=PoTAz6MHlosC&output=pdf"
               },
               {
                 "via": "cited url",
@@ -115,20 +115,26 @@
             "document_type": "book",
             "retrieval_url": "https://books.google.com/books?id=zsYmVl6_uQsC&q=Philipi",
             "wikipedia_access_date": null,
-            "retrieval_status": "retrieved",
-            "retrieval_note": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "public-domain book, but no downloadable full-text scan was found (Google Books gives a preview only; not on the Internet Archive)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "internet archive pdf",
-                "url": "https://archive.org/download/augustuslifetime00shucuoft/augustuslifetime00shucuoft.pdf",
-                "result": "retrieved",
-                "detail": null
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=zsYmVl6_uQsC&output=pdf",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=zsYmVl6_uQsC&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=zsYmVl6_uQsC&q=Philipi",
+                "result": "no_free_scan",
+                "detail": "public-domain book, but no downloadable full-text scan was found (Google Books gives a preview only; not on the Internet Archive)"
               }
             ],
             "metadata_history": [],
             "is_public_domain": true,
-            "local_cache_path": "/source-cache/liberators-civil-war/shuckburgh-1903-augustus-the-life-and.pdf"
+            "local_cache_path": null
           },
           "wikipedia_note_quotes": []
         },
@@ -157,8 +163,8 @@
               {
                 "via": "google books pdf",
                 "url": "https://books.google.com/books/download/book.pdf?id=WouFAgAAQBAJ&output=pdf",
-                "result": "http_502",
-                "detail": "HTTP 502 from https://books.google.com/books/download/book.pdf?id=WouFAgAAQBAJ&output=pdf"
+                "result": "http_403",
+                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=WouFAgAAQBAJ&output=pdf"
               },
               {
                 "via": "cited url",
@@ -191,26 +197,20 @@
             "document_type": "book",
             "retrieval_url": "https://books.google.com/books?id=3t8hBAAAQBAJ&q=Phillipi",
             "wikipedia_access_date": null,
-            "retrieval_status": "unreachable",
-            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieval_status": "retrieved",
+            "retrieval_note": null,
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "google books pdf",
-                "url": "https://books.google.com/books/download/book.pdf?id=3t8hBAAAQBAJ&output=pdf",
-                "result": "http_502",
-                "detail": "HTTP 502 from https://books.google.com/books/download/book.pdf?id=3t8hBAAAQBAJ&output=pdf"
-              },
-              {
-                "via": "cited url",
-                "url": "https://books.google.com/books?id=3t8hBAAAQBAJ&q=Phillipi",
-                "result": "copyright",
-                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/augustus-first-emperor-of-rome-adrian-goldsworthy/Augustus%20-%20First%20emperor%20of%20Rome%20-%20Adrian%20Goldsworthy.pdf",
+                "result": "retrieved",
+                "detail": null
               }
             ],
             "metadata_history": [],
             "is_public_domain": false,
-            "local_cache_path": null
+            "local_cache_path": "/source-cache/liberators-civil-war/goldsworthy-2014-augustus-first-emperor-of.pdf"
           },
           "wikipedia_note_quotes": []
         }

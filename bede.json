@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-09T17:18:10.534Z",
+    "generated_at": "2026-09-09T18:21:46.642Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -93,23 +93,24 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "internet archive pdf",
-                "url": "https://archive.org/download/conversioncoloni0000unse/conversioncoloni0000unse.pdf",
-                "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
-              },
-              {
-                "via": "internet archive text",
-                "url": "https://archive.org/download/conversioncoloni0000unse/conversioncoloni0000unse_djvu.txt",
-                "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"From British to English Christianity\" inauthor:Brooks",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
               {
                 "via": "crossref",
                 "query": "Nicholas Brooks 2006 From British to English Christianity: Deconstructing Bede's Interpretation of the Conversion Conversion and Colonization in Anglo-Saxon England Arizona Center for Medieval and Renaissance Studies",
@@ -173,6 +174,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"Bede\" inauthor:Ray",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 3 Google Books results scored only 1/4"
+              },
+              {
                 "via": "crossref",
                 "query": "Roger Ray 2001 Bede Blackwell Encyclopedia of Anglo-Saxon England Blackwell",
                 "result": "no_match",
@@ -210,23 +218,24 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "internet archive pdf",
-                "url": "https://archive.org/download/bedesecclesiasti0000bede_y6a2/bedesecclesiasti0000bede_y6a2.pdf",
-                "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
-              },
-              {
-                "via": "internet archive text",
-                "url": "https://archive.org/download/bedesecclesiasti0000bede_y6a2/bedesecclesiasti0000bede_y6a2_djvu.txt",
-                "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"Introduction\" inauthor:Colgrave",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 Google Books results scored only 1/4"
+              },
               {
                 "via": "crossref",
                 "query": "Bertram Colgrave 1969 Introduction Bede's Ecclesiastical History of the English People Clarendon Press",
@@ -344,32 +353,48 @@
           "source": {
             "author": "David Hugh Farmer",
             "title": "The Oxford Dictionary of Saints",
-            "container_work": null,
+            "container_work": "Oxford University Press, USA",
             "publisher_or_journal": "Oxford University Press",
             "year": 2004,
             "pages": null,
             "identifier": "ISBN 978-0-19-860949-0",
             "document_type": "book",
-            "retrieval_url": null,
+            "retrieval_url": "https://books.google.com/books?id=x0DQngEACAAJ",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=x0DQngEACAAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
             "metadata_history": [
               {
-                "via": "crossref",
-                "query": "David Hugh Farmer 2004 The Oxford Dictionary of Saints Oxford University Press",
-                "result": "no_match",
-                "found": null,
-                "detail": "no results"
+                "via": "google books",
+                "query": "intitle:\"The Oxford Dictionary of Saints\" inauthor:Farmer",
+                "result": "enriched",
+                "found": {
+                  "title": "The Oxford Dictionary of Saints",
+                  "author": [
+                    "David Hugh Farmer"
+                  ],
+                  "year": 1997,
+                  "container": "Oxford University Press, USA",
+                  "doi": null,
+                  "isbn": "9780192800589",
+                  "gbId": "x0DQngEACAAJ"
+                },
+                "detail": "match score 3/4 (volume x0DQngEACAAJ)"
               }
             ],
             "is_public_domain": false,
@@ -493,6 +518,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"The World of Bede\" inauthor:Blair",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 Google Books results scored only 2/4"
+              },
+              {
                 "via": "crossref",
                 "query": "Peter Hunter Blair 1990 The World of Bede Cambridge University Press",
                 "result": "no_match",
@@ -548,6 +580,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"The World of Bede\" inauthor:Blair",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 Google Books results scored only 2/4"
+              },
+              {
                 "via": "crossref",
                 "query": "Peter Hunter Blair 1990 The World of Bede Cambridge University Press",
                 "result": "no_match",
@@ -602,6 +641,13 @@
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"The World of Bede\" inauthor:Blair",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 Google Books results scored only 2/4"
+              },
               {
                 "via": "crossref",
                 "query": "Peter Hunter Blair 1990 The World of Bede Cambridge University Press",
@@ -727,17 +773,30 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/worldofbede0000hunt/worldofbede0000hunt.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/worldofbede0000hunt/worldofbede0000hunt_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"The World of Bede\" inauthor:Blair",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 Google Books results scored only 2/4"
+              },
               {
                 "via": "crossref",
                 "query": "Peter Hunter Blair 1990 The World of Bede Cambridge University Press",
@@ -782,17 +841,30 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/worldofbede0000hunt/worldofbede0000hunt.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/worldofbede0000hunt/worldofbede0000hunt_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"The World of Bede\" inauthor:Blair",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 Google Books results scored only 2/4"
+              },
               {
                 "via": "crossref",
                 "query": "Peter Hunter Blair 1990 The World of Bede Cambridge University Press",
@@ -878,32 +950,60 @@
           "source": {
             "author": "David Hugh Farmer",
             "title": "The Oxford Dictionary of Saints",
-            "container_work": null,
+            "container_work": "Oxford University Press, USA",
             "publisher_or_journal": "Oxford University Press",
             "year": 1978,
             "pages": null,
             "identifier": "ISBN 978-0-19-282038-9",
             "document_type": "book",
-            "retrieval_url": null,
+            "retrieval_url": "https://books.google.com/books?id=x0DQngEACAAJ",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d0b7/oxforddictionary0000farm_d0b7.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d0b7/oxforddictionary0000farm_d0b7_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=x0DQngEACAAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
             "metadata_history": [
               {
-                "via": "crossref",
-                "query": "David Hugh Farmer 1978 The Oxford Dictionary of Saints Oxford University Press",
-                "result": "no_match",
-                "found": null,
-                "detail": "no results"
+                "via": "google books",
+                "query": "intitle:\"The Oxford Dictionary of Saints\" inauthor:Farmer",
+                "result": "enriched",
+                "found": {
+                  "title": "The Oxford Dictionary of Saints",
+                  "author": [
+                    "David Hugh Farmer"
+                  ],
+                  "year": 1997,
+                  "container": "Oxford University Press, USA",
+                  "doi": null,
+                  "isbn": "9780192800589",
+                  "gbId": "x0DQngEACAAJ"
+                },
+                "detail": "match score 3/4 (volume x0DQngEACAAJ)"
               }
             ],
             "is_public_domain": false,
@@ -933,32 +1033,60 @@
           "source": {
             "author": "David Hugh Farmer",
             "title": "The Oxford Dictionary of Saints",
-            "container_work": null,
+            "container_work": "Oxford University Press, USA",
             "publisher_or_journal": "Oxford University Press",
             "year": 1978,
             "pages": null,
             "identifier": "ISBN 978-0-19-282038-9",
             "document_type": "book",
-            "retrieval_url": null,
+            "retrieval_url": "https://books.google.com/books?id=x0DQngEACAAJ",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1.pdf",
+                "result": "http_500",
+                "detail": "HTTP 500 from https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1.pdf"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1_djvu.txt",
+                "result": "http_500",
+                "detail": "HTTP 500 from https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1_djvu.txt"
+              },
+              {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=x0DQngEACAAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
             "metadata_history": [
               {
-                "via": "crossref",
-                "query": "David Hugh Farmer 1978 The Oxford Dictionary of Saints Oxford University Press",
-                "result": "no_match",
-                "found": null,
-                "detail": "no results"
+                "via": "google books",
+                "query": "intitle:\"The Oxford Dictionary of Saints\" inauthor:Farmer",
+                "result": "enriched",
+                "found": {
+                  "title": "The Oxford Dictionary of Saints",
+                  "author": [
+                    "David Hugh Farmer"
+                  ],
+                  "year": 1997,
+                  "container": "Oxford University Press, USA",
+                  "doi": null,
+                  "isbn": "9780192800589",
+                  "gbId": "x0DQngEACAAJ"
+                },
+                "detail": "match score 3/4 (volume x0DQngEACAAJ)"
               }
             ],
             "is_public_domain": false,
@@ -1035,32 +1163,60 @@
           "source": {
             "author": "David Hugh Farmer",
             "title": "The Oxford Dictionary of Saints",
-            "container_work": null,
+            "container_work": "Oxford University Press, USA",
             "publisher_or_journal": "Oxford University Press",
             "year": 1978,
             "pages": null,
             "identifier": "ISBN 978-0-19-282038-9",
             "document_type": "book",
-            "retrieval_url": null,
+            "retrieval_url": "https://books.google.com/books?id=x0DQngEACAAJ",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d0b7/oxforddictionary0000farm_d0b7.pdf",
+                "result": "network_error",
+                "detail": "network error contacting https://archive.org/download/oxforddictionary0000farm_d0b7/oxforddictionary0000farm_d0b7.pdf (socket idle timeout)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d0b7/oxforddictionary0000farm_d0b7_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=x0DQngEACAAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
             "metadata_history": [
               {
-                "via": "crossref",
-                "query": "David Hugh Farmer 1978 The Oxford Dictionary of Saints Oxford University Press",
-                "result": "no_match",
-                "found": null,
-                "detail": "no results"
+                "via": "google books",
+                "query": "intitle:\"The Oxford Dictionary of Saints\" inauthor:Farmer",
+                "result": "enriched",
+                "found": {
+                  "title": "The Oxford Dictionary of Saints",
+                  "author": [
+                    "David Hugh Farmer"
+                  ],
+                  "year": 1997,
+                  "container": "Oxford University Press, USA",
+                  "doi": null,
+                  "isbn": "9780192800589",
+                  "gbId": "x0DQngEACAAJ"
+                },
+                "detail": "match score 3/4 (volume x0DQngEACAAJ)"
               }
             ],
             "is_public_domain": false,
@@ -1090,32 +1246,60 @@
           "source": {
             "author": "David Hugh Farmer",
             "title": "The Oxford Dictionary of Saints",
-            "container_work": null,
+            "container_work": "Oxford University Press, USA",
             "publisher_or_journal": "Oxford University Press",
             "year": 1978,
             "pages": null,
             "identifier": "ISBN 978-0-19-282038-9",
             "document_type": "book",
-            "retrieval_url": null,
+            "retrieval_url": "https://books.google.com/books?id=x0DQngEACAAJ",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1.pdf",
+                "result": "http_500",
+                "detail": "HTTP 500 from https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1.pdf"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/oxforddictionary0000farm_d3u1/oxforddictionary0000farm_d3u1_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+              },
+              {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=x0DQngEACAAJ&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=x0DQngEACAAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
             "metadata_history": [
               {
-                "via": "crossref",
-                "query": "David Hugh Farmer 1978 The Oxford Dictionary of Saints Oxford University Press",
-                "result": "no_match",
-                "found": null,
-                "detail": "no results"
+                "via": "google books",
+                "query": "intitle:\"The Oxford Dictionary of Saints\" inauthor:Farmer",
+                "result": "enriched",
+                "found": {
+                  "title": "The Oxford Dictionary of Saints",
+                  "author": [
+                    "David Hugh Farmer"
+                  ],
+                  "year": 1997,
+                  "container": "Oxford University Press, USA",
+                  "doi": null,
+                  "isbn": "9780192800589",
+                  "gbId": "x0DQngEACAAJ"
+                },
+                "detail": "match score 3/4 (volume x0DQngEACAAJ)"
               }
             ],
             "is_public_domain": false,
@@ -1204,6 +1388,13 @@
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"Bede, the Venerable\" inauthor:Brown",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 1 Google Books results scored only 2/4"
+              },
               {
                 "via": "crossref",
                 "query": "George Hardin Brown 1987 Bede, the Venerable Twayne",
@@ -1300,6 +1491,13 @@
             ],
             "metadata_history": [
               {
+                "via": "google books",
+                "query": "intitle:\"Bede, the Venerable\" inauthor:Brown",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 1 Google Books results scored only 2/4"
+              },
+              {
                 "via": "crossref",
                 "query": "George Hardin Brown 1987 Bede, the Venerable Twayne",
                 "result": "no_match",
@@ -1382,23 +1580,24 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "internet archive pdf",
-                "url": "https://archive.org/download/venerablebedeia18ward/venerablebedeia18ward.pdf",
-                "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
-              },
-              {
-                "via": "internet archive text",
-                "url": "https://archive.org/download/venerablebedeia18ward/venerablebedeia18ward_djvu.txt",
-                "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"The Venerable Bede\" inauthor:Ward",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 Google Books results scored only 2/4"
+              },
               {
                 "via": "crossref",
                 "query": "Benedicta Ward 1990 The Venerable Bede Morehouse Publishing",
@@ -1465,32 +1664,48 @@
           "source": {
             "author": "J. Robert Wright",
             "title": "A Companion to Bede: A Reader's Commentary on The Ecclesiastical History of the English People",
-            "container_work": null,
+            "container_work": "Wm. B. Eerdmans Publishing Company",
             "publisher_or_journal": "Eerdmans",
             "year": 2008,
             "pages": null,
             "identifier": "ISBN 978-0-8028-6309-6",
             "document_type": "book",
-            "retrieval_url": null,
+            "retrieval_url": "https://books.google.com/books?id=AzLW0QEACAAJ",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=AzLW0QEACAAJ&output=pdf",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://books.google.com/books/download/book.pdf?id=AzLW0QEACAAJ&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=AzLW0QEACAAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
             "metadata_history": [
               {
-                "via": "crossref",
-                "query": "J. Robert Wright 2008 A Companion to Bede: A Reader's Commentary on The Ecclesiastical History of the English People Eerdmans",
-                "result": "low_confidence",
-                "found": null,
-                "detail": "best of 2 results scored only 2/4 — not adopted"
+                "via": "google books",
+                "query": "intitle:\"A Companion to Bede\" inauthor:Wright",
+                "result": "enriched",
+                "found": {
+                  "title": "A Companion to Bede: A Reader's Commentary on The Ecclesiastical History of the English People",
+                  "author": [
+                    "J. Robert Wright"
+                  ],
+                  "year": 2008,
+                  "container": "Wm. B. Eerdmans Publishing Company",
+                  "doi": null,
+                  "isbn": "9780802863096",
+                  "gbId": "AzLW0QEACAAJ"
+                },
+                "detail": "match score 4/4 (volume AzLW0QEACAAJ)"
               }
             ],
             "is_public_domain": false,
@@ -1528,6 +1743,13 @@
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"St. Venerable Bede\" inauthor:SHMI",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
               {
                 "via": "crossref",
                 "query": "Fr. Paolo O. Pirlo, SHMI 1997 St. Venerable Bede My First Book of Saints Sons of Holy Mary Immaculate – Quality Catholic Publications",
@@ -1585,23 +1807,24 @@
             "retrieval_url": null,
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "internet archive pdf",
-                "url": "https://archive.org/download/rereadingbedeecc0000high/rereadingbedeecc0000high.pdf",
-                "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
-              },
-              {
-                "via": "internet archive text",
-                "url": "https://archive.org/download/rereadingbedeecc0000high/rereadingbedeecc0000high_djvu.txt",
-                "result": "lending_restricted",
-                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"(Re-)Reading Bede\" inauthor:Higham",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
               {
                 "via": "crossref",
                 "query": "N.J. Higham 2006 (Re-)Reading Bede: The Historia Ecclesiastica in Context Routledge",

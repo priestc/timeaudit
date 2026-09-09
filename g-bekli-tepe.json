@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-09T17:15:46.208Z",
+    "generated_at": "2026-09-09T18:02:19.415Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -291,6 +291,12 @@
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=T6QGEAAAQBAJ&output=pdf",
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=T6QGEAAAQBAJ&output=pdf"
+              },
+              {
                 "via": "cited url",
                 "url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
                 "result": "copyright",
@@ -573,6 +579,12 @@
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=T6QGEAAAQBAJ&output=pdf",
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=T6QGEAAAQBAJ&output=pdf"
+              },
+              {
                 "via": "cited url",
                 "url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
                 "result": "copyright",
@@ -649,6 +661,12 @@
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=T6QGEAAAQBAJ&output=pdf",
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=T6QGEAAAQBAJ&output=pdf"
+              },
+              {
                 "via": "cited url",
                 "url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
                 "result": "copyright",
@@ -711,6 +729,12 @@
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
+              {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=T6QGEAAAQBAJ&output=pdf",
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=T6QGEAAAQBAJ&output=pdf"
+              },
               {
                 "via": "cited url",
                 "url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
@@ -805,6 +829,13 @@
               }
             ],
             "metadata_history": [
+              {
+                "via": "google books",
+                "query": "intitle:\"Göbekli Tepe. Eine Beschreibung der wichtigsten Befunde erstellt nach den\" inauthor:Schmidt",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
               {
                 "via": "crossref",
                 "query": "Klaus Schmidt 2009 Göbekli Tepe. Eine Beschreibung der wichtigsten Befunde erstellt nach den Arbeiten der Grabungsteams der Jahre 1995–2007 Erste Tempel – Frühe Siedlungen. 12000 Jahre Kunst und Kultur, Ausgrabungen und Forschungen zwischen Donau und Euphrat Florian Isensee",
