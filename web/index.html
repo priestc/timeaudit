@@ -57,6 +57,11 @@
   #reanalyze-bar.ra-ok .spin,#reanalyze-bar.ra-fail .spin{animation:none;border-top-color:currentColor;opacity:.5}
   @keyframes ra-spin{to{transform:rotate(360deg)}}
   .content{flex:1;overflow:auto;position:relative}
+  .content.framed{display:flex;flex-direction:column;overflow:hidden}
+  .content.framed>#frame{flex:1 1 auto;height:auto}
+  .claimlist-bar{flex:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
+    padding:9px 16px;border-bottom:1px solid var(--border);background:var(--sidebar);font-size:.85rem}
+  .claimlist-bar .sub{color:var(--muted);margin:0}
   #frame{width:100%;height:100%;border:0;display:block;background:var(--bg)}
   .empty{color:var(--muted);padding:60px 24px;text-align:center}
   pre.raw{max-width:920px;margin:0 auto;padding:20px;white-space:pre-wrap;word-break:break-word;
@@ -116,8 +121,6 @@
   .src-ref:hover{border-color:var(--accent)}
   a.status-link{color:var(--accent);text-decoration:none}
   a.status-link:hover{text-decoration:underline}
-  .claim-list .src-title{font-weight:400;margin-top:3px}
-  .claim-list a.src-ref{display:inline-block;margin-top:8px}
 
   /* home / add article */
   .home{max-width:760px;margin:0 auto;padding:48px 22px 80px}
@@ -336,6 +339,7 @@
   function setNav(active) {
     screen = active;
     current = null;
+    contentEl.className = "content";
     toolbarEl.hidden = active !== "doc";
     stopReanalyzePoll();
     hideReanalyzeBar();
@@ -360,7 +364,10 @@
   }
 
   // every claim of one status across the corpus — reached by clicking a row on
-  // the statistics page (#claims/<status>)
+  // the statistics page (#claims/<status>). Each claim is rendered with the
+  // same ChronoRender template as the document page (in an iframe), so it shows
+  // its citations and citation chain; click a claim to open it in its report.
+  var claimDocMap = {}; // claim_id -> doc_id, for the click-through
   function showClaimList(status) {
     setNav("stats");
     setHash("#claims/" + encodeURIComponent(status));
@@ -368,35 +375,40 @@
     document.title = label + " claims — Chronology Browser";
     contentEl.innerHTML = '<div class="empty">Loading claims…</div>';
     var render = function (groups) {
-      var claims = groups[status] || [];
-      claims.sort(function (a, b) {
-        return a.doc_title.localeCompare(b.doc_title) || String(a.claim_id).localeCompare(String(b.claim_id));
+      var entries = (groups[status] || []).slice();
+      entries.sort(function (a, b) {
+        return a.doc_title.localeCompare(b.doc_title) ||
+          String(a.claim.claim_id).localeCompare(String(b.claim.claim_id));
       });
+      claimDocMap = {};
+      var claims = entries.map(function (e) {
+        claimDocMap[e.claim.claim_id] = e.doc_id;
+        // prefix the section with the document title so each rendered claim
+        // still says where it came from
+        var loc = e.claim.location_on_page;
+        return Object.assign({}, e.claim, {
+          location_on_page: e.doc_title + (loc ? " · " + loc : ""),
+        });
+      });
+      contentEl.className = "content framed";
       contentEl.innerHTML =
-        '<div class="sources">' +
-        '<div class="sub"><a href="#" class="status-link" id="back-stats">&larr; statistics</a></div>' +
-        "<h1>" + '<span class="dot ' + statusClass(status) + '"></span>' + esc(label) + " claims (" + claims.length + ")</h1>" +
-        '<div class="sub">every claim with this retrieval status, across all page documents</div>' +
-        (claims.length
-          ? '<ul class="src-list claim-list">' +
-            claims
-              .map(function (c) {
-                return (
-                  '<li class="src-card">' +
-                  '<div class="src-bits">' + esc(c.doc_title) +
-                  (c.location ? " · " + esc(c.location) : "") +
-                  (c.markers ? "" : ' · <span class="src-note">no citation</span>') +
-                  "</div>" +
-                  '<div class="src-title">' + esc(c.text) + "</div>" +
-                  '<a href="#" class="src-ref" data-doc="' + esc(c.doc_id) + '" data-claim="' + esc(c.claim_id) + '">' +
-                  "open " + esc(c.claim_id) + " &rarr;</a>" +
-                  "</li>"
-                );
-              })
-              .join("") +
-            "</ul>"
-          : '<div class="empty">No claims with this status.</div>');
-      wireSourceRefs();
+        '<div class="claimlist-bar">' +
+        '<a href="#" class="status-link" id="back-stats">&larr; statistics</a>' +
+        '<span class="dot ' + statusClass(status) + '"></span>' +
+        "<b>" + esc(label) + " claims (" + claims.length + ")</b>" +
+        '<span class="sub">click a claim to open it in its report</span></div>';
+      var frame = document.createElement("iframe");
+      frame.id = "frame";
+      contentEl.appendChild(frame);
+      var synth = { schema_version: "1.0", page: { title: label + " claims" }, claims: claims };
+      var html = ChronoRender.renderDocument(synth, {}).replace(
+        "</body>",
+        '<script>document.addEventListener("click",function(ev){' +
+          'if(ev.target.closest("a,summary,button"))return;' +
+          'var el=ev.target.closest("article.claim");' +
+          'if(el&&el.id)parent.postMessage({timeauditOpenClaim:el.id},"*");});<\/script></body>'
+      );
+      frame.srcdoc = html;
       var back = document.getElementById("back-stats");
       if (back) back.onclick = function (e) { e.preventDefault(); showStats(); };
     };
@@ -404,9 +416,19 @@
     fetchJSON("/api/claims")
       .then(function (g) { claimsCache = g; render(g); })
       .catch(function (e) {
+        contentEl.className = "content";
         contentEl.innerHTML = '<div class="empty">Failed to load claims: ' + esc(e.message) + "</div>";
       });
   }
+
+  // a claim clicked inside the status-list iframe -> open it in its report
+  window.addEventListener("message", function (ev) {
+    var d = ev.data;
+    if (!d || !d.timeauditOpenClaim) return;
+    var docId = claimDocMap[d.timeauditOpenClaim];
+    var meta = files.filter(function (f) { return f.id === docId; })[0];
+    if (meta) load(meta, d.timeauditOpenClaim);
+  });
 
   /* ---- sources: unreachable / validated, across the whole corpus ------ */
 
@@ -847,6 +869,7 @@
     fetchJSON("/api/file?id=" + encodeURIComponent(meta.id))
       .then(function (data) {
         screen = "doc";
+        contentEl.className = "content";
         setHash("#doc/" + encodeURIComponent(meta.id));
         [btnHome, btnStats, btnFinder, btnUnreachable, btnRadiocarbon].forEach(function (b) {
           b.classList.remove("active");

@@ -372,10 +372,11 @@ async function computeSourceReport() {
 }
 
 // Corpus-wide: every claim, grouped by status, so the stats page's "claims by
-// status" rows can each open a browsable list.
+// status" rows can each open a list that renders each claim with the same
+// template as the document page. Each entry carries the whole claim object.
 async function computeClaimsByStatus() {
   const list = await backend.list();
-  const groups = {}; // status -> [ {doc_id, doc_title, claim_id, text, location} ]
+  const groups = {}; // status -> [ {doc_id, doc_title, claim} ]
   for (const f of list) {
     let data;
     try {
@@ -387,14 +388,7 @@ async function computeClaimsByStatus() {
     const docTitle = (data.page && data.page.title) || f.title;
     for (const c of data.claims) {
       const st = c.status || "unknown";
-      (groups[st] = groups[st] || []).push({
-        doc_id: f.id,
-        doc_title: docTitle,
-        claim_id: c.claim_id,
-        text: c.wikipedia_text_verbatim || "",
-        location: c.location_on_page || "",
-        markers: (c.citation_markers || []).length,
-      });
+      (groups[st] = groups[st] || []).push({ doc_id: f.id, doc_title: docTitle, claim: c });
     }
   }
   return groups;
