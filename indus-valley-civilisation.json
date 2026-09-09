@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-09T01:54:22.184Z",
+    "generated_at": "2026-09-09T17:16:49.110Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -69,6 +69,7 @@
                 "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -147,6 +148,7 @@
                 "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -195,6 +197,7 @@
                 "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -244,6 +247,15 @@
                 "url": null,
                 "result": "no_url",
                 "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Robin Coningham 2015 The Archaeology of South Asia: From the Indus to Asoka, c. 6500 BCE – 200 CE Cambridge University Press",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 3 results scored only 2/4 — not adopted"
               }
             ],
             "is_public_domain": false,
@@ -305,6 +317,7 @@
                 "detail": null
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/2006-stone-age-man-used.html"
           },
@@ -356,6 +369,7 @@
                 "detail": null
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/mascarenhas-2015-genetic-and-cultural-reconstruction.xml"
           },
@@ -416,9 +430,9 @@
             "title": "The World's Writing Systems",
             "container_work": null,
             "publisher_or_journal": null,
-            "year": null,
+            "year": 1996,
             "pages": "372",
-            "identifier": null,
+            "identifier": "ISBN 9780195386929",
             "document_type": "other",
             "retrieval_url": null,
             "wikipedia_access_date": null,
@@ -431,6 +445,32 @@
                 "url": null,
                 "result": "no_url",
                 "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Peter T. Daniels The World's Writing Systems",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              },
+              {
+                "via": "open library",
+                "query": "The World's Writing Systems Peter T. Daniels",
+                "result": "enriched",
+                "found": {
+                  "title": "The world's writing systems",
+                  "author": [
+                    "William Bright",
+                    "Peter T. Daniels"
+                  ],
+                  "year": 1996,
+                  "container": null,
+                  "doi": null,
+                  "isbn": "9780195386929"
+                },
+                "detail": "match score 3/4"
               }
             ],
             "is_public_domain": null,
@@ -465,6 +505,15 @@
                 "url": null,
                 "result": "no_url",
                 "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Asko Parpola 1994 Deciphering the Indus Script Cambridge University Press",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
               }
             ],
             "is_public_domain": false,
@@ -545,6 +594,7 @@
                 "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -603,6 +653,7 @@
                 "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -651,16 +702,17 @@
             "retrieval_url": "https://doi.org/10.1093/gmo/9781561592630.article.45738",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=CQsMvr9q87lVfsvaKB5tgFjKvKmL-IySoxtWBDfVQCoredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)",
+            "retrieval_note": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=W1TVG8LiLzml0OGeOi3MokImvkwtu3PZb_uVjM3TEAoredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
                 "via": "cited url",
                 "url": "https://doi.org/10.1093/gmo/9781561592630.article.45738",
                 "result": "login_wall",
-                "detail": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=CQsMvr9q87lVfsvaKB5tgFjKvKmL-IySoxtWBDfVQCoredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)"
+                "detail": "redirects to a login / subscription page — the source is access-restricted (https://www.oxfordmusiconline.com/oidc_callback?error=login_required&state=W1TVG8LiLzml0OGeOi3MokImvkwtu3PZb_uVjM3TEAoredirect%3D%2Fgrovemusic%2FdocumentID%2Fom)"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -759,6 +811,7 @@
                 "detail": null
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/bates-2016-rice-farming-in-india.html"
           },
@@ -796,32 +849,58 @@
               "Sawlani, Ravi"
             ],
             "title": "Microscopic, biochemical and stable isotopic investigation of seven multi-nutritional food-balls from Indus archaeological site, Rajasthan (India)",
-            "container_work": null,
+            "container_work": "Journal of Archaeological Science: Reports",
             "publisher_or_journal": "Journal of Archaeological Science: Reports",
             "year": 2021,
             "pages": null,
-            "identifier": null,
+            "identifier": "doi:10.1016/j.jasrep.2021.102917",
             "document_type": "journal_article",
-            "retrieval_url": null,
+            "retrieval_url": "https://doi.org/10.1016/j.jasrep.2021.102917",
             "wikipedia_access_date": null,
-            "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_status": "retrieved",
+            "retrieval_note": null,
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "cited url",
+                "url": "https://doi.org/10.1016/j.jasrep.2021.102917",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Rajesh Agnihorti 2021 Microscopic, biochemical and stable isotopic investigation of seven multi-nutritional food-balls from Indus archaeological site, Rajasthan (India) Journal of Archaeological Science: Reports",
+                "result": "enriched",
+                "found": {
+                  "title": "Microscopic, biochemical and stable isotopic investigation of seven multi-nutritional food-balls from Indus archaeological site, Rajasthan (India)",
+                  "author": [
+                    "Rajesh Agnihorti",
+                    "Anjum Farooqui",
+                    "Niteshkumar Khonde",
+                    "Runcie P. Mathews",
+                    "Shalini Sharma",
+                    "S.K.S Gahlaud",
+                    "Sanjay Kumar Manjul",
+                    "Arvin Manjul",
+                    "Ravi Sawlani"
+                  ],
+                  "year": 2021,
+                  "container": "Journal of Archaeological Science: Reports",
+                  "doi": "10.1016/j.jasrep.2021.102917",
+                  "isbn": null
+                },
+                "detail": "match score 4/4"
               }
             ],
             "is_public_domain": false,
-            "local_cache_path": null
+            "local_cache_path": "/source-cache/indus-valley-civilisation/agnihorti-2021-microscopic-biochemical-and-stable.html"
           },
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "dead_end",
+      "status": "retrieved",
       "technical_log_refs": []
     },
     {
@@ -900,6 +979,7 @@
                 "detail": null
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/collapse-of-civilizations-worldwide.html"
           },
@@ -925,56 +1005,35 @@
           "cited_by": "Wikipedia footnote [6]",
           "parallel_citation": null,
           "source": {
-            "author": [
-              "L Giosan",
-              "Clift, PD",
-              "Macklin, MG",
-              "Fuller, DQ",
-              "Constantinescu, S",
-              "Durcan, JA",
-              "Stevens, T",
-              "Duller, GA",
-              "Tabrez, AR",
-              "Gangal, K",
-              "Adhikari, R",
-              "Alizai, A",
-              "Filip, F",
-              "VanLaningham, S",
-              "Syvitski, JP"
-            ],
-            "title": "Fluvial landscapes of the Harappan civilization",
+            "author": null,
+            "title": "Proceedings of the National Academy of Sciences",
             "container_work": null,
-            "publisher_or_journal": "Proceedings of the National Academy of Sciences",
+            "publisher_or_journal": null,
             "year": 2012,
-            "pages": "E1688-E1694",
-            "identifier": null,
-            "document_type": "journal_article",
-            "retrieval_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3387054",
+            "pages": null,
+            "identifier": "doi:10.1073/pnas.1112743109.",
+            "document_type": "other",
+            "retrieval_url": "https://doi.org/10.1073/pnas.1112743109.",
             "wikipedia_access_date": null,
-            "retrieval_status": "retrieved",
-            "retrieval_note": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 404 from https://doi.org/10.1073/pnas.1112743109.",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "europepmc fulltext",
-                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3387054/fullTextXML",
+                "via": "cited url",
+                "url": "https://doi.org/10.1073/pnas.1112743109.",
                 "result": "http_404",
-                "detail": "HTTP 404 from https://www.ebi.ac.uk/europepmc/webservices/rest/PMC3387054/fullTextXML"
-              },
-              {
-                "via": "ncbi bioc",
-                "url": "https://www.ncbi.nlm.nih.gov/research/bionlp/RESTful/pmcoa.cgi/BioC_xml/PMC3387054/unicode",
-                "result": "retrieved",
-                "detail": null
+                "detail": "HTTP 404 from https://doi.org/10.1073/pnas.1112743109."
               }
             ],
-            "is_public_domain": false,
-            "local_cache_path": "/source-cache/indus-valley-civilisation/giosan-2012-fluvial-landscapes-of-the.html"
+            "metadata_history": [],
+            "is_public_domain": null,
+            "local_cache_path": null
           },
           "wikipedia_note_quotes": []
         }
       ],
-      "status": "retrieved",
+      "status": "dead_end",
       "technical_log_refs": []
     },
     {
@@ -1008,23 +1067,41 @@
           "source": {
             "author": "Andrew Lawler",
             "title": "Indus Collapse: The End or the Beginning of an Asian Culture?",
-            "container_work": null,
+            "container_work": "Science",
             "publisher_or_journal": "Science",
             "year": 2008,
             "pages": "1281-1283",
-            "identifier": null,
+            "identifier": "doi:10.1126/science.320.5881.1281",
             "document_type": "journal_article",
-            "retrieval_url": null,
+            "retrieval_url": "https://doi.org/10.1126/science.320.5881.1281",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "HTTP 403 from https://doi.org/10.1126/science.320.5881.1281",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "cited url",
+                "url": "https://doi.org/10.1126/science.320.5881.1281",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://doi.org/10.1126/science.320.5881.1281"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Andrew Lawler 2008 Indus Collapse: The End or the Beginning of an Asian Culture? Science",
+                "result": "enriched",
+                "found": {
+                  "title": "Indus Collapse: The End or the Beginning of an Asian Culture?",
+                  "author": [
+                    "Andrew Lawler"
+                  ],
+                  "year": 2008,
+                  "container": "Science",
+                  "doi": "10.1126/science.320.5881.1281",
+                  "isbn": null
+                },
+                "detail": "match score 4/4"
               }
             ],
             "is_public_domain": false,
@@ -1088,6 +1165,15 @@
                 "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
               }
             ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Jim Shaffer 1993 Reurbanization: The eastern Punjab and beyond Urban Form and Meaning in South Asia: The Shaping of Cities from Prehistoric to Precolonial Times",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 results scored only 0/4 — not adopted"
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -1115,23 +1201,41 @@
           "source": {
             "author": "Andrew Lawler",
             "title": "Indus Collapse: The End or the Beginning of an Asian Culture?",
-            "container_work": null,
+            "container_work": "Science",
             "publisher_or_journal": "Science",
             "year": 2008,
             "pages": "1281-1283",
-            "identifier": null,
+            "identifier": "doi:10.1126/science.320.5881.1281",
             "document_type": "journal_article",
-            "retrieval_url": null,
+            "retrieval_url": "https://doi.org/10.1126/science.320.5881.1281",
             "wikipedia_access_date": null,
             "retrieval_status": "unreachable",
-            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieval_note": "HTTP 403 from https://doi.org/10.1126/science.320.5881.1281",
             "retrieved_via_wayback": false,
             "retrieval_history": [
               {
-                "via": "citation metadata",
-                "url": null,
-                "result": "no_url",
-                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+                "via": "cited url",
+                "url": "https://doi.org/10.1126/science.320.5881.1281",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://doi.org/10.1126/science.320.5881.1281"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Andrew Lawler 2008 Indus Collapse: The End or the Beginning of an Asian Culture? Science",
+                "result": "enriched",
+                "found": {
+                  "title": "Indus Collapse: The End or the Beginning of an Asian Culture?",
+                  "author": [
+                    "Andrew Lawler"
+                  ],
+                  "year": 2008,
+                  "container": "Science",
+                  "doi": "10.1126/science.320.5881.1281",
+                  "isbn": null
+                },
+                "detail": "match score 4/4"
               }
             ],
             "is_public_domain": false,
@@ -1202,6 +1306,7 @@
                 "detail": null
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/indus-valley-civilisation/shinde-2019-an-ancient-harappan-genome.xml"
           },

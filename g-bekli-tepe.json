@@ -3,7 +3,7 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-09T01:53:49.948Z",
+    "generated_at": "2026-09-09T17:15:46.208Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
@@ -11,7 +11,7 @@
     "title": "Göbekli Tepe",
     "url": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
     "retrieved_at": "2026-09-09",
-    "wikipedia_revision_id": "1372090689"
+    "wikipedia_revision_id": "1374064541"
   },
   "claims": [
     {
@@ -54,6 +54,7 @@
                 "detail": "HTTP 403 from https://www.researchgate.net/publication/360996154"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -104,6 +105,7 @@
                 "detail": null
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/gresky-2017-modified-human-crania-from.xml"
           },
@@ -115,7 +117,7 @@
     },
     {
       "claim_id": "GT-003",
-      "wikipedia_text_verbatim": "One of the earliest known sites is Körtik Tepe, dated to 10,700-9250 BC,[32]",
+      "wikipedia_text_verbatim": "One of the earliest known sites is Körtik Tepe, dated to 10,700-9250 BCE,[32]",
       "location_on_page": "Dawn of village life",
       "citation_markers": [
         "32"
@@ -153,6 +155,7 @@
                 "detail": "HTTP 403 from https://www.researchgate.net/publication/267411578"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -199,6 +202,7 @@
                 "detail": null
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/watkins-2017-from-pleistocene-to-holocene.xml"
           },
@@ -255,6 +259,7 @@
                 "detail": null
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.pdf"
           },
@@ -292,6 +297,7 @@
                 "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -303,52 +309,16 @@
     },
     {
       "claim_id": "GT-006",
-      "wikipedia_text_verbatim": "The site was significantly expanded in the early 9th millennium BCE and remained in use until around 8000 BCE, or perhaps slightly later (the early Pre-Pottery Neolithic B, PPNB).[8]",
+      "wikipedia_text_verbatim": "The site was significantly expanded in the early 9th millennium BCE and remained in use until around 8000 BCE, or perhaps slightly later (the early Pre-Pottery Neolithic B, PPNB).",
       "location_on_page": "Chronology",
-      "citation_markers": [
-        "8"
-      ],
-      "citation_footnotes_verbatim": {
-        "8": "Kinzel & Clare 2020, pp. 32–33."
-      },
-      "citation_chain": [
-        {
-          "hop_index": 1,
-          "cited_by": "Wikipedia footnote [8]",
-          "parallel_citation": null,
-          "source": {
-            "author": [
-              "Moritz Kinzel",
-              "Clare, Lee"
-            ],
-            "title": "Monumental – compared to what? A perspective from Göbekli Tepe",
-            "container_work": "Monumentalising Life in the Neolithic: Narratives of Change and Continuity",
-            "publisher_or_journal": "Oxbow",
-            "year": 2020,
-            "pages": "29-48",
-            "identifier": "ISBN 978-1-78925-495-2",
-            "document_type": "excavation_report_chapter",
-            "retrieval_url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
-            "wikipedia_access_date": null,
-            "retrieval_status": "unreachable",
-            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
-            "retrieved_via_wayback": false,
-            "retrieval_history": [
-              {
-                "via": "cited url",
-                "url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
-                "result": "copyright",
-                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
-              }
-            ],
-            "is_public_domain": false,
-            "local_cache_path": null
-          },
-          "wikipedia_note_quotes": []
-        }
-      ],
-      "status": "dead_end",
-      "technical_log_refs": []
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
     },
     {
       "claim_id": "GT-007",
@@ -387,6 +357,7 @@
                 "detail": "HTTP 403 from https://www.researchgate.net/publication/258182967"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -440,6 +411,7 @@
                 "detail": null
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/pustovoytov-2002-14c-dating-of-pedogenic.pdf"
           },
@@ -477,6 +449,7 @@
                 "detail": null
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2010-a-radiocarbon-date-from.pdf"
           },
@@ -516,6 +489,7 @@
                 "detail": null
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.pdf"
           },
@@ -567,6 +541,7 @@
                 "detail": null
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/clare-2020-g-bekli-tepe-turkey-a.html"
           },
@@ -604,6 +579,7 @@
                 "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -679,6 +655,7 @@
                 "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -741,6 +718,7 @@
                 "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
               }
             ],
+            "metadata_history": [],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -824,6 +802,15 @@
                 "url": null,
                 "result": "no_url",
                 "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Klaus Schmidt 2009 Göbekli Tepe. Eine Beschreibung der wichtigsten Befunde erstellt nach den Arbeiten der Grabungsteams der Jahre 1995–2007 Erste Tempel – Frühe Siedlungen. 12000 Jahre Kunst und Kultur, Ausgrabungen und Forschungen zwischen Donau und Euphrat Florian Isensee",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 3 results scored only 1/4 — not adopted"
               }
             ],
             "is_public_domain": false,

@@ -142,6 +142,18 @@ source with everything else populated.
     "retrieved_via_wayback": boolean,      // true when local_cache_path was saved from a Wayback Machine archived snapshot because the live URL failed, rather than from the live URL itself — a real difference in provenance worth surfacing, not just an implementation detail
     "is_public_domain": boolean | null,
     "local_cache_path": string | null,     // path under /source-cache/ where the downloaded file was saved; see Local Source Cache section
+    "metadata_history": [                   // ordered log of the scholarly-metadata lookups done when the citation arrived with no URL / DOI (a bare {{sfn}} to a book chapter, a print-only reference) — the "search for it and read the results" step
+      {
+        "via": string,                     // the service queried: "crossref", "open library", "metadata search" (skipped)
+        "query": string | null,            // the bibliographic string searched
+        "result": string,                  // "enriched" | "low_confidence" | "no_match" | "network_error" | "skipped"
+        "found": {                          // present only when result is "enriched" — the fields recovered
+          "title": string | null, "author": [string, ...], "year": integer | null,
+          "container": string | null, "doi": string | null, "isbn": string | null
+        } | null,
+        "detail": string | null
+      }
+    ],                                       // a confident match is merged into the source above (filling nulls only) so retrieval can then use the recovered DOI / URL
     "retrieval_history": [                  // ordered log of every place retrieval looked for this source and what came back — the trail behind retrieval_status / retrieval_note
       {
         "via": string,                     // where it looked: "cited url", "wikipedia archive-url", "openalex OA pdf", "europepmc fulltext", "ncbi bioc", "unpaywall OA pdf", "internet archive pdf", "internet archive text", "google books pdf", "wayback machine", "doi landing", … (new retrieval backends add their own label)

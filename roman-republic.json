@@ -1,0 +1,1658 @@
+{
+  "schema_version": "1.0",
+  "generator": {
+    "tool": "timeaudit",
+    "mode": "local",
+    "generated_at": "2026-09-09T17:19:56.647Z",
+    "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
+    "ai_model": null
+  },
+  "page": {
+    "title": "Roman Republic",
+    "url": "https://en.wikipedia.org/wiki/Roman_Republic",
+    "retrieved_at": "2026-09-09",
+    "wikipedia_revision_id": "1374043202"
+  },
+  "claims": [
+    {
+      "claim_id": "RR-001",
+      "wikipedia_text_verbatim": "The Roman Republic (Latin: Res publica Romana, pronounced [ˈreːs ˈpuːblɪka roːˈmaːna]) was the era of classical Roman civilisation beginning with the overthrow of the Roman Kingdom (traditionally dated to 509 BC) and ending in 27 BC with the establishment of the Roman Empire following the War of Actium.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-002",
+      "wikipedia_text_verbatim": "Its first enemies were its Latin and Etruscan neighbours, as well as the Gauls, who sacked Rome around 387 BC.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-003",
+      "wikipedia_text_verbatim": "Rome defeated Carthage at the Battle of Zama in 202 BC and in the following decades became the dominant power in the ancient Mediterranean world.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-004",
+      "wikipedia_text_verbatim": "At home, during the Conflict of the Orders, the patricians, the closed oligarchic elite, came into conflict with the more numerous plebs; this was resolved peacefully, with the plebs achieving political equality by the 4th century BC.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-005",
+      "wikipedia_text_verbatim": "The late Republic, from 133 BC onward, saw substantial domestic strife, often anachronistically seen as a conflict between optimates and populares, referring to conservative and reformist politicians, respectively.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-006",
+      "wikipedia_text_verbatim": "After a generation, the Republic fell into civil war again in 49 BC between Julius Caesar and Pompey.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-007",
+      "wikipedia_text_verbatim": "Despite his victory and appointment as dictator for life, Caesar was assassinated in 44 BC.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-008",
+      "wikipedia_text_verbatim": "Caesar's heir Octavian and lieutenant Mark Antony defeated Caesar's assassins in 42 BC, but they split, eventually resulting in Antony's defeat alongside his ally and lover Cleopatra at the Battle of Actium in 31 BC.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-009",
+      "wikipedia_text_verbatim": "Octavian, the victor, then became the dominant force in Roman politics; Octavian's receipt of the title Augustus from the Senate in 27 BC is often seen to mark the end of the Republic and the beginning of the Roman Empire.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-010",
+      "wikipedia_text_verbatim": "The last Roman monarch was called Tarquin the Proud, who in traditional histories was expelled from Rome in 509 BC because his son, Sextus Tarquinius, raped a noblewoman, Lucretia.[4][5][6]",
+      "location_on_page": "Founding",
+      "citation_markers": [
+        "4",
+        "5",
+        "6"
+      ],
+      "citation_footnotes_verbatim": {
+        "4": "Cornell 1995, pp. 215–218. Cornell offers a summary of \"Livy's prose narrative\" and derived literary works relating to the expulsion of the kings.",
+        "5": "Dion. Hal. Ant. Rom., 4.64–85.",
+        "6": "Livy, 1.57–60."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [4]",
+          "parallel_citation": {
+            "index": 1,
+            "total": 3
+          },
+          "source": {
+            "author": "Tim Cornell",
+            "title": "The beginnings of Rome",
+            "container_work": null,
+            "publisher_or_journal": "Routledge",
+            "year": 1995,
+            "pages": null,
+            "identifier": "ISBN 978-0-415-01596-7",
+            "document_type": "book",
+            "retrieval_url": "https://books.google.com/books?id=EAEOAAAAQAAJ",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/beginningsofrome0000corn/beginningsofrome0000corn.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/beginningsofrome0000corn/beginningsofrome0000corn_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+              },
+              {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=EAEOAAAAQAAJ&output=pdf",
+                "result": "http_502",
+                "detail": "HTTP 502 from https://books.google.com/books/download/book.pdf?id=EAEOAAAAQAAJ&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=EAEOAAAAQAAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Wikipedia footnote [5]",
+          "parallel_citation": {
+            "index": 2,
+            "total": 3
+          },
+          "source": {
+            "author": "Dionysius of Halicarnassus",
+            "title": "Antiquitates Romanae (Roman Antiquities)",
+            "container_work": null,
+            "publisher_or_journal": null,
+            "year": null,
+            "pages": null,
+            "identifier": null,
+            "document_type": "book",
+            "retrieval_url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Dionysius_of_Halicarnassus/4D*.html",
+            "wikipedia_access_date": null,
+            "retrieval_status": "retrieved",
+            "retrieval_note": null,
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Dionysius_of_Halicarnassus/4D*.html",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/roman-republic/halicarnassus-antiquitates-romanae-roman-antiquities.html"
+          },
+          "wikipedia_note_quotes": []
+        },
+        {
+          "hop_index": 3,
+          "cited_by": "Wikipedia footnote [6]",
+          "parallel_citation": {
+            "index": 3,
+            "total": 3
+          },
+          "source": {
+            "author": "Livy",
+            "title": "History of Rome",
+            "container_work": null,
+            "publisher_or_journal": null,
+            "year": null,
+            "pages": null,
+            "identifier": null,
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "retrieved",
+            "retrieval_note": null,
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/cu31924028290066/cu31924028290066.pdf",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "metadata search",
+                "query": "Livy History of Rome",
+                "result": "skipped",
+                "found": null,
+                "detail": "too little to search on — need a multi-word title, or an author surname plus a year"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/roman-republic/livy-history-of-rome.pdf"
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "retrieved",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-011",
+      "wikipedia_text_verbatim": "Rome defeated its rival Latin cities in the Battle of Lake Regillus in 496 BC, the Battle of Ariccia in 495 BC, the Battle of Mount Algidus in 458 BC, and the Battle of Corbio in 446 BC.",
+      "location_on_page": "Early campaigns",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-012",
+      "wikipedia_text_verbatim": "But it suffered a significant defeat at the Battle of the Cremera in 477 BC, wherein it fought against the most important Etruscan city, Veii; this defeat was later avenged at the Battle of Veii in 396 BC, wherein Rome destroyed the city.[11][12]",
+      "location_on_page": "Early campaigns",
+      "citation_markers": [
+        "11",
+        "12"
+      ],
+      "citation_footnotes_verbatim": {
+        "11": "Flor. Epit., i.11–12.",
+        "12": "Grant 1978, pp. 37–41."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [11]",
+          "parallel_citation": {
+            "index": 1,
+            "total": 2
+          },
+          "source": {
+            "author": "Florus",
+            "title": "Epitome",
+            "container_work": null,
+            "publisher_or_journal": null,
+            "year": null,
+            "pages": null,
+            "identifier": null,
+            "document_type": "book",
+            "retrieval_url": "https://penelope.uchicago.edu/Thayer/e/roman/texts/florus/epitome/home.html",
+            "wikipedia_access_date": null,
+            "retrieval_status": "retrieved",
+            "retrieval_note": null,
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://penelope.uchicago.edu/Thayer/e/roman/texts/florus/epitome/home.html",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/roman-republic/florus-epitome.html"
+          },
+          "wikipedia_note_quotes": []
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Wikipedia footnote [12]",
+          "parallel_citation": {
+            "index": 2,
+            "total": 2
+          },
+          "source": {
+            "author": "Michael Grant",
+            "title": "History of Rome",
+            "container_work": null,
+            "publisher_or_journal": "Charles Scribner's Sons",
+            "year": 1978,
+            "pages": null,
+            "identifier": "ISBN 0-02345-610-8",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Michael Grant 1978 History of Rome Charles Scribner's Sons",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "retrieved",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-013",
+      "wikipedia_text_verbatim": "For the poorest, one of the few effective political tools was their withdrawal of labour and services, in a secessio plebis; the first such secession occurred in 494 BC, in protest at the abusive treatment of plebeian debtors by the wealthy during a famine.[b]",
+      "location_on_page": "Plebeians and patricians",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-014",
+      "wikipedia_text_verbatim": "By 390 BC, several Gallic tribes were invading Italy from the north.",
+      "location_on_page": "Celtic invasion of Italy",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-015",
+      "wikipedia_text_verbatim": "From 343 to 341 BC, Rome won two battles against its Samnite neighbours, but was unable to consolidate its gains, due to the outbreak of war with former Latin allies.",
+      "location_on_page": "Wars against Italian neighbours",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-016",
+      "wikipedia_text_verbatim": "In the Latin War (340–338 BC), Rome defeated a coalition of Latins at the battles of Vesuvius and the Trifanum.",
+      "location_on_page": "Wars against Italian neighbours",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-017",
+      "wikipedia_text_verbatim": "A Second Samnite War began in 327 BC.[18]",
+      "location_on_page": "Wars against Italian neighbours",
+      "citation_markers": [
+        "18"
+      ],
+      "citation_footnotes_verbatim": {
+        "18": "Grant 1978, p. 52."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [18]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Michael Grant",
+            "title": "History of Rome",
+            "container_work": null,
+            "publisher_or_journal": "Charles Scribner's Sons",
+            "year": 1978,
+            "pages": null,
+            "identifier": "ISBN 0-02345-610-8",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Michael Grant 1978 History of Rome Charles Scribner's Sons",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-018",
+      "wikipedia_text_verbatim": "The war ended with Samnite defeat at the Battle of Bovianum in 305 BC.",
+      "location_on_page": "Wars against Italian neighbours",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-019",
+      "wikipedia_text_verbatim": "By 304 BC, Rome had annexed most Samnite territory and begun to establish colonies there, but in 298 BC the Samnites rebelled, and defeated a Roman army, in a Third Samnite War.",
+      "location_on_page": "Wars against Italian neighbours",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-020",
+      "wikipedia_text_verbatim": "The war ended with Roman victory in 290 BC.",
+      "location_on_page": "Wars against Italian neighbours",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-021",
+      "wikipedia_text_verbatim": "In 367 BC, they carried a bill creating the decemviri sacris faciundis, a college of ten priests, of whom five had to be plebeians, thereby breaking patricians' monopoly on priesthoods.",
+      "location_on_page": "Rise of the plebeian nobility",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-022",
+      "wikipedia_text_verbatim": "Shortly before 312 BC, the lex Ovinia transferred this power to the censors, who could only remove senators for misconduct, thus appointing them for life.",
+      "location_on_page": "Rise of the plebeian nobility",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-023",
+      "wikipedia_text_verbatim": "In 312 BC, following this law, the patrician censor Appius Claudius Caecus appointed many more senators to fill the new limit of 300, including descendants of freedmen, which was deemed scandalous.",
+      "location_on_page": "Rise of the plebeian nobility",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-024",
+      "wikipedia_text_verbatim": "By the early 3rd century BC, Rome had established itself as the major power in Italy, but had not yet come into conflict with the dominant military powers of the Mediterranean: Carthage and the Greek kingdoms.[39]",
+      "location_on_page": "Pyrrhic War",
+      "citation_markers": [
+        "39"
+      ],
+      "citation_footnotes_verbatim": {
+        "39": "Grant 1978, p. 78."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [39]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Michael Grant",
+            "title": "History of Rome",
+            "container_work": null,
+            "publisher_or_journal": "Charles Scribner's Sons",
+            "year": 1978,
+            "pages": null,
+            "identifier": "ISBN 0-02345-610-8",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Michael Grant 1978 History of Rome Charles Scribner's Sons",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-025",
+      "wikipedia_text_verbatim": "In 282, several Roman warships entered the harbour of Tarentum, triggering a violent reaction from the Tarentine democrats, who sank some.",
+      "location_on_page": "Pyrrhic War",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-026",
+      "wikipedia_text_verbatim": "Pyrrhus and his army of 25,500 men (with 20 war elephants) landed in the Italian peninsula in 280 BC.",
+      "location_on_page": "Pyrrhic War",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-027",
+      "wikipedia_text_verbatim": "In 275 BC, Pyrrhus left the island before he had to face a full-scale rebellion.[44]",
+      "location_on_page": "Pyrrhic War",
+      "citation_markers": [
+        "44"
+      ],
+      "citation_footnotes_verbatim": {
+        "44": "Dion. Hal. Ant. Rom., xx.8."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [44]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Dionysius of Halicarnassus",
+            "title": "Antiquitates Romanae (Roman Antiquities)",
+            "container_work": null,
+            "publisher_or_journal": null,
+            "year": null,
+            "pages": null,
+            "identifier": null,
+            "document_type": "book",
+            "retrieval_url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Dionysius_of_Halicarnassus/4D*.html",
+            "wikipedia_access_date": null,
+            "retrieval_status": "retrieved",
+            "retrieval_note": null,
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Dionysius_of_Halicarnassus/4D*.html",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/roman-republic/halicarnassus-antiquitates-romanae-roman-antiquities.html"
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "retrieved",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-028",
+      "wikipedia_text_verbatim": "His death in battle at Argos in 272 BC forced Tarentum to surrender to Rome.",
+      "location_on_page": "Pyrrhic War",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-029",
+      "wikipedia_text_verbatim": "They plundered the surroundings until Hiero II, the new tyrant of Syracuse, defeated them (in either 269 or 265 BC).",
+      "location_on_page": "First Punic War (264–241 BC)",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-030",
+      "wikipedia_text_verbatim": "In 262 BC, the Romans moved to the southern coast and besieged Akragas.",
+      "location_on_page": "First Punic War (264–241 BC)",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-031",
+      "wikipedia_text_verbatim": "The consul for 260 BC, Gnaeus Cornelius Scipio Asina, lost the first naval skirmish of the war against Hannibal Gisco at Lipara, but his colleague Gaius Duilius won a great victory at Mylae.",
+      "location_on_page": "First Punic War (264–241 BC)",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-032",
+      "wikipedia_text_verbatim": "The consul Lucius Cornelius Scipio (Asina's brother) captured Corsica in 259 BC; his successors won the naval battles of Sulci in 258, Tyndaris in 257 BC, and Cape Ecnomus in 256.[55]",
+      "location_on_page": "First Punic War (264–241 BC)",
+      "citation_markers": [
+        "55"
+      ],
+      "citation_footnotes_verbatim": {
+        "55": "Scullard 1989b, pp. 548–554."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [55]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Scullard, H. H",
+            "title": "Carthage and Rome",
+            "container_work": "CAH2 7",
+            "publisher_or_journal": "CAH2 7",
+            "year": 1989,
+            "pages": "486–569",
+            "identifier": null,
+            "document_type": "other",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Scullard, H. H 1989 Carthage and Rome CAH2 7",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 results scored only 2/4 — not adopted"
+              }
+            ],
+            "is_public_domain": null,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-033",
+      "wikipedia_text_verbatim": "To hasten the end of the war, the consuls for 256 BC decided to carry the operations to Africa, on Carthage's homeland.",
+      "location_on_page": "First Punic War (264–241 BC)",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-034",
+      "wikipedia_text_verbatim": "In 255, the Spartan general marched on Regulus, crushing the Roman infantry on the Bagradas plain; only 2,000 soldiers escaped, and Regulus was captured.",
+      "location_on_page": "First Punic War (264–241 BC)",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-035",
+      "wikipedia_text_verbatim": "It was abandoned after another similar catastrophe in 253 BC.",
+      "location_on_page": "First Punic War (264–241 BC)",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-036",
+      "wikipedia_text_verbatim": "These disasters prevented any significant campaign between 254 and 252 BC.[58]",
+      "location_on_page": "First Punic War (264–241 BC)",
+      "citation_markers": [
+        "58"
+      ],
+      "citation_footnotes_verbatim": {
+        "58": "Scullard 1989b, pp. 554–557."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [58]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Scullard, H. H",
+            "title": "Carthage and Rome",
+            "container_work": "CAH2 7",
+            "publisher_or_journal": "CAH2 7",
+            "year": 1989,
+            "pages": "486–569",
+            "identifier": null,
+            "document_type": "other",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Scullard, H. H 1989 Carthage and Rome CAH2 7",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 results scored only 2/4 — not adopted"
+              }
+            ],
+            "is_public_domain": null,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-037",
+      "wikipedia_text_verbatim": "Hostilities in Sicily resumed in 252 BC, with Rome's taking of Thermae.",
+      "location_on_page": "First Punic War (264–241 BC)",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-038",
+      "wikipedia_text_verbatim": "The only military activity during this period was the landing in Sicily of Hamilcar Barca in 247 BC, who harassed the Romans with a mercenary army from a citadel he built on Mt.",
+      "location_on_page": "First Punic War (264–241 BC)",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-039",
+      "wikipedia_text_verbatim": "This rapid expansion worried Rome, which concluded a treaty with Hasdrubal in 226, stating that Carthage could not cross the Ebro river.[64]",
+      "location_on_page": "Second Punic War",
+      "citation_markers": [
+        "64"
+      ],
+      "citation_footnotes_verbatim": {
+        "64": "Scullard 1989a, pp. 28–31; Hoyos 2011a, pp. 216–219."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [64]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Scullard, H. H",
+            "title": "The Carthaginians in Spain",
+            "container_work": "CAH2 8 (1989)",
+            "publisher_or_journal": "CAH2 8 (1989)",
+            "year": 1989,
+            "pages": "17–43",
+            "identifier": null,
+            "document_type": "other",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Scullard, H. H 1989 The Carthaginians in Spain CAH2 8 (1989)",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 3 results scored only 2/4 — not adopted"
+              }
+            ],
+            "is_public_domain": null,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-040",
+      "wikipedia_text_verbatim": "But the city of Saguntum, south of the Ebro, appealed to Rome in 220 to act as arbitrator during a period of internal strife.",
+      "location_on_page": "Second Punic War",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-041",
+      "wikipedia_text_verbatim": "Hannibal took the city in 219,[65]",
+      "location_on_page": "Second Punic War",
+      "citation_markers": [
+        "65"
+      ],
+      "citation_footnotes_verbatim": {
+        "65": "Scullard 1989a, pp. 33–36."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [65]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Scullard, H. H",
+            "title": "The Carthaginians in Spain",
+            "container_work": "CAH2 8 (1989)",
+            "publisher_or_journal": "CAH2 8 (1989)",
+            "year": 1989,
+            "pages": "17–43",
+            "identifier": null,
+            "document_type": "other",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Scullard, H. H 1989 The Carthaginians in Spain CAH2 8 (1989)",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 3 results scored only 2/4 — not adopted"
+              }
+            ],
+            "is_public_domain": null,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-042",
+      "wikipedia_text_verbatim": "In May 218, he crossed the Ebro with a large army of about 100,000 soldiers and 37 elephants.[68]",
+      "location_on_page": "Second Punic War",
+      "citation_markers": [
+        "68"
+      ],
+      "citation_footnotes_verbatim": {
+        "68": "Fronda 2011, pp. 251–252."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [68]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Fronda",
+            "title": "Hannibal: tactics, strategy, and geostrategy",
+            "container_work": "Hoyos (2011)",
+            "publisher_or_journal": "Hoyos (2011)",
+            "year": 2011,
+            "pages": "242–259",
+            "identifier": null,
+            "document_type": "other",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Fronda 2011 Hannibal: tactics, strategy, and geostrategy Hoyos (2011)",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 1 results scored only 0/4 — not adopted"
+              }
+            ],
+            "is_public_domain": null,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-043",
+      "wikipedia_text_verbatim": "In 216, the new consuls L. Aemilius Paullus and C. Terentius Varro mustered the biggest army possible, with eight legions—some 80,000 soldiers, twice as many as the Punic army—and confronted Hannibal, who was encamped at Cannae, in Apulia.",
+      "location_on_page": "Second Punic War",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-044",
+      "wikipedia_text_verbatim": "In 215, Hiero II of Syracuse died of old age, and his young grandson Hieronymus broke the long alliance with Rome to side with Carthage.",
+      "location_on_page": "Second Punic War",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-045",
+      "wikipedia_text_verbatim": "Although he remained invincible on the battlefield, defeating all the Roman armies on his way, he could not prevent Claudius Marcellus from taking Syracuse in 212 after a long siege, nor the fall of his bases of Capua and Tarentum in 211 and 209.",
+      "location_on_page": "Second Punic War",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-046",
+      "wikipedia_text_verbatim": "In 209, he took Carthago Nova, the main Punic base in Hispania.",
+      "location_on_page": "Second Punic War",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-047",
+      "wikipedia_text_verbatim": "In Hispania, Scipio continued his successful campaign at the battles of Carmona in 207, and Ilipa (now Seville) in 206, which ended the Punic threat on the peninsula.[80]",
+      "location_on_page": "Second Punic War",
+      "citation_markers": [
+        "80"
+      ],
+      "citation_footnotes_verbatim": {
+        "80": "Briscoe 1989, p. 60."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [80]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Briscoe, John",
+            "title": "The second Punic war",
+            "container_work": "CAH2 8 (1989)",
+            "publisher_or_journal": "CAH2 8 (1989)",
+            "year": 1989,
+            "pages": "44–80",
+            "identifier": "doi:10.1017/chol9780521234481.004",
+            "document_type": "other",
+            "retrieval_url": "https://doi.org/10.1017/chol9780521234481.004",
+            "wikipedia_access_date": null,
+            "retrieval_status": "retrieved",
+            "retrieval_note": null,
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://doi.org/10.1017/chol9780521234481.004",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Briscoe, John 1989 The second Punic war CAH2 8 (1989)",
+                "result": "enriched",
+                "found": {
+                  "title": "The Second Punic War",
+                  "author": [
+                    "John Briscoe"
+                  ],
+                  "year": 1989,
+                  "container": "The Cambridge Ancient History",
+                  "doi": "10.1017/chol9780521234481.004",
+                  "isbn": null
+                },
+                "detail": "match score 4/4"
+              }
+            ],
+            "is_public_domain": null,
+            "local_cache_path": "/source-cache/roman-republic/john-1989-the-second-punic-war.html"
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "retrieved",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-048",
+      "wikipedia_text_verbatim": "Elected consul in 205, he convinced the Senate to invade Africa with the support of the Numidian king Masinissa, who had defected to Rome.",
+      "location_on_page": "Second Punic War",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-049",
+      "wikipedia_text_verbatim": "Scipio landed in Africa in 204.",
+      "location_on_page": "Second Punic War",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-050",
+      "wikipedia_text_verbatim": "It was swiftly defeated: in 146, the same year as the destruction of Carthage, Corinth was besieged and destroyed, forcing the league's surrender.",
+      "location_on_page": "Conquest of Greece",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-051",
+      "wikipedia_text_verbatim": "A core cause of the Republic's eventual demise was the loss of elite's cohesion from c. 133 BC: the ancient sources called this moral decay from wealth and the hubris of Rome's domination of the Mediterranean.[107]",
+      "location_on_page": "Social troubles and first civil war",
+      "citation_markers": [
+        "107"
+      ],
+      "citation_footnotes_verbatim": {
+        "107": "Morstein-Marx & Rosenstein 2006, p. 634."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [107]",
+          "parallel_citation": null,
+          "source": {
+            "author": null,
+            "title": "The transformation of the republic",
+            "container_work": "Rosenstein & Morstein-Marx (2006)",
+            "publisher_or_journal": "Rosenstein & Morstein-Marx (2006)",
+            "year": 2006,
+            "pages": "625–637",
+            "identifier": null,
+            "document_type": "other",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "metadata search",
+                "query": "2006 The transformation of the republic Rosenstein & Morstein-Marx (2006)",
+                "result": "skipped",
+                "found": null,
+                "detail": "too little to search on — need a multi-word title, or an author surname plus a year"
+              }
+            ],
+            "is_public_domain": null,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-052",
+      "wikipedia_text_verbatim": "Tiberius's brother Gaius was elected tribune ten years later in 123 and reelected for 122.",
+      "location_on_page": "Gracchan period",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-053",
+      "wikipedia_text_verbatim": "He stood for election to a third term in 121 but was defeated.",
+      "location_on_page": "Gracchan period",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-054",
+      "wikipedia_text_verbatim": "Lucius Licinius Crassus founded the city of Narbo there in 118.[121]",
+      "location_on_page": "Gracchan period",
+      "citation_markers": [
+        "121"
+      ],
+      "citation_footnotes_verbatim": {
+        "121": "\"CRASSO, Lucio Licinio\" (in Italian). Retrieved 14 August 2023."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [121]",
+          "parallel_citation": null,
+          "source": {
+            "author": null,
+            "title": "CRASSO, Lucio Licinio",
+            "container_work": null,
+            "publisher_or_journal": null,
+            "year": null,
+            "pages": null,
+            "identifier": null,
+            "document_type": "book",
+            "retrieval_url": "https://www.treccani.it/enciclopedia/lucio-licinio-crasso_%28Enciclopedia-Italiana%29",
+            "wikipedia_access_date": null,
+            "retrieval_status": "retrieved",
+            "retrieval_note": null,
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://www.treccani.it/enciclopedia/lucio-licinio-crasso_%28Enciclopedia-Italiana%29",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": "/source-cache/roman-republic/crasso-lucio-licinio.html"
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "retrieved",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-055",
+      "wikipedia_text_verbatim": "In 118, its king, Micipsa, died, and an illegitimate son, Jugurtha, usurped the throne.[123]",
+      "location_on_page": "Rise of Marius",
+      "citation_markers": [
+        "123"
+      ],
+      "citation_footnotes_verbatim": {
+        "123": "Lintott 1994a, pp. 28–29."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [123]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Lintott, A",
+            "title": "The Roman empire and its problems in the late second century",
+            "container_work": "CAH2 9 (1994)",
+            "publisher_or_journal": "CAH2 9 (1994)",
+            "year": 1994,
+            "pages": "16–39",
+            "identifier": "doi:10.1017/chol9780521256032.003",
+            "document_type": "other",
+            "retrieval_url": "https://doi.org/10.1017/chol9780521256032.003",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 400 from https://doi.org/10.1017/chol9780521256032.003",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://doi.org/10.1017/chol9780521256032.003",
+                "result": "http_400",
+                "detail": "HTTP 400 from https://doi.org/10.1017/chol9780521256032.003"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Lintott, A 1994 The Roman empire and its problems in the late second century CAH2 9 (1994)",
+                "result": "enriched",
+                "found": {
+                  "title": "The Roman empire and its problems in the late second century",
+                  "author": [
+                    "Andrew Lintott"
+                  ],
+                  "year": 1994,
+                  "container": "The Cambridge Ancient History",
+                  "doi": "10.1017/chol9780521256032.003",
+                  "isbn": null
+                },
+                "detail": "match score 3/4"
+              }
+            ],
+            "is_public_domain": null,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-056",
+      "wikipedia_text_verbatim": "During the Cimbrian War, further conflicts embroiled the Republic: A Second Servile War waged in Sicily from 104 to 101;[110]",
+      "location_on_page": "Rise of Marius",
+      "citation_markers": [
+        "110"
+      ],
+      "citation_footnotes_verbatim": {
+        "110": "Lintott 1994a, pp. 25–26."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [110]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Lintott, A",
+            "title": "The Roman empire and its problems in the late second century",
+            "container_work": "CAH2 9 (1994)",
+            "publisher_or_journal": "CAH2 9 (1994)",
+            "year": 1994,
+            "pages": "16–39",
+            "identifier": "doi:10.1017/chol9780521256032.003",
+            "document_type": "other",
+            "retrieval_url": "https://doi.org/10.1017/chol9780521256032.003",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 400 from https://doi.org/10.1017/chol9780521256032.003",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://doi.org/10.1017/chol9780521256032.003",
+                "result": "http_400",
+                "detail": "HTTP 400 from https://doi.org/10.1017/chol9780521256032.003"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Lintott, A 1994 The Roman empire and its problems in the late second century CAH2 9 (1994)",
+                "result": "enriched",
+                "found": {
+                  "title": "The Roman empire and its problems in the late second century",
+                  "author": [
+                    "Andrew Lintott"
+                  ],
+                  "year": 1994,
+                  "container": "The Cambridge Ancient History",
+                  "doi": "10.1017/chol9780521256032.003",
+                  "isbn": null
+                },
+                "detail": "match score 3/4"
+              }
+            ],
+            "is_public_domain": null,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-057",
+      "wikipedia_text_verbatim": "They elected, in irregular fashion, Marius and Cinna to the consulship of 86 BC.",
+      "location_on_page": "First civil wars",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "RR-058",
+      "wikipedia_text_verbatim": "He then retired, and died in 78 BC.[150]",
+      "location_on_page": "First civil wars",
+      "citation_markers": [
+        "150"
+      ],
+      "citation_footnotes_verbatim": {
+        "150": "Seager 1994a, pp. 205–207."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [150]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Seager, Robin",
+            "title": "\"Sulla\"",
+            "container_work": "CAH2 9 (1994)",
+            "publisher_or_journal": "CAH2 9 (1994)",
+            "year": 1994,
+            "pages": "165–207",
+            "identifier": null,
+            "document_type": "other",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Seager, Robin 1994 \"Sulla\" CAH2 9 (1994)",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 1 results scored only 2/4 — not adopted"
+              }
+            ],
+            "is_public_domain": null,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-059",
+      "wikipedia_text_verbatim": "Pompey Magnus served the Sullan regime during a short conflict triggered by the republic's own consul, M. Aemilius Lepidus, in 77 BC[151]",
+      "location_on_page": "Sullan republic",
+      "citation_markers": [
+        "151"
+      ],
+      "citation_footnotes_verbatim": {
+        "151": "Seager 1994b, pp. 208–210."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [151]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Seager, Robin",
+            "title": "The rise of Pompey",
+            "container_work": "CAH2 9 (1994)",
+            "publisher_or_journal": "CAH2 9 (1994)",
+            "year": 1994,
+            "pages": "208–228",
+            "identifier": null,
+            "document_type": "other",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Seager, Robin 1994 The rise of Pompey CAH2 9 (1994)",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 1 results scored only 2/4 — not adopted"
+              }
+            ],
+            "is_public_domain": null,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "RR-060",
+      "wikipedia_text_verbatim": "afterwards led troops successfully against the remaining anti-Sullan forces in the Sertorian War; he brought the war successfully to a close in 72 BC.",
+      "location_on_page": "Sullan republic",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    }
+  ]
+}

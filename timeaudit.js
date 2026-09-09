@@ -226,6 +226,8 @@ async function main() {
       const dl = await scholar.fetchSource(src, { cacheDir: opt.cache, pageSlug: page.slug, email: opt.email, budget });
       // ordered record of every place retrieval looked and what came back
       src.retrieval_history = Array.isArray(dl.history) ? dl.history : [];
+      // ordered record of the metadata lookups done to flesh out a thin citation
+      src.metadata_history = Array.isArray(dl.metadataHistory) ? dl.metadataHistory : [];
       if (dl.status === "downloaded" || dl.status === "cached") {
         src.local_cache_path = "/" + dl.rel.replace(/\\/g, "/");
         // phase 2 only downloads the file; "retrieved" = it's in the cache.

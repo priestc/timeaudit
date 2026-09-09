@@ -1,0 +1,235 @@
+{
+  "schema_version": "1.0",
+  "generator": {
+    "tool": "timeaudit",
+    "mode": "local",
+    "generated_at": "2026-09-09T17:18:42.451Z",
+    "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
+    "ai_model": null
+  },
+  "page": {
+    "title": "Liberators' civil war",
+    "url": "https://en.wikipedia.org/wiki/Liberators'_civil_war",
+    "retrieved_at": "2026-09-09",
+    "wikipedia_revision_id": "1370626845"
+  },
+  "claims": [
+    {
+      "claim_id": "LCW-001",
+      "wikipedia_text_verbatim": "The Liberators' civil war (43–42 BC) was started by the Second Triumvirate to avenge Julius Caesar's assassination.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "LCW-002",
+      "wikipedia_text_verbatim": "The latter were defeated by the Triumvirs at the Battle of Philippi[4] in October 42 BC,[5][6] committed suicide.[7]",
+      "location_on_page": "Lead section",
+      "citation_markers": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ],
+      "citation_footnotes_verbatim": {
+        "4": "Crawford, Michael Hewson (1993). The Roman Republic. Harvard University Press. ISBN 978-0-674-77927-3.",
+        "5": "Shuckburgh, Evelyn Shirley (1903). Augustus: The Life and Times of the Founder of the Roman Empire [B.C. 63–A.D. 14]. T.F. Unwin.",
+        "6": "Keppie, Lawrence (2002). The Making of the Roman Army: From Republic to Empire. Routledge. ISBN 978-1-134-74603-3.",
+        "7": "Goldsworthy, Adrian (2014). Augustus: First Emperor of Rome. Yale University Press. ISBN 978-0-300-21007-1."
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [4]",
+          "parallel_citation": {
+            "index": 1,
+            "total": 4
+          },
+          "source": {
+            "author": "Michael Hewson Crawford",
+            "title": "The Roman Republic",
+            "container_work": null,
+            "publisher_or_journal": "Harvard University Press",
+            "year": 1993,
+            "pages": null,
+            "identifier": "ISBN 978-0-674-77927-3",
+            "document_type": "book",
+            "retrieval_url": "https://books.google.com/books?id=PoTAz6MHlosC&q=Philippi",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/romanrepublic00craw/romanrepublic00craw.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/romanrepublic00craw/romanrepublic00craw_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=PoTAz6MHlosC&output=pdf",
+                "result": "http_429",
+                "detail": "HTTP 429 from https://books.google.com/books/download/book.pdf?id=PoTAz6MHlosC&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=PoTAz6MHlosC&q=Philippi",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Wikipedia footnote [5]",
+          "parallel_citation": {
+            "index": 2,
+            "total": 4
+          },
+          "source": {
+            "author": "Evelyn Shirley Shuckburgh",
+            "title": "Augustus: The Life and Times of the Founder of the Roman Empire [B.C. 63–A.D. 14]",
+            "container_work": null,
+            "publisher_or_journal": "T.F. Unwin",
+            "year": 1903,
+            "pages": null,
+            "identifier": null,
+            "document_type": "book",
+            "retrieval_url": "https://books.google.com/books?id=zsYmVl6_uQsC&q=Philipi",
+            "wikipedia_access_date": null,
+            "retrieval_status": "retrieved",
+            "retrieval_note": null,
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/augustuslifetime00shucuoft/augustuslifetime00shucuoft.pdf",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": true,
+            "local_cache_path": "/source-cache/liberators-civil-war/shuckburgh-1903-augustus-the-life-and.pdf"
+          },
+          "wikipedia_note_quotes": []
+        },
+        {
+          "hop_index": 3,
+          "cited_by": "Wikipedia footnote [6]",
+          "parallel_citation": {
+            "index": 3,
+            "total": 4
+          },
+          "source": {
+            "author": "Lawrence Keppie",
+            "title": "The Making of the Roman Army: From Republic to Empire",
+            "container_work": null,
+            "publisher_or_journal": "Routledge",
+            "year": 2002,
+            "pages": null,
+            "identifier": "ISBN 978-1-134-74603-3",
+            "document_type": "book",
+            "retrieval_url": "https://books.google.com/books?id=WouFAgAAQBAJ&q=Philipi",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=WouFAgAAQBAJ&output=pdf",
+                "result": "http_502",
+                "detail": "HTTP 502 from https://books.google.com/books/download/book.pdf?id=WouFAgAAQBAJ&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=WouFAgAAQBAJ&q=Philipi",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        },
+        {
+          "hop_index": 4,
+          "cited_by": "Wikipedia footnote [7]",
+          "parallel_citation": {
+            "index": 4,
+            "total": 4
+          },
+          "source": {
+            "author": "Adrian Goldsworthy",
+            "title": "Augustus: First Emperor of Rome",
+            "container_work": null,
+            "publisher_or_journal": "Yale University Press",
+            "year": 2014,
+            "pages": null,
+            "identifier": "ISBN 978-0-300-21007-1",
+            "document_type": "book",
+            "retrieval_url": "https://books.google.com/books?id=3t8hBAAAQBAJ&q=Phillipi",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "google books pdf",
+                "url": "https://books.google.com/books/download/book.pdf?id=3t8hBAAAQBAJ&output=pdf",
+                "result": "http_502",
+                "detail": "HTTP 502 from https://books.google.com/books/download/book.pdf?id=3t8hBAAAQBAJ&output=pdf"
+              },
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=3t8hBAAAQBAJ&q=Phillipi",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "retrieved",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "LCW-003",
+      "wikipedia_text_verbatim": "Convinced by Labienus and the continuing unrest in the east that the Roman defenses were weak, the Parthian Empire launched an invasion in 40 BC.",
+      "location_on_page": "Aftermath",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    }
+  ]
+}

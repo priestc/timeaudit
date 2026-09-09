@@ -1,0 +1,1623 @@
+{
+  "schema_version": "1.0",
+  "generator": {
+    "tool": "timeaudit",
+    "mode": "local",
+    "generated_at": "2026-09-09T17:18:10.534Z",
+    "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
+    "ai_model": null
+  },
+  "page": {
+    "title": "Bede",
+    "url": "https://en.wikipedia.org/wiki/Bede",
+    "retrieved_at": "2026-09-09",
+    "wikipedia_revision_id": "1371937592"
+  },
+  "claims": [
+    {
+      "claim_id": "BED-001",
+      "wikipedia_text_verbatim": "Both of them survived a plague that struck in 686 and killed the majority of the population there.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-002",
+      "wikipedia_text_verbatim": "He is considered by many historians to be the most important scholar of antiquity for the period between the death of Pope Gregory I in 604 and the coronation of Charlemagne in 800.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-003",
+      "wikipedia_text_verbatim": "A cult formed around Bede by the tenth century and was widespread in England by the fourteenth.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-004",
+      "wikipedia_text_verbatim": "His body was translated to Durham Cathedral in 1020 and placed in the same tomb as Saint Cuthbert, before being moved to an independent shrine in 1370.",
+      "location_on_page": "Lead section",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-005",
+      "wikipedia_text_verbatim": "It was completed in about 731,[5]",
+      "location_on_page": "Childhood",
+      "citation_markers": [
+        "5"
+      ],
+      "citation_footnotes_verbatim": {
+        "5": "Brooks 2006, p. 5"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [5]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Nicholas Brooks",
+            "title": "From British to English Christianity: Deconstructing Bede's Interpretation of the Conversion",
+            "container_work": "Conversion and Colonization in Anglo-Saxon England",
+            "publisher_or_journal": "Arizona Center for Medieval and Renaissance Studies",
+            "year": 2006,
+            "pages": "1-30",
+            "identifier": "ISBN 978-0-86698-363-1",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/conversioncoloni0000unse/conversioncoloni0000unse.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/conversioncoloni0000unse/conversioncoloni0000unse_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Nicholas Brooks 2006 From British to English Christianity: Deconstructing Bede's Interpretation of the Conversion Conversion and Colonization in Anglo-Saxon England Arizona Center for Medieval and Renaissance Studies",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-006",
+      "wikipedia_text_verbatim": "Bede implies that he was then in his fifty-ninth year, which would give a birth date in 672 or 673.[1][6][7][b]",
+      "location_on_page": "Childhood",
+      "citation_markers": [
+        "1",
+        "6",
+        "7"
+      ],
+      "citation_footnotes_verbatim": {
+        "1": "Ray 2001, pp. 57–59",
+        "6": "Colgrave & Mynors 1969, p. xix",
+        "7": "Campbell 2004"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [1]",
+          "parallel_citation": {
+            "index": 1,
+            "total": 3
+          },
+          "source": {
+            "author": "Roger Ray",
+            "title": "Bede",
+            "container_work": "Blackwell Encyclopedia of Anglo-Saxon England",
+            "publisher_or_journal": "Blackwell",
+            "year": 2001,
+            "pages": "57-59",
+            "identifier": "ISBN 978-0-631-22492-1",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Roger Ray 2001 Bede Blackwell Encyclopedia of Anglo-Saxon England Blackwell",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": [
+            "Ex quo tempore accepti presbyteratus usque ad annum aetatis meae LVIIII ...",
+            "From the time I became a priest until the fifty-ninth year of my life I have made it my business ... to make brief extracts from the works of the venerable fathers on the holy Scriptures ..."
+          ]
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Wikipedia footnote [6]",
+          "parallel_citation": {
+            "index": 2,
+            "total": 3
+          },
+          "source": {
+            "author": [
+              "Bertram Colgrave",
+              "Mynors, R.A.B."
+            ],
+            "title": "Introduction",
+            "container_work": "Bede's Ecclesiastical History of the English People",
+            "publisher_or_journal": "Clarendon Press",
+            "year": 1969,
+            "pages": null,
+            "identifier": "ISBN 978-0-19-822202-6",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/bedesecclesiasti0000bede_y6a2/bedesecclesiasti0000bede_y6a2.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/bedesecclesiasti0000bede_y6a2/bedesecclesiasti0000bede_y6a2_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Bertram Colgrave 1969 Introduction Bede's Ecclesiastical History of the English People Clarendon Press",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 results scored only 1/4 — not adopted"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        },
+        {
+          "hop_index": 3,
+          "cited_by": "Wikipedia footnote [7]",
+          "parallel_citation": {
+            "index": 3,
+            "total": 3
+          },
+          "source": {
+            "author": "J. Campbell",
+            "title": "Bede (673/4–735)",
+            "container_work": "Oxford Dictionary of National Biography",
+            "publisher_or_journal": "Oxford University Press",
+            "year": 2004,
+            "pages": null,
+            "identifier": "doi:10.1093/ref:odnb/1922",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": "https://doi.org/10.1093/ref:odnb/1922",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 403 from https://doi.org/10.1093/ref:odnb/1922",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://doi.org/10.1093/ref:odnb/1922",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://doi.org/10.1093/ref:odnb/1922"
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-007",
+      "wikipedia_text_verbatim": "Bede's first abbot was Benedict Biscop, and the names \"Biscop\" and \"Beda\" both appear in a list of the kings of Lindsey from around 800, further suggesting that Bede came from a noble family.[7]",
+      "location_on_page": "Childhood",
+      "citation_markers": [
+        "7"
+      ],
+      "citation_footnotes_verbatim": {
+        "7": "Campbell 2004"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [7]",
+          "parallel_citation": null,
+          "source": {
+            "author": "J. Campbell",
+            "title": "Bede (673/4–735)",
+            "container_work": "Oxford Dictionary of National Biography",
+            "publisher_or_journal": "Oxford University Press",
+            "year": 2004,
+            "pages": null,
+            "identifier": "doi:10.1093/ref:odnb/1922",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": "https://doi.org/10.1093/ref:odnb/1922",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 403 from https://doi.org/10.1093/ref:odnb/1922",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://doi.org/10.1093/ref:odnb/1922",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://doi.org/10.1093/ref:odnb/1922"
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-008",
+      "wikipedia_text_verbatim": "Monkwearmouth's sister monastery at Jarrow was founded by Ceolfrith in 682, and Bede probably transferred to Jarrow with Ceolfrith that year.[13]",
+      "location_on_page": "Boyhood",
+      "citation_markers": [
+        "13"
+      ],
+      "citation_footnotes_verbatim": {
+        "13": "Farmer 2004, pp. 47–48"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [13]",
+          "parallel_citation": null,
+          "source": {
+            "author": "David Hugh Farmer",
+            "title": "The Oxford Dictionary of Saints",
+            "container_work": null,
+            "publisher_or_journal": "Oxford University Press",
+            "year": 2004,
+            "pages": null,
+            "identifier": "ISBN 978-0-19-860949-0",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "David Hugh Farmer 2004 The Oxford Dictionary of Saints Oxford University Press",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-009",
+      "wikipedia_text_verbatim": "In 686, plague broke out at Jarrow.",
+      "location_on_page": "Boyhood",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-010",
+      "wikipedia_text_verbatim": "In about 692, in Bede's nineteenth year, Bede was ordained a deacon by his diocesan bishop, John, who was Bishop of Hexham.",
+      "location_on_page": "Youth",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-011",
+      "wikipedia_text_verbatim": "In Bede's thirtieth year (about 702), he became a priest, with the ordination again performed by Bishop John.[7]",
+      "location_on_page": "Adulthood",
+      "citation_markers": [
+        "7"
+      ],
+      "citation_footnotes_verbatim": {
+        "7": "Campbell 2004"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [7]",
+          "parallel_citation": null,
+          "source": {
+            "author": "J. Campbell",
+            "title": "Bede (673/4–735)",
+            "container_work": "Oxford Dictionary of National Biography",
+            "publisher_or_journal": "Oxford University Press",
+            "year": 2004,
+            "pages": null,
+            "identifier": "doi:10.1093/ref:odnb/1922",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": "https://doi.org/10.1093/ref:odnb/1922",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 403 from https://doi.org/10.1093/ref:odnb/1922",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://doi.org/10.1093/ref:odnb/1922",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://doi.org/10.1093/ref:odnb/1922"
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-012",
+      "wikipedia_text_verbatim": "In about 701 Bede wrote his first works, the De Arte Metrica and De Schematibus et Tropis; both were intended for use in the classroom.[27]",
+      "location_on_page": "Adulthood",
+      "citation_markers": [
+        "27"
+      ],
+      "citation_footnotes_verbatim": {
+        "27": "Blair 1990, p. 5"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [27]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Peter Hunter Blair",
+            "title": "The World of Bede",
+            "container_work": null,
+            "publisher_or_journal": "Cambridge University Press",
+            "year": 1990,
+            "pages": null,
+            "identifier": "ISBN 978-0-521-39819-0",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Peter Hunter Blair 1990 The World of Bede Cambridge University Press",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-013",
+      "wikipedia_text_verbatim": "His last surviving work is a letter to Ecgbert of York, a former student, written in 734.[27]",
+      "location_on_page": "Adulthood",
+      "citation_markers": [
+        "27"
+      ],
+      "citation_footnotes_verbatim": {
+        "27": "Blair 1990, p. 5"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [27]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Peter Hunter Blair",
+            "title": "The World of Bede",
+            "container_work": null,
+            "publisher_or_journal": "Cambridge University Press",
+            "year": 1990,
+            "pages": null,
+            "identifier": "ISBN 978-0-521-39819-0",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Peter Hunter Blair 1990 The World of Bede Cambridge University Press",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-014",
+      "wikipedia_text_verbatim": "In 708 some monks at Hexham accused Bede of having committed heresy in his work De Temporibus.[34]",
+      "location_on_page": "Adulthood",
+      "citation_markers": [
+        "34"
+      ],
+      "citation_footnotes_verbatim": {
+        "34": "Blair 1990, p. 267"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [34]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Peter Hunter Blair",
+            "title": "The World of Bede",
+            "container_work": null,
+            "publisher_or_journal": "Cambridge University Press",
+            "year": 1990,
+            "pages": null,
+            "identifier": "ISBN 978-0-521-39819-0",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Peter Hunter Blair 1990 The World of Bede Cambridge University Press",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-015",
+      "wikipedia_text_verbatim": "Bede had another brush with Wilfrid, for the historian says that he met Wilfrid sometime between 706 and 709 and discussed Æthelthryth, the abbess of Ely.",
+      "location_on_page": "Adulthood",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-016",
+      "wikipedia_text_verbatim": "Wilfrid had been present at the exhumation of her body in 695, and Bede questioned the bishop about the exact circumstances of the body and asked for more details of her life, as Wilfrid had been her advisor.[36]",
+      "location_on_page": "Adulthood",
+      "citation_markers": [
+        "36"
+      ],
+      "citation_footnotes_verbatim": {
+        "36": "Goffart, Narrators p. 322"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [36]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Goffart, Narrators p",
+            "title": "322",
+            "container_work": null,
+            "publisher_or_journal": null,
+            "year": null,
+            "pages": "322",
+            "identifier": null,
+            "document_type": "other",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "metadata search",
+                "query": "Goffart, Narrators p 322",
+                "result": "skipped",
+                "found": null,
+                "detail": "too little to search on — need a multi-word title, or an author surname plus a year"
+              }
+            ],
+            "is_public_domain": null,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-017",
+      "wikipedia_text_verbatim": "In 735 Bede travelled to York to visit Ecgbert, who was then Bishop of York.",
+      "location_on_page": "Final years",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-018",
+      "wikipedia_text_verbatim": "The See of York was elevated to an archbishopric in 735, and it is likely that Bede and Ecgbert discussed the proposal for the elevation during his visit.[39]",
+      "location_on_page": "Final years",
+      "citation_markers": [
+        "39"
+      ],
+      "citation_footnotes_verbatim": {
+        "39": "Blair 1990, p. 305"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [39]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Peter Hunter Blair",
+            "title": "The World of Bede",
+            "container_work": null,
+            "publisher_or_journal": "Cambridge University Press",
+            "year": 1990,
+            "pages": null,
+            "identifier": "ISBN 978-0-521-39819-0",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Peter Hunter Blair 1990 The World of Bede Cambridge University Press",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-019",
+      "wikipedia_text_verbatim": "Bede hoped to visit Ecgbert again in 734 but was too ill to make the journey.[39]",
+      "location_on_page": "Final years",
+      "citation_markers": [
+        "39"
+      ],
+      "citation_footnotes_verbatim": {
+        "39": "Blair 1990, p. 305"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [39]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Peter Hunter Blair",
+            "title": "The World of Bede",
+            "container_work": null,
+            "publisher_or_journal": "Cambridge University Press",
+            "year": 1990,
+            "pages": null,
+            "identifier": "ISBN 978-0-521-39819-0",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Peter Hunter Blair 1990 The World of Bede Cambridge University Press",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-020",
+      "wikipedia_text_verbatim": "Bede's remains may have been translated (ceremonially moved) to Durham Cathedral in the 11th century; his tomb there was looted in 1541, but the contents were probably re-interred in the Galilee chapel at the cathedral.[7]",
+      "location_on_page": "Final years",
+      "citation_markers": [
+        "7"
+      ],
+      "citation_footnotes_verbatim": {
+        "7": "Campbell 2004"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [7]",
+          "parallel_citation": null,
+          "source": {
+            "author": "J. Campbell",
+            "title": "Bede (673/4–735)",
+            "container_work": "Oxford Dictionary of National Biography",
+            "publisher_or_journal": "Oxford University Press",
+            "year": 2004,
+            "pages": null,
+            "identifier": "doi:10.1093/ref:odnb/1922",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": "https://doi.org/10.1093/ref:odnb/1922",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 403 from https://doi.org/10.1093/ref:odnb/1922",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://doi.org/10.1093/ref:odnb/1922",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://doi.org/10.1093/ref:odnb/1922"
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "cutoff_note": "range straddles the 1450 CE cutoff; included for the pre-1450 portion (1050–1449 CE)"
+      }
+    },
+    {
+      "claim_id": "BED-021",
+      "wikipedia_text_verbatim": "Bede's best-known work is the Historia ecclesiastica gentis Anglorum, or An Ecclesiastical History of the English People,[53] completed in about 731.",
+      "location_on_page": "Ecclesiastical History of the English People",
+      "citation_markers": [
+        "53"
+      ],
+      "citation_footnotes_verbatim": {
+        "53": "Farmer 1978, p. 21"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [53]",
+          "parallel_citation": null,
+          "source": {
+            "author": "David Hugh Farmer",
+            "title": "The Oxford Dictionary of Saints",
+            "container_work": null,
+            "publisher_or_journal": "Oxford University Press",
+            "year": 1978,
+            "pages": null,
+            "identifier": "ISBN 978-0-19-282038-9",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "David Hugh Farmer 1978 The Oxford Dictionary of Saints Oxford University Press",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-022",
+      "wikipedia_text_verbatim": "The first of the five books begins with some geographical background and then sketches the history of England, beginning with Caesar's invasion in 55 BC.[55]",
+      "location_on_page": "Ecclesiastical History of the English People",
+      "citation_markers": [
+        "55"
+      ],
+      "citation_footnotes_verbatim": {
+        "55": "Farmer 1978, p. 22"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [55]",
+          "parallel_citation": null,
+          "source": {
+            "author": "David Hugh Farmer",
+            "title": "The Oxford Dictionary of Saints",
+            "container_work": null,
+            "publisher_or_journal": "Oxford University Press",
+            "year": 1978,
+            "pages": null,
+            "identifier": "ISBN 978-0-19-282038-9",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "David Hugh Farmer 1978 The Oxford Dictionary of Saints Oxford University Press",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-023",
+      "wikipedia_text_verbatim": "A brief account of Christianity in Roman Britain, including the martyrdom of St Alban, is followed by the story of Augustine's mission to England in 597, which brought Christianity to the Anglo-Saxons.[7]",
+      "location_on_page": "Ecclesiastical History of the English People",
+      "citation_markers": [
+        "7"
+      ],
+      "citation_footnotes_verbatim": {
+        "7": "Campbell 2004"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [7]",
+          "parallel_citation": null,
+          "source": {
+            "author": "J. Campbell",
+            "title": "Bede (673/4–735)",
+            "container_work": "Oxford Dictionary of National Biography",
+            "publisher_or_journal": "Oxford University Press",
+            "year": 2004,
+            "pages": null,
+            "identifier": "doi:10.1093/ref:odnb/1922",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": "https://doi.org/10.1093/ref:odnb/1922",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 403 from https://doi.org/10.1093/ref:odnb/1922",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://doi.org/10.1093/ref:odnb/1922",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://doi.org/10.1093/ref:odnb/1922"
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-024",
+      "wikipedia_text_verbatim": "These ended in disaster when Penda, the pagan king of Mercia, killed the newly Christian Edwin of Northumbria at the Battle of Hatfield Chase in about 632.[56]",
+      "location_on_page": "Ecclesiastical History of the English People",
+      "citation_markers": [
+        "56"
+      ],
+      "citation_footnotes_verbatim": {
+        "56": "Farmer 1978, p. 31"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [56]",
+          "parallel_citation": null,
+          "source": {
+            "author": "David Hugh Farmer",
+            "title": "The Oxford Dictionary of Saints",
+            "container_work": null,
+            "publisher_or_journal": "Oxford University Press",
+            "year": 1978,
+            "pages": null,
+            "identifier": "ISBN 978-0-19-282038-9",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "David Hugh Farmer 1978 The Oxford Dictionary of Saints Oxford University Press",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-025",
+      "wikipedia_text_verbatim": "This goal, of showing the movement towards unity, explains Bede's animosity towards the British method of calculating Easter: much of the Historia is devoted to a history of the dispute, including the final resolution at the Synod of Whitby in 664.[77]",
+      "location_on_page": "Intent",
+      "citation_markers": [
+        "77"
+      ],
+      "citation_footnotes_verbatim": {
+        "77": "Farmer 1978, p. 27"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [77]",
+          "parallel_citation": null,
+          "source": {
+            "author": "David Hugh Farmer",
+            "title": "The Oxford Dictionary of Saints",
+            "container_work": null,
+            "publisher_or_journal": "Oxford University Press",
+            "year": 1978,
+            "pages": null,
+            "identifier": "ISBN 978-0-19-282038-9",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "David Hugh Farmer 1978 The Oxford Dictionary of Saints Oxford University Press",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-026",
+      "wikipedia_text_verbatim": "Bede's account of the early migrations of the Angles and Saxons to England omits any mention of a movement of those peoples across the English Channel from Britain to Brittany described by Procopius, who was writing in the sixth century.",
+      "location_on_page": "Omissions and biases",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-027",
+      "wikipedia_text_verbatim": "One was to use indictions, which were 15-year cycles, counting from 312 AD.",
+      "location_on_page": "Use of Anno Domini",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-028",
+      "wikipedia_text_verbatim": "As Chapter 66 of his On the Reckoning of Time, in 725 Bede wrote the Greater Chronicle (chronica maiora), which sometimes circulated as a separate work.",
+      "location_on_page": "Chronicles",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-029",
+      "wikipedia_text_verbatim": "De temporibus, or On Time, written in about 703, provides an introduction to the principles of Easter computus.[122]",
+      "location_on_page": "Historical and astronomical chronology",
+      "citation_markers": [
+        "122"
+      ],
+      "citation_footnotes_verbatim": {
+        "122": "Brown 1987, p. 37"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [122]",
+          "parallel_citation": null,
+          "source": {
+            "author": "George Hardin Brown",
+            "title": "Bede, the Venerable",
+            "container_work": null,
+            "publisher_or_journal": "Twayne",
+            "year": 1987,
+            "pages": null,
+            "identifier": "ISBN 978-0-8057-6940-1",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "George Hardin Brown 1987 Bede, the Venerable Twayne",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-030",
+      "wikipedia_text_verbatim": "In about 723,[7] Bede wrote a longer work on the same subject, On the Reckoning of Time, which was influential throughout the Middle Ages.[123]",
+      "location_on_page": "Historical and astronomical chronology",
+      "citation_markers": [
+        "7",
+        "123"
+      ],
+      "citation_footnotes_verbatim": {
+        "7": "Campbell 2004",
+        "123": "Brown 1987, pp. 38–41"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [7]",
+          "parallel_citation": {
+            "index": 1,
+            "total": 2
+          },
+          "source": {
+            "author": "J. Campbell",
+            "title": "Bede (673/4–735)",
+            "container_work": "Oxford Dictionary of National Biography",
+            "publisher_or_journal": "Oxford University Press",
+            "year": 2004,
+            "pages": null,
+            "identifier": "doi:10.1093/ref:odnb/1922",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": "https://doi.org/10.1093/ref:odnb/1922",
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "HTTP 403 from https://doi.org/10.1093/ref:odnb/1922",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://doi.org/10.1093/ref:odnb/1922",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://doi.org/10.1093/ref:odnb/1922"
+              }
+            ],
+            "metadata_history": [],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Wikipedia footnote [123]",
+          "parallel_citation": {
+            "index": 2,
+            "total": 2
+          },
+          "source": {
+            "author": "George Hardin Brown",
+            "title": "Bede, the Venerable",
+            "container_work": null,
+            "publisher_or_journal": "Twayne",
+            "year": 1987,
+            "pages": null,
+            "identifier": "ISBN 978-0-8057-6940-1",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "George Hardin Brown 1987 Bede, the Venerable Twayne",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-031",
+      "wikipedia_text_verbatim": "For calendric purposes, Bede made a new calculation of the age of the world since the creation, which he dated as 3952 BC.",
+      "location_on_page": "Historical and astronomical chronology",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-032",
+      "wikipedia_text_verbatim": "There is no evidence for a cult praying to Bede in England in the 8th century.",
+      "location_on_page": "Veneration",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-033",
+      "wikipedia_text_verbatim": "Bede's cult became prominent in England during the 10th-century revival of monasticism and by the 14th century had spread to many of the cathedrals of England.",
+      "location_on_page": "Veneration",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-034",
+      "wikipedia_text_verbatim": "Wulfstan, Bishop of Worcester was a particular devotee of Bede's, dedicating a church to him in 1062, which was Wulfstan's first undertaking after his consecration as bishop.[144]",
+      "location_on_page": "Veneration",
+      "citation_markers": [
+        "144"
+      ],
+      "citation_footnotes_verbatim": {
+        "144": "Ward 1990, p. 139"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [144]",
+          "parallel_citation": null,
+          "source": {
+            "author": "Benedicta Ward",
+            "title": "The Venerable Bede",
+            "container_work": null,
+            "publisher_or_journal": "Morehouse Publishing",
+            "year": 1990,
+            "pages": null,
+            "identifier": "ISBN 978-0-8192-1494-2",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/venerablebedeia18ward/venerablebedeia18ward.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/venerablebedeia18ward/venerablebedeia18ward_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 401)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Benedicta Ward 1990 The Venerable Bede Morehouse Publishing",
+                "result": "no_match",
+                "found": null,
+                "detail": "no results"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-035",
+      "wikipedia_text_verbatim": "His body was translated from Jarrow to Durham Cathedral around 1020, where it was placed in the same tomb with St Cuthbert.",
+      "location_on_page": "Veneration",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-036",
+      "wikipedia_text_verbatim": "Later, Bede's remains were moved to a shrine in the Galilee Chapel at Durham Cathedral in 1370.",
+      "location_on_page": "Veneration",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-037",
+      "wikipedia_text_verbatim": "Bede became known as Venerable Bede (Latin: Beda Venerabilis) by the 9th century[152] because of his holiness,[43]",
+      "location_on_page": "Veneration",
+      "citation_markers": [
+        "152",
+        "43"
+      ],
+      "citation_footnotes_verbatim": {
+        "43": "Fr. Paolo O. Pirlo, SHMI (1997). \"St. Venerable Bede\". My First Book of Saints. Sons of Holy Mary Immaculate – Quality Catholic Publications. p. 104. ISBN 978-971-91595-4-4.",
+        "152": "Wright 2008, p. 3"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [152]",
+          "parallel_citation": {
+            "index": 1,
+            "total": 2
+          },
+          "source": {
+            "author": "J. Robert Wright",
+            "title": "A Companion to Bede: A Reader's Commentary on The Ecclesiastical History of the English People",
+            "container_work": null,
+            "publisher_or_journal": "Eerdmans",
+            "year": 2008,
+            "pages": null,
+            "identifier": "ISBN 978-0-8028-6309-6",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "J. Robert Wright 2008 A Companion to Bede: A Reader's Commentary on The Ecclesiastical History of the English People Eerdmans",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 2 results scored only 2/4 — not adopted"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        },
+        {
+          "hop_index": 2,
+          "cited_by": "Wikipedia footnote [43]",
+          "parallel_citation": {
+            "index": 2,
+            "total": 2
+          },
+          "source": {
+            "author": "Fr. Paolo O. Pirlo, SHMI",
+            "title": "St. Venerable Bede",
+            "container_work": "My First Book of Saints",
+            "publisher_or_journal": "Sons of Holy Mary Immaculate – Quality Catholic Publications",
+            "year": 1997,
+            "pages": "104",
+            "identifier": "ISBN 978-971-91595-4-4",
+            "document_type": "excavation_report_chapter",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "Fr. Paolo O. Pirlo, SHMI 1997 St. Venerable Bede My First Book of Saints Sons of Holy Mary Immaculate – Quality Catholic Publications",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 1 results scored only 0/4 — not adopted"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    },
+    {
+      "claim_id": "BED-038",
+      "wikipedia_text_verbatim": "It is first utilised in connection with Bede in the 9th century, where Bede was grouped with others who were called \"venerable\" at two ecclesiastical councils held at Aachen in 816 and 836.",
+      "location_on_page": "Veneration",
+      "citation_markers": [],
+      "citation_footnotes_verbatim": {},
+      "citation_chain": [],
+      "status": "no_source",
+      "technical_log_refs": [],
+      "structured_facts": {
+        "extraction_note": "no citation with resolvable source metadata on this sentence"
+      }
+    },
+    {
+      "claim_id": "BED-039",
+      "wikipedia_text_verbatim": "By the 11th and 12th century, it had become commonplace.[11]",
+      "location_on_page": "Veneration",
+      "citation_markers": [
+        "11"
+      ],
+      "citation_footnotes_verbatim": {
+        "11": "Higham 2006, pp. 9–10"
+      },
+      "citation_chain": [
+        {
+          "hop_index": 1,
+          "cited_by": "Wikipedia footnote [11]",
+          "parallel_citation": null,
+          "source": {
+            "author": "N.J. Higham",
+            "title": "(Re-)Reading Bede: The Historia Ecclesiastica in Context",
+            "container_work": null,
+            "publisher_or_journal": "Routledge",
+            "year": 2006,
+            "pages": null,
+            "identifier": "ISBN 978-0-415-35368-7",
+            "document_type": "book",
+            "retrieval_url": null,
+            "wikipedia_access_date": null,
+            "retrieval_status": "unreachable",
+            "retrieval_note": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)",
+            "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "internet archive pdf",
+                "url": "https://archive.org/download/rereadingbedeecc0000high/rereadingbedeecc0000high.pdf",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+              },
+              {
+                "via": "internet archive text",
+                "url": "https://archive.org/download/rereadingbedeecc0000high/rereadingbedeecc0000high_djvu.txt",
+                "result": "lending_restricted",
+                "detail": "the Internet Archive has a scan of this book but it is lending-restricted, not a free download (HTTP 403)"
+              }
+            ],
+            "metadata_history": [
+              {
+                "via": "crossref",
+                "query": "N.J. Higham 2006 (Re-)Reading Bede: The Historia Ecclesiastica in Context Routledge",
+                "result": "low_confidence",
+                "found": null,
+                "detail": "best of 3 results scored only 2/4 — not adopted"
+              }
+            ],
+            "is_public_domain": false,
+            "local_cache_path": null
+          },
+          "wikipedia_note_quotes": []
+        }
+      ],
+      "status": "dead_end",
+      "technical_log_refs": []
+    }
+  ]
+}
