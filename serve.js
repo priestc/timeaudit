@@ -371,6 +371,35 @@ async function computeSourceReport() {
   };
 }
 
+// Corpus-wide: every claim, grouped by status, so the stats page's "claims by
+// status" rows can each open a browsable list.
+async function computeClaimsByStatus() {
+  const list = await backend.list();
+  const groups = {}; // status -> [ {doc_id, doc_title, claim_id, text, location} ]
+  for (const f of list) {
+    let data;
+    try {
+      data = JSON.parse(await backend.read(f.id));
+    } catch {
+      continue;
+    }
+    if (!Array.isArray(data.claims)) continue;
+    const docTitle = (data.page && data.page.title) || f.title;
+    for (const c of data.claims) {
+      const st = c.status || "unknown";
+      (groups[st] = groups[st] || []).push({
+        doc_id: f.id,
+        doc_title: docTitle,
+        claim_id: c.claim_id,
+        text: c.wikipedia_text_verbatim || "",
+        location: c.location_on_page || "",
+        markers: (c.citation_markers || []).length,
+      });
+    }
+  }
+  return groups;
+}
+
 const server = http.createServer(async (req, res) => {
   const url = new URL(req.url, "http://localhost");
   const pathname = decodeURIComponent(url.pathname);
@@ -390,6 +419,9 @@ const server = http.createServer(async (req, res) => {
     }
     if (pathname === "/api/sources") {
       return send(res, 200, "application/json", JSON.stringify(await computeSourceReport()));
+    }
+    if (pathname === "/api/claims") {
+      return send(res, 200, "application/json", JSON.stringify(await computeClaimsByStatus()));
     }
     // "claim finder" — run the real extractor (lib/wiki.js) on an arbitrary URL
     if (pathname === "/api/find-claims") {

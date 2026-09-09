@@ -114,6 +114,10 @@
   .src-ref{font-size:.8rem;padding:2px 8px;border:1px solid var(--border);border-radius:6px;
     text-decoration:none;color:var(--accent);background:var(--bg)}
   .src-ref:hover{border-color:var(--accent)}
+  a.status-link{color:var(--accent);text-decoration:none}
+  a.status-link:hover{text-decoration:underline}
+  .claim-list .src-title{font-weight:400;margin-top:3px}
+  .claim-list a.src-ref{display:inline-block;margin-top:8px}
 
   /* home / add article */
   .home{max-width:760px;margin:0 auto;padding:48px 22px 80px}
@@ -221,6 +225,7 @@
   var suppressHash = false; // guard: hash we set ourselves shouldn't re-route
   var reanalyzePoll = null; // setInterval handle for the currently-open doc
   var sourcesCache = null;  // last /api/sources response, shared by both source tabs
+  var claimsCache = null;   // last /api/claims response (claims grouped by status)
   var analyzePoll = null;   // setInterval handle for an in-flight "add article" run
   var homeState = { url: "" };
 
@@ -275,8 +280,9 @@
       .join("");
     var rows = order
       .map(function (k) {
+        var label = esc(STATUS_LABELS[k] || k.replace(/_/g, " "));
         return "<tr><td><span class=\"dot " + statusClass(k) + '"></span>' +
-          esc(STATUS_LABELS[k] || k.replace(/_/g, " ")) + "</td>" +
+          '<a href="#claims/' + esc(k) + '" class="status-link">' + label + "</a></td>" +
           '<td class="num">' + s.by_status[k].count + "</td>" +
           '<td class="num">' + s.by_status[k].pct.toFixed(1) + "%</td></tr>";
       })
@@ -350,6 +356,55 @@
       .then(function (s) { contentEl.innerHTML = renderStats(s); })
       .catch(function (e) {
         contentEl.innerHTML = '<div class="empty">Failed to load statistics: ' + esc(e.message) + "</div>";
+      });
+  }
+
+  // every claim of one status across the corpus — reached by clicking a row on
+  // the statistics page (#claims/<status>)
+  function showClaimList(status) {
+    setNav("stats");
+    setHash("#claims/" + encodeURIComponent(status));
+    var label = STATUS_LABELS[status] || status.replace(/_/g, " ");
+    document.title = label + " claims — Chronology Browser";
+    contentEl.innerHTML = '<div class="empty">Loading claims…</div>';
+    var render = function (groups) {
+      var claims = groups[status] || [];
+      claims.sort(function (a, b) {
+        return a.doc_title.localeCompare(b.doc_title) || String(a.claim_id).localeCompare(String(b.claim_id));
+      });
+      contentEl.innerHTML =
+        '<div class="sources">' +
+        '<div class="sub"><a href="#" class="status-link" id="back-stats">&larr; statistics</a></div>' +
+        "<h1>" + '<span class="dot ' + statusClass(status) + '"></span>' + esc(label) + " claims (" + claims.length + ")</h1>" +
+        '<div class="sub">every claim with this retrieval status, across all page documents</div>' +
+        (claims.length
+          ? '<ul class="src-list claim-list">' +
+            claims
+              .map(function (c) {
+                return (
+                  '<li class="src-card">' +
+                  '<div class="src-bits">' + esc(c.doc_title) +
+                  (c.location ? " · " + esc(c.location) : "") +
+                  (c.markers ? "" : ' · <span class="src-note">no citation</span>') +
+                  "</div>" +
+                  '<div class="src-title">' + esc(c.text) + "</div>" +
+                  '<a href="#" class="src-ref" data-doc="' + esc(c.doc_id) + '" data-claim="' + esc(c.claim_id) + '">' +
+                  "open " + esc(c.claim_id) + " &rarr;</a>" +
+                  "</li>"
+                );
+              })
+              .join("") +
+            "</ul>"
+          : '<div class="empty">No claims with this status.</div>');
+      wireSourceRefs();
+      var back = document.getElementById("back-stats");
+      if (back) back.onclick = function (e) { e.preventDefault(); showStats(); };
+    };
+    if (claimsCache) return render(claimsCache);
+    fetchJSON("/api/claims")
+      .then(function (g) { claimsCache = g; render(g); })
+      .catch(function (e) {
+        contentEl.innerHTML = '<div class="empty">Failed to load claims: ' + esc(e.message) + "</div>";
       });
   }
 
@@ -684,6 +739,11 @@
         if (inp) inp.value = u;
         if (finderState.url !== u || !finderState.html) runFinder(u);
       }
+      return true;
+    }
+    var cm = h.match(/^#claims\/(.+)$/);
+    if (cm) {
+      showClaimList(decodeURIComponent(cm[1]));
       return true;
     }
     var dm = h.match(/^#doc\/(.+)$/);
