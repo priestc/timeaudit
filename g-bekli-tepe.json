@@ -3,14 +3,14 @@
   "generator": {
     "tool": "timeaudit",
     "mode": "local",
-    "generated_at": "2026-09-08T18:25:33.795Z",
+    "generated_at": "2026-09-09T01:53:49.948Z",
     "spec_url": "https://github.com/priestc/timeaudit/blob/main/SPEC.md",
     "ai_model": null
   },
   "page": {
     "title": "Göbekli Tepe",
     "url": "https://en.wikipedia.org/wiki/G%C3%B6bekli_Tepe",
-    "retrieved_at": "2026-09-08",
+    "retrieved_at": "2026-09-09",
     "wikipedia_revision_id": "1372090689"
   },
   "claims": [
@@ -46,6 +46,14 @@
             "retrieval_status": "unreachable",
             "retrieval_note": "HTTP 403 from https://www.researchgate.net/publication/360996154",
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://www.researchgate.net/publication/360996154",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://www.researchgate.net/publication/360996154"
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -88,6 +96,14 @@
             "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "europepmc fulltext",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5489262/fullTextXML",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/gresky-2017-modified-human-crania-from.xml"
           },
@@ -129,6 +145,14 @@
             "retrieval_status": "unreachable",
             "retrieval_note": "HTTP 403 from https://www.researchgate.net/publication/267411578",
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://www.researchgate.net/publication/267411578",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://www.researchgate.net/publication/267411578"
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -167,6 +191,14 @@
             "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "europepmc fulltext",
+                "url": "https://www.ebi.ac.uk/europepmc/webservices/rest/PMC5556129/fullTextXML",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/watkins-2017-from-pleistocene-to-holocene.xml"
           },
@@ -215,6 +247,14 @@
             "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "direct pdf",
+                "url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2013_1.pdf",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.pdf"
           },
@@ -244,6 +284,14 @@
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -285,6 +333,14 @@
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -323,6 +379,14 @@
             "retrieval_status": "unreachable",
             "retrieval_note": "HTTP 403 from https://www.researchgate.net/publication/258182967",
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://www.researchgate.net/publication/258182967",
+                "result": "http_403",
+                "detail": "HTTP 403 from https://www.researchgate.net/publication/258182967"
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -368,6 +432,14 @@
             "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "direct pdf",
+                "url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2002_2.pdf",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/pustovoytov-2002-14c-dating-of-pedogenic.pdf"
           },
@@ -397,6 +469,14 @@
             "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "direct pdf",
+                "url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2010_2.pdf",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2010-a-radiocarbon-date-from.pdf"
           },
@@ -428,6 +508,14 @@
             "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "direct pdf",
+                "url": "https://www.exoriente.org/repository/NEO-LITHICS/NEO-LITHICS_2013_1.pdf",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/dietrich-2013-establishing-a-radiocarbon-sequence.pdf"
           },
@@ -471,6 +559,14 @@
             "retrieval_status": "retrieved",
             "retrieval_note": null,
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "openalex OA url",
+                "url": "https://doi.org/10.34780/efb.v0i2.1012",
+                "result": "retrieved",
+                "detail": null
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": "/source-cache/g-bekli-tepe/clare-2020-g-bekli-tepe-turkey-a.html"
           },
@@ -500,6 +596,14 @@
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -567,6 +671,14 @@
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -621,6 +733,14 @@
             "retrieval_status": "unreachable",
             "retrieval_note": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)",
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "cited url",
+                "url": "https://books.google.com/books?id=T6QGEAAAQBAJ",
+                "result": "copyright",
+                "detail": "unable to retrieve source because copyrighted (Google Books preview only, not the full text)"
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": null
           },
@@ -698,6 +818,14 @@
             "retrieval_status": "unreachable",
             "retrieval_note": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)",
             "retrieved_via_wayback": false,
+            "retrieval_history": [
+              {
+                "via": "citation metadata",
+                "url": null,
+                "result": "no_url",
+                "detail": "no retrievable URL could be resolved from this citation's metadata (e.g. a print-only reference with no DOI or online copy)"
+              }
+            ],
             "is_public_domain": false,
             "local_cache_path": null
           },

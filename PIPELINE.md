@@ -130,7 +130,14 @@ and `pending` are phase-3 trace outcomes and do not occur yet. Each hop's
 `source` block carries `retrieval_status` (`retrieved` | `unreachable`),
 `retrieval_note`, `retrieved_via_wayback`, and `local_cache_path`, plus
 `wikipedia_note_quotes` where a Wikipedia explanatory note quotes the source.
-Re-running is cheap — cached sources are reused.
+Every source also carries `retrieval_history` — the ordered trail of every URL
+retrieval tried (`via` = cited url / OpenAlex / Europe PMC / NCBI BioC /
+Unpaywall / Internet Archive / Google Books / Wayback Machine / …) with a short
+`result` tag per step (`retrieved`, `http_404`, `copyright`, `paywall`,
+`lending_restricted`, `captcha`, …) and the specific `detail`. A future
+retrieval backend just adds its own `via` label and its attempts show up there.
+Re-running is cheap — cached sources are reused (their history is kept in the
+`.meta.json` sidecar).
 
 ## Limitations
 

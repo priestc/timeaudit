@@ -141,7 +141,15 @@ source with everything else populated.
     "retrieval_note": string | null,       // the *specific* reason retrieval didn't reach verified_verbatim, whenever one is known — e.g. "unable to retrieve source because copyrighted (Google Books preview only, not the full text)", "paywalled — publisher requires purchase or institutional access", "blocked by an anti-bot / browser-verification challenge", "no retrievable URL could be resolved from this citation's metadata". null only when nothing more specific than the bare status is known. Never guess a reason that wasn't actually observed (Rule 5) — record what's true, or leave it null.
     "retrieved_via_wayback": boolean,      // true when local_cache_path was saved from a Wayback Machine archived snapshot because the live URL failed, rather than from the live URL itself — a real difference in provenance worth surfacing, not just an implementation detail
     "is_public_domain": boolean | null,
-    "local_cache_path": string | null      // path under /source-cache/ where the downloaded file was saved; see Local Source Cache section
+    "local_cache_path": string | null,     // path under /source-cache/ where the downloaded file was saved; see Local Source Cache section
+    "retrieval_history": [                  // ordered log of every place retrieval looked for this source and what came back — the trail behind retrieval_status / retrieval_note
+      {
+        "via": string,                     // where it looked: "cited url", "wikipedia archive-url", "openalex OA pdf", "europepmc fulltext", "ncbi bioc", "unpaywall OA pdf", "internet archive pdf", "internet archive text", "google books pdf", "wayback machine", "doi landing", … (new retrieval backends add their own label)
+        "url": string | null,              // the URL attempted (may be truncated)
+        "result": string,                  // short tag: "retrieved" | "http_404" | "http_403" | "copyright" | "no_free_scan" | "paywall" | "login_wall" | "bot_wall" | "lending_restricted" | "captcha" | "access_denied" | "no_document" | "wrong_type" | "stub_page" | "too_large" | "network_error" | "empty" | "no_url" | "skipped_budget" | "failed"
+        "detail": string | null            // the specific reason, when result is not "retrieved"
+      }
+    ]
   },
   "structured_facts": { ... },             // [phase 3] free-form key/value for any extractable facts specific to this hop
   "verbatim_quotes": [string, ...],        // [phase 3] max 3 for copyrighted sources; see Rule 4
