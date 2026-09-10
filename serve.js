@@ -688,6 +688,7 @@ async function pageArticle(id, raw) {
         context: ctx,
         claimBase: "/article/" + encodeURIComponent(id) + "/",
         docSourceBase: "/document-sources/",
+        cacheBase: "/",
       }) +
       "</div>";
   }
@@ -728,7 +729,7 @@ async function pageClaim(id, claimId) {
     '</b><span class="sub">this page\u2019s URL links straight to this claim</span></div>';
   const body =
     '<div class="wrap">' +
-    ChronoRender.renderBody(synth, { context: sctx, hideSummary: true, docSourceBase: "/document-sources/" }) +
+    ChronoRender.renderBody(synth, { context: sctx, hideSummary: true, docSourceBase: "/document-sources/", cacheBase: "/" }) +
     "</div>";
   return htmlPage({ title: claimId + " \u00b7 " + title, active: null, activeId: id, main: bar + body });
 }
@@ -754,6 +755,7 @@ async function pageClaimsByStatus(status) {
         claimBase: "/article/" + encodeURIComponent(docId) + "/",
         hideSummary: true,
         docSourceBase: "/document-sources/",
+        cacheBase: "/",
       }).replace(
         /^<header class="doc-head">[\s\S]*?<\/header>/,
         ""
@@ -890,7 +892,7 @@ async function pageSourceDocument(key) {
     .map((k) => {
       const v = s[k];
       let cell;
-      if (k === "local_cache_path" && v) cell = '<a href="' + E(String(v).replace(/^\/+/, "")) + '" target="_blank" rel="noopener">' + E(v) + "</a>";
+      if (k === "local_cache_path" && v) cell = '<a href="/' + E(String(v).replace(/^\/+/, "")) + '" target="_blank" rel="noopener">' + E(v) + "</a>";
       else if (k === "retrieval_url" && v) cell = '<a href="' + E(v) + '" target="_blank" rel="noopener">' + E(v) + "</a>";
       else if (Array.isArray(v)) cell = E(v.join(", "));
       else if (v === null || v === "" || v === undefined) cell = '<span style="color:var(--muted)">\u2014</span>';
