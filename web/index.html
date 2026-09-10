@@ -297,7 +297,7 @@
         return "<tr><td>" + esc(m) + "</td><td class=\"num\">" + v.documents +
           "</td><td class=\"num\">" + v.claims + "</td></tr>";
       })
-      .join("") || '<tr><td colspan="3" style="color:var(--muted)">no page documents</td></tr>';
+      .join("") || '<tr><td colspan="3" style="color:var(--muted)">no Wikipedia articles</td></tr>';
 
     var docRows = s.per_document
       .map(function (d) {
@@ -316,10 +316,10 @@
     return (
       '<div class="stats">' +
       "<h1>Statistics</h1>" +
-      '<div class="sub">across all page documents in this source</div>' +
+      '<div class="sub">across all Wikipedia articles in this source</div>' +
       '<div class="cards">' +
       '<div class="card"><span class="big">' + s.claims + '</span><span class="lbl">claims found</span></div>' +
-      '<div class="card"><span class="big">' + s.documents + '</span><span class="lbl">page documents</span></div>' +
+      '<div class="card"><span class="big">' + s.documents + '</span><span class="lbl">Wikipedia articles</span></div>' +
       "</div>" +
       "<h2>Claims by status</h2>" +
       (s.claims ? '<div class="sbar">' + bar + "</div>" : "") +
@@ -327,10 +327,10 @@
       (rows || '<tr><td colspan="3" style="color:var(--muted)">no claims</td></tr>') +
       "</table>" +
       "<h2>By generation mode</h2>" +
-      '<table class="brk"><tr><th>mode</th><th class="num">docs</th><th class="num">claims</th></tr>' +
+      '<table class="brk"><tr><th>mode</th><th class="num">articles</th><th class="num">claims</th></tr>' +
       modeRows + "</table>" +
-      "<h2>Per document</h2>" +
-      '<table class="brk"><tr><th>document</th><th>mode</th><th class="num">claims</th><th>status mix</th></tr>' +
+      "<h2>Per article</h2>" +
+      '<table class="brk"><tr><th>article</th><th>mode</th><th class="num">claims</th><th>status mix</th></tr>' +
       docRows + "</table>" +
       "</div>"
     );
