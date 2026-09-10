@@ -371,26 +371,49 @@ async function computeSourceReport() {
   };
 }
 
-// The "document source" a source document was obtained from — Google Books, the
-// Wayback Machine, a publisher's own page, … — derived from the retrieval-history
-// step that actually succeeded.
+// A source document's "document source" is the host its bytes actually came
+// from — cam.ac.uk, penelope.uchicago.edu, … — NOT how we reached it. Wayback
+// and Wikipedia-archive wrappers are unwrapped so the underlying publisher
+// shows through (the archive route stays visible in retrieval_history); a few
+// well-known aggregators / databases keep a friendly name. Null unless the
+// document was actually retrieved.
+const DOC_SOURCE_ALIASES = [
+  [/web\.archive\.org\//i, "Wayback Machine"],
+  [/\/europepmc\/|europepmc\.org/i, "Europe PMC"],
+  [/ncbi\.nlm\.nih\.gov/i, "NCBI"],
+  [/books\.google\.[a-z.]+|google\.[a-z.]+\/books/i, "Google Books"],
+  [/archive\.org\//i, "Internet Archive"],
+  [/openalex\.org/i, "OpenAlex"],
+  [/unpaywall\.org/i, "Unpaywall"],
+  [/doi\.org\//i, "DOI resolver"],
+];
+const MULTI_LABEL_TLD = new Set(["ac", "co", "com", "org", "net", "edu", "gov", "or", "ne", "gob"]);
+
+function unwrapArchiveUrl(u) {
+  const m = String(u || "").match(/web\.archive\.org\/web\/[^\s]*?\/(https?:\/\/.+)$/i);
+  return m ? m[1] : String(u || "");
+}
+function hostOf(u) {
+  try {
+    return new URL(u).hostname.replace(/^www\d*\./i, "").toLowerCase();
+  } catch {
+    return "";
+  }
+}
+function registrableDomain(host) {
+  const p = host.split(".").filter(Boolean);
+  if (p.length <= 2) return host;
+  if (p[p.length - 1].length === 2 && MULTI_LABEL_TLD.has(p[p.length - 2])) return p.slice(-3).join(".");
+  return p.slice(-2).join(".");
+}
 function documentSourceOf(s) {
   if (!s || s.retrieval_status !== "retrieved") return null;
-  if (s.retrieved_via_wayback) return "Wayback Machine";
   const hit = (s.retrieval_history || []).find((e) => e && e.result === "retrieved");
-  const via = hit ? String(hit.via || "") : "";
-  if (/wayback/i.test(via)) return "Wayback Machine";
-  if (/internet archive/i.test(via)) return "Internet Archive";
-  if (/google books/i.test(via)) return "Google Books";
-  if (/ncbi bioc/i.test(via)) return "NCBI BioC";
-  if (/europepmc/i.test(via)) return "Europe PMC";
-  if (/openalex/i.test(via)) return "OpenAlex";
-  if (/unpaywall/i.test(via)) return "Unpaywall";
-  if (/wikipedia archive/i.test(via)) return "Wikipedia archive link";
-  if (/doi landing/i.test(via)) return "DOI resolver";
-  if (/direct pdf/i.test(via)) return "Direct PDF link";
-  if (/cited url/i.test(via)) return "Publisher / web page";
-  return via || "cache";
+  const u = unwrapArchiveUrl((hit && hit.url) || s.retrieval_url || "");
+  for (const [re, name] of DOC_SOURCE_ALIASES) if (re.test(u)) return name;
+  const host = hostOf(u);
+  if (host) return registrableDomain(host);
+  return s.retrieved_via_wayback ? "Wayback Machine" : "cache";
 }
 
 // Corpus-wide: every distinct source document (a work cited by a Wikipedia
@@ -502,26 +525,6 @@ async function contextFor(id, data) {
     return {};
   }
 }
-// mirrors lib/scholar's retrieval "via" -> a friendly document-source name
-function documentSourceOf(s) {
-  if (!s || s.retrieval_status !== "retrieved") return null;
-  if (s.retrieved_via_wayback) return "Wayback Machine";
-  const hit = (s.retrieval_history || []).find((e) => e && e.result === "retrieved");
-  const via = hit ? String(hit.via || "") : "";
-  if (/wayback/i.test(via)) return "Wayback Machine";
-  if (/internet archive/i.test(via)) return "Internet Archive";
-  if (/google books/i.test(via)) return "Google Books";
-  if (/ncbi bioc/i.test(via)) return "NCBI BioC";
-  if (/europepmc/i.test(via)) return "Europe PMC";
-  if (/openalex/i.test(via)) return "OpenAlex";
-  if (/unpaywall/i.test(via)) return "Unpaywall";
-  if (/wikipedia archive/i.test(via)) return "Wikipedia archive link";
-  if (/doi landing/i.test(via)) return "DOI resolver";
-  if (/direct pdf/i.test(via)) return "Direct PDF link";
-  if (/cited url/i.test(via)) return "Publisher / web page";
-  return via || "cache";
-}
-
 const NAV = [
   ["/", "\uD83C\uDFE0 Home", "home"],
   ["/statistics", "\uD83D\uDCCA Statistics", "stats"],
