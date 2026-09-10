@@ -119,6 +119,20 @@
   .src-ref{font-size:.8rem;padding:2px 8px;border:1px solid var(--border);border-radius:6px;
     text-decoration:none;color:var(--accent);background:var(--bg)}
   .src-ref:hover{border-color:var(--accent)}
+  .src-doc-title{font-weight:600;font-size:.95rem;color:var(--accent);text-decoration:none}
+  .src-doc-title:hover{text-decoration:underline}
+  table.kv2{border-collapse:collapse;width:100%;font-size:.86rem;margin:10px 0}
+  table.kv2 th{text-align:left;vertical-align:top;padding:4px 14px 4px 0;color:var(--muted);
+    font-weight:600;white-space:nowrap;width:1%}
+  table.kv2 td{vertical-align:top;padding:4px 0;word-break:break-word}
+  table.kv2 a{color:var(--accent);word-break:break-all}
+  .rh-list{list-style:none;margin:6px 0 0;padding:0;font-size:.82rem}
+  .rh-list>li{margin:0 0 8px}
+  .rh-n{color:var(--muted);margin-right:4px}
+  .rh-via{font-weight:600;margin-right:6px}
+  .rh-url{margin:2px 0 0 18px;word-break:break-all;font-family:ui-monospace,Menlo,monospace;font-size:.78rem}
+  .rh-url a{color:var(--muted)}
+  .rh-detail{margin:2px 0 0 18px;color:var(--muted);font-style:italic}
   a.status-link{color:var(--accent);text-decoration:none}
   a.status-link:hover{text-decoration:underline}
 
@@ -174,12 +188,13 @@
 <aside>
   <header>
     <h1>Chronology Browser</h1>
-    <input id="search" type="search" placeholder="Filter documents…" autocomplete="off">
+    <input id="search" type="search" placeholder="Filter articles…" autocomplete="off">
   </header>
   <div id="nav">
     <button id="btn-home" class="navbtn" type="button">🏠&nbsp; Home</button>
     <button id="btn-stats" class="navbtn" type="button">📊&nbsp; Statistics</button>
     <button id="btn-finder" class="navbtn" type="button">🔎&nbsp; Claim finder</button>
+    <button id="btn-sources" class="navbtn" type="button">📚&nbsp; Document sources</button>
     <button id="btn-unreachable" class="navbtn" type="button">🚫&nbsp; Unreachable sources</button>
     <button id="btn-radiocarbon" class="navbtn" type="button">☢️&nbsp; Radiocarbon sources</button>
   </div>
@@ -196,7 +211,7 @@
   </div>
   <div id="reanalyze-bar"><span class="spin"></span><span id="ra-text"></span></div>
   <div class="content" id="content">
-    <div class="empty">Select a document from the list, or open Statistics.</div>
+    <div class="empty">Select a Wikipedia article from the list, or open Statistics.</div>
   </div>
 </main>
 
@@ -210,6 +225,7 @@
   var btnHome = document.getElementById("btn-home");
   var btnStats = document.getElementById("btn-stats");
   var btnFinder = document.getElementById("btn-finder");
+  var btnSources = document.getElementById("btn-sources");
   var btnUnreachable = document.getElementById("btn-unreachable");
   var btnRadiocarbon = document.getElementById("btn-radiocarbon");
   var btnRendered = document.getElementById("btn-rendered");
@@ -223,12 +239,13 @@
   var files = [];
   var current = null;      // { meta, data }
   var view = "rendered";   // doc sub-view: rendered | raw
-  var screen = "doc";      // doc | home | stats | finder | unreachable | radiocarbon
+  var screen = "doc";      // doc | home | stats | finder | sources | unreachable | radiocarbon
   var finderState = { url: "", html: "" };   // survives switching away
   var suppressHash = false; // guard: hash we set ourselves shouldn't re-route
   var reanalyzePoll = null; // setInterval handle for the currently-open doc
   var sourcesCache = null;  // last /api/sources response, shared by both source tabs
   var claimsCache = null;   // last /api/claims response (claims grouped by status)
+  var srcDocsCache = null;  // last /api/source-documents response
   var analyzePoll = null;   // setInterval handle for an in-flight "add article" run
   var homeState = { url: "" };
 
@@ -265,7 +282,9 @@
           '<span class="t"></span><span class="meta"></span>';
         li.querySelector(".t").textContent = f.title;
         li.querySelector(".meta").textContent =
-          f.kind + " · " + f.count + (f.kind === "page" ? " claim(s)" : " entr(y/ies)");
+          f.kind === "page"
+            ? "article · " + f.count + " claim" + (f.count === 1 ? "" : "s")
+            : f.kind + " · " + f.count + " entries";
         if (screen === "doc" && current && current.meta.id === f.id) li.className = "active";
         li.onclick = function () { load(f); };
         listEl.appendChild(li);
@@ -346,6 +365,7 @@
     btnHome.classList.toggle("active", active === "home");
     btnStats.classList.toggle("active", active === "stats");
     btnFinder.classList.toggle("active", active === "finder");
+    btnSources.classList.toggle("active", active === "sources");
     btnUnreachable.classList.toggle("active", active === "unreachable");
     btnRadiocarbon.classList.toggle("active", active === "radiocarbon");
     renderList();
@@ -475,7 +495,7 @@
       (s.retrieved_via_wayback === true ? " " + badge("via Wayback Machine", "neutral") : "") +
       (kind === "unreachable" && s.retrieval_note ? ' <span class="src-note">' + esc(s.retrieval_note) + "</span>" : "") +
       "</div>" +
-      '<div class="src-refs-label">cited from</div>' +
+      '<div class="src-refs-label">cited by</div>' +
       srcRefs(entry.refs) +
       "</li>"
     );
@@ -522,8 +542,8 @@
     document.title = "Unreachable sources — Chronology Browser";
     withSources(function (d) {
       contentEl.innerHTML = renderSourceList(
-        "Unreachable sources",
-        "cited sources whose full text could not be retrieved online — each with the specific reason",
+        "Unreachable source documents",
+        "source documents a Wikipedia article cites whose full text could not be retrieved online — each with the specific reason",
         d.unreachable || [],
         "unreachable"
       );
@@ -538,12 +558,169 @@
     withSources(function (d) {
       var rc = (d.validated || []).filter(function (e) { return e.terminal_type === "radiocarbon"; });
       contentEl.innerHTML = renderSourceList(
-        "Radiocarbon sources",
-        "sources whose text carries the radiocarbon date behind a claim — populated by phase 3 (reading the downloaded sources), which is not implemented yet",
+        "Radiocarbon source documents",
+        "source documents whose text carries the radiocarbon date behind a claim — populated by phase 3 (reading the downloaded source documents), which is not implemented yet",
         rc,
         "validated"
       );
       wireSourceRefs();
+    });
+  }
+
+  /* ---- document sources: browse source documents by where they came from --- */
+
+  function withSourceDocs(cb) {
+    if (srcDocsCache) return cb(srcDocsCache);
+    contentEl.innerHTML = '<div class="empty">Loading source documents…</div>';
+    fetchJSON("/api/source-documents")
+      .then(function (d) { srcDocsCache = d; cb(d); })
+      .catch(function (e) {
+        contentEl.innerHTML = '<div class="empty">Failed to load source documents: ' + esc(e.message) + "</div>";
+      });
+  }
+
+  function srcDocRow(rec) {
+    var s = rec.source || {};
+    var author = Array.isArray(s.author) ? s.author.join(", ") : s.author;
+    var bits = [author, s.year, s.document_type, s.identifier].filter(Boolean).join(" · ");
+    var kind = rec.status === "retrieved" ? "ok" : rec.status === "unreachable" ? "bad" : "neutral";
+    return (
+      '<li class="src-card">' +
+      '<a href="#source/' + encodeURIComponent(rec.key) + '" class="src-doc-title">' +
+      esc(s.title || "(untitled source document)") + "</a>" +
+      (bits ? '<div class="src-bits">' + esc(bits) + "</div>" : "") +
+      '<div class="src-status-row">' + badge(String(rec.status).replace(/_/g, " "), kind) +
+      (rec.origin ? " " + badge(rec.origin, "neutral") : "") +
+      '<span class="src-note">cited by ' + rec.refs.length + " claim" + (rec.refs.length === 1 ? "" : "s") + "</span></div>" +
+      "</li>"
+    );
+  }
+
+  function showDocumentSources() {
+    setNav("sources");
+    setHash("#sources");
+    document.title = "Document sources — Chronology Browser";
+    withSourceDocs(function (recs) {
+      var groups = {};
+      recs.forEach(function (r) {
+        var g = r.origin || "not retrieved";
+        (groups[g] = groups[g] || []).push(r);
+      });
+      var names = Object.keys(groups).sort(function (a, b) {
+        if (a === "not retrieved") return 1;
+        if (b === "not retrieved") return -1;
+        return a.localeCompare(b);
+      });
+      contentEl.innerHTML =
+        '<div class="sources"><h1>Document sources</h1>' +
+        '<div class="sub">every source document a Wikipedia article cites, grouped by where it was obtained</div>' +
+        names
+          .map(function (g) {
+            var rows = groups[g].slice().sort(function (a, b) {
+              return (a.source.title || "").localeCompare(b.source.title || "");
+            });
+            return (
+              '<h2>' + esc(g) + " <span class=\"sub\" style=\"font-weight:400\">(" + rows.length + ")</span></h2>" +
+              '<ul class="src-list">' + rows.map(srcDocRow).join("") + "</ul>"
+            );
+          })
+          .join("") +
+        "</div>";
+    });
+  }
+
+  function histBlock(title, hist, isMeta) {
+    if (!Array.isArray(hist) || !hist.length) return "";
+    var rows = hist
+      .map(function (h, i) {
+        var kind = /^retrieved$|^enriched$/.test(h.result) ? "ok" : /^skipped$|budget/.test(h.result || "") ? "neutral" : "bad";
+        var extra = "";
+        if (isMeta && h.found) {
+          var f = h.found, parts = [];
+          if (f.title) parts.push("title: " + f.title);
+          if (f.author && f.author.length) parts.push("author: " + (Array.isArray(f.author) ? f.author.join(", ") : f.author));
+          if (f.year) parts.push("year: " + f.year);
+          if (f.container) parts.push("in: " + f.container);
+          if (f.doi) parts.push("DOI: " + f.doi);
+          if (f.isbn) parts.push("ISBN: " + f.isbn);
+          if (parts.length) extra += '<div class="rh-detail">' + esc(parts.join(" · ")) + "</div>";
+        }
+        if (h.query) extra += '<div class="rh-url">query: ' + esc(h.query) + "</div>";
+        if (h.url) extra += '<div class="rh-url"><a href="' + esc(h.url) + '" target="_blank" rel="noopener">' + esc(h.url) + "</a></div>";
+        if (h.detail && h.result !== "retrieved") extra += '<div class="rh-detail">' + esc(h.detail) + "</div>";
+        return '<li><span class="rh-n">' + (i + 1) + '.</span> <span class="rh-via">' + esc(h.via || "—") + "</span> " +
+          badge(String(h.result || "").replace(/_/g, " "), kind) + extra + "</li>";
+      })
+      .join("");
+    return '<h2>' + esc(title) + '</h2><ol class="rh-list">' + rows + "</ol>";
+  }
+
+  function showSourceDocument(key) {
+    setNav("sources");
+    setHash("#source/" + encodeURIComponent(key));
+    document.title = "Source document — Chronology Browser";
+    withSourceDocs(function (recs) {
+      var rec = recs.filter(function (r) { return r.key === key; })[0];
+      if (!rec) {
+        contentEl.innerHTML =
+          '<div class="sources"><div class="sub"><a href="#" class="status-link" id="back-ds">&larr; document sources</a></div>' +
+          '<div class="empty">No source document with that identity.</div></div>';
+        var b0 = document.getElementById("back-ds");
+        if (b0) b0.onclick = function (e) { e.preventDefault(); showDocumentSources(); };
+        return;
+      }
+      var s = rec.source || {};
+      var order = ["author", "title", "container_work", "publisher_or_journal", "year", "pages",
+        "identifier", "document_type", "retrieval_url", "wikipedia_access_date",
+        "retrieval_status", "retrieval_note", "retrieved_via_wayback", "is_public_domain", "local_cache_path"];
+      var kvRows = order
+        .filter(function (k) { return k in s; })
+        .map(function (k) {
+          var v = s[k];
+          var cell;
+          if (k === "local_cache_path" && v) {
+            var rel = String(v).replace(/^\/+/, "");
+            cell = '<a href="' + esc(rel) + '" target="_blank" rel="noopener">' + esc(v) + "</a>";
+          } else if (k === "retrieval_url" && v) {
+            cell = '<a href="' + esc(v) + '" target="_blank" rel="noopener">' + esc(v) + "</a>";
+          } else if (Array.isArray(v)) {
+            cell = esc(v.join(", "));
+          } else if (v === null || v === "" || v === undefined) {
+            cell = '<span class="muted">—</span>';
+          } else {
+            cell = esc(String(v));
+          }
+          return "<tr><th>" + esc(k.replace(/_/g, " ")) + "</th><td>" + cell + "</td></tr>";
+        })
+        .join("");
+
+      var citedBy = rec.refs
+        .map(function (r) {
+          return '<a href="#" class="src-ref" data-doc="' + esc(r.doc_id) + '" data-claim="' + esc(r.claim_id) + '">' +
+            esc(r.doc_title) + " · " + esc(r.claim_id) + "</a>";
+        })
+        .join("");
+
+      contentEl.innerHTML =
+        '<div class="sources">' +
+        '<div class="sub"><a href="#" class="status-link" id="back-ds">&larr; document sources</a></div>' +
+        "<h1>" + esc(s.title || "(untitled source document)") + "</h1>" +
+        '<div class="src-status-row">' +
+        badge(String(rec.status).replace(/_/g, " "), rec.status === "retrieved" ? "ok" : rec.status === "unreachable" ? "bad" : "neutral") +
+        (rec.origin ? " " + badge("document source: " + rec.origin, "neutral") : " " + badge("not retrieved", "neutral")) +
+        "</div>" +
+        '<table class="kv2">' + kvRows + "</table>" +
+        histBlock("Metadata lookups", s.metadata_history, true) +
+        histBlock("Retrieval history", s.retrieval_history, false) +
+        "<h2>Cited by</h2>" +
+        '<div class="sub">the citation(s) in Wikipedia articles that point to this source document</div>' +
+        '<div class="src-refs">' + citedBy + "</div>" +
+        "<h2>Cites</h2>" +
+        '<div class="sub">source documents this one cites, via its own citations — populated by phase 3 (following citations inside a source), which is not implemented yet</div>' +
+        "</div>";
+      wireSourceRefs();
+      var b = document.getElementById("back-ds");
+      if (b) b.onclick = function (e) { e.preventDefault(); showDocumentSources(); };
     });
   }
 
@@ -777,6 +954,15 @@
       showClaimList(decodeURIComponent(cm[1]));
       return true;
     }
+    if (h === "#sources") {
+      showDocumentSources();
+      return true;
+    }
+    var sm = h.match(/^#source\/(.+)$/);
+    if (sm) {
+      showSourceDocument(decodeURIComponent(sm[1]));
+      return true;
+    }
     var dm = h.match(/^#doc\/(.+)$/);
     if (dm) {
       var id = decodeURIComponent(dm[1]);
@@ -880,7 +1066,7 @@
         screen = "doc";
         contentEl.className = "content";
         setHash("#doc/" + encodeURIComponent(meta.id));
-        [btnHome, btnStats, btnFinder, btnUnreachable, btnRadiocarbon].forEach(function (b) {
+        [btnHome, btnStats, btnFinder, btnSources, btnUnreachable, btnRadiocarbon].forEach(function (b) {
           b.classList.remove("active");
         });
         toolbarEl.hidden = false;
@@ -909,6 +1095,7 @@
   btnHome.onclick = showHome;
   btnStats.onclick = showStats;
   btnFinder.onclick = showFinder;
+  btnSources.onclick = showDocumentSources;
   btnUnreachable.onclick = showUnreachable;
   btnRadiocarbon.onclick = showRadiocarbon;
   btnRendered.onclick = function () { view = "rendered"; draw(); };

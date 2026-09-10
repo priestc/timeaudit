@@ -371,6 +371,81 @@ async function computeSourceReport() {
   };
 }
 
+// The "document source" a source document was obtained from — Google Books, the
+// Wayback Machine, a publisher's own page, … — derived from the retrieval-history
+// step that actually succeeded.
+function documentSourceOf(s) {
+  if (!s || s.retrieval_status !== "retrieved") return null;
+  if (s.retrieved_via_wayback) return "Wayback Machine";
+  const hit = (s.retrieval_history || []).find((e) => e && e.result === "retrieved");
+  const via = hit ? String(hit.via || "") : "";
+  if (/wayback/i.test(via)) return "Wayback Machine";
+  if (/internet archive/i.test(via)) return "Internet Archive";
+  if (/google books/i.test(via)) return "Google Books";
+  if (/ncbi bioc/i.test(via)) return "NCBI BioC";
+  if (/europepmc/i.test(via)) return "Europe PMC";
+  if (/openalex/i.test(via)) return "OpenAlex";
+  if (/unpaywall/i.test(via)) return "Unpaywall";
+  if (/wikipedia archive/i.test(via)) return "Wikipedia archive link";
+  if (/doi landing/i.test(via)) return "DOI resolver";
+  if (/direct pdf/i.test(via)) return "Direct PDF link";
+  if (/cited url/i.test(via)) return "Publisher / web page";
+  return via || "cache";
+}
+
+// Corpus-wide: every distinct source document (a work cited by a Wikipedia
+// article), keyed by identity, with its metadata, its "document source"
+// (origin), retrieval status, and every article + claim that cites it. Powers
+// both the "browse by document source" page and each source document's own
+// detail page.
+async function computeSourceDocuments() {
+  const list = await backend.list();
+  const byKey = new Map();
+
+  for (const f of list) {
+    let data;
+    try {
+      data = JSON.parse(await backend.read(f.id));
+    } catch {
+      continue;
+    }
+    if (!Array.isArray(data.claims)) continue;
+    const docTitle = (data.page && data.page.title) || f.title;
+
+    for (const c of data.claims) {
+      for (const h of c.citation_chain || []) {
+        const s = h.source || {};
+        const key = sourceKey(s);
+        if (!key) continue;
+        if (!byKey.has(key)) {
+          byKey.set(key, {
+            key,
+            source: s,
+            origin: documentSourceOf(s),
+            status: s.retrieval_status || "not_verified",
+            refs: [],
+          });
+        }
+        const rec = byKey.get(key);
+        // keep the richest metadata seen for this key
+        if ((s.title || "").length > (rec.source.title || "").length) rec.source = s;
+        if (!rec.origin) rec.origin = documentSourceOf(s);
+        rec.refs.push({
+          doc_id: f.id,
+          doc_title: docTitle,
+          claim_id: c.claim_id,
+          cited_by: h.cited_by || null,
+        });
+      }
+    }
+  }
+  return [...byKey.values()].sort(
+    (a, b) =>
+      String(a.origin || "~").localeCompare(String(b.origin || "~")) ||
+      (a.source.title || "").localeCompare(b.source.title || "")
+  );
+}
+
 // Corpus-wide: every claim, grouped by status, so the stats page's "claims by
 // status" rows can each open a list that renders each claim with the same
 // template as the document page. Each entry carries the whole claim object.
@@ -416,6 +491,9 @@ const server = http.createServer(async (req, res) => {
     }
     if (pathname === "/api/claims") {
       return send(res, 200, "application/json", JSON.stringify(await computeClaimsByStatus()));
+    }
+    if (pathname === "/api/source-documents") {
+      return send(res, 200, "application/json", JSON.stringify(await computeSourceDocuments()));
     }
     // "claim finder" — run the real extractor (lib/wiki.js) on an arbitrary URL
     if (pathname === "/api/find-claims") {
