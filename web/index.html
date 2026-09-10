@@ -62,6 +62,7 @@
   .claimlist-bar{flex:none;display:flex;align-items:center;gap:10px;flex-wrap:wrap;
     padding:9px 16px;border-bottom:1px solid var(--border);background:var(--sidebar);font-size:.85rem}
   .claimlist-bar .sub{color:var(--muted);margin:0}
+  .claimlist-bar .cl-origin{font-size:.82rem;color:var(--muted)}
   #frame{width:100%;height:100%;border:0;display:block;background:var(--bg)}
   .empty{color:var(--muted);padding:60px 24px;text-align:center}
   pre.raw{max-width:920px;margin:0 auto;padding:20px;white-space:pre-wrap;word-break:break-word;
@@ -260,6 +261,26 @@
   }
   function badge(text, kind) {
     return '<span class="badge badge-' + esc(kind || "neutral") + '">' + esc(text) + "</span>";
+  }
+
+  // where a retrieved source document was obtained from (mirrors serve.js)
+  function documentSourceOf(s) {
+    if (!s || s.retrieval_status !== "retrieved") return null;
+    if (s.retrieved_via_wayback) return "Wayback Machine";
+    var hit = (s.retrieval_history || []).filter(function (e) { return e && e.result === "retrieved"; })[0];
+    var via = hit ? String(hit.via || "") : "";
+    if (/wayback/i.test(via)) return "Wayback Machine";
+    if (/internet archive/i.test(via)) return "Internet Archive";
+    if (/google books/i.test(via)) return "Google Books";
+    if (/ncbi bioc/i.test(via)) return "NCBI BioC";
+    if (/europepmc/i.test(via)) return "Europe PMC";
+    if (/openalex/i.test(via)) return "OpenAlex";
+    if (/unpaywall/i.test(via)) return "Unpaywall";
+    if (/wikipedia archive/i.test(via)) return "Wikipedia archive link";
+    if (/doi landing/i.test(via)) return "DOI resolver";
+    if (/direct pdf/i.test(via)) return "Direct PDF link";
+    if (/cited url/i.test(via)) return "Publisher / web page";
+    return via || "cache";
   }
 
   function fetchJSON(url) {
@@ -482,11 +503,28 @@
             '<div class="empty">No claim ' + esc(claimId) + " in " + esc(artTitle) + ".</div></div>";
           return;
         }
+        // the document source(s) this claim's retrieved source document(s) came from
+        var origins = [];
+        (claim.citation_chain || []).forEach(function (h) {
+          var o = documentSourceOf(h.source || {});
+          if (o && origins.indexOf(o) === -1) origins.push(o);
+        });
+        var originHtml = origins.length
+          ? " <span class=\"cl-origin\">document source: " +
+            origins
+              .map(function (o) {
+                return '<a href="#docsource/' + encodeURIComponent(o) + '" class="status-link">' + esc(o) + "</a>";
+              })
+              .join(", ") +
+            "</span>"
+          : "";
+
         contentEl.className = "content framed";
         contentEl.innerHTML =
           '<div class="claimlist-bar">' +
           '<a href="#doc/' + encodeURIComponent(docId) + '" class="status-link" id="back-art">&larr; ' + esc(artTitle) + "</a>" +
           "<b>" + esc(claimId) + "</b>" +
+          originHtml +
           '<span class="sub">this page’s URL links straight to this claim</span></div>';
         var frame = document.createElement("iframe");
         frame.id = "frame";
@@ -499,7 +537,7 @@
         };
         var sctx = {};
         if (ctx && ctx[claimId]) sctx[claimId] = ctx[claimId];
-        frame.srcdoc = ChronoRender.renderDocument(synth, { context: sctx });
+        frame.srcdoc = ChronoRender.renderDocument(synth, { context: sctx, hideSummary: true });
         var back = document.getElementById("back-art");
         if (back && meta) back.onclick = function (e) { e.preventDefault(); load(meta, claimId); };
       })
@@ -646,10 +684,11 @@
     );
   }
 
-  function showDocumentSources() {
+  // `only` (optional): show just that one document source's documents
+  function showDocumentSources(only) {
     setNav("sources");
-    setHash("#sources");
-    document.title = "Document sources — Chronology Browser";
+    setHash(only ? "#docsource/" + encodeURIComponent(only) : "#sources");
+    document.title = (only ? only + " — " : "") + "Document sources — Chronology Browser";
     withSourceDocs(function (recs) {
       var groups = {};
       recs.forEach(function (r) {
@@ -661,20 +700,27 @@
         if (b === "not retrieved") return -1;
         return a.localeCompare(b);
       });
+      if (only) names = names.filter(function (g) { return g === only; });
       contentEl.innerHTML =
-        '<div class="sources"><h1>Document sources</h1>' +
-        '<div class="sub">every source document a Wikipedia article cites, grouped by where it was obtained</div>' +
-        names
-          .map(function (g) {
-            var rows = groups[g].slice().sort(function (a, b) {
-              return (a.source.title || "").localeCompare(b.source.title || "");
-            });
-            return (
-              '<h2>' + esc(g) + " <span class=\"sub\" style=\"font-weight:400\">(" + rows.length + ")</span></h2>" +
-              '<ul class="src-list">' + rows.map(srcDocRow).join("") + "</ul>"
-            );
-          })
-          .join("") +
+        '<div class="sources">' +
+        (only
+          ? '<div class="sub"><a href="#sources" class="status-link">&larr; all document sources</a></div><h1>' + esc(only) + "</h1>" +
+            '<div class="sub">every source document obtained from ' + esc(only) + "</div>"
+          : "<h1>Document sources</h1>" +
+            '<div class="sub">every source document a Wikipedia article cites, grouped by where it was obtained</div>') +
+        (names.length
+          ? names
+              .map(function (g) {
+                var rows = groups[g].slice().sort(function (a, b) {
+                  return (a.source.title || "").localeCompare(b.source.title || "");
+                });
+                return (
+                  (only ? "" : '<h2>' + esc(g) + " <span class=\"sub\" style=\"font-weight:400\">(" + rows.length + ")</span></h2>") +
+                  '<ul class="src-list">' + rows.map(srcDocRow).join("") + "</ul>"
+                );
+              })
+              .join("")
+          : '<div class="empty">No source documents from ' + esc(only || "") + ".</div>") +
         "</div>";
     });
   }
@@ -1005,6 +1051,8 @@
       return true;
     }
     if (h === "#sources") { showDocumentSources(); return true; }
+    var dsm = h.match(/^#docsource\/(.+)$/);
+    if (dsm) { showDocumentSources(decodeURIComponent(dsm[1])); return true; }
     if (h === "#stats") { showStats(); return true; }
     if (h === "#unreachable") { showUnreachable(); return true; }
     if (h === "#radiocarbon") { showRadiocarbon(); return true; }
