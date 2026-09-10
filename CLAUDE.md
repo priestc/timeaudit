@@ -8,7 +8,7 @@ Tools for viewing **Wikipedia Chronology Extraction Protocol** JSON files (see
 - `lib/render.js` — shared renderer (JSON → HTML), runs in Node and the browser
 - `json-to-html.js` — CLI: convert one JSON file (or a directory) to standalone HTML
 - `build.js` — batch-render the whole project to a static `dist/` site + gallery
-- `serve.js` + `web/index.html` — the web service: reads chronology JSON documents
+- `serve.js` — the web service (server-rendered pages, one URL each): reads chronology JSON documents
   from a directory (default) or from Firestore, and serves a browsable UI that
   renders any of them on the fly
 - `db.js` + `lib/firebase.js` + `lib/store.js` — store the raw JSON in a Google
@@ -165,7 +165,7 @@ ssh tank2 'curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8090/'
 
 ```bash
 # 1. copy the working tree to tank2 (run from the repo root on the dev machine)
-rsync -az --include 'web/' --include 'web/index.html' \
+rsync -az \
   --exclude '.git' --exclude 'node_modules' --exclude 'dist' \
   --exclude 'scratchpad' --exclude '*.html' --exclude '.env' \
   ./ tank2:/home/chris/timeaudit/
@@ -182,7 +182,7 @@ ssh tank2 'systemctl --user enable --now timeaudit.service'
 
 ```bash
 # from the repo root on the dev machine:
-rsync -az --include 'web/' --include 'web/index.html' \
+rsync -az \
   --exclude '.git' --exclude 'node_modules' --exclude 'dist' \
   --exclude 'scratchpad' --exclude '*.html' --exclude '.env' \
   ./ tank2:/home/chris/timeaudit/

@@ -34,15 +34,21 @@ time.
 npm run serve          # or: node serve.js --port 8080 --dir .
 ```
 
-Open <http://localhost:8080/>. The server scans the given directory (default:
-current dir) for chronology JSON files and lists them in a sidebar. Pick one to
-see it rendered; toggle **Raw JSON**; **Download HTML** saves a standalone file.
+Open <http://localhost:8080/>. Every view is its own server-rendered page with
+its own URL (no single-page app), so any of them can be reloaded or shared:
 
-**Statistics** (top of the sidebar, or `/api/stats`) aggregates every page
-document: total claims, the resolved / pending / dead-end percentage
-breakdown, a split by `generator.mode`, and a per-document table.
+| URL | Page |
+| --- | --- |
+| `/article/<id>` · `/article/<id>/raw` | a Wikipedia article's report / its raw JSON |
+| `/article/<id>/<claim-id>` | one claim on its own |
+| `/claims/<status>` | every claim of a status, across all articles |
+| `/statistics` | corpus-wide stats |
+| `/document-sources` · `/document-sources/<origin>` | source documents grouped by where they were fetched from |
+| `/source-document/<id>` | one source document — metadata, retrieval history, what cites it |
+| `/unreachable` · `/radiocarbon` | source-document lists |
+| `/claim-finder?url=…` | run the claim extractor on any Wikipedia URL |
 
-**Claim finder** (sidebar, or `/api/find-claims?url=…`) runs the analysis
+**Claim finder** runs the analysis
 extractor (`lib/wiki.js` — the same code `timeaudit` uses) on any Wikipedia URL
 and lists every claim it detects, each with its section, inline `[n]` markers,
 1450 CE cutoff reasoning, and resolved citation footnotes, plus the
@@ -97,9 +103,8 @@ node serve.js --source firestore   # serve the web UI from the DB instead of dis
 | `lib/env.js`    | minimal `.env` loader (Node 18 has no `--env-file`)         |
 | `json-to-html.js` | CLI: single file / directory → standalone HTML           |
 | `build.js`      | batch build + gallery into `dist/`                          |
-| `serve.js`      | web service backing the browse UI (filesystem or Firestore) |
+| `serve.js`      | web service — server-rendered pages, one URL each (filesystem or Firestore) |
 | `db.js`         | sync JSON files ⇄ Firestore                                 |
-| `web/index.html`| the browse UI                                               |
 
 Deployment to the **tank2** server (systemd, auto-start on boot) is documented in
 [`CLAUDE.md`](./CLAUDE.md).
