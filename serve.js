@@ -604,11 +604,6 @@ const LAYOUT_CSS = [
   ".fr-sec{font-size:.72rem;text-transform:uppercase;letter-spacing:.04em;color:var(--muted);margin-bottom:4px}",
   ".fr-drop{color:#b91c1c;font-weight:700;text-transform:none;margin-left:6px}",
   ".hstat{margin-top:14px;font:12.5px/1.5 ui-monospace,Menlo,monospace;color:var(--muted);white-space:pre-wrap}",
-  ".dsrow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 18px;padding:10px 14px;border:1px solid var(--border);border-radius:10px;background:var(--card)}",
-  ".dsrow .lbl{font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:700}",
-  ".dsrow a.ds{font-weight:600;text-decoration:none;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:3px 12px;font-size:.85rem}",
-  ".dsrow a.ds:hover{background:var(--accent);color:#fff}",
-  ".dsrow .none{color:var(--muted);font-style:italic;font-size:.85rem}",
 ].join("\n");
 
 async function shell({ title, active, activeId, main, script }) {
@@ -687,7 +682,14 @@ async function pageArticle(id, raw) {
     body = '<div class="wrap"><pre class="raw">' + E(JSON.stringify(data, null, 2)) + "</pre></div>";
   } else {
     const ctx = await contextFor(id, data);
-    body = '<div class="wrap">' + ChronoRender.renderBody(data, { context: ctx, claimBase: "/article/" + encodeURIComponent(id) + "/" }) + "</div>";
+    body =
+      '<div class="wrap">' +
+      ChronoRender.renderBody(data, {
+        context: ctx,
+        claimBase: "/article/" + encodeURIComponent(id) + "/",
+        docSourceBase: "/document-sources/",
+      }) +
+      "</div>";
   }
   const script =
     "var b=document.getElementById('reana'),s=document.getElementById('hs');" +
@@ -712,19 +714,6 @@ async function pageClaim(id, claimId) {
       main: '<div class="pg"><div class="empty">No claim ' + E(claimId) + " in " + E(title) + ".</div></div>",
     });
   }
-  const origins = [];
-  (claim.citation_chain || []).forEach((h) => {
-    const o = documentSourceOf(h.source || {});
-    if (o && origins.indexOf(o) === -1) origins.push(o);
-  });
-  const dsRow =
-    '<div class="dsrow"><span class="lbl">Document source</span>' +
-    (origins.length
-      ? origins
-          .map((o) => '<a class="ds" href="/document-sources/' + encodeURIComponent(o) + '">' + E(o) + " \u2192</a>")
-          .join("")
-      : '<span class="none">no source document was retrieved for this claim</span>') +
-    "</div>";
   const ctx = await contextFor(id, data);
   const sctx = {};
   if (ctx[claimId]) sctx[claimId] = ctx[claimId];
@@ -737,7 +726,10 @@ async function pageClaim(id, claimId) {
   const bar =
     '<div class="ta-bar"><a href="/article/' + encodeURIComponent(id) + '">\u2190 ' + E(title) + "</a><b>" + E(claimId) +
     '</b><span class="sub">this page\u2019s URL links straight to this claim</span></div>';
-  const body = '<div class="wrap">' + dsRow + ChronoRender.renderBody(synth, { context: sctx, hideSummary: true }) + "</div>";
+  const body =
+    '<div class="wrap">' +
+    ChronoRender.renderBody(synth, { context: sctx, hideSummary: true, docSourceBase: "/document-sources/" }) +
+    "</div>";
   return htmlPage({ title: claimId + " \u00b7 " + title, active: null, activeId: id, main: bar + body });
 }
 
@@ -758,7 +750,11 @@ async function pageClaimsByStatus(status) {
     body +=
       '<h2 style="margin-top:34px"><a href="/article/' + encodeURIComponent(docId) + '" style="color:var(--accent);text-decoration:none">' +
       E(g.title) + "</a></h2>" +
-      ChronoRender.renderBody(synth, { claimBase: "/article/" + encodeURIComponent(docId) + "/", hideSummary: true }).replace(
+      ChronoRender.renderBody(synth, {
+        claimBase: "/article/" + encodeURIComponent(docId) + "/",
+        hideSummary: true,
+        docSourceBase: "/document-sources/",
+      }).replace(
         /^<header class="doc-head">[\s\S]*?<\/header>/,
         ""
       );
