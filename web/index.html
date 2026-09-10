@@ -373,7 +373,7 @@
 
   function showStats() {
     setNav("stats");
-    clearHash();
+    setHash("#stats");
     document.title = "Statistics — Chronology Browser";
     contentEl.innerHTML = '<div class="empty">Loading statistics…</div>';
     fetchJSON("/api/stats")
@@ -459,6 +459,56 @@
     if (meta) load(meta, d.timeauditOpenClaim);
   });
 
+  // one claim on its own shareable page (#claim/<articleId>/<claimId>) —
+  // rendered with the full document template, plus its surrounding context
+  function showClaim(docId, claimId) {
+    setNav("claim");
+    setHash("#claim/" + encodeURIComponent(docId) + "/" + encodeURIComponent(claimId));
+    var meta = files.filter(function (f) { return f.id === docId; })[0];
+    document.title = claimId + (meta ? " · " + meta.title : "") + " — Chronology Browser";
+    contentEl.innerHTML = '<div class="empty">Loading claim…</div>';
+    Promise.all([
+      fetchJSON("/api/file?id=" + encodeURIComponent(docId)),
+      fetchJSON("/api/context?id=" + encodeURIComponent(docId)).catch(function () { return {}; }),
+    ])
+      .then(function (r) {
+        var data = r[0], ctx = r[1] || {};
+        var claim = (data.claims || []).filter(function (c) { return c.claim_id === claimId; })[0];
+        var artTitle = (data.page && data.page.title) || (meta && meta.title) || docId;
+        if (!claim) {
+          contentEl.className = "content";
+          contentEl.innerHTML =
+            '<div class="sources"><h1>' + esc(claimId) + "</h1>" +
+            '<div class="empty">No claim ' + esc(claimId) + " in " + esc(artTitle) + ".</div></div>";
+          return;
+        }
+        contentEl.className = "content framed";
+        contentEl.innerHTML =
+          '<div class="claimlist-bar">' +
+          '<a href="#doc/' + encodeURIComponent(docId) + '" class="status-link" id="back-art">&larr; ' + esc(artTitle) + "</a>" +
+          "<b>" + esc(claimId) + "</b>" +
+          '<span class="sub">this page’s URL links straight to this claim</span></div>';
+        var frame = document.createElement("iframe");
+        frame.id = "frame";
+        contentEl.appendChild(frame);
+        var synth = {
+          schema_version: data.schema_version,
+          generator: data.generator,
+          page: { title: artTitle + " · " + claimId, url: data.page && data.page.url },
+          claims: [claim],
+        };
+        var sctx = {};
+        if (ctx && ctx[claimId]) sctx[claimId] = ctx[claimId];
+        frame.srcdoc = ChronoRender.renderDocument(synth, { context: sctx });
+        var back = document.getElementById("back-art");
+        if (back && meta) back.onclick = function (e) { e.preventDefault(); load(meta, claimId); };
+      })
+      .catch(function (e) {
+        contentEl.className = "content";
+        contentEl.innerHTML = '<div class="empty">Failed to load claim: ' + esc(e.message) + "</div>";
+      });
+  }
+
   /* ---- sources: unreachable / validated, across the whole corpus ------ */
 
   function srcRefs(refs) {
@@ -538,7 +588,7 @@
 
   function showUnreachable() {
     setNav("unreachable");
-    clearHash();
+    setHash("#unreachable");
     document.title = "Unreachable sources — Chronology Browser";
     withSources(function (d) {
       contentEl.innerHTML = renderSourceList(
@@ -553,7 +603,7 @@
 
   function showRadiocarbon() {
     setNav("radiocarbon");
-    clearHash();
+    setHash("#radiocarbon");
     document.title = "Radiocarbon sources — Chronology Browser";
     withSources(function (d) {
       var rc = (d.validated || []).filter(function (e) { return e.terminal_type === "radiocarbon"; });
@@ -954,13 +1004,18 @@
       showClaimList(decodeURIComponent(cm[1]));
       return true;
     }
-    if (h === "#sources") {
-      showDocumentSources();
-      return true;
-    }
+    if (h === "#sources") { showDocumentSources(); return true; }
+    if (h === "#stats") { showStats(); return true; }
+    if (h === "#unreachable") { showUnreachable(); return true; }
+    if (h === "#radiocarbon") { showRadiocarbon(); return true; }
     var sm = h.match(/^#source\/(.+)$/);
     if (sm) {
       showSourceDocument(decodeURIComponent(sm[1]));
+      return true;
+    }
+    var clm = h.match(/^#claim\/([^/]+)\/(.+)$/);
+    if (clm) {
+      showClaim(decodeURIComponent(clm[1]), decodeURIComponent(clm[2]));
       return true;
     }
     var dm = h.match(/^#doc\/(.+)$/);
@@ -1040,7 +1095,10 @@
           } catch (e) {}
         });
       }
-      frame.srcdoc = ChronoRender.renderDocument(current.data, { context: current.context || {} });
+      frame.srcdoc = ChronoRender.renderDocument(current.data, {
+        context: current.context || {},
+        docId: current.meta.id,
+      });
     }
   }
   var pendingScrollTo = null; // claim_id to scroll to on the next iframe load
