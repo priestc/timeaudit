@@ -57,7 +57,10 @@ function fsList() {
       return;
     }
     for (const name of names) {
-      if (name.startsWith(".") || name === "node_modules" || name === "dist") continue;
+      // source-cache/ holds cached PDFs/HTML + retrieval-history .meta.json
+      // sidecars, never a chronology report — skip it rather than
+      // read+parse+discard every sidecar on every request
+      if (name.startsWith(".") || name === "node_modules" || name === "dist" || name === "source-cache") continue;
       const full = path.join(dir, name);
       let st;
       try {
@@ -129,6 +132,42 @@ const backend =
     ? { name: "firestore", list: dbList, read: dbRead }
     : { name: "filesystem", list: async () => fsList(), read: async (id) => fsRead(id) };
 
+/*
+ * In-process cache over the backend. There's no query filtering anywhere
+ * here (no `where()`) — every page just wants "the whole corpus", so
+ * Firestore composite indexes wouldn't help. What was actually slow: the
+ * sidebar's article list is built by backend.list() on *every* page render,
+ * and the statistics / document-sources / claims-by-status / unreachable /
+ * radiocarbon pages each call backend.list() again and then backend.read()
+ * every document in a loop (N+1). Against the firestore backend that's a
+ * full collection scan (pulling every doc's full raw_json over the network
+ * just to show a title in the sidebar) plus one getDoc round trip per
+ * document — repeated from scratch on every single request. The corpus only
+ * changes when a re-analyze job finishes, so a short TTL cache removes
+ * nearly all of that network/IO for ordinary browsing while still picking
+ * up new/changed reports on its own shortly after.
+ */
+const CACHE_TTL_MS = 20000;
+let listCache = null; // { at, data }
+const docCache = new Map(); // id -> { at, raw }
+function invalidateCache() {
+  listCache = null;
+  docCache.clear();
+}
+async function cachedList() {
+  if (listCache && Date.now() - listCache.at < CACHE_TTL_MS) return listCache.data;
+  const data = await backend.list();
+  listCache = { at: Date.now(), data };
+  return data;
+}
+async function cachedRead(id) {
+  const hit = docCache.get(id);
+  if (hit && Date.now() - hit.at < CACHE_TTL_MS) return hit.raw;
+  const raw = await backend.read(id);
+  docCache.set(id, { at: Date.now(), raw });
+  return raw;
+}
+
 function send(res, code, type, body) {
   res.writeHead(code, { "Content-Type": type, "Cache-Control": "no-store" });
   res.end(body);
@@ -136,11 +175,11 @@ function send(res, code, type, body) {
 
 // parsed report whose page title slugifies to `slug` (for on-demand shot gen)
 async function reportForSlug(slug) {
-  for (const f of await backend.list()) {
+  for (const f of await cachedList()) {
     const cand = String(f.id).replace(/\.json$/i, "");
     if (cand !== slug && slugify(f.title) !== slug) continue;
     try {
-      const raw = await backend.read(f.id);
+      const raw = await cachedRead(f.id);
       const data = JSON.parse(raw);
       if (Array.isArray(data.claims)) return data;
     } catch {
@@ -244,6 +283,10 @@ function startTimeauditJob(jobKey, url, opts) {
     job.running = false;
     job.ok = code === 0;
     job.finishedAt = Date.now();
+    // the run happens in a separate process (its own db.js push, if any), so
+    // the cache can't see the write coming — drop it so the next request
+    // picks up the new/changed report immediately instead of waiting out the TTL
+    if (code === 0) invalidateCache();
   });
   child.on("error", (e) => {
     job.running = false;
@@ -258,7 +301,7 @@ const STATUS_ORDER = ["retrieved", "dead_end", "no_source", "resolved", "pending
 
 // Aggregate every page document into corpus-wide statistics.
 async function computeStats() {
-  const list = await backend.list();
+  const list = await cachedList();
   const byStatus = {};
   const byMode = {};
   const perDoc = [];
@@ -267,7 +310,7 @@ async function computeStats() {
   for (const f of list) {
     let raw;
     try {
-      raw = await backend.read(f.id);
+      raw = await cachedRead(f.id);
     } catch {
       continue;
     }
@@ -332,14 +375,14 @@ function sourceKey(s) {
 // stays empty until phase 3 is implemented), each with backlinks to the
 // claim(s)/document(s) that cite it.
 async function computeSourceReport() {
-  const list = await backend.list();
+  const list = await cachedList();
   const unreachable = new Map();
   const validated = new Map();
 
   for (const f of list) {
     let raw, data;
     try {
-      raw = await backend.read(f.id);
+      raw = await cachedRead(f.id);
       data = JSON.parse(raw);
     } catch {
       continue;
@@ -422,13 +465,13 @@ function documentSourceOf(s) {
 // both the "browse by document source" page and each source document's own
 // detail page.
 async function computeSourceDocuments() {
-  const list = await backend.list();
+  const list = await cachedList();
   const byKey = new Map();
 
   for (const f of list) {
     let data;
     try {
-      data = JSON.parse(await backend.read(f.id));
+      data = JSON.parse(await cachedRead(f.id));
     } catch {
       continue;
     }
@@ -473,12 +516,12 @@ async function computeSourceDocuments() {
 // status" rows can each open a list that renders each claim with the same
 // template as the document page. Each entry carries the whole claim object.
 async function computeClaimsByStatus() {
-  const list = await backend.list();
+  const list = await cachedList();
   const groups = {}; // status -> [ {doc_id, doc_title, claim} ]
   for (const f of list) {
     let data;
     try {
-      data = JSON.parse(await backend.read(f.id));
+      data = JSON.parse(await cachedRead(f.id));
     } catch {
       continue;
     }
@@ -508,7 +551,7 @@ async function readDoc(id) {
   // firestore ids are slugs; filesystem ids carry ".json" — accept either
   for (const cand of id.endsWith(".json") ? [id] : [id, id + ".json"]) {
     try {
-      const raw = await backend.read(cand);
+      const raw = await cachedRead(cand);
       if (raw == null) continue;
       const d = JSON.parse(raw);
       if (isDoc(d)) return d;
@@ -609,7 +652,7 @@ const LAYOUT_CSS = [
 async function shell({ title, active, activeId, main, script }) {
   let list = [];
   try {
-    list = await backend.list();
+    list = await cachedList();
   } catch {
     /* empty */
   }
@@ -1048,7 +1091,7 @@ const server = http.createServer(async (req, res) => {
       return send(res, 200, "text/javascript; charset=utf-8", fs.readFileSync(path.join(ROOT, "lib", "render.js")));
     }
     if (pathname === "/api/files") {
-      return send(res, 200, "application/json", JSON.stringify(await backend.list()));
+      return send(res, 200, "application/json", JSON.stringify(await cachedList()));
     }
     if (pathname === "/api/stats") {
       return send(res, 200, "application/json", JSON.stringify(await computeStats()));
@@ -1132,7 +1175,7 @@ const server = http.createServer(async (req, res) => {
       );
     }
     if (pathname === "/api/file") {
-      const raw = await backend.read(url.searchParams.get("id") || "");
+      const raw = await cachedRead(url.searchParams.get("id") || "");
       if (raw == null) return send(res, 404, "text/plain", "not found");
       return send(res, 200, "application/json", raw);
     }
@@ -1140,7 +1183,7 @@ const server = http.createServer(async (req, res) => {
     // — derived from the cached wiki page, {} if there isn't one (ai-only mode).
     if (pathname === "/api/context") {
       const id = url.searchParams.get("id") || "";
-      const raw = await backend.read(id);
+      const raw = await cachedRead(id);
       if (raw == null) return send(res, 404, "application/json", JSON.stringify({ error: "document not found" }));
       let data;
       try {
@@ -1160,7 +1203,7 @@ const server = http.createServer(async (req, res) => {
     // Wikipedia URL, overwriting it in place once the run finishes.
     if (pathname === "/api/reanalyze" && req.method === "POST") {
       const id = url.searchParams.get("id") || "";
-      const raw = await backend.read(id);
+      const raw = await cachedRead(id);
       if (raw == null) return send(res, 404, "application/json", JSON.stringify({ error: "document not found" }));
       let data;
       try {
@@ -1255,7 +1298,7 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, async () => {
   let n = "?";
   try {
-    n = (await backend.list()).length;
+    n = (await cachedList()).length;
   } catch (e) {
     process.stderr.write("warning: could not read " + backend.name + " source: " + e.message + "\n");
   }
