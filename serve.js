@@ -28,14 +28,22 @@ const wiki = require("./lib/wiki");
 const { slugify } = wiki;
 const { buildContextMap } = require("./lib/context");
 
-let PORT = 8080;
+let PORT = parseInt(process.env.PORT, 10) || 8080; // Cloud Run (and most PaaS) inject PORT
 let DIR = process.cwd();
 let SOURCE = process.env.TIMEAUDIT_SOURCE || "filesystem";
+// Public mode: for a deploy reachable from the internet. Disables everything
+// that spawns timeaudit.js (full extraction pipeline: live Wikipedia +
+// academic-source fetches, disk writes, a Firestore push) or makes an
+// arbitrary outbound fetch on a visitor's behalf (claim finder) — a public
+// free-tier host has no auth in front of it, so none of that can be exposed.
+// The site becomes a pure read-only browser of whatever is already in the DB.
+let PUBLIC = /^(1|true|yes)$/i.test(process.env.TIMEAUDIT_PUBLIC || "");
 const argv = process.argv.slice(2);
 for (let i = 0; i < argv.length; i++) {
   if (argv[i] === "--port") PORT = parseInt(argv[++i], 10);
   else if (argv[i] === "--dir") DIR = path.resolve(argv[++i]);
   else if (argv[i] === "--source") SOURCE = argv[++i];
+  else if (argv[i] === "--public") PUBLIC = true;
 }
 
 const ROOT = __dirname;
@@ -571,7 +579,9 @@ async function contextFor(id, data) {
 const NAV = [
   ["/", "\uD83C\uDFE0 Home", "home"],
   ["/statistics", "\uD83D\uDCCA Statistics", "stats"],
-  ["/claim-finder", "\uD83D\uDD0E Claim finder", "finder"],
+  // claim finder runs a live fetch against whatever URL a visitor supplies \u2014
+  // not offered on a public deploy (see PUBLIC above)
+  ...(PUBLIC ? [] : [["/claim-finder", "\uD83D\uDD0E Claim finder", "finder"]]),
   ["/document-sources", "\uD83D\uDCDA Document sources", "sources"],
   ["/unreachable", "\uD83D\uDEAB Unreachable sources", "unreachable"],
   ["/radiocarbon", "\u2622\uFE0F Radiocarbon sources", "radiocarbon"],
@@ -686,6 +696,13 @@ const htmlPage = (o) => shell(o).then((h) => ["text/html; charset=utf-8", h]);
 /* -------------------------------- pages --------------------------------- */
 
 function pageHome() {
+  if (PUBLIC) {
+    const main =
+      '<div class="pg"><h1>Wikipedia Chronology Extraction</h1>' +
+      '<div class="sub">A browsable audit trail for dated historical claims on Wikipedia \u2014 what each one cites, and whether that source could be retrieved.</div>' +
+      '<p class="sub" style="margin-top:26px">Pick a Wikipedia article from the list on the left to see its report, or use the pages in the nav.</p></div>';
+    return htmlPage({ title: "Home", active: "home", main });
+  }
   const main =
     '<div class="pg"><h1>Add a Wikipedia article</h1>' +
     '<div class="sub">Paste a Wikipedia URL. It is run through the full extraction pipeline and added to the database.</div>' +
@@ -718,7 +735,7 @@ async function pageArticle(id, raw) {
       ? '<a href="/article/' + encodeURIComponent(id) + '">Rendered</a><a class="on">Raw JSON</a>'
       : '<a class="on">Rendered</a><a href="/article/' + encodeURIComponent(id) + '/raw">Raw JSON</a>') +
     '<a href="/article/' + encodeURIComponent(id) + '/download" download>Download HTML</a>' +
-    '<button id="reana">\uD83D\uDD04 Re-analyze</button>' +
+    (PUBLIC ? "" : '<button id="reana">\uD83D\uDD04 Re-analyze</button>') +
     '<span class="hstat" id="hs" style="margin:0 0 0 auto;font-size:.78rem"></span></div>';
   let body;
   if (raw) {
@@ -735,14 +752,15 @@ async function pageArticle(id, raw) {
       }) +
       "</div>";
   }
-  const script =
-    "var b=document.getElementById('reana'),s=document.getElementById('hs');" +
-    "b.onclick=function(){b.disabled=true;s.textContent='re-analyzing \\u2026';" +
-    "fetch('/api/reanalyze?id=" + encodeURIComponent(id).replace(/'/g, "%27") + "',{method:'POST'}).then(function(r){return r.json();}).then(function(){" +
-    "var t=setInterval(function(){fetch('/api/reanalyze/status?id=" + encodeURIComponent(id).replace(/'/g, "%27") + "').then(function(r){return r.json();}).then(function(j){" +
-    "s.textContent=(j.log||[]).slice(-1)[0]||'re-analyzing \\u2026';" +
-    "if(j&&!j.running){clearInterval(t);location.reload();}});},2000);" +
-    "}).catch(function(e){s.textContent='error: '+e.message;b.disabled=false;});};";
+  const script = PUBLIC
+    ? ""
+    : "var b=document.getElementById('reana'),s=document.getElementById('hs');" +
+      "b.onclick=function(){b.disabled=true;s.textContent='re-analyzing \\u2026';" +
+      "fetch('/api/reanalyze?id=" + encodeURIComponent(id).replace(/'/g, "%27") + "',{method:'POST'}).then(function(r){return r.json();}).then(function(){" +
+      "var t=setInterval(function(){fetch('/api/reanalyze/status?id=" + encodeURIComponent(id).replace(/'/g, "%27") + "').then(function(r){return r.json();}).then(function(j){" +
+      "s.textContent=(j.log||[]).slice(-1)[0]||'re-analyzing \\u2026';" +
+      "if(j&&!j.running){clearInterval(t);location.reload();}});},2000);" +
+      "}).catch(function(e){s.textContent='error: '+e.message;b.disabled=false;});};";
   return htmlPage({ title: title + (raw ? " (raw)" : ""), active: null, activeId: id, main: toolbar + body, script });
 }
 
@@ -1069,7 +1087,7 @@ const server = http.createServer(async (req, res) => {
       else if ((m = pathname.match(/^\/claims\/([^/]+)$/))) pg = pageClaimsByStatus(m[1]);
       else if (pathname === "/unreachable") pg = pageUnreachable();
       else if (pathname === "/radiocarbon") pg = pageRadiocarbon();
-      else if (pathname === "/claim-finder") pg = pageClaimFinder(url.searchParams.get("url") || "");
+      else if (pathname === "/claim-finder" && !PUBLIC) pg = pageClaimFinder(url.searchParams.get("url") || "");
       else if ((m = pathname.match(/^\/article\/([^/]+)\/raw$/))) pg = pageArticle(m[1], true);
       else if ((m = pathname.match(/^\/article\/([^/]+)\/download$/))) {
         const data = await readDoc(m[1]);
@@ -1106,74 +1124,6 @@ const server = http.createServer(async (req, res) => {
       return send(res, 200, "application/json", JSON.stringify(await computeSourceDocuments()));
     }
     // "claim finder" — run the real extractor (lib/wiki.js) on an arbitrary URL
-    if (pathname === "/api/find-claims") {
-      const target = url.searchParams.get("url") || "";
-      try {
-        wiki.parseWikiUrl(target);
-      } catch (e) {
-        return send(res, 400, "application/json", JSON.stringify({ error: e.message }));
-      }
-      let page;
-      try {
-        page = await wiki.fetchPage(target);
-      } catch (e) {
-        return send(res, 502, "application/json", JSON.stringify({ error: e.message }));
-      }
-      const refIdx = wiki.buildReferenceIndex(page.html);
-      const { claims, rejected } = wiki.extractClaims(page, { maxClaims: 600, includeRejected: true });
-      const shapeMarker = (mk) => {
-        const noteOnly = refIdx.isNoteOnly(mk.noteId, mk.label);
-        const s = noteOnly ? null : refIdx.source(mk.noteId);
-        return {
-          label: mk.label,
-          note_only: noteOnly,
-          footnote: refIdx.markerText(mk.noteId),
-          source: s
-            ? {
-                author: Array.isArray(s.author) ? s.author.join(", ") : s.author,
-                title: s.title,
-                year: s.year,
-                type: s.document_type,
-                url: s.retrieval_url,
-                doi: s._doi || null,
-                sparse: !!s._sparse,
-              }
-            : null,
-        };
-      };
-      const shapeClaim = (c, isRejected) => ({
-        rejected: isRejected,
-        seq: c.seq,
-        sentence_cited: c.sentence_cited,
-        section: c.section,
-        cutoff: c.cutoff,
-        triggers: c.triggers || [],
-        markers: (c.markers || []).map(shapeMarker),
-        context_before: c.context_before || [],
-        context_after: c.context_after || [],
-        reason: c.reason || null, // set on dropped ones
-      });
-      // kept + rejected, interleaved in the order they appear in the article
-      const candidates = claims
-        .map((c) => shapeClaim(c, false))
-        .concat(rejected.map((c) => shapeClaim(c, true)))
-        .sort((a, b) => a.seq - b.seq);
-      return send(
-        res,
-        200,
-        "application/json",
-        JSON.stringify({
-          page: {
-            title: page.title,
-            url: page.url,
-            revid: page.revid,
-            sections: page.sections.length,
-          },
-          candidates: candidates,
-          counts: { kept: claims.length, rejected: rejected.length },
-        })
-      );
-    }
     if (pathname === "/api/file") {
       const raw = await cachedRead(url.searchParams.get("id") || "");
       if (raw == null) return send(res, 404, "text/plain", "not found");
@@ -1201,7 +1151,10 @@ const server = http.createServer(async (req, res) => {
     }
     // "Re-analyze" — rerun the full timeaudit.js pipeline for a document's
     // Wikipedia URL, overwriting it in place once the run finishes.
-    if (pathname === "/api/reanalyze" && req.method === "POST") {
+    // Everything below spawns a full timeaudit.js run (live Wikipedia +
+    // academic-source fetches, disk writes, a Firestore push) — never exposed
+    // on a public deploy, which has no auth in front of it.
+    if (!PUBLIC && pathname === "/api/reanalyze" && req.method === "POST") {
       const id = url.searchParams.get("id") || "";
       const raw = await cachedRead(id);
       if (raw == null) return send(res, 404, "application/json", JSON.stringify({ error: "document not found" }));
@@ -1221,7 +1174,7 @@ const server = http.createServer(async (req, res) => {
       startTimeauditJob(id, docUrl, { mode, outDir: outDirForId(id), wipeSlug: String(id).replace(/\.json$/i, "") });
       return send(res, 200, "application/json", JSON.stringify({ started: true, url: docUrl, mode: mode || "(default)" }));
     }
-    if (pathname === "/api/reanalyze/status") {
+    if (!PUBLIC && pathname === "/api/reanalyze/status") {
       const id = url.searchParams.get("id") || "";
       const job = reanalyzeJobs.get(id);
       if (!job) return send(res, 404, "application/json", JSON.stringify({ error: "no re-analyze job for this document yet" }));
@@ -1229,7 +1182,7 @@ const server = http.createServer(async (req, res) => {
     }
     // "Add article" — analyze a brand-new Wikipedia URL and add it to the DB.
     // Job is keyed "new:<slug>"; the client polls /api/analyze/status?job=<key>.
-    if (pathname === "/api/analyze" && req.method === "POST") {
+    if (!PUBLIC && pathname === "/api/analyze" && req.method === "POST") {
       const target = url.searchParams.get("url") || "";
       let parsed;
       try {
@@ -1246,7 +1199,7 @@ const server = http.createServer(async (req, res) => {
       startTimeauditJob(jobKey, target, { outDir: DIR });
       return send(res, 200, "application/json", JSON.stringify({ started: true, job: jobKey, url: target }));
     }
-    if (pathname === "/api/analyze/status") {
+    if (!PUBLIC && pathname === "/api/analyze/status") {
       const jobKey = url.searchParams.get("job") || "";
       const job = reanalyzeJobs.get(jobKey);
       if (!job) return send(res, 404, "application/json", JSON.stringify({ error: "no analyze job with that key" }));

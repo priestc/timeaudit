@@ -19,6 +19,12 @@ loadEnv();
 
 const { isConfigured, collectionName } = require("./lib/firebase");
 const store = require("./lib/store");
+// lazy: only push/delete need a service account (Admin SDK); list/pull don't
+let storeAdmin;
+function admin() {
+  if (!storeAdmin) storeAdmin = require("./lib/store-admin");
+  return storeAdmin;
+}
 
 function die(msg) {
   process.stderr.write("error: " + msg + "\n");
@@ -54,7 +60,7 @@ async function cmdPush(dir) {
   for (const file of files) {
     const rawText = fs.readFileSync(file, "utf8");
     const record = store.toRecord(path.basename(file), rawText);
-    await store.putDocument(record);
+    await admin().putDocument(record);
     process.stderr.write(
       "pushed  " + record.doc_id + "  <-  " + path.relative(dir, file) + "\n"
     );
@@ -105,7 +111,7 @@ async function cmdPull(id, outPath) {
 
 async function cmdDelete(id) {
   if (!id) die("usage: node db.js delete <id>");
-  await store.deleteDocument(id);
+  await admin().deleteDocument(id);
   process.stderr.write("deleted '" + id + "' from Firestore\n");
 }
 

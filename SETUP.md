@@ -103,21 +103,8 @@ with Firestore".
 ## Locking it down (before exposing beyond the LAN)
 
 Test-mode rules expire and allow anyone with the config to read/write. For a
-read-only public deployment, set rules to read-only in the Firebase console
-(**Firestore Database → Rules**):
-
-```
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /chronology_documents/{doc} {
-      allow read: if true;
-      allow write: if false;   // push from a trusted machine with admin creds instead
-    }
-  }
-}
-```
-
-With `write: if false`, `node db.js push` from the client SDK will stop working;
-switch pushes to the Firebase Admin SDK with a service-account key, or run them
-from the console/gcloud. For the current LAN-only use, test mode is adequate.
+public deployment, publish [`firestore.rules`](./firestore.rules) (read-only)
+and switch `db.js push`/`delete` to the Firebase Admin SDK — see
+[`DEPLOY.md`](./DEPLOY.md), which is the full walkthrough for deploying a
+public, read-only instance to Cloud Run. For the current LAN-only tank2 use,
+test mode is adequate and nothing here needs to change.

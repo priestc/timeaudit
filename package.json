@@ -8,12 +8,14 @@
   },
   "scripts": {
     "serve": "node serve.js",
+    "serve:public": "TIMEAUDIT_PUBLIC=1 TIMEAUDIT_SOURCE=firestore node serve.js",
     "build": "node build.js",
     "db:push": "node db.js push",
     "db:list": "node db.js list"
   },
   "license": "MIT",
   "dependencies": {
-    "firebase": "^11.10.0"
+    "firebase": "^11.10.0",
+    "firebase-admin": "^13.10.0"
   }
 }

@@ -10,8 +10,8 @@ Two shapes of document are recognised:
   (the viewer still renders one, but the report generator does not produce it
   right now — see `PIPELINE.md`)
 
-Node 18+. The only dependency (`firebase`) is used just for the optional
-database; the viewer and converters work without it.
+Node 18+. The only dependencies (`firebase`, `firebase-admin`) are used just
+for the optional database; the viewer and converters work without them.
 
 **To generate a report from a Wikipedia URL**, see
 [`PIPELINE.md`](./PIPELINE.md):
@@ -47,6 +47,11 @@ its own URL (no single-page app), so any of them can be reloaded or shared:
 | `/source-document/<id>` | one source document — metadata, retrieval history, what cites it |
 | `/unreachable` · `/radiocarbon` | source-document lists |
 | `/claim-finder?url=…` | run the claim extractor on any Wikipedia URL |
+
+Set `TIMEAUDIT_PUBLIC=1` (or `--public`) to run in read-only mode — disables
+the "add/re-analyze article" pipeline triggers and the claim finder, so it's
+safe to put on the public internet. See [`DEPLOY.md`](./DEPLOY.md) for a full
+walkthrough deploying that to Google Cloud Run's free tier.
 
 **Claim finder** runs the analysis
 extractor (`lib/wiki.js` — the same code `timeaudit` uses) on any Wikipedia URL
@@ -99,7 +104,8 @@ node serve.js --source firestore   # serve the web UI from the DB instead of dis
 | `lib/ai.js`     | `--mode ai-only` only: model builds the whole report        |
 | `lib/sync.js`   | copy report + source cache to the tank2 folder              |
 | `lib/render.js` | shared renderer (JSON → HTML); runs in Node and the browser |
-| `lib/firebase.js` / `lib/store.js` | Firestore handle + document read/write   |
+| `lib/firebase.js` / `lib/store.js` | Firestore handle + document read (client SDK, public) |
+| `lib/firebase-admin.js` / `lib/store-admin.js` | Firestore document write (Admin SDK + service account) |
 | `lib/env.js`    | minimal `.env` loader (Node 18 has no `--env-file`)         |
 | `json-to-html.js` | CLI: single file / directory → standalone HTML           |
 | `build.js`      | batch build + gallery into `dist/`                          |

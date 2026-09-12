@@ -10,10 +10,23 @@ Tools for viewing **Wikipedia Chronology Extraction Protocol** JSON files (see
 - `build.js` — batch-render the whole project to a static `dist/` site + gallery
 - `serve.js` — the web service (server-rendered pages, one URL each): reads chronology JSON documents
   from a directory (default) or from Firestore, and serves a browsable UI that
-  renders any of them on the fly
+  renders any of them on the fly. `TIMEAUDIT_PUBLIC=1` / `--public` switches it
+  to a read-only mode safe for a public deploy — disables the analyze/re-analyze
+  pipeline triggers and the claim finder (anything that does outbound work or
+  writes on an anonymous visitor's behalf). See `DEPLOY.md` for the full
+  public (Cloud Run, free tier) deployment; tank2 below stays the private,
+  full-featured instance.
 - `db.js` + `lib/firebase.js` + `lib/store.js` — store the raw JSON in a Google
-  Cloud (Firestore) database; see `SETUP.md`
-- Runtime dependency: `firebase` (only loaded when the database is used). Node 18+.
+  Cloud (Firestore) database; see `SETUP.md`. Reads (`serve.js`, `db.js list`/
+  `pull`) use the client SDK, unauthenticated, governed by `firestore.rules`.
+  Writes (`db.js push`/`delete`) go through `lib/firebase-admin.js` +
+  `lib/store-admin.js` (Firebase Admin SDK, a service-account key via
+  `GOOGLE_APPLICATION_CREDENTIALS`) so they keep working once the rules deny
+  client writes — required before any public deploy.
+- Runtime dependencies (both lazy-loaded, only when the database is touched):
+  `firebase` (client SDK, reads) and `firebase-admin` (Admin SDK, writes —
+  pinned to the 13.x line, not 14.x, so it still runs on tank2's Node 18.19.1
+  if a re-analyze there ever triggers a push). Node 18+.
 
 ## Local development
 

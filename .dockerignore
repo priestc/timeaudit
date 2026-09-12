@@ -1,0 +1,9 @@
+.git
+node_modules
+dist
+scratchpad
+*.html
+.env
+.env.local
+source-cache
+.DS_Store
