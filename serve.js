@@ -176,10 +176,17 @@ async function cachedRead(id) {
   return raw;
 }
 
-function send(res, code, type, body) {
-  res.writeHead(code, { "Content-Type": type, "Cache-Control": "no-store" });
+function send(res, code, type, body, cache) {
+  res.writeHead(code, { "Content-Type": type, "Cache-Control": cache || "no-store" });
   res.end(body);
 }
+// Public mode only: every page is a GET with no per-visitor content, so it's
+// safe to let a CDN (Firebase Hosting / Cloud CDN in front of Cloud Run) and
+// browsers cache it briefly. This is what actually determines whether a
+// traffic spike hits the container/Firestore at all, or gets served entirely
+// from the edge — a slow-changing corpus (content only moves via an offline
+// db.js push) can tolerate being a few minutes stale.
+const PAGE_CACHE = PUBLIC ? "public, max-age=60, s-maxage=300, stale-while-revalidate=600" : "no-store";
 
 // parsed report whose page title slugifies to `slug` (for on-demand shot gen)
 async function reportForSlug(slug) {
@@ -1102,7 +1109,7 @@ const server = http.createServer(async (req, res) => {
       else if ((m = pathname.match(/^\/article\/([^/]+)$/))) pg = pageArticle(m[1], false);
       if (pg) {
         const [type, body] = await pg;
-        return send(res, 200, type, req.method === "HEAD" ? "" : body);
+        return send(res, 200, type, req.method === "HEAD" ? "" : body, PAGE_CACHE);
       }
     }
     if (pathname === "/render.js") {

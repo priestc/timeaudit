@@ -68,6 +68,13 @@ the free tier. Attach it, then immediately set a guardrail:
    amount **$1**, alert thresholds 50%/90%/100%. You'll get an email long
    before anything is ever actually charged.
 
+**A budget alert only emails you — it does not stop billing or shut anything
+off.** There is no built-in "hard cap" on Cloud Run/Firestore spend. If you
+want an actual kill switch, the standard pattern is a budget → Pub/Sub topic →
+small Cloud Function that either sets `--max-instances 0` on the service or
+disables billing on the whole project; not set up here since section 7's
+numbers suggest it isn't needed for this app.
+
 ## 5. Deploy
 
 From the repo root (`--source .` builds the `Dockerfile` via Cloud Build — no
@@ -79,8 +86,15 @@ local Docker install needed):
     --region us-central1 \
     --allow-unauthenticated \
     --min-instances 0 \
+    --max-instances 20 \
     --set-env-vars FIREBASE_API_KEY=<...>,FIREBASE_AUTH_DOMAIN=<...>.firebaseapp.com,FIREBASE_PROJECT_ID=<...>,FIREBASE_STORAGE_BUCKET=<...>.appspot.com,FIREBASE_MESSAGING_SENDER_ID=<...>,FIREBASE_APP_ID=<...>
 ```
+
+`--max-instances 20` caps the worst case: past that many concurrent
+containers (each handling up to 80 requests at once by default — 1,600
+requests in flight) Cloud Run queues or sheds excess requests instead of
+scaling further. That bounds a traffic spike's cost instead of letting it
+scale unboundedly; raise it later if 20 genuinely isn't enough.
 
 Pull those six values straight from `.env` (same `FIREBASE_*` values `serve.js`
 already uses locally — they're the public web-app config, not secrets; access
@@ -99,6 +113,45 @@ service (`{"source": "**", "run": {"serviceId": "timeaudit", "region":
 "us-central1"}}`), then `firebase deploy --only hosting`. Free `*.web.app` /
 `*.firebaseapp.com` URL and HTTPS, or attach your own domain in the Hosting
 console.
+
+## 7. Cost, and holding up to a traffic spike
+
+Every GET page response in public mode carries
+`Cache-Control: public, max-age=60, s-maxage=300, stale-while-revalidate=600`
+(see `serve.js`'s `PAGE_CACHE`) instead of the admin instance's `no-store` —
+this is what actually determines whether a spike is cheap. Cloud Run alone
+gives you *more compute*, not a cache; a CDN in front of it (step 6's Firebase
+Hosting rewrite, or Cloud CDN) is what lets the *second* visitor to a
+trending article be served straight from Google's edge, never touching the
+container or Firestore at all. Do step 6 before counting on this holding up —
+without a CDN in front, every single request reaches Cloud Run.
+
+Rough numbers for this app's shape (small SSR pages, no big downloads —
+screenshots are absent, see the known limitation below), current published
+pricing, **fronted by a CDN**:
+- Cloud Run: request count, vCPU-seconds, and memory all stay inside the free
+  tier until roughly 2M requests/month; a single-day spike of even a few
+  hundred thousand requests barely registers.
+- Firestore: only cache-miss requests reach it. With the CDN edge absorbing
+  repeat hits on the same trending URL, a large spike (hundreds of thousands
+  of views) still means at most a few thousand *distinct* first-hits reaching
+  Firestore — a few dollars at most, likely under $1.
+- **Ballpark for a genuine "slashdotting" (100K-1M requests in a burst) with
+  the CDN in place: under $5, plausibly under $1.** Without the CDN (step 6
+  skipped), every request is a live Cloud Run + Firestore round trip — still
+  likely single digits to low tens of dollars for that volume given how small
+  each page is, but meaningfully more, and closer to the `--max-instances`
+  ceiling.
+
+This assumes the admin endpoints stay disabled (they do, by default, in
+`PUBLIC` mode) — those are the ones that would actually be expensive/dangerous
+if reachable, since they spawn a full extraction run per request.
+
+Compare to the road not taken: Render's free tier can't produce a surprise
+bill (it's free with a hard resource ceiling), but a real slashdotting would
+just make it slow or drop requests rather than scale. Cloud Run trades that
+ceiling for elasticity — bounded here by `--max-instances` and cushioned by
+the CDN — at a cost of low single-digit dollars in the worst realistic case.
 
 ## What changes in public mode
 
