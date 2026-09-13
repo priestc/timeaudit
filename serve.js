@@ -740,6 +740,10 @@ const LAYOUT_CSS = [
   "form.inl{display:flex;gap:8px;margin:14px 0}",
   "form.inl input{flex:1;padding:10px 13px;border:1px solid var(--border);border-radius:8px;background:var(--card);color:var(--fg);font:inherit}",
   "form.inl button{padding:10px 18px;font:inherit;font-weight:600;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:8px;cursor:pointer}",
+  ".search-wrap{margin:14px 0;max-width:560px}",
+  ".search-input{width:100%;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--card);color:var(--fg);font:inherit;font-size:1rem}",
+  ".search-input:focus{outline:2px solid var(--accent);outline-offset:1px}",
+  ".search-results:not(:empty){margin-top:8px;border:1px solid var(--border);border-radius:10px;max-height:420px;overflow-y:auto}",
   "pre.raw{white-space:pre-wrap;word-break:break-word;font:12.5px/1.5 ui-monospace,Menlo,monospace}",
   ".fr-claims{list-style:none;margin:0;padding:0}",
   ".fr-claims li{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:10px}",
@@ -816,26 +820,10 @@ const AUTH_SCRIPT = [
   "});",
 ].join("\n");
 
-async function shell({ title, active, activeId, main, script }) {
-  let list = [];
-  try {
-    list = await cachedList();
-  } catch {
-    /* empty */
-  }
+async function shell({ title, active, main, script }) {
   const nav = NAV.map(
     ([href, label, key]) => '<a href="' + href + '"' + (active === key ? ' class="active"' : "") + ">" + E(label) + "</a>"
   ).join("");
-  const items = list
-    .map((f) => {
-      const meta =
-        f.kind === "page" ? "article \u00b7 " + f.count + " claim" + (f.count === 1 ? "" : "s") : f.kind + " \u00b7 " + f.count;
-      return (
-        '<a href="/article/' + encodeURIComponent(f.id) + '"' + (f.id === activeId ? ' class="active"' : "") + ">" +
-        '<span class="t">' + E(f.title) + '</span><span class="m">' + E(meta) + "</span></a>"
-      );
-    })
-    .join("");
   return (
     '<!doctype html><html lang="en"><head><meta charset="utf-8">' +
     '<meta name="viewport" content="width=device-width,initial-scale=1">' +
@@ -843,7 +831,7 @@ async function shell({ title, active, activeId, main, script }) {
     "<style>" + ChronoRender.STYLES + "\n" + LAYOUT_CSS + "</style></head><body>" +
     '<aside class="ta-side"><div class="head"><b>Chronology Browser</b></div>' +
     '<div class="authbox" id="authbox"></div>' +
-    '<nav class="ta-nav">' + nav + "</nav><div class=\"ta-list\">" + items + "</div></aside>" +
+    '<nav class="ta-nav">' + nav + "</nav></aside>" +
     '<main class="ta-main">' + main + "</main>" +
     '<script src="https://www.gstatic.com/firebasejs/' + FIREBASE_SDK_VERSION + '/firebase-app-compat.js"><\/script>' +
     '<script src="https://www.gstatic.com/firebasejs/' + FIREBASE_SDK_VERSION + '/firebase-auth-compat.js"><\/script>' +
@@ -856,21 +844,48 @@ const htmlPage = (o) => shell(o).then((h) => ["text/html; charset=utf-8", h]);
 
 /* -------------------------------- pages --------------------------------- */
 
+// Home page's article search box — a corpus that may grow to thousands of
+// Wikipedia articles can't be listed in a sidebar (or shipped whole to every
+// visitor), so this hits /api/search on each keystroke (debounced) instead.
+const SEARCH_SCRIPT = [
+  "var si = document.getElementById('artsearch'), sr = document.getElementById('searchresults'), st = null;",
+  "function esc(s){return String(s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c];});}",
+  "function renderResults(list){",
+  "  if (!list.length) { sr.innerHTML = '<div class=\"m\" style=\"padding:9px 11px\">No matching articles</div>'; return; }",
+  "  sr.innerHTML = list.map(function(f){",
+  "    var meta = f.kind === 'page' ? 'article \u00b7 ' + f.count + ' claim' + (f.count === 1 ? '' : 's') : f.kind + ' \u00b7 ' + f.count;",
+  "    return '<a href=\"/article/'+encodeURIComponent(f.id)+'\"><span class=\"t\">'+esc(f.title)+'</span><span class=\"m\">'+esc(meta)+'</span></a>';",
+  "  }).join('');",
+  "}",
+  "si.addEventListener('input', function(){",
+  "  clearTimeout(st);",
+  "  var q = si.value.trim();",
+  "  if (!q) { sr.innerHTML = ''; return; }",
+  "  st = setTimeout(function(){",
+  "    fetch('/api/search?q=' + encodeURIComponent(q)).then(function(r){ return r.json(); }).then(renderResults);",
+  "  }, 200);",
+  "});",
+].join("\n");
+
 function pageHome() {
+  const searchBlock =
+    '<div class="search-wrap"><input id="artsearch" class="search-input" type="search" autocomplete="off" ' +
+    'placeholder="Search Wikipedia articles\u2026"><div id="searchresults" class="ta-list search-results"></div></div>';
   if (PUBLIC) {
     const main =
       '<div class="pg"><h1>Wikipedia Chronology Extraction</h1>' +
       '<div class="sub">A browsable audit trail for dated historical claims on Wikipedia \u2014 what each one cites, and whether that source could be retrieved.</div>' +
-      '<p class="sub" style="margin-top:26px">Pick a Wikipedia article from the list on the left to see its report, or use the pages in the nav.</p></div>';
-    return htmlPage({ title: "Home", active: "home", main });
+      searchBlock + "</div>";
+    return htmlPage({ title: "Home", active: "home", main, script: SEARCH_SCRIPT });
   }
   const main =
     '<div class="pg"><h1>Add a Wikipedia article</h1>' +
     '<div class="sub">Paste a Wikipedia URL. It is run through the full extraction pipeline and added to the database.</div>' +
     '<form class="inl" id="af"><input id="au" type="url" placeholder="https://en.wikipedia.org/wiki/Stonehenge" required>' +
     "<button>Analyze &amp; add</button></form><div class=\"hstat\" id=\"hs\"></div>" +
-    '<p class="sub" style="margin-top:26px">Pick a Wikipedia article from the list on the left to see its report, or use the pages in the nav.</p></div>';
+    '<h2 style="margin-top:34px">Find an article</h2>' + searchBlock + "</div>";
   const script =
+    SEARCH_SCRIPT +
     "var f=document.getElementById('af'),u=document.getElementById('au'),s=document.getElementById('hs');" +
     "f.onsubmit=function(e){e.preventDefault();var url=u.value.trim();if(!url)return;" +
     "s.textContent='starting analysis of '+url+' \\u2026';f.querySelector('button').disabled=true;" +
@@ -1287,6 +1302,19 @@ const server = http.createServer(async (req, res) => {
     }
     if (pathname === "/api/files") {
       return send(res, 200, "application/json", JSON.stringify(await cachedList()));
+    }
+    // Home page's search box. A case-insensitive substring match over the
+    // (cached) corpus list — fine at hundreds-to-thousands of articles;
+    // would want a real search index long before millions.
+    if (pathname === "/api/search") {
+      const q = (url.searchParams.get("q") || "").trim().toLowerCase();
+      if (!q) return send(res, 200, "application/json", "[]");
+      const list = await cachedList();
+      const hits = list
+        .filter((f) => f.title.toLowerCase().includes(q) || String(f.id).toLowerCase().includes(q))
+        .slice(0, 30)
+        .map((f) => ({ id: f.id, title: f.title, kind: f.kind, count: f.count }));
+      return send(res, 200, "application/json", JSON.stringify(hits));
     }
     if (pathname === "/api/stats") {
       return send(res, 200, "application/json", JSON.stringify(await computeStats()));
