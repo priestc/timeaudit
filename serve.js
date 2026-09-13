@@ -554,6 +554,83 @@ async function computeClaimsByStatus() {
 
 const ChronoRender = require("./lib/render");
 const E = ChronoRender.esc;
+const votes = require("./lib/votes");
+const { getAdminAuth } = require("./lib/firebase-admin");
+const { firebaseConfig } = require("./lib/firebase");
+
+// A claim's identity across the whole corpus, for voting: "<docId>::<claimId>".
+// docId is normalized (no ".json") so the filesystem and Firestore backends
+// agree on the same key for the same claim.
+function claimKey(id, claimId) {
+  return String(id).replace(/\.json$/i, "") + "::" + claimId;
+}
+
+// Simple per-uid rate limit on voting — an authenticated caller could still
+// script a bunch of vote flips; this doesn't need to be clever, just bound
+// the worst case. In-process only (fine at this scale/single-instance-ish
+// traffic; resets on redeploy).
+const VOTE_WINDOW_MS = 60000;
+const VOTE_MAX_PER_WINDOW = 30;
+const voteTimestamps = new Map(); // uid -> [ms, ...]
+function isRateLimited(uid) {
+  const now = Date.now();
+  const arr = (voteTimestamps.get(uid) || []).filter((t) => now - t < VOTE_WINDOW_MS);
+  arr.push(now);
+  voteTimestamps.set(uid, arr);
+  return arr.length > VOTE_MAX_PER_WINDOW;
+}
+
+// Verifies the caller's Firebase ID token (Google/Facebook sign-in on the
+// client) and returns their uid, or null if missing/invalid/expired. This is
+// the ONLY thing standing between an anonymous visitor and casting a vote —
+// nothing else on the vote endpoints checks who's calling.
+async function requireVoter(req) {
+  const m = /^Bearer (.+)$/i.exec(req.headers.authorization || "");
+  if (!m) return null;
+  try {
+    const decoded = await getAdminAuth().verifyIdToken(m[1]);
+    return decoded.uid;
+  } catch {
+    return null;
+  }
+}
+
+// Vote counts get read on every article/claim page render — cache them
+// briefly (much shorter than the backend's document cache) so a page-view
+// spike doesn't turn into a Firestore read per visitor per claim. A voter's
+// own action updates this cache immediately (see /api/vote), and their
+// client also applies the fresh count optimistically without waiting on a
+// reload, so the short staleness only affects *other* concurrent viewers.
+const VOTE_COUNT_TTL_MS = 10000;
+const voteCountCache = new Map(); // claimKey -> { at, counts: {up,down} }
+async function cachedVoteCounts(keys) {
+  const now = Date.now();
+  const stale = keys.filter((k) => {
+    const hit = voteCountCache.get(k);
+    return !hit || now - hit.at >= VOTE_COUNT_TTL_MS;
+  });
+  if (stale.length) {
+    let fresh = {};
+    try {
+      fresh = await votes.getVoteCounts(stale);
+    } catch (e) {
+      process.stderr.write("vote count read failed: " + e.message + "\n");
+    }
+    for (const k of stale) voteCountCache.set(k, { at: now, counts: fresh[k] || { up: 0, down: 0 } });
+  }
+  const out = {};
+  for (const k of keys) out[k] = (voteCountCache.get(k) || {}).counts || { up: 0, down: 0 };
+  return out;
+}
+
+async function readRequestBody(req, maxBytes) {
+  let body = "";
+  for await (const chunk of req) {
+    body += chunk;
+    if (body.length > maxBytes) throw new Error("payload too large");
+  }
+  return body;
+}
 
 function badge(text, kind) {
   return '<span class="badge badge-' + E(kind || "neutral") + '">' + E(text) + "</span>";
@@ -602,6 +679,12 @@ const LAYOUT_CSS = [
   ".ta-side{background:var(--sidebar);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}",
   ".ta-side .head{padding:16px 16px 12px;border-bottom:1px solid var(--border)}",
   ".ta-side .head b{font-size:1rem}",
+  ".authbox{padding:10px 16px;border-bottom:1px solid var(--border);display:flex;flex-direction:column;gap:8px;min-height:34px}",
+  ".authbox .who{display:flex;align-items:center;gap:8px;font-size:.82rem;overflow:hidden}",
+  ".authbox .who span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}",
+  ".authbox .who img{width:22px;height:22px;border-radius:50%;flex:none}",
+  ".authbtn{font:inherit;font-size:.78rem;padding:6px 10px;border:1px solid var(--border);background:var(--card);color:var(--fg);border-radius:8px;cursor:pointer;text-align:left}",
+  ".authbtn:hover{border-color:var(--accent);color:var(--accent)}",
   ".ta-nav{padding:8px 8px 0;display:flex;flex-direction:column;gap:5px}",
   ".ta-nav a{padding:9px 11px;border-radius:8px;font-size:.88rem;font-weight:600;border:1px solid var(--border);background:var(--card);color:var(--fg);text-decoration:none}",
   ".ta-nav a.active{background:var(--accent);color:#fff;border-color:var(--accent)}",
@@ -666,6 +749,73 @@ const LAYOUT_CSS = [
   ".hstat{margin-top:14px;font:12.5px/1.5 ui-monospace,Menlo,monospace;color:var(--muted);white-space:pre-wrap}",
 ].join("\n");
 
+// Client-side sign-in (Google/Facebook, via Firebase Auth) + vote-button
+// wiring. Built once at startup — the config is fixed for the life of the
+// process. Loaded on every page (the sidebar sign-in box is site-wide);
+// harmless no-op on pages with no .vote widgets.
+const FIREBASE_SDK_VERSION = "10.13.2";
+const AUTH_SCRIPT = [
+  "var __fbCfg = " + JSON.stringify(firebaseConfig()) + ";",
+  "firebase.initializeApp(__fbCfg);",
+  "var auth = firebase.auth();",
+  "var currentUser = null;",
+  "function esc(s){return String(s).replace(/[&<>\"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c];});}",
+  "function renderAuthBox(){",
+  "  var box = document.getElementById('authbox'); if (!box) return;",
+  "  if (currentUser) {",
+  "    box.innerHTML = '<div class=\"who\">' + (currentUser.photoURL ? '<img src=\"'+esc(currentUser.photoURL)+'\" onerror=\"this.remove()\">' : '') + '<span>'+esc(currentUser.displayName||currentUser.email||'signed in')+'</span></div><button id=\"signout\" class=\"authbtn\">Sign out</button>';",
+  "    document.getElementById('signout').onclick = function(){ auth.signOut(); };",
+  "  } else {",
+  "    box.innerHTML = '<button id=\"signin-g\" class=\"authbtn\">Sign in with Google</button><button id=\"signin-f\" class=\"authbtn\">Sign in with Facebook</button>';",
+  "    document.getElementById('signin-g').onclick = function(){ auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(function(e){ alert(e.message); }); };",
+  "    document.getElementById('signin-f').onclick = function(){ auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).catch(function(e){ alert(e.message); }); };",
+  "  }",
+  "}",
+  "function voteEls(){ return document.querySelectorAll('.vote[data-claim-key]'); }",
+  "function refreshMyVotes(){",
+  "  var els = voteEls(); if (!els.length) return;",
+  "  var keys = Array.prototype.map.call(els, function(el){ return el.getAttribute('data-claim-key'); });",
+  "  if (!currentUser) {",
+  "    Array.prototype.forEach.call(els, function(el){",
+  "      var u=el.querySelector('.vote-btn.up'), d=el.querySelector('.vote-btn.down');",
+  "      if (u) u.classList.remove('active'); if (d) d.classList.remove('active');",
+  "    });",
+  "    return;",
+  "  }",
+  "  currentUser.getIdToken().then(function(token){",
+  "    return fetch('/api/my-votes?claimKeys=' + encodeURIComponent(keys.join(',')), { headers: { Authorization: 'Bearer ' + token } });",
+  "  }).then(function(r){ return r.json(); }).then(function(map){",
+  "    Array.prototype.forEach.call(els, function(el){",
+  "      var v = map[el.getAttribute('data-claim-key')] || 0;",
+  "      var u = el.querySelector('.vote-btn.up'), d = el.querySelector('.vote-btn.down');",
+  "      if (u) u.classList.toggle('active', v === 1);",
+  "      if (d) d.classList.toggle('active', v === -1);",
+  "    });",
+  "  }).catch(function(){});",
+  "}",
+  "auth.onAuthStateChanged(function(user){ currentUser = user; renderAuthBox(); refreshMyVotes(); });",
+  "document.addEventListener('click', function(e){",
+  "  var btn = e.target.closest && e.target.closest('.vote-btn');",
+  "  if (!btn) return;",
+  "  var wrap = btn.closest('.vote'); if (!wrap) return;",
+  "  var key = wrap.getAttribute('data-claim-key');",
+  "  var dir = parseInt(btn.getAttribute('data-dir'), 10);",
+  "  if (!currentUser) { auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(function(){}); return; }",
+  "  var value = btn.classList.contains('active') ? 0 : dir;",
+  "  btn.disabled = true;",
+  "  currentUser.getIdToken().then(function(token){",
+  "    return fetch('/api/vote', { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token }, body: JSON.stringify({ claimKey: key, value: value }) });",
+  "  }).then(function(r){ return r.json(); }).then(function(res){",
+  "    btn.disabled = false;",
+  "    if (res.error) { alert(res.error); return; }",
+  "    var scoreEl = wrap.querySelector('.vote-score'); if (scoreEl) scoreEl.textContent = (res.up - res.down);",
+  "    var u = wrap.querySelector('.vote-btn.up'), d = wrap.querySelector('.vote-btn.down');",
+  "    if (u) u.classList.toggle('active', value === 1);",
+  "    if (d) d.classList.toggle('active', value === -1);",
+  "  }).catch(function(e){ btn.disabled = false; alert('vote failed: ' + e.message); });",
+  "});",
+].join("\n");
+
 async function shell({ title, active, activeId, main, script }) {
   let list = [];
   try {
@@ -692,8 +842,12 @@ async function shell({ title, active, activeId, main, script }) {
     "<title>" + E(title) + " \u2014 Chronology Browser</title>" +
     "<style>" + ChronoRender.STYLES + "\n" + LAYOUT_CSS + "</style></head><body>" +
     '<aside class="ta-side"><div class="head"><b>Chronology Browser</b></div>' +
+    '<div class="authbox" id="authbox"></div>' +
     '<nav class="ta-nav">' + nav + "</nav><div class=\"ta-list\">" + items + "</div></aside>" +
     '<main class="ta-main">' + main + "</main>" +
+    '<script src="https://www.gstatic.com/firebasejs/' + FIREBASE_SDK_VERSION + '/firebase-app-compat.js"><\/script>' +
+    '<script src="https://www.gstatic.com/firebasejs/' + FIREBASE_SDK_VERSION + '/firebase-auth-compat.js"><\/script>' +
+    "<script>" + AUTH_SCRIPT + "<\/script>" +
     (script ? "<script>" + script + "<\/script>" : "") +
     "</body></html>"
   );
@@ -749,6 +903,7 @@ async function pageArticle(id, raw) {
     body = '<div class="wrap"><pre class="raw">' + E(JSON.stringify(data, null, 2)) + "</pre></div>";
   } else {
     const ctx = await contextFor(id, data);
+    const voteCounts = await cachedVoteCounts((data.claims || []).map((c) => claimKey(id, c.claim_id)));
     body =
       '<div class="wrap">' +
       ChronoRender.renderBody(data, {
@@ -756,6 +911,8 @@ async function pageArticle(id, raw) {
         claimBase: "/article/" + encodeURIComponent(id) + "/",
         docSourceBase: "/document-sources/",
         cacheBase: "/",
+        voteDocId: id,
+        voteCounts,
       }) +
       "</div>";
   }
@@ -795,9 +952,17 @@ async function pageClaim(id, claimId) {
   const bar =
     '<div class="ta-bar"><a href="/article/' + encodeURIComponent(id) + '">\u2190 ' + E(title) + "</a><b>" + E(claimId) +
     '</b><span class="sub">this page\u2019s URL links straight to this claim</span></div>';
+  const voteCounts = await cachedVoteCounts([claimKey(id, claimId)]);
   const body =
     '<div class="wrap">' +
-    ChronoRender.renderBody(synth, { context: sctx, hideSummary: true, docSourceBase: "/document-sources/", cacheBase: "/" }) +
+    ChronoRender.renderBody(synth, {
+      context: sctx,
+      hideSummary: true,
+      docSourceBase: "/document-sources/",
+      cacheBase: "/",
+      voteDocId: id,
+      voteCounts,
+    }) +
     "</div>";
   return htmlPage({ title: claimId + " \u00b7 " + title, active: null, activeId: id, main: bar + body });
 }
@@ -812,6 +977,9 @@ async function pageClaimsByStatus(status) {
     byDoc.get(e.doc_id).claims.push(e.claim);
   });
   const bar = '<div class="ta-bar"><a href="/statistics">\u2190 statistics</a><b>' + E(label) + " claims (" + entries.length + ")</b></div>";
+  const allKeys = [];
+  for (const [docId, g] of byDoc) for (const c of g.claims) allKeys.push(claimKey(docId, c.claim_id));
+  const voteCounts = await cachedVoteCounts(allKeys);
   let body = '<div class="wrap">';
   if (!entries.length) body += '<div class="empty">No claims with this status.</div>';
   for (const [docId, g] of [...byDoc.entries()].sort((a, b) => a[1].title.localeCompare(b[1].title))) {
@@ -824,6 +992,8 @@ async function pageClaimsByStatus(status) {
         hideSummary: true,
         docSourceBase: "/document-sources/",
         cacheBase: "/",
+        voteDocId: docId,
+        voteCounts,
       }).replace(
         /^<header class="doc-head">[\s\S]*?<\/header>/,
         ""
@@ -1135,6 +1305,55 @@ const server = http.createServer(async (req, res) => {
       const raw = await cachedRead(url.searchParams.get("id") || "");
       if (raw == null) return send(res, 404, "text/plain", "not found");
       return send(res, 200, "application/json", raw);
+    }
+    // Cast/change/retract a vote on one claim. Requires a valid Firebase ID
+    // token (Google or Facebook sign-in) — see requireVoter(). Available in
+    // both public and private mode; unlike analyze/reanalyze this can't spawn
+    // outbound work, it's one small Firestore transaction per call.
+    if (pathname === "/api/vote" && req.method === "POST") {
+      const uid = await requireVoter(req);
+      if (!uid) return send(res, 401, "application/json", JSON.stringify({ error: "sign in required" }));
+      if (isRateLimited(uid)) return send(res, 429, "application/json", JSON.stringify({ error: "too many votes — slow down" }));
+      let parsed;
+      try {
+        parsed = JSON.parse(await readRequestBody(req, 2000));
+      } catch (e) {
+        return send(res, 400, "application/json", JSON.stringify({ error: "invalid request: " + e.message }));
+      }
+      const key = String(parsed && parsed.claimKey || "");
+      const value = parsed && parsed.value;
+      const m = /^(.+)::([^:]+)$/.exec(key);
+      if (!m || ![1, -1, 0].includes(value)) {
+        return send(res, 400, "application/json", JSON.stringify({ error: "invalid vote" }));
+      }
+      // confirm the claim actually exists — don't let votes pile up on junk keys
+      const [, docId, claimId] = m;
+      let claimExists = false;
+      try {
+        const raw = await cachedRead(docId);
+        const d = raw != null ? JSON.parse(raw) : null;
+        claimExists = !!(d && (d.claims || []).some((c) => c.claim_id === claimId));
+      } catch {
+        /* claimExists stays false */
+      }
+      if (!claimExists) return send(res, 404, "application/json", JSON.stringify({ error: "no such claim" }));
+      try {
+        const agg = await votes.castVote(key, uid, value);
+        voteCountCache.set(key, { at: Date.now(), counts: { up: agg.up, down: agg.down } });
+        return send(res, 200, "application/json", JSON.stringify({ up: agg.up, down: agg.down }));
+      } catch (e) {
+        return send(res, 500, "application/json", JSON.stringify({ error: e.message }));
+      }
+    }
+    // The current signed-in visitor's own votes, for a page's worth of claim
+    // keys — filled in client-side so the SSR HTML (cacheable, same for every
+    // visitor) never has to bake in per-user state.
+    if (pathname === "/api/my-votes" && req.method === "GET") {
+      const uid = await requireVoter(req);
+      if (!uid) return send(res, 401, "application/json", JSON.stringify({ error: "sign in required" }));
+      const keys = (url.searchParams.get("claimKeys") || "").split(",").filter(Boolean).slice(0, 300);
+      const map = await votes.getUserVotes(keys, uid);
+      return send(res, 200, "application/json", JSON.stringify(map));
     }
     // grey "sentence before/after" context for the doc viewer (see lib/context.js)
     // — derived from the cached wiki page, {} if there isn't one (ai-only mode).
