@@ -117,6 +117,37 @@ Collection `chronology_documents`, one document per file, keyed by a filename
 slug. The file is stored verbatim in `raw_json`; `title` / `kind` /
 `claim_count` / `schema_version` / `updated_at` are derived for listing.
 
+## Voting (upvote/downvote per claim)
+
+Every claim shows a net score with up/down buttons (`lib/render.js`
+`renderVoteWidget`). Voting requires signing in (Firebase Auth — Google or
+Facebook); viewing stays open to everyone. Storage is `lib/votes.js`:
+`claim_votes/{docId::claimId}` (aggregate `{up,down}`) +
+`claim_votes/{key}/voters/{uid}` (one vote per user) — both written only by
+`serve.js` via the Admin SDK, so neither needs (or has) a client-writable
+Firestore rule; the browser only ever calls `POST /api/vote` /
+`GET /api/my-votes`, which verify the caller's ID token first
+(`requireVoter`/`getAdminAuth`). Vote counts are cached 10s
+(`cachedVoteCounts`) so a traffic spike doesn't turn into a Firestore read
+per visitor per claim.
+
+Cloud Run's runtime identity for this is the dedicated
+`timeaudit-run@timeaudit-3bf03.iam.gserviceaccount.com` service account
+(`roles/datastore.user` only, no key file — Cloud Run attaches it
+automatically); tank2 reuses its existing `timeaudit-db-writer` key.
+
+**To actually let people sign in**, two one-time Firebase console steps
+(neither completable via gcloud/API — tried; Google sign-in needs an
+explicit OAuth client because this project is Identity-Platform-subtype,
+and Facebook fundamentally requires an external Meta developer app):
+1. [Authentication → Sign-in method](https://console.firebase.google.com/project/timeaudit-3bf03/authentication/providers) → enable **Google**.
+2. Create an app at [developers.facebook.com](https://developers.facebook.com/), add the *Facebook Login* product, set its OAuth redirect URI to `https://timeaudit-3bf03.firebaseapp.com/__/auth/handler`, then enable **Facebook** in the same Firebase page with that app's ID + secret.
+
+Sign-in only really works on the public HTTPS Cloud Run URL — tank2's plain
+`http://tank2.local:8090` isn't in `authorizedDomains` and browsers restrict
+OAuth popups to secure contexts anyway, so voting there is mostly moot (LAN
+tool, not the point).
+
 ---
 
 ## Production deployment (tank2)
