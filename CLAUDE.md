@@ -144,7 +144,7 @@ and Facebook fundamentally requires an external Meta developer app):
 2. Create an app at [developers.facebook.com](https://developers.facebook.com/), add the *Facebook Login* product, set its OAuth redirect URI to `https://timeaudit-3bf03.firebaseapp.com/__/auth/handler`, then enable **Facebook** in the same Firebase page with that app's ID + secret.
 
 Sign-in only really works on the public HTTPS Cloud Run URL — tank2's plain
-`http://tank2.local:8090` isn't in `authorizedDomains` and browsers restrict
+`http://tank2.lan:8090` isn't in `authorizedDomains` and browsers restrict
 OAuth popups to secure contexts anyway, so voting there is mostly moot (LAN
 tool, not the point).
 
@@ -155,7 +155,7 @@ tool, not the point).
 The web service runs on the **tank2** server as a **systemd user service** owned by
 `chris`. It is reachable on the LAN at:
 
-- <http://tank2.local:8090/>
+- <http://tank2.lan:8090/>
 - <http://192.168.1.190:8090/>
 
 ### Layout on tank2
